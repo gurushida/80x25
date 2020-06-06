@@ -12,30 +12,27 @@ screen.title = 'my window title';
 var box = blessed.box({
   top: 'center',
   left: 'center',
-  width: '50%',
-  height: '50%',
-  content: 'Hello {bold}world{/bold}!',
+  width: 82,
+  height: 27,
+  content: 'Hello {bold}world{/bold}! Welcome to {underline}80x25{/underline}',
   tags: true,
   border: {
     type: 'line'
   },
   style: {
     fg: 'white',
-    bg: 'magenta',
+    bg: 'black',
     border: {
       fg: '#f0f0f0'
     },
-    hover: {
-      bg: 'green'
-    }
   },
   cursor: {
     artificial: true,
     shape: {
-      bg: 'red',
+      bg: 'black',
       fg: 'white',
       bold: true,
-      ch: '#'
+      ch: '+'
     },
     blink: true
   }
@@ -46,15 +43,24 @@ screen.append(box);
 
 // If our box is clicked, change the content.
 box.on('click', function(data) {
-  box.setContent(`{center}Some {red-fg}${MSG}{/red-fg}.{/center}`);
+  box.setContent(`{center}Some {orange-fg}${MSG}{/orange-fg}.{/center}`);
   screen.render();
 });
+
+box.on('mousemove', function(data) {
+  box.setContent('MOUSE MOVE');
+  box.setLine(1, `x=${data.x} y=${data.y}`);
+  screen.render();
+});
+
 
 // If box is focused, handle `enter`/`return` and give us some more content.
 box.key('enter', function(ch, key) {
   box.setContent('{right}Even different {black-fg}content{/black-fg}.{/right}\n');
-  box.setLine(1, 'bar');
-  box.insertLine(1, 'foo');
+  box.setLine(0, '01234567890123456789012345678901234567890123456789012345678901234567890123456789');
+  for (let i = 1 ; i < 25 ; i++) {
+    box.setLine(i, `# ${i}`);
+  }
   screen.render();
 });
 
