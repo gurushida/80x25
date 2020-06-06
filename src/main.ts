@@ -19,23 +19,6 @@ var box = blessed.box({
   border: {
     type: 'line'
   },
-  style: {
-    fg: 'white',
-    bg: 'black',
-    border: {
-      fg: '#f0f0f0'
-    },
-  },
-  cursor: {
-    artificial: true,
-    shape: {
-      bg: 'black',
-      fg: 'white',
-      bold: true,
-      ch: '+'
-    },
-    blink: true
-  }
 });
 
 // Append our box to the screen.
@@ -43,13 +26,15 @@ screen.append(box);
 
 // If our box is clicked, change the content.
 box.on('click', function(data) {
-  box.setContent(`{center}Some {orange-fg}${MSG}{/orange-fg}.{/center}`);
+  box.setContent(`{center}Some {red-fg}${MSG}{/red-fg}.{/center}`);
   screen.render();
 });
 
 box.on('mousemove', function(data) {
   box.setContent('MOUSE MOVE');
   box.setLine(1, `x=${data.x} y=${data.y}`);
+  box.setLine(2, `box x=${box.left} y=${box.top}`);
+  box.setLine(2, `rel x=${data.x - (box.left as number) - 1} y=${data.y - (box.top as number) - 1}`);
   screen.render();
 });
 
