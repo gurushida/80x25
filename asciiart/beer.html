@@ -1,0 +1,167 @@
+<html>
+<body>
+<pre id='beer'>
+</pre>
+
+
+<script>
+const beer0 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |  |     |
+`+String.raw`4  |  |  |D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer1 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |  |     |
+`+String.raw`4  |  |  |D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer2 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |  |     |
+`+String.raw`4  |  |  |D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer3 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |  |     |
+`+String.raw`4  |  |  |D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer4 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |  |     |
+`+String.raw`4  |  |~~|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer5 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |  |     |
+`+String.raw`4  |  |==|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer6 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |  |     |
+`+String.raw`4  |  |##|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer7 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |~~|     |
+`+String.raw`4  |  |##|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer8 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |  |   \ - /
+`+String.raw`3  |  |==|     |
+`+String.raw`4  |  |##|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer9 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |~~|   \ - /
+`+String.raw`3  |  |##|     |
+`+String.raw`4  |  |##|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer10 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |==|   \ - /
+`+String.raw`3  |  |##|     |
+`+String.raw`4  |  |##|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+const beer11 =
+  String.raw`0      T     (((((
+`+String.raw`1  P---|     |.. |
+`+String.raw`2  |  |##|   \ - /
+`+String.raw`3  |  |##|     |
+`+String.raw`4  |  |##|D----|
+`+String.raw`5  |  +--+     |
+`+String.raw`6 _|____       |
+`+String.raw`7|      |     / \
+`+String.raw`8|      |    /   \
+`;
+
+
+const canvas = document.getElementById('beer');
+const sprites = [ beer0, beer1, beer2, beer3, beer4, beer5, beer6, beer7, beer8, beer9,
+  beer10, beer11, beer11, beer11, beer11, beer11 ];
+
+let current = 0;
+
+setInterval(function(){
+  canvas.innerText = sprites[current];
+  current = (current + 1) % sprites.length;
+}, 200);
+
+</script>
+
+</body>
+</html`>

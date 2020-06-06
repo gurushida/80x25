@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre id='car'>
+</pre>
+
+
+<script>
+carSprites = [];
+let s = '';
+for (var i = 0 ; i < 50 ; i++) {
+const car =
+  String.raw`0${s}       _____________
+`+String.raw`1${s}      /  ___   ___  \
+`+String.raw`2${s}   __/  /   | |   \  \____
+`+String.raw`3${s}  /    /____| |____\      \
+`+String.raw`4${s} |      __         __      O
+`+String.raw`5${s} =\____/  \_______/  \____/
+`+String.raw`6${s}       \__/       \__/
+`;
+carSprites.push(car);
+s+= ' ';
+}
+
+const car = document.getElementById('car');
+
+let current = 0;
+
+setInterval(function(){
+  car.innerText = carSprites[current];
+  current = (current + 1) % carSprites.length;
+}, 30);
+
+</script>
+
+</body>
+</html`>

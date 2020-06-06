@@ -1,0 +1,104 @@
+<html>
+<body>
+<pre id='helicopter'>
+</pre>
+
+
+<script>
+const helicopter0 =
+  String.raw`0           _________________
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+const helicopter1 =
+  String.raw`0            _______________
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+const helicopter2 =
+  String.raw`0             _____________
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+const helicopter3 =
+  String.raw`0              ___________
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+const helicopter4 =
+  String.raw`0               _________
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+const helicopter5 =
+  String.raw`0                _______
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+const helicopter6 =
+  String.raw`0                 _____
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+const helicopter7 =
+  String.raw`0                  ___
+`+String.raw`1               ____|____
+`+String.raw`2   _         .'         '.
+`+String.raw`3  | \_______/             \
+`+String.raw`4  |  ________             /
+`+String.raw`5  |_/        \__________.'
+`+String.raw`6          ______|_____|_____/
+`;
+
+
+const canvas = document.getElementById('helicopter');
+const sprites = [ helicopter0, helicopter1, helicopter2, helicopter3, helicopter4,
+helicopter5, helicopter6, helicopter7, helicopter6, helicopter5, helicopter4,
+helicopter3, helicopter2, helicopter1 ];
+
+let current = 0;
+
+setInterval(function(){
+  canvas.innerText = sprites[current];
+  current = (current + 1) % sprites.length;
+}, 30);
+
+</script>
+
+</body>
+</html`>

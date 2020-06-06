@@ -1,0 +1,141 @@
+<html>
+<body>
+<pre id='animation'>
+</pre>
+
+
+<script>
+const sprite0 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|       
+`+          "24|`...-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`" + `
+`+          "23|-'`...-'`...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`'" + `
+`+          "24|`....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'" + `
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite1 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|       
+`+          "24|'`...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-" + `
+`+          "23|-'`....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-...." + `
+`+          "24|-'`...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`" + `
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite2 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|       
+`+          "24|`...-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`" + `
+`+          "24|..-'`...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-" + `
+`+          "24|`....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'`-....-'" + `
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite3 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|       
+`+          "24|`..-'`...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-..." + `
+`+          "24|..-'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`..'`.." + `
+`+          "24|`...-'`...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-...-'`-.." + `
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const canvas = document.getElementById('animation');
+const sprites = [ sprite0, sprite1, sprite2, sprite3,  ];
+
+let current = 0;
+
+setInterval(function(){
+  canvas.innerText = sprites[current];
+  current = (current + 1) % sprites.length;
+}, 400);
+
+</script>
+
+</body>
+</html`>

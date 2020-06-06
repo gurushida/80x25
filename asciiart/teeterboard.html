@@ -1,0 +1,308 @@
+<html>
+<body>
+<pre id='animation'>
+</pre>
+
+
+<script>
+const sprite0 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|                              ___"""
+`+String.raw`21|                        ___"""
+`+String.raw`22|                 ___O"""
+`+String.raw`23|          ___"""   / \
+`+String.raw`24|    ___"""        /___\
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite1 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|                                 ____
+`+String.raw`21|                         ____""""  
+`+String.raw`22|                ____O""""
+`+String.raw`23|        ____""""   / \
+`+String.raw`24|    """"          /___\
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite2 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|                             ____....
+`+String.raw`22|            ____....O----""""
+`+String.raw`23|    ----""""       / \
+`+String.raw`24|                  /___\
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite3 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|                             ________ 
+`+String.raw`22|    ________--------O--------
+`+String.raw`23|                   / \
+`+String.raw`24|                  /___\
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite4 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|
+`+String.raw`22|    ----------------O----------------
+`+String.raw`23|                   / \
+`+String.raw`24|                  /___\
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite5 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|    ________ 
+`+String.raw`22|            --------O--------________
+`+String.raw`23|                   / \
+`+String.raw`24|                  /___\
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite6 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|
+`+String.raw`21|    ....____ 
+`+String.raw`22|            """"----O....____
+`+String.raw`23|                   / \       """"----
+`+String.raw`24|                  /___\
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite7 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|
+`+String.raw`20|    ____  
+`+String.raw`21|        """"____ 
+`+String.raw`22|                """"O____
+`+String.raw`23|                   / \   """"____
+`+String.raw`24|                  /___\          """"
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite8 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|   
+`+String.raw`20|     """___
+`+String.raw`21|           """___ 
+`+String.raw`22|                 """O___
+`+String.raw`23|                   / \  """___
+`+String.raw`24|                  /___\       """___
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+
+
+const canvas = document.getElementById('animation');
+const sprites = [
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0,  
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0,  
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0,  
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0,  
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0,  
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0,  
+  sprite0, sprite1, sprite2, sprite3, sprite4, sprite5, sprite6, sprite7, sprite8,
+  sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8,
+  sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8,
+  sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8,
+  sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8,
+  sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8,
+  sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8, sprite8,
+  sprite8, sprite7, sprite6, sprite5, sprite4, sprite3, sprite2, sprite1,
+ ];
+
+let current = 0;
+
+setInterval(function(){
+  canvas.innerText = sprites[current];
+  current = (current + 1) % sprites.length;
+}, 10);
+
+</script>
+
+</body>
+</html`>

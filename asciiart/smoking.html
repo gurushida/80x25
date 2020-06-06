@@ -1,0 +1,182 @@
+<html>
+<body>
+<pre id='smoking'>
+</pre>
+
+
+<script>
+const smoking0 =
+  String.raw`0
+`+String.raw`1            |||||
+`+String.raw`2            |0-0|
+`+String.raw`3            \ - /
+`+String.raw`4              |    §
+`+String.raw`5             /|\   §
+`+String.raw`6            / | \==#
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking1 =
+  String.raw`0
+`+String.raw`1            |||||
+`+String.raw`2            |0-0|
+`+String.raw`3            \ - /
+`+String.raw`4              |    §
+`+String.raw`5             /|\   $
+`+String.raw`6            / | \==#
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking2 =
+  String.raw`0
+`+String.raw`1            |||||
+`+String.raw`2            |0-0|
+`+String.raw`3            \ - /
+`+String.raw`4              |    $
+`+String.raw`5             /|\   $
+`+String.raw`6            / | \==#
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking3 =
+  String.raw`0
+`+String.raw`1            |||||
+`+String.raw`2            |0-0|
+`+String.raw`3            \ - /
+`+String.raw`4              |    $
+`+String.raw`5             /|\   §
+`+String.raw`6            / | \==#
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking4 =
+  String.raw`0
+`+String.raw`1            |||||
+`+String.raw`2            |0-0|
+`+String.raw`3            \ - /  §
+`+String.raw`4              |    §
+`+String.raw`5             /|\-==#
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking5 =
+  String.raw`0
+`+String.raw`1            |||||
+`+String.raw`2            |0-0|   §
+`+String.raw`3            \ - /   $
+`+String.raw`4              |  /==#
+`+String.raw`5             /|--
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+
+const smoking6 =
+  String.raw`0
+`+String.raw`1            |||||  $
+`+String.raw`2            |0-0|  $
+`+String.raw`3            \  . ==#
+`+String.raw`4              | |
+`+String.raw`5             /|--
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+
+const smoking7 =
+  String.raw`0
+`+String.raw`1            |||||  $
+`+String.raw`2            |0-0|  §
+`+String.raw`3            \  .==#
+`+String.raw`4              | \
+`+String.raw`5             /|--
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+
+const smoking7b =
+  String.raw`0
+`+String.raw`1            |||||  $
+`+String.raw`2            |0-0|  $
+`+String.raw`3            \  .==*
+`+String.raw`4              | \
+`+String.raw`5             /|--
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking7c =
+  String.raw`0
+`+String.raw`1            |||||  $
+`+String.raw`2            |0-0|  §
+`+String.raw`3            \  .==*
+`+String.raw`4              | \
+`+String.raw`5             /|--
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+
+const smoking7d =
+  String.raw`0
+`+String.raw`1            |||||  §
+`+String.raw`2            |0-0|  §
+`+String.raw`3            \  .==#
+`+String.raw`4              | \
+`+String.raw`5             /|--
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking5b =
+  String.raw`0
+`+String.raw`1            |||||
+`+String.raw`2            |0-0|  §
+`+String.raw`3            \ - /   $
+`+String.raw`4              |  /==#
+`+String.raw`5             /|--
+`+String.raw`6            / |
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+const smoking = document.getElementById('smoking');
+const smokingSprites = [ smoking0, smoking1, smoking2, smoking3, smoking4, smoking5, smoking6,
+  smoking7, smoking7b,smoking7c,smoking7d, smoking6, smoking5b, smoking4 ];
+
+let current = 0;
+
+setInterval(function(){
+  smoking.innerText = smokingSprites[current];
+  current = (current + 1) % smokingSprites.length;
+}, 140);
+
+</script>
+
+</body>
+</html`>

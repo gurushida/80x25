@@ -1,0 +1,89 @@
+<html>
+<body>
+<pre id='walking'>
+</pre>
+
+
+<script>
+const walking0 =
+  String.raw`0             ___
+`+String.raw`1          __|___|__
+`+String.raw`2            | ..|
+`+String.raw`3            \ - /
+`+String.raw`4              |
+`+String.raw`5             /|\
+`+String.raw`6            / | \
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   \
+`;
+
+
+const walking1 =
+  String.raw`0             ___
+`+String.raw`1          __|___|__
+`+String.raw`2            | ..|
+`+String.raw`3            \ - /
+`+String.raw`4              |
+`+String.raw`5             /|\
+`+String.raw`6            / | \
+`+String.raw`7              |
+`+String.raw`8              |\
+`+String.raw`9             /  |
+`;
+
+
+const walking2 =
+  String.raw`0             ___
+`+String.raw`1          __|___|__
+`+String.raw`2            | ..|
+`+String.raw`3            \ - /
+`+String.raw`4              |
+`+String.raw`5             /|\
+`+String.raw`6             |||
+`+String.raw`7              |
+`+String.raw`8              |\
+`+String.raw`9              |/
+`;
+
+const walking3 =
+  String.raw`0             ___
+`+String.raw`1          __|___|__
+`+String.raw`2            | ..|
+`+String.raw`3            \ - /
+`+String.raw`4              |
+`+String.raw`5             /|\
+`+String.raw`6             |||
+`+String.raw`7              |
+`+String.raw`8              |
+`+String.raw`9             /|
+`;
+
+const walking4 =
+  String.raw`0             ___
+`+String.raw`1          __|___|__
+`+String.raw`2            | ..|
+`+String.raw`3            \ - /
+`+String.raw`4              |
+`+String.raw`5             /|\
+`+String.raw`6             |||
+`+String.raw`7              |
+`+String.raw`8             / \
+`+String.raw`9            /   |
+`;
+
+
+const walking = document.getElementById('walking');
+const walkingSprites = [ walking0, walking1, walking2, walking3, walking4 ];
+
+let current = 0;
+
+setInterval(function(){
+  walking.innerText = walkingSprites[current];
+  current = (current + 1) % walkingSprites.length;
+}, 90);
+
+</script>
+
+</body>
+</html`>

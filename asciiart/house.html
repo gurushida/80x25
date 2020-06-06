@@ -1,0 +1,124 @@
+<html>
+<body>
+<pre id='house'>
+</pre>
+
+
+<script>
+const house0 =
+  String.raw`
+`+String.raw`
+`+String.raw`
+`+String.raw`                                          $
+`+String.raw`                                           $
+`+String.raw`                                          $
+`+String.raw`                                         $
+`+String.raw`                 __________________     __$__
+`+String.raw`                /                  \    |   |
+`+String.raw`              /                      \  |   |
+`+String.raw`            /                          \|   |
+`+String.raw`          /                              \  |
+`+String.raw`        /                                  \|
+`+String.raw`      /                                      \
+`+String.raw`    /                                          \
+`+String.raw`  /----------------------------------------------\
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |     |  |  |                  |  |  |       |
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |     |  |  |                  |  |  |       |
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |                  _____                     |
+`+String.raw`   |                 /     \       )))))        |
+`+String.raw`   |                |       |      |. .|        |
+`+String.raw`   |                |       |      \ - /        |
+`+String.raw`   |                |       |        |          |
+`+String.raw`   |                |      .|       /|\         |
+`+String.raw`   |                |       |      / | \        |
+`+String.raw`   |                |       |        |          |
+`+String.raw`   |                |       |       / \         |
+`+String.raw`___|________________|_______|______/___\________|___
+`;
+
+
+const house1 =
+  String.raw`
+`+String.raw`
+`+String.raw`                                          $
+`+String.raw`                                         $
+`+String.raw`                                          $
+`+String.raw`                                           $
+`+String.raw`                                          $
+`+String.raw`                 __________________     _$___
+`+String.raw`                /                  \    |   |
+`+String.raw`              /                      \  |   |
+`+String.raw`            /                          \|   |
+`+String.raw`          /                              \  |
+`+String.raw`        /                                  \|
+`+String.raw`      /                                      \
+`+String.raw`    /                                          \
+`+String.raw`  /----------------------------------------------\
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |     |  |  |                  |  |  |       |
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |     |  |  |                  |  |  |       |
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |                  _____                     |
+`+String.raw`   |                 /     \       )))))        |
+`+String.raw`   |                |       |      |. .|        |
+`+String.raw`   |                |       |      \ - /        |
+`+String.raw`   |                |       |        |          |
+`+String.raw`   |                |      .|       /|\         |
+`+String.raw`   |                |       |      / | \        |
+`+String.raw`   |                |       |        |          |
+`+String.raw`   |                |       |       / \         |
+`+String.raw`___|________________|_______|______/___\________|___
+`;
+
+const house2 =
+  String.raw`
+`+String.raw`
+`+String.raw`                                         $
+`+String.raw`                                          $
+`+String.raw`                                         $
+`+String.raw`                                          $
+`+String.raw`                                         $
+`+String.raw`                 __________________     __$__
+`+String.raw`                /                  \    |   |
+`+String.raw`              /                      \  |   |
+`+String.raw`            /                          \|   |
+`+String.raw`          /                              \  |
+`+String.raw`        /                                  \|
+`+String.raw`      /                                      \
+`+String.raw`    /                                          \
+`+String.raw`  /----------------------------------------------\
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |     |  |  |                  |  |  |       |
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |     |  |  |                  |  |  |       |
+`+String.raw`   |     +--+--+                  +--+--+       |
+`+String.raw`   |                  _____                     |
+`+String.raw`   |                 /     \       )))))        |
+`+String.raw`   |                |       |      |. .|        |
+`+String.raw`   |                |       |      \ - /        |
+`+String.raw`   |                |       |        |          |
+`+String.raw`   |                |      .|       /|\         |
+`+String.raw`   |                |       |      / | \        |
+`+String.raw`   |                |       |        |          |
+`+String.raw`   |                |       |       / \         |
+`+String.raw`___|________________|_______|______/___\________|___
+`;
+
+const canvas = document.getElementById('house');
+const sprites = [ house0, house1, house2 ];
+
+let current = 0;
+
+setInterval(function(){
+  canvas.innerText = sprites[current];
+  current = (current + 1) % sprites.length;
+}, 300);
+
+</script>
+
+</body>
+</html`>

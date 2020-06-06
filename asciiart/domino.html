@@ -1,0 +1,1355 @@
+<html>
+<body>
+<pre id='animation'>
+</pre>
+
+
+<script>
+const sprite0 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ||||||||||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite1 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /|||||||||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite2 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //||||||||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite3 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///|||||||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite4 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////||||||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite5 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////|||||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite6 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////||||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite7 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///////|||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite8 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////////||||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite9 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////////|||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite10 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////////||||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite11 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///////////|||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite12 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////////////||||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite13 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////////////|||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite14 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////////////||||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite15 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///////////////|||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite16 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////////////////||||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite17 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////////////////|||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite18 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////////////////||||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite19 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///////////////////|||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite20 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////////////////////||||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite21 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////////////////////|||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite22 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////////////////////||||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite23 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///////////////////////|||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite24 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////////////////////////||||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite25 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////////////////////////|||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite26 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////////////////////////||||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite27 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///////////////////////////|||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite28 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////////////////////////////||||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite29 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////////////////////////////|||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite30 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////////////////////////////||||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite31 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ///////////////////////////////|||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite32 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      ////////////////////////////////||| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite33 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      /////////////////////////////////|| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite34 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                        | | | | |
+`+String.raw`24|      //////////////////////////////////| | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite35 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                         /| | | |
+`+String.raw`24|      /////////////////////////////////// | | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite36 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                         / /| | |
+`+String.raw`24|      /////////////////////////////////// / | | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite37 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                         / / /| |
+`+String.raw`24|      /////////////////////////////////// / / | |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite38 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|                                                |
+`+String.raw`16|                                                |
+`+String.raw`17|                                                |
+`+String.raw`18|                                                |
+`+String.raw`19|                                                |
+`+String.raw`20|                                                |
+`+String.raw`21|                                                |
+`+String.raw`22|                                                |
+`+String.raw`23|                                         / / / /|
+`+String.raw`24|      /////////////////////////////////// / / / |
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite39 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|                                                        /
+`+String.raw`17|                                                       /
+`+String.raw`18|                                                      /
+`+String.raw`19|                                                     /
+`+String.raw`20|                                                    /
+`+String.raw`21|                                                   /
+`+String.raw`22|                                                  /
+`+String.raw`23|                                         / / / / /
+`+String.raw`24|      /////////////////////////////////// / / / /
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite40 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|                                                            .'
+`+String.raw`19|                                                          .'
+`+String.raw`20|                                                        .'
+`+String.raw`21|                                                      .'
+`+String.raw`22|                                                    .'
+`+String.raw`23|                                         / / / /  .' 
+`+String.raw`24|      /////////////////////////////////// / / / .'
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite41 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|                                                          
+`+String.raw`20|                                                                ,-'
+`+String.raw`21|                                                            ,-'
+`+String.raw`22|                                                        ,-'
+`+String.raw`23|                                         / / / /    ,-' 
+`+String.raw`24|      /////////////////////////////////// / / / ,-'
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite42 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|                                                          
+`+String.raw`20|                                                                
+`+String.raw`21|                                                            
+`+String.raw`22|                                                                _..--
+`+String.raw`23|                                         / / / /        _..--'' 
+`+String.raw`24|      /////////////////////////////////// / / / _..--''
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const sprite43 =
+  String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`+String.raw` 0|
+`+String.raw` 1|
+`+String.raw` 2|
+`+String.raw` 3|
+`+String.raw` 4|
+`+String.raw` 5|
+`+String.raw` 6|
+`+String.raw` 7|
+`+String.raw` 8|
+`+String.raw` 9|
+`+String.raw`10|
+`+String.raw`11|
+`+String.raw`12|
+`+String.raw`13|
+`+String.raw`14|
+`+String.raw`15|
+`+String.raw`16|
+`+String.raw`17|
+`+String.raw`18|
+`+String.raw`19|                                                          
+`+String.raw`20|                                                                
+`+String.raw`21|                                                            
+`+String.raw`22|                                                               
+`+String.raw`23|                                         / / / /             ________ 
+`+String.raw`24|      /////////////////////////////////// / / / ____--------'
+`+String.raw`  +---------+---------+---------+---------+---------+---------+---------+---------+
+`;
+
+const canvas = document.getElementById('animation');
+const sprites = [
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, 
+  sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, sprite0, 
+  sprite0, sprite1, sprite2, sprite3, sprite4, sprite5, sprite6, sprite7, sprite8, sprite9, 
+  sprite10, sprite11, sprite12, sprite13, sprite14, sprite15, sprite16, sprite17, sprite18, sprite19,
+  sprite20, sprite21, sprite22, sprite23, sprite24, sprite25, sprite26, sprite27, sprite28, sprite29,
+  sprite30, sprite31, sprite32, sprite33, sprite34, sprite35, sprite36, sprite37, sprite38,
+  sprite38,
+  sprite39, 
+  sprite40,  
+  sprite41,  
+  sprite42,
+  sprite43, sprite43, sprite43, sprite43, sprite43, sprite43, sprite43, 
+  sprite43, sprite43, sprite43, sprite43, sprite43, sprite43, sprite43, 
+];
+
+let current = 0;
+
+setInterval(function(){
+  canvas.innerText = sprites[current];
+  current = (current + 1) % sprites.length;
+}, 70);
+
+</script>
+
+</body>
+</html`>

@@ -1,0 +1,62 @@
+<html>
+<body>
+<pre id='trafficLight'>
+</pre>
+
+
+<script>
+const trafficLight0 =
+  String.raw`0      +-+
+`+String.raw`1      |.|
+`+String.raw`2      |.|
+`+String.raw`3      |@|
+`+String.raw`4      +-+
+`+String.raw`5       |
+`+String.raw`6       |
+`+String.raw`7       |
+`+String.raw`8       |
+`+String.raw`9       |
+`;
+
+const trafficLight1 =
+  String.raw`0      +-+
+`+String.raw`1      |.|
+`+String.raw`2      |@|
+`+String.raw`3      |.|
+`+String.raw`4      +-+
+`+String.raw`5       |
+`+String.raw`6       |
+`+String.raw`7       |
+`+String.raw`8       |
+`+String.raw`9       |
+`;
+
+const trafficLight2 =
+  String.raw`0      +-+
+`+String.raw`1      |@|
+`+String.raw`2      |.|
+`+String.raw`3      |.|
+`+String.raw`4      +-+
+`+String.raw`5       |
+`+String.raw`6       |
+`+String.raw`7       |
+`+String.raw`8       |
+`+String.raw`9       |
+`;
+
+
+const canvas = document.getElementById('trafficLight');
+const sprites = [ trafficLight0, trafficLight0, trafficLight0,
+  trafficLight1, trafficLight2, trafficLight2, trafficLight2 ];
+
+let current = 0;
+
+setInterval(function(){
+  canvas.innerText = sprites[current];
+  current = (current + 1) % sprites.length;
+}, 2000);
+
+</script>
+
+</body>
+</html`>
