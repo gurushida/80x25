@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-      "sourceMap": true,
+      "sourceMap": false,
+      "alwaysStrict": true,
       "target": "es6",
       "skipDefaultLibCheck": true,
       "allowSyntheticDefaultImports": true,
