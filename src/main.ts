@@ -1,5 +1,6 @@
 import * as blessed from 'blessed';
 import { MSG } from './messages';
+import { loadBackground } from './images';
 
 // Create a screen object.
 const screen = blessed.screen({
@@ -8,13 +9,15 @@ const screen = blessed.screen({
 
 screen.title = 'my window title';
 
+const bank = loadBackground('./asciiart/backgrounds/bank.txt');
+
 // Create a box perfectly centered horizontally and vertically.
 var box = blessed.box({
   top: 'center',
   left: 'center',
   width: 82,
   height: 27,
-  content: 'Hello {bold}world{/bold}! Welcome to {underline}80x25{/underline}',
+  content: `Hello {bold}world{/bold}! Welcome to {underline}80x25{/underline} bank=${bank.width}x${bank.height} `,
   tags: true,
   border: {
     type: 'line'
@@ -29,6 +32,7 @@ box.on('click', function(data) {
   box.setContent(`{center}Some {red-fg}${MSG}{/red-fg}.{/center}`);
   screen.render();
 });
+
 
 box.on('mousemove', function(data) {
   box.setContent('MOUSE MOVE');
