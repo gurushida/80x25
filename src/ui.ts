@@ -11,7 +11,7 @@ type MouseListener = (event: MouseEvent) => void;
 export class UI {
 
     // The full terminal screen
-    screen: blessed.Widgets.Screen;
+    private screen: blessed.Widgets.Screen;
 
     // The 80x25 area the game + 1 character border around it
     private box: blessed.Widgets.BoxElement;
@@ -24,7 +24,8 @@ export class UI {
     constructor() {
         this.screen = blessed.screen({
             smartCSR: true,
-            title: '80x25'
+            title: '80x25',
+            debug: true
         });
 
         this.box = blessed.box({
@@ -104,4 +105,7 @@ export class UI {
         this.screen.render();
     }
 
+    debug(msg: string) {
+        this.screen.debug(msg);
+    }
 }
