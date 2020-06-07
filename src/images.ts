@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+export const OPAQUE = '#';
+export const TRANSPARENT = ' ';
 
 
 /**
@@ -39,7 +41,7 @@ export function loadBackground(filename: string):AsciiImage {
       }
     }
     rows.push(line);
-    mask.push('#'.repeat(width));
+    mask.push(OPAQUE.repeat(width));
   }
   return {
     width,

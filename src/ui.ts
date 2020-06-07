@@ -19,7 +19,7 @@ export class UI {
     private clickListeners: MouseListener[] = [];
     private moveListeners: MouseListener[] = [];
 
-    screenBuffer: ScreenBuffer;
+    buffer: ScreenBuffer;
 
     constructor() {
         this.screen = blessed.screen({
@@ -57,7 +57,7 @@ export class UI {
             return process.exit(0);
         });
 
-        this.screenBuffer = new ScreenBuffer();
+        this.buffer = new ScreenBuffer();
         this.render();
     }
 
@@ -100,7 +100,7 @@ export class UI {
     }
 
     render() {
-        this.box.setContent(this.screenBuffer.asString());
+        this.box.setContent(this.buffer.asString());
         this.screen.render();
     }
 
