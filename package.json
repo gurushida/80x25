@@ -4,6 +4,7 @@
   "description": "A terminal point-and-click game",
   "main": "dist/index.js",
   "scripts": {
+    "clean": "ncc cache clean",
     "build": "ncc build -m src/main.ts",
     "run": "ncc run src/main.ts",
     "pkg": "pkg -t macos dist/index.js -o 80x25",

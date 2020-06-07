@@ -1,4 +1,4 @@
-import { AsciiImage, OPAQUE } from "./images";
+import { AsciiImage, OPAQUE } from "./imagesUtils";
 
 export const WIDTH = 80;
 export const HEIGHT = 25;
@@ -15,16 +15,16 @@ export class ScreenBuffer {
     clear() {
         this.buffer = [];
 
-        for (let y = 0 ; y < HEIGHT; y++) {
-            this.buffer[y] = [];
-            for (let x = 0 ; x < WIDTH; x++) {
-                this.set(' ', x, y);
+        for (let top = 0 ; top < HEIGHT; top++) {
+            this.buffer[top] = [];
+            for (let left = 0 ; left < WIDTH; left++) {
+                this.set(' ', left, top);
             }
         }
     }
 
-    private set(ch: string, x: number, y: number) {
-        this.buffer[y][x] = ch;
+    private set(ch: string, left: number, top: number) {
+        this.buffer[top][left] = ch;
     }
 
     asString() {
@@ -32,14 +32,14 @@ export class ScreenBuffer {
         return lines.join('\n');
     }
 
-    paint(img: AsciiImage, x: number, y: number) {
+    paint(img: AsciiImage, left: number, top: number) {
         for (let i = 0 ; i < img.width ; i++) {
-            const xPos = x + i;
+            const xPos = left + i;
             if (xPos < 0 || xPos >= WIDTH) {
                 continue;
             }
             for (let j = 0 ; j < img.height ; j++) {
-                const yPos = y + j;
+                const yPos = top + j;
                 if (yPos < 0 || yPos >= HEIGHT) {
                     continue;
                 }
