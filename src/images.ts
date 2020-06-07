@@ -56,3 +56,42 @@ function loadTextFile(filename: string): string[] {
   const content = fs.readFileSync(filename, 'utf8');
   return content.split('\n');
 }
+
+export function loadSprite(filename: string):AsciiImage {
+  const lines = loadTextFile(filename);
+  let width = -1;
+  let i = -1;
+  const rows: string[] = []
+  for (const line of lines) {
+    i = i + 1;
+    if (line.length === 0) {
+      continue;
+    }
+    if (width === -1) {
+      width = line.length;
+    } else {
+      if (width !== line.length) {
+        throw new Error(`Inconsistent line sizes in ${filename}, line ${i}: size ${line.length} instead of ${width}`);
+      }
+    }
+    rows.push(line);
+  }
+
+  if (rows.length % 2 !== 0) {
+    throw new Error(`Invalid odd number lines ${rows.length} for sprite ${filename}`);
+  }
+
+  const mask = rows.splice(rows.length / 2, rows.length / 2);
+
+  const fullMask = mask.join('');
+  if (!fullMask.match(/^[ #]*$/)) {
+    throw new Error(`Mask of ${filename} should only contain ' ' and '#'`);
+  }
+
+  return {
+    width,
+    height: rows.length,
+    rows,
+    mask
+  }
+}
