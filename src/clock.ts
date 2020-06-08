@@ -45,8 +45,6 @@ export class Clock {
                 } else {
                     task.when = -1;
                 }
-            } else {
-                this.ui.debug(`cannot execute task: when=${task.when} tick=${this.currentTick}`);
             }
         }
         // Remove old tasks

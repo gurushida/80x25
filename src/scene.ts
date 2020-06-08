@@ -1,6 +1,7 @@
 import { Animation, PaintTask } from "./animationsUtils";
 import { ScreenBuffer } from "./screenbuffer";
 import { AsciiImage } from "./imagesUtils";
+import { HotspotFilter } from "./hotspots";
 
 export interface PaintTaskZ {
     task: PaintTask;
@@ -29,13 +30,13 @@ export class Scene {
         this.staticImages.sort((a, b) => a.zIndex - b.zIndex);
         this.animations.sort((a, b) => a.zIndex - b.zIndex);
         for (const task of this.staticImages) {
-            this.buffer.paint(task.task.image, task.task.left, task.task.top);
+            this.buffer.paint(task.task);
         }
 
         for (const animation of this.animations) {
             const task = animation.animation.tick();
             if (task) {
-                this.buffer.paint(task.image, task.left, task.top);
+                this.buffer.paint(task);
             }
         }
     }
@@ -64,11 +65,12 @@ export class Scene {
 }
 
 
-export function getPaintTaskZ(image: AsciiImage, left: number, top: number, zIndex: number) {
+export function getPaintTaskZ(image: AsciiImage, left: number, top: number, zIndex: number,
+                              hotspotFilter: HotspotFilter | undefined): PaintTaskZ {
     return {
         zIndex,
         task: {
-            left, top, image
+            left, top, image, hotspotFilter
         }
     };
 }

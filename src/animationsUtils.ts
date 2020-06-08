@@ -1,4 +1,5 @@
 import { AsciiImage } from "./imagesUtils";
+import { HotspotFilter } from "./hotspots";
 
 /**
  * Defines something to paint and where to paint it.
@@ -7,6 +8,7 @@ export interface PaintTask {
     top: number;
     left: number;
     image: AsciiImage;
+    hotspotFilter?: HotspotFilter;
 }
 
 /**
@@ -20,6 +22,7 @@ export interface AnimationStep {
     durationInTicks: number;
     offsetX: number;
     offsetY: number;
+    hotspotFilter?: HotspotFilter;
 }
 
 
@@ -42,14 +45,17 @@ export class ImageAnimation implements Animation {
     loop: boolean;
     currentStep: number;
     ticksUntilUpdate: number;
+    defaultHotspotFilter: HotspotFilter | undefined;
 
-    constructor(initialLeft: number, initialTop: number, loop: boolean, steps: AnimationStep[]) {
+
+    constructor(initialLeft: number, initialTop: number, loop: boolean, hotspotFilter: HotspotFilter | undefined, steps: AnimationStep[]) {
         this.left = initialLeft;
         this.top = initialTop;
         this.steps = steps;
         this.loop = loop;
         this.currentStep = 0;
         this.ticksUntilUpdate = steps[0].durationInTicks;
+        this.defaultHotspotFilter = hotspotFilter;
     }
 
     tick(): PaintTask {
@@ -60,7 +66,10 @@ export class ImageAnimation implements Animation {
         const paintTask: PaintTask = {
             left: this.left,
             top: this.top,
-            image: this.steps[this.currentStep].image
+            image: this.steps[this.currentStep].image,
+            hotspotFilter: this.steps[this.currentStep].hotspotFilter
+              ? this.steps[this.currentStep].hotspotFilter
+              : this.defaultHotspotFilter,
         };
 
         this.ticksUntilUpdate = this.ticksUntilUpdate - 1;

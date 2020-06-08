@@ -1,12 +1,14 @@
 import * as blessed from 'blessed';
 import { WIDTH, HEIGHT, ScreenBuffer } from './screenbuffer';
+import { HotspotScreenBuffer, Hotspots } from './hotspots';
 
 export interface MouseEvent {
     X: number;
     Y: number;
+    hotspot: Hotspots;
 }
 
-type MouseListener = (event: MouseEvent) => void;
+export type MouseListener = (event: MouseEvent) => void;
 
 export class UI {
 
@@ -19,7 +21,8 @@ export class UI {
     private clickListeners: MouseListener[] = [];
     private moveListeners: MouseListener[] = [];
 
-    buffer: ScreenBuffer;
+    buffer = new ScreenBuffer;
+    private hotspotBuffer = new HotspotScreenBuffer();
 
     constructor() {
         this.screen = blessed.screen({
@@ -58,7 +61,6 @@ export class UI {
             return process.exit(0);
         });
 
-        this.buffer = new ScreenBuffer();
         this.render();
     }
 
@@ -72,7 +74,9 @@ export class UI {
             Y = -1;
         }
 
-        const event: MouseEvent = (X == -1 || Y === -1) ? { X: -1, Y: -1 } : { X, Y };
+        const event: MouseEvent = (X == -1 || Y === -1)
+            ? { X: -1, Y: -1, hotspot: undefined }
+            : { X, Y, hotspot: this.hotspotBuffer.get(X, Y) };
         for (const listener of listeners) {
             listener(event);
         }
@@ -101,11 +105,15 @@ export class UI {
     }
 
     render() {
-        this.box.setContent(this.buffer.asString());
+        this.box.setContent(this.buffer.getContent(this.hotspotBuffer));
         this.screen.render();
     }
 
     debug(msg: string) {
         this.screen.debug(msg);
+    }
+
+    setTitle(msg: string) {
+        this.screen.title = msg;
     }
 }
