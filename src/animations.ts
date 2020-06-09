@@ -4,7 +4,7 @@ import { createMaskHotspot, Hotspots } from "./hotspots";
 
 const BOOM_BLASTER_HOTSPOT = createMaskHotspot(boom_blaster0, Hotspots.BOOM_BLASTER);
 
-export const boom_blaster = new ImageAnimation(30, 18, true, BOOM_BLASTER_HOTSPOT,
+export const boom_blaster = new ImageAnimation(30, 17, true, BOOM_BLASTER_HOTSPOT,
     [
         {
             image: boom_blaster0,

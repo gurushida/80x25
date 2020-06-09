@@ -1,5 +1,6 @@
 import { AsciiImage, OPAQUE } from "./imagesUtils";
 import { WIDTH, HEIGHT } from "./screenbuffer";
+import { Action } from "./actions";
 
 
 /**
@@ -67,4 +68,10 @@ export class HotspotScreenBuffer {
         }
     }
 
+}
+
+
+export interface HotspotInfo {
+    description: string;
+    rightClickAction?: Action;
 }

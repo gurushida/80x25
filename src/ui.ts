@@ -6,6 +6,7 @@ export interface MouseEvent {
     X: number;
     Y: number;
     hotspot: Hotspots;
+    button?: 'left' | 'right';
 }
 
 export type MouseListener = (event: MouseEvent) => void;
@@ -46,15 +47,15 @@ export class UI {
         this.screen.append(this.box);
 
         this.box.on('mousemove', (data) => {
-            this.fireEvent(this.moveListeners, data.x, data.y);
+            this.fireEvent(this.moveListeners, data.x, data.y, data.button);
         });
 
         this.box.on('mouseout', (data) => {
-            this.fireEvent(this.moveListeners, data.x, data.y);
+            this.fireEvent(this.moveListeners, data.x, data.y, data.button);
         });
 
         this.box.on('click', (data) => {
-            this.fireEvent(this.clickListeners, data.x, data.y);
+            this.fireEvent(this.clickListeners, data.x, data.y, data.button);
         });
 
         this.screen.key(['escape', 'q', 'C-c'], function(ch, key) {
@@ -64,19 +65,19 @@ export class UI {
         this.render();
     }
 
-    private fireEvent(listeners: MouseListener[], globalX: number, globalY: number) {
+    private fireEvent(listeners: MouseListener[], globalX: number, globalY: number, button: 'left' | 'right' | undefined ) {
         let X = globalX - (this.box.left as number) - 1;
         if (X < 0 || X >= WIDTH) {
             X = -1;
         }
         let Y = globalY - (this.box.top as number) - 1;
-        if (Y < 0 || Y >= HEIGHT - 2) {
+        if (Y < 0 || Y >= HEIGHT) {
             Y = -1;
         }
 
         const event: MouseEvent = (X == -1 || Y === -1)
-            ? { X: -1, Y: -1, hotspot: undefined }
-            : { X, Y, hotspot: this.hotspotBuffer.get(X, Y) };
+            ? { X: -1, Y: -1, hotspot: undefined, button: undefined }
+            : { X, Y, hotspot: this.hotspotBuffer.get(X, Y), button };
         for (const listener of listeners) {
             listener(event);
         }

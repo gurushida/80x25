@@ -1,7 +1,10 @@
 import { Animation, PaintTask } from "./animationsUtils";
-import { ScreenBuffer } from "./screenbuffer";
+import { ScreenBuffer, HEIGHT } from "./screenbuffer";
 import { AsciiImage } from "./imagesUtils";
-import { HotspotFilter } from "./hotspots";
+import { HotspotFilter, HotspotInfo, Hotspots } from "./hotspots";
+import { Action } from "./actions";
+import { InventoryObject } from "./inventory";
+import { UI } from "./ui";
 
 export interface PaintTaskZ {
     task: PaintTask;
@@ -18,8 +21,17 @@ export class Scene {
     buffer: ScreenBuffer;
     staticImages: PaintTaskZ[];
     animations: AnimationZ[];
+    showActionBar: boolean = false;
+    selectedAction: Action | undefined;
+    inventoryObject: InventoryObject | undefined;
 
-    constructor(buffer: ScreenBuffer) {
+    hotspotMap: Map<Hotspots, HotspotInfo> = new Map();
+
+    x: number;
+    y: number;
+    hotspot: Hotspots | undefined;
+
+    constructor(buffer: ScreenBuffer, private ui: UI) {
         this.buffer = buffer;
         this.staticImages = [];
         this.animations = [];
@@ -39,6 +51,92 @@ export class Scene {
                 this.buffer.paint(task);
             }
         }
+
+        if (this.setShowActionBar) {
+            this.paintActionBar();
+        }
+    }
+
+    private paintActionBar() {
+        // When painting the action bar, we only take the hotspot, if any,
+        // into account if it is not located on the same line as the action
+        // bar itself
+        const hotspotInfo = (this.hotspot && this.y != (HEIGHT - 1))
+          ? this.hotspotMap.get(this.hotspot)
+          : undefined;
+
+        this.buffer.paintActionBar(this.selectedAction, hotspotInfo && hotspotInfo.description,
+                                     hotspotInfo && hotspotInfo.rightClickAction, this.inventoryObject);
+    }
+
+    setShowActionBar(show: boolean) {
+        this.showActionBar = show;
+    }
+
+    setSelectedAction(action: Action | undefined) {
+        this.selectedAction = action;
+        this.setInventoryObject(undefined);
+    }
+
+    setInventoryObject(obj: InventoryObject | undefined) {
+        this.inventoryObject = obj;
+    }
+
+    setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspots | undefined) {
+        this.x = x;
+        this.y = y;
+        this.hotspot = hotspot;
+        if (buttonClicked === 'left') {
+            this.ui.debug('left click ');
+            this.processLeftClick();
+        } else if (buttonClicked === 'right') {
+            this.ui.debug('right click ');
+            this.processRightClick();
+        }
+    }
+
+    private processLeftClick() {
+        if (this.showActionBar && this.y === HEIGHT - 1) {
+            this.processActionBarClick();
+            return;
+        }
+    }
+
+    private processRightClick() {
+        if (this.showActionBar && this.y === HEIGHT - 1) {
+            this.processActionBarClick();
+            return;
+        }
+    }
+
+    /**
+     * When clicking on the action bar, we treat left and right clicks the same.
+     */
+    private processActionBarClick() {
+        if (this.x >= 0 && this.x <= 3) {
+            this.setSelectedAction(Action.TALK);
+        } else if (this.x >= 5 && this.x <= 7) {
+            this.setSelectedAction(Action.USE);
+        } else if (this.x >= 9 && this.x <= 12) {
+            this.setSelectedAction(Action.GIVE);
+        } else if (this.x >= 14 && this.x <= 17) {
+            this.setSelectedAction(Action.TAKE);
+        } else if (this.x >= 19 && this.x <= 22) {
+            this.setSelectedAction(Action.LOOK);
+        } else if (this.x >= 24 && this.x <= 26) {
+            this.showMap();
+        } else if (this.x >= 28 && this.x <= 30) {
+            this.showInventory();
+        } else {
+            this.setSelectedAction(undefined);
+        }
+    }
+
+    public showMap() {
+    }
+
+    public showInventory() {
+        this.setInventoryObject(InventoryObject.COIN);
     }
 
     addImage(task: PaintTaskZ) {
