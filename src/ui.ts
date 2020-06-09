@@ -75,7 +75,7 @@ export class UI {
             Y = -1;
         }
 
-        const event: MouseEvent = (X == -1 || Y === -1)
+        const event: MouseEvent = (X === -1 || Y === -1)
             ? { X: -1, Y: -1, hotspot: undefined, button: undefined }
             : { X, Y, hotspot: this.hotspotBuffer.get(X, Y), button };
         for (const listener of listeners) {

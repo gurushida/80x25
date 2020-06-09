@@ -55,11 +55,11 @@ export class HotspotScreenBuffer {
     }
 
     public set(x: number, y: number, hotspot: Hotspots) {
-        this.pixels[x + y * HEIGHT] = hotspot;
+        this.pixels[x + y * WIDTH] = hotspot;
     }
 
     public get(x: number, y: number): Hotspots {
-        return this.pixels[x + y * HEIGHT];
+        return this.pixels[x + y * WIDTH];
     }
 
     public copyFrom(other: HotspotScreenBuffer) {
