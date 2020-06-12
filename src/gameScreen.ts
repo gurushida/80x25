@@ -40,6 +40,10 @@ export class GameScreen {
         } else {
             this.current_guy_sprite = undefined;
         }
+
+        this.scene.addSceneListener(e => {
+            debug(`${e.action} at ${e.X},${e.Y} on ${e.hotspot}, obj=${e.inventoryObject}`);
+        });
     }
 
 }

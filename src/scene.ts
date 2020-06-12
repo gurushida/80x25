@@ -5,6 +5,17 @@ import { HotspotFilter, Hotspots, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
 import { UI } from "./ui";
+import { debug } from "./main";
+
+export interface SceneEvent {
+    X: number;
+    Y: number;
+    hotspot: Hotspots;
+    inventoryObject: InventoryObject | undefined;
+    action: Action | undefined;
+}
+
+export type SceneListener = (event: SceneEvent) => void;
 
 export interface PaintTaskZ {
     task: PaintTask;
@@ -26,6 +37,7 @@ export class Scene {
     inventoryObject: InventoryObject | undefined;
 
     hotspotMap: HotspotMap | undefined = undefined;
+    sceneListeners: SceneListener[];
 
     x: number;
     y: number;
@@ -35,6 +47,7 @@ export class Scene {
         this.buffer = buffer;
         this.staticImages = [];
         this.animations = [];
+        this.sceneListeners = [];
     }
 
     reset() {
@@ -44,6 +57,7 @@ export class Scene {
         this.selectedAction = undefined;
         this.inventoryObject = undefined;
         this.hotspotMap = undefined;
+        this.sceneListeners = [];
     }
 
     tick() {
@@ -113,12 +127,36 @@ export class Scene {
             this.processActionBarClick();
             return;
         }
+
+        if (!this.hotspot || !this.selectedAction) {
+            // By default, we want to walk to the click position
+            this.fireSceneAction(Action.WALK);
+            return;
+        }
+
+        // If we have both a hotspot and a selected action,
+        // we need to check if this is a GIVE/USE action that
+        // requires an inventory object to be completed
+        if (this.selectedAction === Action.GIVE || this.selectedAction === Action.USE) {
+            if (this.inventoryObject) {
+                this.fireSceneAction(this.selectedAction);
+            } else {
+                debug(`No object to complete ${this.selectedAction}`);
+            }
+        } else {
+            this.fireSceneAction(this.selectedAction);
+        }
     }
 
     private processRightClick() {
         if (this.showActionBar && this.y === HEIGHT - 1) {
             this.processActionBarClick();
             return;
+        }
+
+        const hotspotInfo = this.hotspotMap && this.hotspotMap.get(this.hotspot);
+        if (hotspotInfo && hotspotInfo.rightClickAction) {
+            this.fireSceneAction(hotspotInfo.rightClickAction);
         }
     }
 
@@ -146,10 +184,11 @@ export class Scene {
     }
 
     public showMap() {
+        this.fireSceneAction(Action.SHOW_MAP);
     }
 
     public showInventory() {
-        this.setInventoryObject(InventoryObject.COIN);
+        this.fireSceneAction(Action.SHOW_INVENTORY);
     }
 
     addImage(task: PaintTaskZ) {
@@ -173,6 +212,31 @@ export class Scene {
             this.animations.splice(pos, 1);
         }
     }
+
+    addSceneListener(listener: SceneListener) {
+        this.sceneListeners.push(listener);
+    }
+
+    removeSceneListener(listener: SceneListener) {
+        const pos = this.sceneListeners.indexOf(listener);
+        if (pos !== - 1) {
+            this.sceneListeners.splice(pos, 1);
+        }
+    }
+
+    private fireSceneAction(action: Action) {
+        const event: SceneEvent = {
+            action,
+            X: this.x,
+            Y: this.y,
+            hotspot: this.hotspot,
+            inventoryObject: this.inventoryObject,
+        }
+        for (const listener of this.sceneListeners) {
+            listener(event);
+        }
+    }
+
 }
 
 
