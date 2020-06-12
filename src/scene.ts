@@ -1,7 +1,7 @@
 import { Animation, PaintTask } from "./animationsUtils";
 import { ScreenBuffer, HEIGHT } from "./screenbuffer";
 import { AsciiImage } from "./imagesUtils";
-import { HotspotFilter, HotspotInfo, Hotspots } from "./hotspots";
+import { HotspotFilter, Hotspots, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
 import { UI } from "./ui";
@@ -25,7 +25,7 @@ export class Scene {
     selectedAction: Action | undefined;
     inventoryObject: InventoryObject | undefined;
 
-    hotspotMap: Map<Hotspots, HotspotInfo> = new Map();
+    hotspotMap: HotspotMap | undefined = undefined;
 
     x: number;
     y: number;
@@ -35,6 +35,15 @@ export class Scene {
         this.buffer = buffer;
         this.staticImages = [];
         this.animations = [];
+    }
+
+    reset() {
+        this.staticImages = [];
+        this.animations = [];
+        this.showActionBar = false;
+        this.selectedAction = undefined;
+        this.inventoryObject = undefined;
+        this.hotspotMap = undefined;
     }
 
     tick() {
@@ -61,12 +70,16 @@ export class Scene {
         // When painting the action bar, we only take the hotspot, if any,
         // into account if it is not located on the same line as the action
         // bar itself
-        const hotspotInfo = (this.hotspot && this.y != (HEIGHT - 1))
+        const hotspotInfo = (this.hotspotMap && this.hotspot && this.y != (HEIGHT - 1))
           ? this.hotspotMap.get(this.hotspot)
           : undefined;
 
         this.buffer.paintActionBar(this.selectedAction, hotspotInfo && hotspotInfo.description,
                                      hotspotInfo && hotspotInfo.rightClickAction, this.inventoryObject);
+    }
+
+    setHotspotMap(map: HotspotMap | undefined) {
+        this.hotspotMap = map;
     }
 
     setShowActionBar(show: boolean) {

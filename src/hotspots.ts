@@ -14,6 +14,19 @@ export enum Hotspots {
     ICE_CREAM_SHOP,
 }
 
+export class HotspotMap {
+    private map = new Map<Hotspots, HotspotInfo>();
+
+    get(h: Hotspots): HotspotInfo {
+        return this.map.get(h);
+    }
+
+    set(h: Hotspots, info: HotspotInfo) {
+        return this.map.set(h, info);
+    }
+
+}
+
 /**
  * Given a position in an image relative to its top-left corner, returns
  * the corresponding hotspot or undefined if the location is not a hotspot.
