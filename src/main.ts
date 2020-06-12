@@ -6,6 +6,11 @@ import { Hotspots, createFullHotspot } from './hotspots';
 import { GameScreen } from './gameScreen';
 
 const ui = new UI();
+
+export function debug(str: string) {
+  ui.debug(str);
+}
+
 const scene = new Scene(ui.buffer, ui);
 
 /*const bankBackground = getPaintTaskZ(background.bank, 0, 0, 0, createFullHotspot(Hotspots.BANK));
@@ -24,7 +29,8 @@ const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ],
 */
 
 const iceCreamShopBackground = getPaintTaskZ(background.ice_cream_shop, 0, 0, 0, createFullHotspot(Hotspots.ICE_CREAM_SHOP));
-const iceCreamShop = new GameScreen(scene, [ iceCreamShopBackground ], [], undefined, true);
+const iceCreamShop = new GameScreen(scene, [ iceCreamShopBackground ], [], undefined, true,
+  8, 14, true, 0);
 
 
 
