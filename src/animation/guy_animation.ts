@@ -1,5 +1,7 @@
 import { Animation, PaintTask, ImageAnimation } from "./animationsUtils";
-import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, guy_left_walking2, guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3 } from "../sprite";
+import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, guy_left_walking2,
+  guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3 } from "../sprite";
+import { WIDTH } from "../screenbuffer";
 
 export enum GUY_STATE {
     STILL,
@@ -28,7 +30,8 @@ export class GuyAnimation implements Animation {
     private walkingXDestination = -1;
 
     constructor(private guy_left: number, private guy_top: number,
-                private guy_look_to_the_right: boolean) {
+                private guy_look_to_the_right: boolean,
+                private min_left = 0, private max_left = WIDTH - guy_left_still.width) {
         this.standStill();
    }
 
@@ -79,6 +82,14 @@ export class GuyAnimation implements Animation {
             // Stop walking
             this.standStill();
             return;
+        }
+
+        if (x < this.min_left) {
+            x = this.min_left;
+        }
+
+        if (x > this.max_left) {
+            x = this.max_left;
         }
 
         this.walkingXDestination = x;
