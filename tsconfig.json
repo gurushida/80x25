@@ -12,9 +12,6 @@
       "resolveJsonModule": true,
       "outDir": "dist",
       "baseUrl": ".",
-      "paths": {
-        "@/*": [ "src/*" ],
-      },
       "lib": [
         "esnext",
         "dom",

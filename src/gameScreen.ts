@@ -1,11 +1,11 @@
-import { Scene, PaintTaskZ, AnimationZ, getPaintTaskZ } from "./scene";
+import { Scene, PaintTaskZ, AnimationZ } from "./scene";
 import { HotspotMap } from "./hotspots";
-import { guy_right_still, guy_left_still } from "./sprite";
 import { debug } from "./main";
+import { GuyAnimation } from "./animation/guy_animation";
 
 export class GameScreen {
 
-    private current_guy_sprite: PaintTaskZ | undefined;
+    private guy_animation: GuyAnimation | undefined = undefined;
 
     constructor(private scene:Scene, private images: PaintTaskZ[],
                 private animations: AnimationZ[], private hotspotMap: HotspotMap | undefined,
@@ -33,12 +33,10 @@ export class GameScreen {
         this.scene.setShowActionBar(this.showActionBar);
 
         if (this.guy_left !== -1 && this.guy_top !== 1) {
-            const img = this.guy_look_to_the_right ? guy_right_still : guy_left_still;
-            debug(`right = ${this.guy_look_to_the_right}`);
-            this.current_guy_sprite = getPaintTaskZ(img, this.guy_left, this.guy_top, this.guy_z_index, undefined);
-            this.scene.addImage(this.current_guy_sprite);
+            this.guy_animation = new GuyAnimation(this.guy_left, this.guy_top, this.guy_look_to_the_right);
+            this.scene.addAnimation({ animation: this.guy_animation, zIndex: this.guy_z_index});
         } else {
-            this.current_guy_sprite = undefined;
+            this.guy_animation = undefined;
         }
 
         this.scene.addSceneListener(e => {
