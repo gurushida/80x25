@@ -33,8 +33,8 @@ const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ],
 const iceCreamShopBackground = getPaintTaskZ(background.ice_cream_shop, 0, 0, -1, createFullHotspot(Hotspots.ICE_CREAM_SHOP));
 const dogAnimation: AnimationZ = { animation: dog, zIndex: 0 };
 const iceCreamShopHotspotMap = new HotspotMap();
-iceCreamShopHotspotMap.set(Hotspots.ICE_CREAM_SHOP, { description: 'Ice cream shop', rightClickAction: Action.LOOK})
-iceCreamShopHotspotMap.set(Hotspots.DOG, { description: 'Dog', rightClickAction: Action.LOOK})
+iceCreamShopHotspotMap.set(Hotspots.ICE_CREAM_SHOP, { description: 'ice cream shop', rightClickAction: Action.LOOK})
+iceCreamShopHotspotMap.set(Hotspots.DOG, { description: 'dog', rightClickAction: Action.LOOK})
 const iceCreamShop = new GameScreen(scene, [ iceCreamShopBackground ], [ dogAnimation ], iceCreamShopHotspotMap, true,
   8, 14, true, 0);
 
