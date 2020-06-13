@@ -59,6 +59,8 @@ ui.addClickListener(e => {
 
 ui.addKeyListener(['escape', 'q', 'C-c'], () => scene.fireSceneAction(Action.QUIT));
 ui.addKeyListener(['space', 'enter'], () => scene.fireSceneAction(Action.SKIP));
+ui.addKeyListener('m', () => scene.fireSceneAction(Action.SHOW_MAP));
+ui.addKeyListener('i', () => scene.fireSceneAction(Action.SHOW_INVENTORY));
 
 const clock = new Clock(ui);
 clock.repeat(0, () => {
