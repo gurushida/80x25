@@ -3,7 +3,7 @@ export enum Action {
   USE = 'Use',
   GIVE = 'Give',
   TAKE = 'Take',
-  LOOK = 'Look',
+  LOOK = 'Look at',
 
   WALK = 'Walk',
   SHOW_MAP = 'Show map',
