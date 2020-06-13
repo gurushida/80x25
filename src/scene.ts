@@ -221,6 +221,12 @@ export class Scene {
     }
 
     fireSceneAction(action: Action) {
+        if ((action === Action.SHOW_INVENTORY || action === Action.SHOW_MAP)
+            && !this.showActionBar) {
+            // Inventory and map only make sense when the action bar is visible
+            return;
+        }
+
         const event: SceneEvent = {
             action,
             X: this.x,
