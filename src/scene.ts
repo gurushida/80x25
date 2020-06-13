@@ -1,14 +1,14 @@
 import { Animation, PaintTask } from "./animation/animationsUtils";
 import { ScreenBuffer, HEIGHT } from "./screenbuffer";
 import { AsciiImage } from "./imagesUtils";
-import { HotspotFilter, Hotspots, HotspotMap } from "./hotspots";
+import { HotspotFilter, Hotspot, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
 
 export interface SceneEvent {
     X: number;
     Y: number;
-    hotspot: Hotspots;
+    hotspot: Hotspot;
     inventoryObject: InventoryObject | undefined;
     action: Action | undefined;
 }
@@ -39,7 +39,7 @@ export class Scene {
 
     private x: number;
     private y: number;
-    private hotspot: Hotspots | undefined;
+    private hotspot: Hotspot | undefined;
 
     constructor(buffer: ScreenBuffer) {
         this.buffer = buffer;
@@ -113,7 +113,7 @@ export class Scene {
         this.inventoryObject = obj;
     }
 
-    setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspots | undefined) {
+    setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspot | undefined) {
         this.x = x;
         this.y = y;
         this.hotspot = hotspot;

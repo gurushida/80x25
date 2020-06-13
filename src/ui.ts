@@ -1,11 +1,11 @@
 import * as blessed from 'blessed';
 import { WIDTH, HEIGHT, ScreenBuffer } from './screenbuffer';
-import { HotspotScreenBuffer, Hotspots } from './hotspots';
+import { HotspotScreenBuffer, Hotspot } from './hotspots';
 
 export interface MouseEvent {
     X: number;
     Y: number;
-    hotspot: Hotspots;
+    hotspot: Hotspot;
     button?: 'left' | 'right';
 }
 

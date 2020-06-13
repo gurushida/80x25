@@ -6,7 +6,7 @@ import { Action } from "./actions";
 /**
  * Defines all the possible hotspots to interact with.
  */
-export enum Hotspots {
+export enum Hotspot {
     NONE,
     BANK,
     BOOM_BLASTER,
@@ -16,13 +16,13 @@ export enum Hotspots {
 }
 
 export class HotspotMap {
-    private map = new Map<Hotspots, HotspotInfo>();
+    private map = new Map<Hotspot, HotspotInfo>();
 
-    get(h: Hotspots): HotspotInfo {
+    get(h: Hotspot): HotspotInfo {
         return this.map.get(h);
     }
 
-    set(h: Hotspots, info: HotspotInfo) {
+    set(h: Hotspot, info: HotspotInfo) {
         return this.map.set(h, info);
     }
 
@@ -30,14 +30,14 @@ export class HotspotMap {
 
 /**
  * Given a position in an image relative to its top-left corner, returns
- * the corresponding hotspot or undefined if the location is not a hotspot.
+ * the corresponding hotspot or NONE if the location is not a hotspot.
  */
-export type HotspotFilter = (x: number, y: number) => Hotspots;
+export type HotspotFilter = (x: number, y: number) => Hotspot;
 
 /**
  * All the area is a hotspot.
  */
-export function createFullHotspot(hotspot: Hotspots): HotspotFilter {
+export function createFullHotspot(hotspot: Hotspot): HotspotFilter {
     return (x: number, y: number) => hotspot;
 }
 
@@ -49,12 +49,12 @@ export function createFullHotspot(hotspot: Hotspots): HotspotFilter {
 export function combine(...filters: HotspotFilter[]): HotspotFilter {
     return (x: number, y: number) => {
         for (const filter of filters) {
-            const hotspot: Hotspots = filter(x, y);
-            if (hotspot !== undefined && hotspot !== Hotspots.NONE) {
+            const hotspot: Hotspot = filter(x, y);
+            if (hotspot !== Hotspot.NONE) {
                 return hotspot;
             }
         }
-        return Hotspots.NONE;
+        return Hotspot.NONE;
     };
 }
 
@@ -62,35 +62,35 @@ export function combine(...filters: HotspotFilter[]): HotspotFilter {
 /**
  * Returns the given hotspot for all the opaque pixels of the given image.
  */
-export function createMaskHotspot(image: AsciiImage, hotspot: Hotspots): HotspotFilter {
+export function createMaskHotspot(image: AsciiImage, hotspot: Hotspot): HotspotFilter {
   return (x: number, y: number) => {
-    return (image.mask[y][x] === OPAQUE) ? hotspot : Hotspots.NONE;
+    return (image.mask[y][x] === OPAQUE) ? hotspot : Hotspot.NONE;
   };
 }
 
 
 export class HotspotScreenBuffer {
 
-    private pixels: Hotspots[];
+    private pixels: Hotspot[];
 
     constructor() {
         this.pixels = [];
         for (let i = 0 ; i < WIDTH * HEIGHT ; i++) {
-            this.pixels.push(Hotspots.NONE);
+            this.pixels.push(Hotspot.NONE);
         }
     }
 
     public clear() {
         for (let i = 0 ; i < WIDTH * HEIGHT ; i++) {
-            this.pixels[i] = Hotspots.NONE;
+            this.pixels[i] = Hotspot.NONE;
         }
     }
 
-    public set(x: number, y: number, hotspot: Hotspots) {
+    public set(x: number, y: number, hotspot: Hotspot) {
         this.pixels[x + y * WIDTH] = hotspot;
     }
 
-    public get(x: number, y: number): Hotspots {
+    public get(x: number, y: number): Hotspot {
         return this.pixels[x + y * WIDTH];
     }
 
