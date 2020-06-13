@@ -1,6 +1,6 @@
 import { ImageAnimation } from "./animationsUtils";
-import { boom_blaster0, boom_blaster1 } from "./sprite";
-import { createMaskHotspot, Hotspots } from "./hotspots";
+import { boom_blaster0, boom_blaster1 } from "../sprite";
+import { createMaskHotspot, Hotspots } from "../hotspots";
 
 const BOOM_BLASTER_HOTSPOT = createMaskHotspot(boom_blaster0, Hotspots.BOOM_BLASTER);
 

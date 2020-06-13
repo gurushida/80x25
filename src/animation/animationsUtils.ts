@@ -1,5 +1,5 @@
-import { AsciiImage } from "./imagesUtils";
-import { HotspotFilter } from "./hotspots";
+import { AsciiImage } from "../imagesUtils";
+import { HotspotFilter } from "../hotspots";
 
 /**
  * Defines something to paint and where to paint it.
