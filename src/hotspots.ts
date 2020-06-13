@@ -8,10 +8,10 @@ import { Action } from "./actions";
  */
 export enum Hotspots {
     NONE,
-
     BANK,
     BOOM_BLASTER,
     ICE_CREAM_SHOP,
+    ICE_CREAM_SHOP_DOOR,
     DOG,
 }
 
@@ -40,6 +40,24 @@ export type HotspotFilter = (x: number, y: number) => Hotspots;
 export function createFullHotspot(hotspot: Hotspots): HotspotFilter {
     return (x: number, y: number) => hotspot;
 }
+
+
+/**
+ * Creates a filter that, given a position (x,y), will look for the
+ * first filter in the given array to return a match other than NONE.
+ */
+export function combine(...filters: HotspotFilter[]): HotspotFilter {
+    return (x: number, y: number) => {
+        for (const filter of filters) {
+            const hotspot: Hotspots = filter(x, y);
+            if (hotspot !== undefined && hotspot !== Hotspots.NONE) {
+                return hotspot;
+            }
+        }
+        return Hotspots.NONE;
+    };
+}
+
 
 /**
  * Returns the given hotspot for all the opaque pixels of the given image.
@@ -87,5 +105,13 @@ export class HotspotScreenBuffer {
 
 export interface HotspotInfo {
     description: string;
+
+    // The default action to execute on this hotspot, if any
     rightClickAction?: Action;
+
+    // If defined and true, this indicates that this hotspot is a
+    // location that, when clicked on, trigger a game screen change.
+    // Such hotspots cannot be combined with action and their description
+    // is supposed to be fully descriptive like 'Enter bank'
+    isMovementHotspot?: boolean;
 }

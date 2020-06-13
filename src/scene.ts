@@ -88,8 +88,12 @@ export class Scene {
           ? this.hotspotMap.get(this.hotspot)
           : undefined;
 
-        this.buffer.paintActionBar(this.selectedAction, hotspotInfo && hotspotInfo.description,
-                                     hotspotInfo && hotspotInfo.rightClickAction, this.inventoryObject);
+        if (hotspotInfo && hotspotInfo.isMovementHotspot) {
+            this.buffer.paintActionBar(undefined, hotspotInfo.description, undefined, undefined);
+        } else {
+            this.buffer.paintActionBar(this.selectedAction, hotspotInfo && hotspotInfo.description,
+                hotspotInfo && hotspotInfo.rightClickAction, this.inventoryObject);
+        }
     }
 
     setHotspotMap(map: HotspotMap | undefined) {
@@ -113,6 +117,12 @@ export class Scene {
         this.x = x;
         this.y = y;
         this.hotspot = hotspot;
+        const info = this.hotspot && this.hotspotMap.get(this.hotspot);
+        if (info && info.isMovementHotspot) {
+            this.fireSceneAction(Action.CHANGE_SCREEN);
+            return;
+        }
+
         if (buttonClicked === 'left') {
             this.processLeftClick();
         } else if (buttonClicked === 'right') {

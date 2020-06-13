@@ -32,6 +32,7 @@ iceCreamShop.show(scene);
 ui.render();
 
 ui.addMoveListener(e => {
+  ui.setTitle(`${e.X},${e.Y}`);
   scene.setCurrentHotspot(e.X, e.Y, undefined, e.hotspot);
 });
 
