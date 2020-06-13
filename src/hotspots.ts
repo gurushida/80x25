@@ -12,6 +12,7 @@ export enum Hotspots {
     BANK,
     BOOM_BLASTER,
     ICE_CREAM_SHOP,
+    DOG,
 }
 
 export class HotspotMap {

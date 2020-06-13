@@ -19,3 +19,6 @@ export const guy_left_walking0 = loadSprite('asciiart/sprites/guy_left_walking0.
 export const guy_left_walking1 = loadSprite('asciiart/sprites/guy_left_walking1.txt');
 export const guy_left_walking2 = loadSprite('asciiart/sprites/guy_left_walking2.txt');
 export const guy_left_walking3 = loadSprite('asciiart/sprites/guy_left_walking3.txt');
+
+export const dog0 = loadSprite('asciiart/sprites/dog0.txt');
+export const dog1 = loadSprite('asciiart/sprites/dog1.txt');
