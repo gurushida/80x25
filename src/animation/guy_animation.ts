@@ -209,12 +209,6 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
             [
                 {
-                    image: guy_left_still,
-                    durationInTicks: 7,
-                    offsetX: 0,
-                    offsetY: 0,
-                },
-                {
                     image: guy_left_talking0,
                     durationInTicks: 7,
                     offsetX: 0,
@@ -222,6 +216,12 @@ export class GuyAnimation implements Animation {
                 },
                 {
                     image: guy_left_talking1,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+                {
+                    image: guy_left_still,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
@@ -234,12 +234,6 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
             [
                 {
-                    image: guy_right_still,
-                    durationInTicks: 7,
-                    offsetX: 0,
-                    offsetY: 0,
-                },
-                {
                     image: guy_right_talking0,
                     durationInTicks: 7,
                     offsetX: 0,
@@ -247,6 +241,12 @@ export class GuyAnimation implements Animation {
                 },
                 {
                     image: guy_right_talking1,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+                {
+                    image: guy_right_still,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
