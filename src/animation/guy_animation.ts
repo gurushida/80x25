@@ -10,18 +10,6 @@ export enum GUY_STATE {
 }
 
 
-export const still_left_animation = new ImageAnimation(30, 17, true, undefined,
-    [
-        {
-            image: guy_left_still,
-            durationInTicks: 4,
-            offsetX: 0,
-            offsetY: 0,
-        },
-    ]);
-
-
-
 export class GuyAnimation implements Animation {
     
     private state: GUY_STATE = GUY_STATE.STILL;
