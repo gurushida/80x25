@@ -1,7 +1,7 @@
 import { Scene, PaintTaskZ, AnimationZ } from "./scene";
 import { HotspotMap } from "./hotspots";
-import { debug } from "./main";
 import { GuyAnimation } from "./animation/guy_animation";
+import { Action } from "./actions";
 
 export class GameScreen {
 
@@ -40,7 +40,11 @@ export class GameScreen {
         }
 
         this.scene.addSceneListener(e => {
-            debug(`${e.action} at ${e.X},${e.Y} on ${e.hotspot}, obj=${e.inventoryObject}`);
+            if (e.action === Action.WALK) {
+                if (this.guy_animation) {
+                    this.guy_animation.walkTo(e.X);
+                }
+            }
         });
     }
 

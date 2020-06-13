@@ -11,7 +11,7 @@ export function debug(str: string) {
   ui.debug(str);
 }
 
-const scene = new Scene(ui.buffer, ui);
+const scene = new Scene(ui.buffer);
 
 /*const bankBackground = getPaintTaskZ(background.bank, 0, 0, 0, createFullHotspot(Hotspots.BANK));
 const boomBlasterAnimation: AnimationZ = { animation: boom_blaster, zIndex: 0};

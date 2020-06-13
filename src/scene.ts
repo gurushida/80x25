@@ -4,8 +4,6 @@ import { AsciiImage } from "./imagesUtils";
 import { HotspotFilter, Hotspots, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
-import { UI } from "./ui";
-import { debug } from "./main";
 
 export interface SceneEvent {
     X: number;
@@ -43,7 +41,7 @@ export class Scene {
     y: number;
     hotspot: Hotspots | undefined;
 
-    constructor(buffer: ScreenBuffer, private ui: UI) {
+    constructor(buffer: ScreenBuffer) {
         this.buffer = buffer;
         this.staticImages = [];
         this.animations = [];
@@ -114,10 +112,8 @@ export class Scene {
         this.y = y;
         this.hotspot = hotspot;
         if (buttonClicked === 'left') {
-            this.ui.debug('left click ');
             this.processLeftClick();
         } else if (buttonClicked === 'right') {
-            this.ui.debug('right click ');
             this.processRightClick();
         }
     }
@@ -140,8 +136,6 @@ export class Scene {
         if (this.selectedAction === Action.GIVE || this.selectedAction === Action.USE) {
             if (this.inventoryObject) {
                 this.fireSceneAction(this.selectedAction);
-            } else {
-                debug(`No object to complete ${this.selectedAction}`);
             }
         } else {
             this.fireSceneAction(this.selectedAction);
