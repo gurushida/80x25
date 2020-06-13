@@ -67,9 +67,11 @@ export class Scene {
         }
 
         for (const animation of this.animations) {
-            const task = animation.animation.tick();
-            if (task) {
-                this.buffer.paint(task);
+            const tasks = animation.animation.tick();
+            if (tasks) {
+                for (const task of tasks) {
+                    this.buffer.paint(task);
+                }
             }
         }
 

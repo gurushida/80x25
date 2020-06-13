@@ -106,7 +106,7 @@ export class TextAnimation implements Animation {
         };
     }
 
-    tick(): PaintTask | undefined {
+    tick(): PaintTask[] | undefined {
         return this.animation.tick();
     }
 

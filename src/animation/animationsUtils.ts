@@ -28,12 +28,12 @@ export interface AnimationStep {
 
 /**
  * This represents an animation running at 50fps.
- * On every tick, this returns a paint task or undefined
+ * On every tick, this returns an array of paint tasks or undefined
  * if the animation has stopped and should be removed from
  * the scene.
  */
 export interface Animation {
-    tick: () => PaintTask | undefined;
+    tick: () => PaintTask[] | undefined;
 }
 
 
@@ -58,7 +58,7 @@ export class ImageAnimation implements Animation {
         this.defaultHotspotFilter = hotspotFilter;
     }
 
-    tick(): PaintTask {
+    tick(): PaintTask[] {
         if (this.currentStep >= this.steps.length) {
             return undefined;
         }
@@ -90,6 +90,6 @@ export class ImageAnimation implements Animation {
             }
         }
 
-        return paintTask;
+        return [ paintTask ];
     }
 }

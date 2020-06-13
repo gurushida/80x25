@@ -53,12 +53,12 @@ export class GuyAnimation implements Animation {
         this.text_animation = new TextAnimation(segments, this.guy_left + guy_left_still.width / 2, this.guy_top - 1);
     }
 
-    tick(): PaintTask | undefined {
+    tick(): PaintTask[] | undefined {
         if (this.state === GUY_STATE.TALKING) {
-            const task = this.text_animation.tick();
-            if (task) {
+            const tasks = this.text_animation.tick();
+            if (tasks) {
                 // Still talking
-                return task;
+                return tasks;
             }
             // If the guy is done talking, go back to standing still
             this.standStill();
@@ -77,10 +77,10 @@ export class GuyAnimation implements Animation {
             }
 
             // Keep walking
-            const paintTask = this.current_animation.tick();
-            this.guy_left = paintTask.left;
-            this.guy_top = paintTask.top;
-            return paintTask;
+            const paintTasks = this.current_animation.tick();
+            this.guy_left = paintTasks[0].left;
+            this.guy_top = paintTasks[0].top;
+            return paintTasks;
         }
 
         return undefined;
