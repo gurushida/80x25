@@ -17,7 +17,7 @@ export class GuyAnimation implements Animation {
     
     private state: GUY_STATE = GUY_STATE.STILL;
     private current_animation: Animation;
-    private text_animation: Animation | undefined = undefined;
+    private text_animation: TextAnimation | undefined = undefined;
 
     private walkingXDestination = -1;
 
@@ -252,5 +252,12 @@ export class GuyAnimation implements Animation {
                     offsetY: 0,
                 },
             ]);
+    }
+
+
+    skipToNextTextSegment() {
+        if (this.text_animation) {
+            this.text_animation.skipToNextTextSegment();
+        }
     }
 }

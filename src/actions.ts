@@ -8,6 +8,9 @@ export enum Action {
   WALK = 'Walk',
   SHOW_MAP = 'Show map',
   SHOW_INVENTORY = 'Show inventory',
+
+  QUIT = 'Quit',
+  SKIP = 'Skip',
 }
 
 

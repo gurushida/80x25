@@ -58,11 +58,11 @@ export class UI {
             this.fireEvent(this.clickListeners, data.x, data.y, data.button);
         });
 
-        this.screen.key(['escape', 'q', 'C-c'], function(ch, key) {
-            return process.exit(0);
-        });
-
         this.render();
+    }
+
+    addKeyListener(key: string | string[], runnable: () => void) {
+        this.screen.key(key, function(ch, key) { runnable(); });
     }
 
     private fireEvent(listeners: MouseListener[], globalX: number, globalY: number, button: 'left' | 'right' | undefined ) {

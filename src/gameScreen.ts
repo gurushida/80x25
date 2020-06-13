@@ -40,6 +40,14 @@ export class GameScreen {
         }
 
         this.scene.addSceneListener(e => {
+            if (e.action === Action.QUIT) {
+                process.exit(0);
+            }
+
+            if (e.action === Action.SKIP) {
+                this.skip();
+            }
+
             if (e.action === Action.WALK) {
                 if (this.guy_animation) {
                     this.guy_animation.walkTo(e.X);
@@ -57,4 +65,9 @@ export class GameScreen {
         });
     }
 
+    skip() {
+        if (this.guy_animation) {
+            this.guy_animation.skipToNextTextSegment();
+        }
+    }
 }

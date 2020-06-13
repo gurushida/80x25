@@ -4,6 +4,7 @@ import { Scene, getPaintTaskZ } from './scene';
 import { Clock } from './clock';
 import { Hotspots, createFullHotspot } from './hotspots';
 import { GameScreen } from './gameScreen';
+import { Action } from './actions';
 
 const ui = new UI();
 
@@ -55,6 +56,9 @@ ui.addClickListener(e => {
   ui.setTitle(`${e.X},${e.Y}=>${e.hotspot} ${e.button}`);
   scene.setCurrentHotspot(e.X, e.Y, e.button, e.hotspot);
 });
+
+ui.addKeyListener(['escape', 'q', 'C-c'], () => scene.fireSceneAction(Action.QUIT));
+ui.addKeyListener(['space', 'enter'], () => scene.fireSceneAction(Action.SKIP));
 
 const clock = new Clock(ui);
 clock.repeat(0, () => {

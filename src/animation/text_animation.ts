@@ -22,6 +22,12 @@ export class TextAnimation implements Animation {
         this.animation = this.createAnimation(steps, anchorLeft, anchorBottom);
     }
 
+
+    skipToNextTextSegment() {
+        this.animation.skipToNextStep()
+    }
+
+
     /**
      * Makes sure there is exactly one space on each side of the string,
      * which will help readability.

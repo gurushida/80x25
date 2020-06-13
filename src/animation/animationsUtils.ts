@@ -58,6 +58,10 @@ export class ImageAnimation implements Animation {
         this.defaultHotspotFilter = hotspotFilter;
     }
 
+    skipToNextStep() {
+        this.ticksUntilUpdate = 0;
+    }
+
     tick(): PaintTask[] {
         if (this.currentStep >= this.steps.length) {
             return undefined;
@@ -74,7 +78,7 @@ export class ImageAnimation implements Animation {
 
         this.ticksUntilUpdate = this.ticksUntilUpdate - 1;
 
-        if (this.ticksUntilUpdate === 0) {
+        if (this.ticksUntilUpdate <= 0) {
             // Time to move on the next step
             this.left = this.left + this.steps[this.currentStep].offsetX;
             this.top = this.top + this.steps[this.currentStep].offsetY;

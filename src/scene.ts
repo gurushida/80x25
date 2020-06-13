@@ -220,7 +220,7 @@ export class Scene {
         }
     }
 
-    private fireSceneAction(action: Action) {
+    fireSceneAction(action: Action) {
         const event: SceneEvent = {
             action,
             X: this.x,
