@@ -1,6 +1,6 @@
 import { Animation, PaintTask, ImageAnimation } from "./animationsUtils";
 import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, guy_left_walking2,
-  guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3 } from "../sprite";
+  guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3, guy_left_talking0, guy_left_talking1, guy_right_talking0, guy_right_talking1 } from "../sprite";
 import { WIDTH } from "../screenbuffer";
 import { TextSegment } from "../dialog";
 import { TextAnimation } from "./text_animation";
@@ -48,7 +48,9 @@ export class GuyAnimation implements Animation {
 
 
     say(segments: TextSegment[]) {
-        this.current_animation = this.getStillAnimation();
+        this.current_animation = this.guy_look_to_the_right
+          ? this.getTalkingRightAnimation()
+          : this.getTalkingLeftAnimation();
         this.state = GUY_STATE.TALKING;
         this.text_animation = new TextAnimation(segments, this.guy_left + guy_left_still.width / 2, this.guy_top - 1);
     }
@@ -58,7 +60,7 @@ export class GuyAnimation implements Animation {
             const tasks = this.text_animation.tick();
             if (tasks) {
                 // Still talking
-                return tasks;
+                return [...tasks, ...this.current_animation.tick()];
             }
             // If the guy is done talking, go back to standing still
             this.standStill();
@@ -200,5 +202,55 @@ export class GuyAnimation implements Animation {
         this.state = GUY_STATE.WALKING_TO_THE_RIGHT;
         this.guy_look_to_the_right = true;
         this.current_animation = this.getWalkRightAnimation();
+    }
+
+
+    private getTalkingLeftAnimation(): Animation {
+        return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
+            [
+                {
+                    image: guy_left_still,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+                {
+                    image: guy_left_talking0,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+                {
+                    image: guy_left_talking1,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+            ]);
+    }
+
+
+    private getTalkingRightAnimation(): Animation {
+        return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
+            [
+                {
+                    image: guy_right_still,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+                {
+                    image: guy_right_talking0,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+                {
+                    image: guy_right_talking1,
+                    durationInTicks: 7,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+            ]);
     }
 }
