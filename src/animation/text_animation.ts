@@ -62,7 +62,7 @@ export class TextAnimation implements Animation {
     private createAnimation(steps: AnimationStep[], anchorLeft: number, anchorBottom: number): ImageAnimation {
         const width = steps[0].image.width;
         const height = steps[0].image.height;
-        let left = anchorLeft - width / 2;
+        let left = Math.round(anchorLeft - width / 2);
         let top = anchorBottom - height;
 
         // Let's make sure the text box fit in the screen
