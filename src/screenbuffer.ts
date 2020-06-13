@@ -3,6 +3,7 @@ import { PaintTask } from "./animation/animationsUtils";
 import { HotspotScreenBuffer, Hotspots } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
+import { center } from "./utils";
 
 export const WIDTH = 80;
 export const HEIGHT = 25;
@@ -109,12 +110,7 @@ export class ScreenBuffer {
             text = '';
         }
 
-        const padding = WIDTH - 'Talk Use Give Take Look map ...'.length - text.length;
-        if (padding % 2 === 0) {
-            this.actionBar = this.actionBar + ' '.repeat(padding / 2) + text + ' '.repeat(padding / 2);
-        } else {
-            this.actionBar = this.actionBar + ' '.repeat(padding / 2) + text + ' '.repeat((padding / 2) + 1);
-        }
+        this.actionBar = this.actionBar + center(text, WIDTH - 'Talk Use Give Take Look map ...'.length);
     }
 
 }

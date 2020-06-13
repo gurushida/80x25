@@ -45,6 +45,15 @@ export class GameScreen {
                     this.guy_animation.walkTo(e.X);
                 }
             }
+            if (e.action === Action.SHOW_INVENTORY) {
+                if (this.guy_animation) {
+                    this.guy_animation.say([
+                        ['My god.'],
+                        ['It looks like things are messed', 'up big time in my pockets.'],
+                        ['I should probably clean up', 'before my mom hear about it', 'and roast me.']
+                    ]);
+                }
+            }
         });
     }
 

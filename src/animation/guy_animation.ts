@@ -2,11 +2,14 @@ import { Animation, PaintTask, ImageAnimation } from "./animationsUtils";
 import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, guy_left_walking2,
   guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3 } from "../sprite";
 import { WIDTH } from "../screenbuffer";
+import { TextSegment } from "../dialog";
+import { TextAnimation } from "./text_animation";
 
 export enum GUY_STATE {
     STILL,
     WALKING_TO_THE_LEFT,
     WALKING_TO_THE_RIGHT,
+    TALKING,
 }
 
 
@@ -14,6 +17,7 @@ export class GuyAnimation implements Animation {
     
     private state: GUY_STATE = GUY_STATE.STILL;
     private current_animation: Animation;
+    private text_animation: Animation | undefined = undefined;
 
     private walkingXDestination = -1;
 
@@ -36,14 +40,31 @@ export class GuyAnimation implements Animation {
             ]);
     }
 
-
     private standStill() {
         this.state = GUY_STATE.STILL;
         this.current_animation = this.getStillAnimation();
+        this.text_animation = undefined;
     }
 
 
+    say(segments: TextSegment[]) {
+        this.current_animation = this.getStillAnimation();
+        this.state = GUY_STATE.TALKING;
+        this.text_animation = new TextAnimation(segments, this.guy_left + guy_left_still.width / 2, this.guy_top - 1);
+    }
+
     tick(): PaintTask | undefined {
+        if (this.state === GUY_STATE.TALKING) {
+            const task = this.text_animation.tick();
+            if (task) {
+                // Still talking
+                return task;
+            }
+            // If the guy is done talking, go back to standing still
+            this.standStill();
+            return this.current_animation.tick();
+        }
+
         if (this.state === GUY_STATE.STILL) {
             return this.current_animation.tick();
         }
@@ -72,6 +93,7 @@ export class GuyAnimation implements Animation {
             return;
         }
 
+        this.text_animation = undefined;
         if (x < this.min_left) {
             x = this.min_left;
         }
