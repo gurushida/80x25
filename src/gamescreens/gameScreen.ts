@@ -1,13 +1,13 @@
-import { Scene, PaintTaskZ, AnimationZ } from "./scene";
-import { HotspotMap } from "./hotspots";
-import { GuyAnimation } from "./animation/guy_animation";
-import { Action } from "./actions";
+import { Scene, PaintTaskZ, AnimationZ } from "../scene";
+import { HotspotMap } from "../hotspots";
+import { GuyAnimation } from "../animation/guy_animation";
+import { Action } from "../actions";
 
 export class GameScreen {
 
     private guy_animation: GuyAnimation | undefined = undefined;
 
-    constructor(private scene:Scene, private images: PaintTaskZ[],
+    constructor(private images: PaintTaskZ[],
                 private animations: AnimationZ[], private hotspotMap: HotspotMap | undefined,
                 private showActionBar: boolean, private guy_left = -1,
                 private guy_top = -1, private guy_look_to_the_right = true,
@@ -18,28 +18,28 @@ export class GameScreen {
     /**
      * Sets this game screen as the one currently rendered.
      */
-    show() {
-        this.scene.reset();
+    show(scene: Scene) {
+        scene.reset();
 
         for (const image of this.images) {
-            this.scene.addImage(image);
+            scene.addImage(image);
         }
 
         for (const animation of this.animations) {
-            this.scene.addAnimation(animation);
+            scene.addAnimation(animation);
         }
 
-        this.scene.setHotspotMap(this.hotspotMap);
-        this.scene.setShowActionBar(this.showActionBar);
+        scene.setHotspotMap(this.hotspotMap);
+        scene.setShowActionBar(this.showActionBar);
 
         if (this.guy_left !== -1 && this.guy_top !== 1) {
             this.guy_animation = new GuyAnimation(this.guy_left, this.guy_top, this.guy_look_to_the_right);
-            this.scene.addAnimation({ animation: this.guy_animation, zIndex: this.guy_z_index});
+            scene.addAnimation({ animation: this.guy_animation, zIndex: this.guy_z_index});
         } else {
             this.guy_animation = undefined;
         }
 
-        this.scene.addSceneListener(e => {
+        scene.addSceneListener(e => {
             if (e.action === Action.QUIT) {
                 process.exit(0);
             }

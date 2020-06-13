@@ -1,11 +1,8 @@
 import { UI } from './ui';
-import * as background from './background';
-import { Scene, getPaintTaskZ, AnimationZ } from './scene';
+import { Scene } from './scene';
 import { Clock } from './clock';
-import { Hotspots, createFullHotspot, HotspotMap } from './hotspots';
-import { GameScreen } from './gameScreen';
 import { Action } from './actions';
-import { dog } from './animation/animations';
+import { iceCreamShop } from './gamescreens/ice_cream_shop';
 
 const ui = new UI();
 
@@ -30,26 +27,7 @@ bankHotspotMap.set(Hotspots.BANK, {
 const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ], bankHotspotMap, true);
 */
 
-const iceCreamShopBackground = getPaintTaskZ(background.ice_cream_shop, 0, 0, -1, createFullHotspot(Hotspots.ICE_CREAM_SHOP));
-const dogAnimation: AnimationZ = { animation: dog, zIndex: 0 };
-const iceCreamShopHotspotMap = new HotspotMap();
-iceCreamShopHotspotMap.set(Hotspots.ICE_CREAM_SHOP, { description: 'ice cream shop', rightClickAction: Action.LOOK})
-iceCreamShopHotspotMap.set(Hotspots.DOG, { description: 'dog', rightClickAction: Action.LOOK})
-const iceCreamShop = new GameScreen(scene, [ iceCreamShopBackground ], [ dogAnimation ], iceCreamShopHotspotMap, true,
-  8, 14, true, 0);
-
-
-
-/*scene.addImage(bankBackground);
-scene.addAnimation(boomBlasterAnimation);
-scene.setShowActionBar(true);
-scene.hotspotMap.set(Hotspots.ICE_CREAM_SHOP, {
-  description: 'ice cream shop',
-  rightClickAction: Action.TALK,
-});
-*/
-
-iceCreamShop.show();
+iceCreamShop.show(scene);
 
 ui.render();
 
@@ -58,7 +36,6 @@ ui.addMoveListener(e => {
 });
 
 ui.addClickListener(e => {
-  ui.setTitle(`${e.X},${e.Y}=>${e.hotspot} ${e.button}`);
   scene.setCurrentHotspot(e.X, e.Y, e.button, e.hotspot);
 });
 
@@ -74,18 +51,3 @@ clock.repeat(0, () => {
 });
 
 clock.play();
-/*clock.scheduleOnce(150, () => {
-  ui.debug('ice cream'),
-  scene.removeImage(bankBackground);
-  scene.addImage(iceCreamShopBackground);
-});*/
-
-/*clock.scheduleOnce(300, () => {
-  ui.debug('remove boom blaster'),
-  scene.removeAnimation(boomBlasterAnimation);
-});*/
-
-/*clock.scheduleOnce(500, () => {
-  ui.debug('re-add boom blaster'),
-  scene.addAnimation(boomBlasterAnimation);
-});*/
