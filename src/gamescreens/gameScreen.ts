@@ -1,17 +1,24 @@
-import { Scene, PaintTaskZ, AnimationZ } from "../scene";
+import { Scene, PaintTaskZ, AnimationZ, SceneListener } from "../scene";
 import { HotspotMap } from "../hotspots";
 import { GuyAnimation } from "../animation/guy_animation";
 import { Action } from "../actions";
+import { TextSegment } from "src/dialog";
 
 export class GameScreen {
 
     private guy_animation: GuyAnimation | undefined = undefined;
+    private sceneListener: SceneListener | undefined;
 
     constructor(private images: PaintTaskZ[],
                 private animations: AnimationZ[], private hotspotMap: HotspotMap | undefined,
                 private showActionBar: boolean, private guy_left = -1,
                 private guy_top = -1, private guy_look_to_the_right = true,
                 private guy_z_index = 0) {
+    }
+
+
+    setSceneListener(l: SceneListener) {
+        this.sceneListener = l;
     }
 
 
@@ -39,6 +46,10 @@ export class GameScreen {
             this.guy_animation = undefined;
         }
 
+        // We handle here system events like quitting the game
+        // or generic events like walking. The handling of
+        // game screen specific events is delegated to the scene
+        // listener field
         scene.addSceneListener(e => {
             if (e.action === Action.QUIT) {
                 process.exit(0);
@@ -48,19 +59,28 @@ export class GameScreen {
                 this.skip();
             }
 
+            if (e.action === Action.SHOW_INVENTORY) {
+                this.say([
+                    ['My god.'],
+                    ['It looks like things are messed', 'up big time in my pockets.'],
+                    ['I should probably clean up', 'before my mom hear about it', 'and roast me.']
+                ]);
+            }
+
+            if (e.action === Action.SHOW_MAP) {
+                this.say([
+                    ['Well, time to go somewhere else.'],
+                ]);
+            }
+
             if (e.action === Action.WALK) {
                 if (this.guy_animation) {
                     this.guy_animation.walkTo(e.X);
                 }
             }
-            if (e.action === Action.SHOW_INVENTORY) {
-                if (this.guy_animation) {
-                    this.guy_animation.say([
-                        ['My god.'],
-                        ['It looks like things are messed', 'up big time in my pockets.'],
-                        ['I should probably clean up', 'before my mom hear about it', 'and roast me.']
-                    ]);
-                }
+
+            if (this.sceneListener) {
+                this.sceneListener(e);
             }
         });
     }
@@ -68,6 +88,12 @@ export class GameScreen {
     skip() {
         if (this.guy_animation) {
             this.guy_animation.skipToNextTextSegment();
+        }
+    }
+
+    say(textSegments: TextSegment[]) {
+        if (this.guy_animation) {
+            this.guy_animation.say(textSegments);
         }
     }
 }
