@@ -27,19 +27,19 @@ export interface AnimationZ {
 
 export class Scene {
 
-    buffer: ScreenBuffer;
-    staticImages: PaintTaskZ[];
-    animations: AnimationZ[];
-    showActionBar: boolean = false;
-    selectedAction: Action | undefined;
-    inventoryObject: InventoryObject | undefined;
+    private buffer: ScreenBuffer;
+    private staticImages: PaintTaskZ[];
+    private animations: AnimationZ[];
+    private showActionBar: boolean = false;
+    private selectedAction: Action | undefined;
+    private inventoryObject: InventoryObject | undefined;
 
-    hotspotMap: HotspotMap | undefined = undefined;
-    sceneListeners: SceneListener[];
+    private hotspotMap: HotspotMap | undefined = undefined;
+    private sceneListeners: SceneListener[];
 
-    x: number;
-    y: number;
-    hotspot: Hotspots | undefined;
+    private x: number;
+    private y: number;
+    private hotspot: Hotspots | undefined;
 
     constructor(buffer: ScreenBuffer) {
         this.buffer = buffer;
