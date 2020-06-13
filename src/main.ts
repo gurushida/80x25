@@ -2,7 +2,7 @@ import { UI } from './ui';
 import * as background from './background';
 import { Scene, getPaintTaskZ, AnimationZ } from './scene';
 import { Clock } from './clock';
-import { Hotspots, createFullHotspot } from './hotspots';
+import { Hotspots, createFullHotspot, HotspotMap } from './hotspots';
 import { GameScreen } from './gameScreen';
 import { Action } from './actions';
 import { dog } from './animation/animations';
@@ -32,7 +32,10 @@ const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ],
 
 const iceCreamShopBackground = getPaintTaskZ(background.ice_cream_shop, 0, 0, -1, createFullHotspot(Hotspots.ICE_CREAM_SHOP));
 const dogAnimation: AnimationZ = { animation: dog, zIndex: 0 };
-const iceCreamShop = new GameScreen(scene, [ iceCreamShopBackground ], [ dogAnimation ], undefined, true,
+const iceCreamShopHotspotMap = new HotspotMap();
+iceCreamShopHotspotMap.set(Hotspots.ICE_CREAM_SHOP, { description: 'Ice cream shop', rightClickAction: Action.LOOK})
+iceCreamShopHotspotMap.set(Hotspots.DOG, { description: 'Dog', rightClickAction: Action.LOOK})
+const iceCreamShop = new GameScreen(scene, [ iceCreamShopBackground ], [ dogAnimation ], iceCreamShopHotspotMap, true,
   8, 14, true, 0);
 
 

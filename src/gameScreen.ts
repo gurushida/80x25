@@ -29,7 +29,7 @@ export class GameScreen {
             this.scene.addAnimation(animation);
         }
 
-        this.scene.hotspotMap = this.hotspotMap;
+        this.scene.setHotspotMap(this.hotspotMap);
         this.scene.setShowActionBar(this.showActionBar);
 
         if (this.guy_left !== -1 && this.guy_top !== 1) {
