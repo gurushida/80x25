@@ -20,7 +20,7 @@ export const boom_blaster = new ImageAnimation(30, 17, true, BOOM_BLASTER_HOTSPO
         }
     ]);
 
-const DOG_HOTSPOT = createMaskHotspot(boom_blaster0, Hotspot.DOG);
+const DOG_HOTSPOT = createMaskHotspot(dog0, Hotspot.DOG);
 
 export const dog = new ImageAnimation(50, 17, true, DOG_HOTSPOT,
         [
