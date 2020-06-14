@@ -118,7 +118,7 @@ export class Scene {
         this.y = y;
         this.hotspot = hotspot;
         const info = this.hotspot && this.hotspotMap.get(this.hotspot);
-        if (info && info.isMovementHotspot) {
+        if (buttonClicked && info && info.isMovementHotspot) {
             this.fireSceneAction(Action.CHANGE_SCREEN);
             return;
         }
