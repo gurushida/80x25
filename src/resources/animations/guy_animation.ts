@@ -1,4 +1,4 @@
-import { Animation, PaintTask, ImageAnimation } from "../../animations";
+import { Animation, ImageAnimation } from "../../animations";
 import { SPR_GUY_RIGHT_STILL_0, SPR_GUY_LEFT_STILL_0, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
   SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
   SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1, SPR_GUY_LEFT_STILL_1 } from "../sprites";
@@ -7,6 +7,7 @@ import { TextSegment } from "../../dialog";
 import { TextAnimation } from "./text_animation";
 import { GuyPosition } from "src/hotspots";
 import { ZIndex } from "../../zIndex";
+import { PaintTask } from "../../paintTask";
 
 export enum GUY_STATE {
     STILL,

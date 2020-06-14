@@ -1,9 +1,9 @@
-import { Animation, PaintTask } from "./animations";
+import { Animation } from "./animations";
 import { ScreenBuffer, HEIGHT } from "./screenbuffer";
-import { AsciiImage } from "./images";
-import { HotspotFilter, Hotspot, HotspotMap } from "./hotspots";
+import { Hotspot, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
+import { PaintTask } from "./paintTask";
 
 export interface SceneEvent {
     x: number;
@@ -240,12 +240,4 @@ export class SceneEngine {
         }
     }
 
-}
-
-
-export function getPaintTask(image: AsciiImage, left: number, top: number, zIndex: number,
-                              hotspotFilter: HotspotFilter | undefined): PaintTask {
-    return {
-        left, top, zIndex,image, hotspotFilter
-    };
 }

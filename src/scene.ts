@@ -3,7 +3,8 @@ import { HotspotMap, GuyPosition } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy_animation";
 import { Action } from "./actions";
 import { TextSegment } from "./dialog";
-import { Animation, PaintTask } from "./animations";
+import { Animation } from "./animations";
+import { PaintTask } from "./paintTask";
 
 export class Scene {
 
