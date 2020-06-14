@@ -4,6 +4,7 @@ import { AsciiImage } from "./images";
 import { HotspotFilter, Hotspot, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
+import { ZIndex } from "./zIndex";
 
 export interface SceneEvent {
     x: number;
@@ -17,12 +18,12 @@ export type SceneListener = (event: SceneEvent) => void;
 
 export interface PaintTaskZ {
     task: PaintTask;
-    zIndex: number;
+    zIndex: ZIndex;
 }
 
 export interface AnimationZ {
     animation: Animation;
-    zIndex: number;
+    zIndex: ZIndex;
 }
 
 export class SceneEngine {

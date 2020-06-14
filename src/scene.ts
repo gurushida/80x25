@@ -3,6 +3,7 @@ import { HotspotMap, GuyPosition } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy_animation";
 import { Action } from "./actions";
 import { TextSegment } from "./dialog";
+import { ZIndex } from "./zIndex";
 
 export class Scene {
 
@@ -11,8 +12,7 @@ export class Scene {
 
     constructor(private images: PaintTaskZ[],
                 private animations: AnimationZ[], private hotspotMap: HotspotMap | undefined,
-                private showActionBar: boolean, private guyPosition: GuyPosition | undefined,
-                private guyZIndex = 0) {
+                private showActionBar: boolean, private guyPosition: GuyPosition | undefined) {
     }
 
 
@@ -40,7 +40,7 @@ export class Scene {
 
         if (this.guyPosition) {
             this.guyAnimation = new GuyAnimation(this.guyPosition);
-            sceneEngine.addAnimation({ animation: this.guyAnimation, zIndex: this.guyZIndex});
+            sceneEngine.addAnimation({ animation: this.guyAnimation, zIndex: ZIndex.GUY});
         } else {
             this.guyAnimation = undefined;
         }
