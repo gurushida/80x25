@@ -1,7 +1,7 @@
 import { Animation, PaintTask, ImageAnimation } from "../../animations";
-import { SPR_GUY_RIGHT_STILL, SPR_GUY_LEFT_STILL, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
+import { SPR_GUY_RIGHT_STILL_0, SPR_GUY_LEFT_STILL_0, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
   SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
-  SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1 } from "../sprites";
+  SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1, SPR_GUY_LEFT_STILL_1 } from "../sprites";
 import { WIDTH } from "../../screenbuffer";
 import { TextSegment } from "../../dialog";
 import { TextAnimation } from "./text_animation";
@@ -24,7 +24,7 @@ export class GuyAnimation implements Animation {
     private walkingXDestination = -1;
 
     constructor(private guyPosition: GuyPosition,
-                private minLeft = 0, private maxLeft = WIDTH - SPR_GUY_LEFT_STILL.width) {
+                private minLeft = 0, private maxLeft = WIDTH - SPR_GUY_LEFT_STILL_0.width) {
         this.standStill();
    }
 
@@ -33,8 +33,14 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: this.guyPosition.lookToTheRight ? SPR_GUY_RIGHT_STILL : SPR_GUY_LEFT_STILL,
-                    durationInTicks: 4,
+                    image: this.guyPosition.lookToTheRight ? SPR_GUY_RIGHT_STILL_0 : SPR_GUY_LEFT_STILL_0,
+                    durationInTicks: 200,
+                    offsetX: 0,
+                    offsetY: 0,
+                },
+                {
+                    image: this.guyPosition.lookToTheRight ? SPR_GUY_RIGHT_STILL_1 : SPR_GUY_LEFT_STILL_1,
+                    durationInTicks: 5,
                     offsetX: 0,
                     offsetY: 0,
                 },
@@ -53,7 +59,7 @@ export class GuyAnimation implements Animation {
           ? this.getTalkingRightAnimation()
           : this.getTalkingLeftAnimation();
         this.state = GUY_STATE.TALKING;
-        const talkAnchorLeft = Math.round(this.guyPosition.left + SPR_GUY_LEFT_STILL.width / 2);
+        const talkAnchorLeft = Math.round(this.guyPosition.left + SPR_GUY_LEFT_STILL_0.width / 2);
         const talkAnchorBottom = this.guyPosition.top - 1;
         this.textAnimation = new TextAnimation(segments, talkAnchorLeft, talkAnchorBottom);
     }
@@ -124,7 +130,7 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: SPR_GUY_LEFT_STILL,
+                    image: SPR_GUY_LEFT_STILL_0,
                     durationInTicks: 3,
                     offsetX: -1,
                     offsetY: 0,
@@ -168,7 +174,7 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: SPR_GUY_RIGHT_STILL,
+                    image: SPR_GUY_RIGHT_STILL_0,
                     durationInTicks: 3,
                     offsetX: 1,
                     offsetY: 0,
@@ -224,7 +230,7 @@ export class GuyAnimation implements Animation {
                     offsetY: 0,
                 },
                 {
-                    image: SPR_GUY_LEFT_STILL,
+                    image: SPR_GUY_LEFT_STILL_0,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
@@ -249,7 +255,7 @@ export class GuyAnimation implements Animation {
                     offsetY: 0,
                 },
                 {
-                    image: SPR_GUY_RIGHT_STILL,
+                    image: SPR_GUY_RIGHT_STILL_0,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,

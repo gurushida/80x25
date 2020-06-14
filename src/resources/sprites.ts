@@ -3,8 +3,10 @@ import { loadSprite } from "../imagesUtils";
 export const SPR_BOOM_BLASTER_0 = loadSprite('asciiart/sprites/boom_blaster0.txt');
 export const SPR_BOOM_BLASTER_1 = loadSprite('asciiart/sprites/boom_blaster1.txt');
 
-export const SPR_GUY_RIGHT_STILL = loadSprite('asciiart/sprites/guy_right_still.txt');
-export const SPR_GUY_LEFT_STILL = loadSprite('asciiart/sprites/guy_left_still.txt');
+export const SPR_GUY_RIGHT_STILL_0 = loadSprite('asciiart/sprites/guy_right_still0.txt');
+export const SPR_GUY_RIGHT_STILL_1 = loadSprite('asciiart/sprites/guy_right_still1.txt');
+export const SPR_GUY_LEFT_STILL_0 = loadSprite('asciiart/sprites/guy_left_still0.txt');
+export const SPR_GUY_LEFT_STILL_1 = loadSprite('asciiart/sprites/guy_left_still1.txt');
 
 export const SPR_GUY_RIGHT_TALKING_0 = loadSprite('asciiart/sprites/guy_right_talking0.txt');
 export const SPR_GUY_RIGHT_TALKING_1 = loadSprite('asciiart/sprites/guy_right_talking1.txt');
