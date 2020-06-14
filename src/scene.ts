@@ -6,8 +6,8 @@ import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
 
 export interface SceneEvent {
-    X: number;
-    Y: number;
+    x: number;
+    y: number;
     hotspot: Hotspot;
     inventoryObject: InventoryObject | undefined;
     action: Action | undefined;
@@ -239,8 +239,8 @@ export class Scene {
 
         const event: SceneEvent = {
             action,
-            X: this.x,
-            Y: this.y,
+            x: this.x,
+            y: this.y,
             hotspot: this.hotspot,
             inventoryObject: this.inventoryObject,
         }

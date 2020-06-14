@@ -32,12 +32,12 @@ iceCreamShop.show(scene);
 ui.render();
 
 ui.addMoveListener(e => {
-  ui.setTitle(`${e.X},${e.Y}`);
-  scene.setCurrentHotspot(e.X, e.Y, undefined, e.hotspot);
+  ui.setTitle(`${e.x},${e.y}`);
+  scene.setCurrentHotspot(e.x, e.y, undefined, e.hotspot);
 });
 
 ui.addClickListener(e => {
-  scene.setCurrentHotspot(e.X, e.Y, e.button, e.hotspot);
+  scene.setCurrentHotspot(e.x, e.y, e.button, e.hotspot);
 });
 
 ui.addKeyListener(['escape', 'q', 'C-c'], () => scene.fireSceneAction(Action.QUIT));

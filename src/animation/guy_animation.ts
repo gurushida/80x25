@@ -16,14 +16,14 @@ export enum GUY_STATE {
 export class GuyAnimation implements Animation {
     
     private state: GUY_STATE = GUY_STATE.STILL;
-    private current_animation: Animation;
-    private text_animation: TextAnimation | undefined = undefined;
+    private currentAnimation: Animation;
+    private textAnimation: TextAnimation | undefined = undefined;
 
     private walkingXDestination = -1;
 
     constructor(private guy_left: number, private guy_top: number,
                 private guy_look_to_the_right: boolean,
-                private min_left = 0, private max_left = WIDTH - guy_left_still.width) {
+                private minLeft = 0, private maxLeft = WIDTH - guy_left_still.width) {
         this.standStill();
    }
 
@@ -42,44 +42,44 @@ export class GuyAnimation implements Animation {
 
     private standStill() {
         this.state = GUY_STATE.STILL;
-        this.current_animation = this.getStillAnimation();
-        this.text_animation = undefined;
+        this.currentAnimation = this.getStillAnimation();
+        this.textAnimation = undefined;
     }
 
 
     say(segments: TextSegment[]) {
-        this.current_animation = this.guy_look_to_the_right
+        this.currentAnimation = this.guy_look_to_the_right
           ? this.getTalkingRightAnimation()
           : this.getTalkingLeftAnimation();
         this.state = GUY_STATE.TALKING;
-        this.text_animation = new TextAnimation(segments, this.guy_left + guy_left_still.width / 2, this.guy_top - 1);
+        this.textAnimation = new TextAnimation(segments, this.guy_left + guy_left_still.width / 2, this.guy_top - 1);
     }
 
     tick(): PaintTask[] | undefined {
         if (this.state === GUY_STATE.TALKING) {
-            const tasks = this.text_animation.tick();
+            const tasks = this.textAnimation.tick();
             if (tasks) {
                 // Still talking
-                return [...tasks, ...this.current_animation.tick()];
+                return [...tasks, ...this.currentAnimation.tick()];
             }
             // If the guy is done talking, go back to standing still
             this.standStill();
-            return this.current_animation.tick();
+            return this.currentAnimation.tick();
         }
 
         if (this.state === GUY_STATE.STILL) {
-            return this.current_animation.tick();
+            return this.currentAnimation.tick();
         }
 
         if (this.state === GUY_STATE.WALKING_TO_THE_LEFT || this.state === GUY_STATE.WALKING_TO_THE_RIGHT) {
-            if ((this.current_animation as ImageAnimation).left === this.walkingXDestination) {
+            if ((this.currentAnimation as ImageAnimation).left === this.walkingXDestination) {
                 // If we have reach our destination, stop walking
                 this.standStill();
-                return this.current_animation.tick();
+                return this.currentAnimation.tick();
             }
 
             // Keep walking
-            const paintTasks = this.current_animation.tick();
+            const paintTasks = this.currentAnimation.tick();
             this.guy_left = paintTasks[0].left;
             this.guy_top = paintTasks[0].top;
             return paintTasks;
@@ -95,13 +95,13 @@ export class GuyAnimation implements Animation {
             return;
         }
 
-        this.text_animation = undefined;
-        if (x < this.min_left) {
-            x = this.min_left;
+        this.textAnimation = undefined;
+        if (x < this.minLeft) {
+            x = this.minLeft;
         }
 
-        if (x > this.max_left) {
-            x = this.max_left;
+        if (x > this.maxLeft) {
+            x = this.maxLeft;
         }
 
         this.walkingXDestination = x;
@@ -157,7 +157,7 @@ export class GuyAnimation implements Animation {
     walkToLeft() {
         this.state = GUY_STATE.WALKING_TO_THE_LEFT;
         this.guy_look_to_the_right = false;
-        this.current_animation = this.getWalkLeftAnimation();
+        this.currentAnimation = this.getWalkLeftAnimation();
     }
 
 
@@ -201,7 +201,7 @@ export class GuyAnimation implements Animation {
     walkToRight() {
         this.state = GUY_STATE.WALKING_TO_THE_RIGHT;
         this.guy_look_to_the_right = true;
-        this.current_animation = this.getWalkRightAnimation();
+        this.currentAnimation = this.getWalkRightAnimation();
     }
 
 
@@ -256,8 +256,8 @@ export class GuyAnimation implements Animation {
 
 
     skipToNextTextSegment() {
-        if (this.text_animation) {
-            this.text_animation.skipToNextTextSegment();
+        if (this.textAnimation) {
+            this.textAnimation.skipToNextTextSegment();
         }
     }
 }

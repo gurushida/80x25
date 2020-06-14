@@ -3,8 +3,8 @@ import { WIDTH, HEIGHT, ScreenBuffer } from './screenbuffer';
 import { HotspotScreenBuffer, Hotspot } from './hotspots';
 
 export interface MouseEvent {
-    X: number;
-    Y: number;
+    x: number;
+    y: number;
     hotspot: Hotspot;
     button?: 'left' | 'right';
 }
@@ -76,8 +76,8 @@ export class UI {
         }
 
         const event: MouseEvent = (X === -1 || Y === -1)
-            ? { X: -1, Y: -1, hotspot: undefined, button: undefined }
-            : { X, Y, hotspot: this.hotspotBuffer.get(X, Y), button };
+            ? { x: -1, y: -1, hotspot: undefined, button: undefined }
+            : { x: X, y: Y, hotspot: this.hotspotBuffer.get(X, Y), button };
         for (const listener of listeners) {
             listener(event);
         }

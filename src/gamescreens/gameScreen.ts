@@ -6,14 +6,14 @@ import { TextSegment } from "src/dialog";
 
 export class GameScreen {
 
-    private guy_animation: GuyAnimation | undefined = undefined;
+    private guyAnimation: GuyAnimation | undefined = undefined;
     private sceneListener: SceneListener | undefined;
 
     constructor(private images: PaintTaskZ[],
                 private animations: AnimationZ[], private hotspotMap: HotspotMap | undefined,
                 private showActionBar: boolean, private guy_left = -1,
                 private guy_top = -1, private guy_look_to_the_right = true,
-                private guy_z_index = 0) {
+                private guyZIndex = 0) {
     }
 
 
@@ -40,10 +40,10 @@ export class GameScreen {
         scene.setShowActionBar(this.showActionBar);
 
         if (this.guy_left !== -1 && this.guy_top !== 1) {
-            this.guy_animation = new GuyAnimation(this.guy_left, this.guy_top, this.guy_look_to_the_right);
-            scene.addAnimation({ animation: this.guy_animation, zIndex: this.guy_z_index});
+            this.guyAnimation = new GuyAnimation(this.guy_left, this.guy_top, this.guy_look_to_the_right);
+            scene.addAnimation({ animation: this.guyAnimation, zIndex: this.guyZIndex});
         } else {
-            this.guy_animation = undefined;
+            this.guyAnimation = undefined;
         }
 
         // We handle here system events like quitting the game
@@ -74,8 +74,8 @@ export class GameScreen {
             }
 
             if (e.action === Action.WALK) {
-                if (this.guy_animation) {
-                    this.guy_animation.walkTo(e.X);
+                if (this.guyAnimation) {
+                    this.guyAnimation.walkTo(e.x);
                 }
             }
 
@@ -86,14 +86,14 @@ export class GameScreen {
     }
 
     skip() {
-        if (this.guy_animation) {
-            this.guy_animation.skipToNextTextSegment();
+        if (this.guyAnimation) {
+            this.guyAnimation.skipToNextTextSegment();
         }
     }
 
     say(textSegments: TextSegment[]) {
-        if (this.guy_animation) {
-            this.guy_animation.say(textSegments);
+        if (this.guyAnimation) {
+            this.guyAnimation.say(textSegments);
         }
     }
 }
