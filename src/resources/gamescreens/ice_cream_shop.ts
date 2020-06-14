@@ -3,7 +3,7 @@ import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition } from "..
 import { dog } from "../animations/animations";
 import { Action } from "../../actions";
 import { GameScreen } from "../../gameScreen";
-import { ice_cream_shop } from "../../background";
+import { ice_cream_shop } from "../background";
 
 const fullFilter = createFullHotspot(Hotspot.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
