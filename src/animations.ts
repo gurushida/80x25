@@ -31,9 +31,34 @@ export interface Animation {
 }
 
 
-export interface CanTalkAnimation extends Animation {
+/**
+ * This interface describes an animated character that can talk.
+ */
+export interface ICanTalkAnimation extends Animation {
+
+    // Invoke this method to start talking
     say(cues: Cue[]);
+
+    // Invoke this method to make the character stop talking.
+    // Does nothing if the character is not talking
+    shutUp();
+
+    // Where to anchor the text when starting to talk
+    getTalkAnchor(): { talkAnchorLeft: number, talkAnchorBottom: number };
+
     skipToNextCue();
+
+    // How to start/stop the character animation (mouth, gestures, ...)
+    // when talking begins/stops
+    startTalkingAnimation(): Animation;
+    stopTalkingAnimation();
+
+    // Indicates whether or not the character is currently talking
+    isTalking(): boolean;
+
+    // Delegate tick method describing what to do when
+    // the character is not talking
+    tickNonTalking: () => PaintTask[] | undefined;
 }
 
 

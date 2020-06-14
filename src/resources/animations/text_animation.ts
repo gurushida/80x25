@@ -25,7 +25,7 @@ export class TextAnimation implements Animation {
     }
 
 
-    skipToNextTextSegment() {
+    skipToNextCue() {
         this.animation.skipToNextStep()
     }
 

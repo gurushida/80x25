@@ -1,14 +1,14 @@
-import { Animation, ImageAnimation, CanTalkAnimation } from "../../animations";
+import { Animation, ImageAnimation } from "../../animations";
 import { SPR_GUY_RIGHT_STILL_0, SPR_GUY_LEFT_STILL_0, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
   SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
-  SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1, SPR_GUY_LEFT_STILL_1 } from "../sprites";
+  SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1,
+  SPR_GUY_LEFT_STILL_1 } from "../sprites";
 import { WIDTH } from "../../screenbuffer";
-import { Cue } from "../../dialog";
-import { TextAnimation } from "./text_animation";
 import { GuyPosition } from "src/hotspots";
 import { ZIndex } from "../../zIndex";
 import { PaintTask } from "../../paintTask";
 import { WalkingDestination } from "../../actions";
+import { CanTalkAnimation } from "./talkingCharacter";
 
 export enum GUY_STATE {
     STILL,
@@ -18,16 +18,15 @@ export enum GUY_STATE {
 }
 
 
-export class GuyAnimation implements CanTalkAnimation {
+export class GuyAnimation extends CanTalkAnimation {
     
     private state: GUY_STATE = GUY_STATE.STILL;
     private currentAnimation: Animation;
-    private textAnimation: TextAnimation | undefined = undefined;
-
     private walkingDestination: WalkingDestination | undefined = undefined;
 
     constructor(private guyPosition: GuyPosition,
                 private minLeft = 0, private maxLeft = WIDTH - SPR_GUY_LEFT_STILL_0.width) {
+        super();
         this.standStill();
    }
 
@@ -53,32 +52,29 @@ export class GuyAnimation implements CanTalkAnimation {
     private standStill() {
         this.state = GUY_STATE.STILL;
         this.currentAnimation = this.getStillAnimation();
-        this.textAnimation = undefined;
+        this.shutUp();
     }
 
 
-    say(cues: Cue[]) {
+    getTalkAnchor() {
+        const talkAnchorLeft = Math.round(this.guyPosition.left + SPR_GUY_LEFT_STILL_0.width / 2);
+        const talkAnchorBottom = this.guyPosition.top - 1;
+        return { talkAnchorLeft, talkAnchorBottom };
+    }
+
+    startTalkingAnimation(): Animation {
+        this.state = GUY_STATE.TALKING;
         this.currentAnimation = this.guyPosition.lookToTheRight
           ? this.getTalkingRightAnimation()
           : this.getTalkingLeftAnimation();
-        this.state = GUY_STATE.TALKING;
-        const talkAnchorLeft = Math.round(this.guyPosition.left + SPR_GUY_LEFT_STILL_0.width / 2);
-        const talkAnchorBottom = this.guyPosition.top - 1;
-        this.textAnimation = new TextAnimation(cues, talkAnchorLeft, talkAnchorBottom);
+        return this.currentAnimation;
     }
 
-    tick(): PaintTask[] | undefined {
-        if (this.state === GUY_STATE.TALKING) {
-            const tasks = this.textAnimation.tick();
-            if (tasks) {
-                // Still talking
-                return [...tasks, ...this.currentAnimation.tick()];
-            }
-            // If the guy is done talking, go back to standing still
-            this.standStill();
-            return this.currentAnimation.tick();
-        }
+    stopTalkingAnimation() {
+        this.standStill();
+    }
 
+    tickNonTalking(): PaintTask[] | undefined {
         if (this.state === GUY_STATE.STILL) {
             return this.currentAnimation.tick();
         }
@@ -110,8 +106,8 @@ export class GuyAnimation implements CanTalkAnimation {
             return;
         }
 
+        this.shutUp();
         let x = dst.pos.left;
-        this.textAnimation = undefined;
         if (x < this.minLeft) {
             x = this.minLeft;
         }
@@ -277,10 +273,4 @@ export class GuyAnimation implements CanTalkAnimation {
             ]);
     }
 
-
-    skipToNextCue() {
-        if (this.textAnimation) {
-            this.textAnimation.skipToNextTextSegment();
-        }
-    }
 }

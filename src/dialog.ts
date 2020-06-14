@@ -1,4 +1,4 @@
-import { CanTalkAnimation } from "./animations";
+import { ICanTalkAnimation } from "./animations";
 
 // A cue corresponds to lines meant to be displayed
 // at the same, stacked above each other like this:
@@ -11,7 +11,7 @@ export type Cue = string[];
 
 // A dialog part is a piece of text pronounced by the same character
 export interface DialogPart {
-    character: CanTalkAnimation;
+    character: ICanTalkAnimation;
     content: Cue[];
 }
 
