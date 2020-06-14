@@ -1,7 +1,7 @@
 import { Animation, PaintTask, ImageAnimation } from "../../animations";
-import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, guy_left_walking2,
-  guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3,
-  guy_left_talking0, guy_left_talking1, guy_right_talking0, guy_right_talking1 } from "../sprites";
+import { SPR_GUY_RIGHT_STILL, SPR_GUY_LEFT_STILL, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
+  SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
+  SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1 } from "../sprites";
 import { WIDTH } from "../../screenbuffer";
 import { TextSegment } from "../../dialog";
 import { TextAnimation } from "./text_animation";
@@ -24,7 +24,7 @@ export class GuyAnimation implements Animation {
     private walkingXDestination = -1;
 
     constructor(private guyPosition: GuyPosition,
-                private minLeft = 0, private maxLeft = WIDTH - guy_left_still.width) {
+                private minLeft = 0, private maxLeft = WIDTH - SPR_GUY_LEFT_STILL.width) {
         this.standStill();
    }
 
@@ -33,7 +33,7 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: this.guyPosition.lookToTheRight ? guy_right_still : guy_left_still,
+                    image: this.guyPosition.lookToTheRight ? SPR_GUY_RIGHT_STILL : SPR_GUY_LEFT_STILL,
                     durationInTicks: 4,
                     offsetX: 0,
                     offsetY: 0,
@@ -53,7 +53,7 @@ export class GuyAnimation implements Animation {
           ? this.getTalkingRightAnimation()
           : this.getTalkingLeftAnimation();
         this.state = GUY_STATE.TALKING;
-        const talkAnchorLeft = Math.round(this.guyPosition.left + guy_left_still.width / 2);
+        const talkAnchorLeft = Math.round(this.guyPosition.left + SPR_GUY_LEFT_STILL.width / 2);
         const talkAnchorBottom = this.guyPosition.top - 1;
         this.textAnimation = new TextAnimation(segments, talkAnchorLeft, talkAnchorBottom);
     }
@@ -124,31 +124,31 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: guy_left_still,
+                    image: SPR_GUY_LEFT_STILL,
                     durationInTicks: 3,
                     offsetX: -1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_left_walking0,
+                    image: SPR_GUY_LEFT_WALKING_0,
                     durationInTicks: 3,
                     offsetX: -1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_left_walking1,
+                    image: SPR_GUY_LEFT_WALKING_1,
                     durationInTicks: 3,
                     offsetX: -1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_left_walking2,
+                    image: SPR_GUY_LEFT_WALKING_2,
                     durationInTicks: 3,
                     offsetX: -1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_left_walking3,
+                    image: SPR_GUY_LEFT_WALKING_3,
                     durationInTicks: 3,
                     offsetX: -1,
                     offsetY: 0,
@@ -168,31 +168,31 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: guy_right_still,
+                    image: SPR_GUY_RIGHT_STILL,
                     durationInTicks: 3,
                     offsetX: 1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_right_walking0,
+                    image: SPR_GUY_RIGHT_WALKING_0,
                     durationInTicks: 3,
                     offsetX: 1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_right_walking1,
+                    image: SPR_GUY_RIGHT_WALKING_1,
                     durationInTicks: 3,
                     offsetX: 1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_right_walking2,
+                    image: SPR_GUY_RIGHT_WALKING_2,
                     durationInTicks: 3,
                     offsetX: 1,
                     offsetY: 0,
                 },
                 {
-                    image: guy_right_walking3,
+                    image: SPR_GUY_RIGHT_WALKING_3,
                     durationInTicks: 3,
                     offsetX: 1,
                     offsetY: 0,
@@ -212,19 +212,19 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: guy_left_talking0,
+                    image: SPR_GUY_LEFT_TALKING_0,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
                 },
                 {
-                    image: guy_left_talking1,
+                    image: SPR_GUY_LEFT_TALKING_1,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
                 },
                 {
-                    image: guy_left_still,
+                    image: SPR_GUY_LEFT_STILL,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
@@ -237,19 +237,19 @@ export class GuyAnimation implements Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: guy_right_talking0,
+                    image: SPR_GUY_RIGHT_TALKING_0,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
                 },
                 {
-                    image: guy_right_talking1,
+                    image: SPR_GUY_RIGHT_TALKING_1,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
                 },
                 {
-                    image: guy_right_still,
+                    image: SPR_GUY_RIGHT_STILL,
                     durationInTicks: 7,
                     offsetX: 0,
                     offsetY: 0,
