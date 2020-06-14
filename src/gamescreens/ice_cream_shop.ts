@@ -2,7 +2,7 @@ import { getPaintTaskZ, AnimationZ, SceneEvent } from "../scene";
 import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition } from "../hotspots";
 import { dog } from "../animation/animations";
 import { Action } from "../actions";
-import { GameScreen } from "./gameScreen";
+import { GameScreen } from "../gameScreen";
 import { ice_cream_shop } from "../background";
 
 const fullFilter = createFullHotspot(Hotspot.ICE_CREAM_SHOP);

@@ -1,8 +1,8 @@
-import { Scene, PaintTaskZ, AnimationZ, SceneListener } from "../scene";
-import { HotspotMap, GuyPosition } from "../hotspots";
-import { GuyAnimation } from "../animation/guy_animation";
-import { Action } from "../actions";
-import { TextSegment } from "src/dialog";
+import { Scene, PaintTaskZ, AnimationZ, SceneListener } from "./scene";
+import { HotspotMap, GuyPosition } from "./hotspots";
+import { GuyAnimation } from "./animation/guy_animation";
+import { Action } from "./actions";
+import { TextSegment } from "./dialog";
 
 export class GameScreen {
 
