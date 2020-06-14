@@ -1,5 +1,5 @@
 import { Animation, AnimationStep, ImageAnimation } from "../../animations";
-import { TextSegment, getDurationInTicks } from "../../dialog";
+import { Cue, getDurationInTicks } from "../../dialog";
 import { center } from "../../utils";
 import { WIDTH, HEIGHT } from "../../screenbuffer";
 import { ZIndex } from "../../zIndex";
@@ -10,15 +10,15 @@ export class TextAnimation implements Animation {
     private animation: ImageAnimation;
 
     /**
-     * @param textSegments The segments to say
+     * @param cues The cues to say
      * @param anchorLeft   The left and bottom positions of the text box anchor, which
      * @param anchorBottom is the bottom center of the bounding box
      */
-    constructor(textSegments: TextSegment[], anchorLeft: number, anchorBottom: number) {
-        const { width, height } = this.getBoundingBox(textSegments);
+    constructor(cues: Cue[], anchorLeft: number, anchorBottom: number) {
+        const { width, height } = this.getBoundingBox(cues);
         const steps: AnimationStep[] = [];
-        for (const segment of textSegments) {
-            steps.push(this.createStep(segment, width, height))
+        for (const cue of cues) {
+            steps.push(this.createStep(cue, width, height))
         }
 
         this.animation = this.createAnimation(steps, anchorLeft, anchorBottom);
@@ -41,16 +41,16 @@ export class TextAnimation implements Animation {
 
     /**
      * Returns the dimension of the smallest box that can contain each
-     * line of each given segment.
+     * line of each given cue.
      */
-    private getBoundingBox(textSegments: TextSegment[]): { width: number, height: number } {
+    private getBoundingBox(cues: Cue[]): { width: number, height: number } {
         let width = 0;
         let height = 0;
-        for (const segment of textSegments) {
-            if (segment.length > height) {
-                height = segment.length;
+        for (const cue of cues) {
+            if (cue.length > height) {
+                height = cue.length;
             }
-            for (const line of segment) {
+            for (const line of cue) {
                 const length = this.normalizeLine(line).length;
                 if (length > width) {
                     width = length;
@@ -85,17 +85,17 @@ export class TextAnimation implements Animation {
     }
 
 
-    private createStep(segment: TextSegment, boxWidth: number, boxHeight: number): AnimationStep {
+    private createStep(cue: Cue, boxWidth: number, boxHeight: number): AnimationStep {
         const rows: string [] = [];
         const mask: string [] = [];
 
-        const emptyLines = boxHeight - segment.length;
+        const emptyLines = boxHeight - cue.length;
         for (let i = 0 ; i < emptyLines ; i++) {
             rows.push(' '.repeat(boxWidth));
             mask.push(' '.repeat(boxWidth));
         }
 
-        for (const line of segment) {
+        for (const line of cue) {
             const normalized = this.normalizeLine(line);
             rows.push(center(normalized, boxWidth));
             mask.push(center('#'.repeat(normalized.length), boxWidth));
@@ -107,7 +107,7 @@ export class TextAnimation implements Animation {
                 rows,
                 mask,
             },
-            durationInTicks: getDurationInTicks(segment),
+            durationInTicks: getDurationInTicks(cue),
             offsetX: 0,
             offsetY: 0,
             hotspotFilter: undefined

@@ -3,7 +3,7 @@ import { SPR_GUY_RIGHT_STILL_0, SPR_GUY_LEFT_STILL_0, SPR_GUY_LEFT_WALKING_0, SP
   SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
   SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1, SPR_GUY_LEFT_STILL_1 } from "../sprites";
 import { WIDTH } from "../../screenbuffer";
-import { TextSegment } from "../../dialog";
+import { Cue } from "../../dialog";
 import { TextAnimation } from "./text_animation";
 import { GuyPosition } from "src/hotspots";
 import { ZIndex } from "../../zIndex";
@@ -57,14 +57,14 @@ export class GuyAnimation implements Animation {
     }
 
 
-    say(segments: TextSegment[]) {
+    say(cues: Cue[]) {
         this.currentAnimation = this.guyPosition.lookToTheRight
           ? this.getTalkingRightAnimation()
           : this.getTalkingLeftAnimation();
         this.state = GUY_STATE.TALKING;
         const talkAnchorLeft = Math.round(this.guyPosition.left + SPR_GUY_LEFT_STILL_0.width / 2);
         const talkAnchorBottom = this.guyPosition.top - 1;
-        this.textAnimation = new TextAnimation(segments, talkAnchorLeft, talkAnchorBottom);
+        this.textAnimation = new TextAnimation(cues, talkAnchorLeft, talkAnchorBottom);
     }
 
     tick(): PaintTask[] | undefined {

@@ -2,7 +2,7 @@ import { SceneEngine, SceneListener } from "./sceneEngine";
 import { HotspotMap, GuyPosition } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy_animation";
 import { Action } from "./actions";
-import { TextSegment } from "./dialog";
+import { Cue } from "./dialog";
 import { Animation } from "./animations";
 import { PaintTask } from "./paintTask";
 import { Runnable } from "./runnable";
@@ -96,7 +96,7 @@ export class Scene {
         }
     }
 
-    say(textSegments: TextSegment[]) {
+    say(textSegments: Cue[]) {
         if (this.guyAnimation) {
             this.guyAnimation.say(textSegments);
         }
