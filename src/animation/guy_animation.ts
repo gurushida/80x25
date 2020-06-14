@@ -1,4 +1,4 @@
-import { Animation, PaintTask, ImageAnimation } from "./animationsUtils";
+import { Animation, PaintTask, ImageAnimation } from "../animations";
 import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, guy_left_walking2,
   guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3,
   guy_left_talking0, guy_left_talking1, guy_right_talking0, guy_right_talking1 } from "../resources/sprites";

@@ -1,5 +1,5 @@
 import { OPAQUE } from "./imagesUtils";
-import { PaintTask } from "./animation/animationsUtils";
+import { PaintTask } from "./animations";
 import { HotspotScreenBuffer, Hotspot } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";

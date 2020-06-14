@@ -1,4 +1,4 @@
-import { Animation, PaintTask } from "./animation/animationsUtils";
+import { Animation, PaintTask } from "./animations";
 import { ScreenBuffer, HEIGHT } from "./screenbuffer";
 import { AsciiImage } from "./imagesUtils";
 import { HotspotFilter, Hotspot, HotspotMap } from "./hotspots";

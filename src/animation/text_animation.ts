@@ -1,4 +1,4 @@
-import { Animation, PaintTask, AnimationStep, ImageAnimation } from "./animationsUtils";
+import { Animation, PaintTask, AnimationStep, ImageAnimation } from "../animations";
 import { TextSegment, getDurationInTicks } from "../dialog";
 import { center } from "../utils";
 import { WIDTH, HEIGHT } from "../screenbuffer";
