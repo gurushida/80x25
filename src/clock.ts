@@ -26,7 +26,7 @@ export class Clock {
 
     play() {
         if (!this.timerId) {
-            this.timerId = setInterval(() => this.tick(), 20);
+            this.timerId = global.setInterval(() => this.tick(), 20);
         }
     }
 
