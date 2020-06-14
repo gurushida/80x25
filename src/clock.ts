@@ -1,8 +1,9 @@
 import { UI } from "./ui";
+import { Runnable } from "./runnable";
 
 
 interface ScheduledTask {
-    runnable: () => void;
+    runnable: Runnable;
     when: number;
     rescheduleDelay: number;
 }
@@ -22,11 +23,13 @@ export class Clock {
         this.ui = ui;
     }
 
+
     play() {
         if (!this.timerId) {
             this.timerId = setInterval(() => this.tick(), 20);
         }
     }
+
 
     pause() {
         if (this.timerId) {
@@ -34,6 +37,7 @@ export class Clock {
             this.timerId = undefined;
         }
     }
+
 
     tick() {
         this.currentTick = this.currentTick + 1;
@@ -51,7 +55,8 @@ export class Clock {
         this.scheduledTasks = this.scheduledTasks.filter(task => task.when > this.currentTick);
     }
 
-    repeat(delayBetweenCallsInTicks: number, runnable: () => void) {
+
+    repeat(delayBetweenCallsInTicks: number, runnable: Runnable) {
         const scheduledTask: ScheduledTask = {
             runnable,
             when: this.currentTick + 1 + delayBetweenCallsInTicks,
@@ -60,13 +65,19 @@ export class Clock {
         this.scheduledTasks.push(scheduledTask);
     }
 
-    scheduleOnce(delayBeforeExecution: number, runnable: () => void) {
+
+    scheduleOnce(delayBeforeExecution: number, runnable: Runnable) {
         const scheduledTask: ScheduledTask = {
             runnable,
             when: this.currentTick + 1 + delayBeforeExecution,
             rescheduleDelay: -1,
         };
         this.scheduledTasks.push(scheduledTask);
+    }
+
+
+    defer(runnable: Runnable) {
+        this.scheduleOnce(0, runnable);
     }
 
 }

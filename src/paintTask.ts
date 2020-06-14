@@ -11,6 +11,10 @@ export interface PaintTask {
     zIndex: ZIndex;
     image: AsciiImage;
     hotspotFilter?: HotspotFilter;
+
+    // If specified, this runnable will be scheduled for execution on the
+    // next clock tick
+    runnable?: () => void;
 }
 
 

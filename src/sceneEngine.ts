@@ -1,14 +1,17 @@
 import { Animation } from "./animations";
 import { ScreenBuffer, HEIGHT } from "./screenbuffer";
-import { Hotspot, HotspotMap } from "./hotspots";
+import { Hotspot, HotspotMap, GuyPosition } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
+import { Clock } from "./clock";
 
 export interface SceneEvent {
     x: number;
     y: number;
     hotspot: Hotspot;
+    // Where the guy should be to interact with the hotspot
+    guyPosition?: GuyPosition;
     inventoryObject: InventoryObject | undefined;
     action: Action | undefined;
 }
@@ -31,7 +34,7 @@ export class SceneEngine {
     private y: number;
     private hotspot: Hotspot | undefined;
 
-    constructor(buffer: ScreenBuffer) {
+    constructor(private clock: Clock, buffer: ScreenBuffer) {
         this.buffer = buffer;
         this.staticImages = [];
         this.animations = [];
@@ -63,6 +66,9 @@ export class SceneEngine {
 
         paintTasks.sort((a, b) => a.zIndex - b.zIndex);
         for (const task of paintTasks) {
+            if (task.runnable) {
+                this.clock.defer(task.runnable);
+            }
             this.buffer.paint(task);
         }
 
@@ -228,11 +234,13 @@ export class SceneEngine {
             return;
         }
 
+        const info = this.hotspot && this.hotspotMap.get(this.hotspot);
         const event: SceneEvent = {
             action,
             x: this.x,
             y: this.y,
             hotspot: this.hotspot,
+            guyPosition: info && info.guyPositionForAction,
             inventoryObject: this.inventoryObject,
         }
         for (const listener of this.sceneListeners) {

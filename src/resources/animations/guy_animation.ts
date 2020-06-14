@@ -8,6 +8,7 @@ import { TextAnimation } from "./text_animation";
 import { GuyPosition } from "src/hotspots";
 import { ZIndex } from "../../zIndex";
 import { PaintTask } from "../../paintTask";
+import { WalkingDestination } from "../../actions";
 
 export enum GUY_STATE {
     STILL,
@@ -23,7 +24,7 @@ export class GuyAnimation implements Animation {
     private currentAnimation: Animation;
     private textAnimation: TextAnimation | undefined = undefined;
 
-    private walkingXDestination = -1;
+    private walkingDestination: WalkingDestination | undefined = undefined;
 
     constructor(private guyPosition: GuyPosition,
                 private minLeft = 0, private maxLeft = WIDTH - SPR_GUY_LEFT_STILL_0.width) {
@@ -83,10 +84,12 @@ export class GuyAnimation implements Animation {
         }
 
         if (this.state === GUY_STATE.WALKING_TO_THE_LEFT || this.state === GUY_STATE.WALKING_TO_THE_RIGHT) {
-            if ((this.currentAnimation as ImageAnimation).left === this.walkingXDestination) {
-                // If we have reach our destination, stop walking
+            if (this.guyPosition.left === this.walkingDestination.pos.left) {
+                // If we have reach our destination, adjust the guy's orientation and stop
+                this.guyPosition.lookToTheRight = this.walkingDestination.pos.lookToTheRight;
                 this.standStill();
-                return this.currentAnimation.tick();
+                const paintTask: PaintTask = this.currentAnimation.tick() [0];
+                return [{ ...paintTask, runnable: this.walkingDestination.then }];
             }
 
             // Keep walking
@@ -99,13 +102,15 @@ export class GuyAnimation implements Animation {
         return undefined;
     }
 
-    walkTo(x: number) {
-        if (x === -1) {
+    walkTo(dst: WalkingDestination | undefined) {
+        if (!dst) {
             // Stop walking
+            this.walkingDestination = undefined;
             this.standStill();
             return;
         }
 
+        let x = dst.pos.left;
         this.textAnimation = undefined;
         if (x < this.minLeft) {
             x = this.minLeft;
@@ -115,7 +120,14 @@ export class GuyAnimation implements Animation {
             x = this.maxLeft;
         }
 
-        this.walkingXDestination = x;
+        this.walkingDestination = {
+            pos: {
+                left: x,
+                top: dst.pos.top,
+                lookToTheRight: dst.pos.lookToTheRight
+            },
+            then: dst.then
+        };
         const walkToLeft = x < this.guyPosition.left;
         if (walkToLeft && this.state !== GUY_STATE.WALKING_TO_THE_LEFT) {
             this.walkToLeft();

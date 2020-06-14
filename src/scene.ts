@@ -5,6 +5,7 @@ import { Action } from "./actions";
 import { TextSegment } from "./dialog";
 import { Animation } from "./animations";
 import { PaintTask } from "./paintTask";
+import { Runnable } from "./runnable";
 
 export class Scene {
 
@@ -74,9 +75,7 @@ export class Scene {
             }
 
             if (e.action === Action.WALK) {
-                if (this.guyAnimation) {
-                    this.guyAnimation.walkTo(e.x);
-                }
+                this.walkToPoint(e.x, e.y);
             }
 
             if (this.sceneListener) {
@@ -96,4 +95,27 @@ export class Scene {
             this.guyAnimation.say(textSegments);
         }
     }
+
+    walkTo(pos: GuyPosition, then: Runnable | undefined) {
+        if (this.guyAnimation) {
+            if (pos) {
+                this.guyAnimation.walkTo({ pos, then });
+            } else {
+                if (then) {
+                    then();
+                }
+            }
+        }
+    }
+
+    walkToPoint(x: number, y: number) {
+        const moveToRight = x > this.guyPosition.left;
+        const dst: GuyPosition = {
+            left: x,
+            top: y,
+            lookToTheRight: moveToRight
+        };
+        this.walkTo(dst, undefined);
+    }
+
 }

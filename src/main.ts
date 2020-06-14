@@ -10,7 +10,9 @@ export function debug(str: string) {
   ui.debug(str);
 }
 
-const sceneEngine = new SceneEngine(ui.buffer);
+const clock = new Clock(ui);
+
+const sceneEngine = new SceneEngine(clock, ui.buffer);
 
 /*const bankBackground = getPaintTaskZ(background.bank, 0, 0, 0, createFullHotspot(Hotspots.BANK));
 const boomBlasterAnimation: AnimationZ = { animation: boom_blaster, zIndex: 0};
@@ -45,7 +47,6 @@ ui.addKeyListener(['space', 'enter'], () => sceneEngine.fireSceneAction(Action.S
 ui.addKeyListener('m', () => sceneEngine.fireSceneAction(Action.SHOW_MAP));
 ui.addKeyListener('i', () => sceneEngine.fireSceneAction(Action.SHOW_INVENTORY));
 
-const clock = new Clock(ui);
 clock.repeat(0, () => {
   sceneEngine.tick();
   ui.render();

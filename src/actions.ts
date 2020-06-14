@@ -1,3 +1,6 @@
+import { GuyPosition } from "./hotspots";
+import { Runnable } from "./runnable";
+
 export enum Action {
   TALK = 'Talk to',
   USE = 'Use',
@@ -14,4 +17,7 @@ export enum Action {
   SKIP = 'Skip',
 }
 
-
+export interface WalkingDestination {
+  pos: GuyPosition;
+  then: Runnable | undefined;
+}

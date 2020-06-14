@@ -18,7 +18,15 @@ const iceCreamShopBackground: PaintTask = getPaintTask(BG_ICE_CREAM_SHOP, 0, 0, 
 const iceCreamShopHotspotMap = new HotspotMap();
 iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP, { description: 'ice cream shop', rightClickAction: Action.LOOK })
 iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP_DOOR, { description: 'Enter ice cream shop', isMovementHotspot: true })
-iceCreamShopHotspotMap.set(Hotspot.DOG, { description: 'dog', rightClickAction: Action.LOOK})
+iceCreamShopHotspotMap.set(Hotspot.DOG, {
+    description: 'dog',
+    rightClickAction: Action.LOOK,
+    guyPositionForAction: {
+        left: 43,
+        top: 14,
+        lookToTheRight: true
+    }
+});
 const initialGuyPosition: GuyPosition = {
     left: 8,
     top: 14,
@@ -34,7 +42,9 @@ const sceneListener = (sceneEvent: SceneEvent) => {
     }
     if (sceneEvent.hotspot === Hotspot.DOG) {
         if (sceneEvent.action === Action.LOOK) {
-            iceCreamShop.say([['It\'s a good dog']]);
+            iceCreamShop.walkTo(sceneEvent.guyPosition, () => {
+                iceCreamShop.say([['It\'s a good dog']]);
+            });
         } else if (sceneEvent.action === Action.TAKE) {
             iceCreamShop.say([['I\'m not sure he would agree']]);
         } else if (sceneEvent.action === Action.USE) {
