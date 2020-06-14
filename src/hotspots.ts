@@ -103,6 +103,13 @@ export class HotspotScreenBuffer {
 }
 
 
+export interface GuyPosition {
+    left: number;
+    top: number;
+    lookToTheRight: boolean
+}
+
+
 export interface HotspotInfo {
     description: string;
 
@@ -114,4 +121,8 @@ export interface HotspotInfo {
     // Such hotspots cannot be combined with action and their description
     // is supposed to be fully descriptive like 'Enter bank'
     isMovementHotspot?: boolean;
+
+    // When a hotspot is an object or character that the guy needs to come
+    // close to to interact with, this represents where the guy should be
+    guyPositionForAction?: GuyPosition;
 }
