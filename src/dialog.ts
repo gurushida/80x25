@@ -9,6 +9,15 @@ export enum TalkingCharacter {
 }
 
 
+/**
+ * This enum identifies things to be triggered during a dialog,
+ * like for instance learning about a new location that will
+ * appear on the map.
+ */
+export enum DialogTrigger {
+}
+
+
 // A cue corresponds to lines meant to be displayed
 // at the same, stacked above each other like this:
 //
@@ -35,6 +44,10 @@ export interface DialogOption {
     // The dialog parts that ensue. They may include multiple
     // characters, even the guy himself
     dialogParts: DialogPart[];
+
+    // The trigger, if any, that will be activated when this piece of
+    // dialog is played
+    trigger?: DialogTrigger;
 }
 
 
@@ -50,7 +63,7 @@ export interface DialogTransition {
 
     // The dialog state to reach when this dialog option
     // has been played through, or undefined if the dialog is over.
-    stateId: number | undefined;
+    stateId: string | undefined;
 }
 
 /**
@@ -60,6 +73,11 @@ export interface DialogTransition {
  * be automatically selected.
  */
 export interface DialogState {
+    // An id uniquely identifying this state. We use such ids
+    // instead of just state indices because it makes it harder
+    // to accidentally screw up a dialog definition
+    stateId: string;
+
     transitions: DialogTransition[];
 }
 
@@ -67,9 +85,16 @@ export interface DialogState {
 /**
  * The representation of a dialog between the guy and one or many
  * characters. The guy is always the one starting and the initial
- * state is always state 0.
+ * state is always the first one in the array.
  */
 export interface Dialog {
+    // The characters taking part in this dialog,
+    // to double-check that no transition is involving
+    // by accident a character that is not supposed to
+    // be part of this dialog.
+    characters: TalkingCharacter[];
+
+    // The states of this dialog
     states: DialogState[];
 }
 
