@@ -4,6 +4,7 @@ import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, 
 import { WIDTH } from "../screenbuffer";
 import { TextSegment } from "../dialog";
 import { TextAnimation } from "./text_animation";
+import { GuyPosition } from "src/hotspots";
 
 export enum GUY_STATE {
     STILL,
@@ -21,18 +22,17 @@ export class GuyAnimation implements Animation {
 
     private walkingXDestination = -1;
 
-    constructor(private guy_left: number, private guy_top: number,
-                private guy_look_to_the_right: boolean,
+    constructor(private guyPosition: GuyPosition,
                 private minLeft = 0, private maxLeft = WIDTH - guy_left_still.width) {
         this.standStill();
    }
 
 
     private getStillAnimation(): Animation {
-        return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
-                    image: this.guy_look_to_the_right ? guy_right_still : guy_left_still,
+                    image: this.guyPosition.lookToTheRight ? guy_right_still : guy_left_still,
                     durationInTicks: 4,
                     offsetX: 0,
                     offsetY: 0,
@@ -48,11 +48,13 @@ export class GuyAnimation implements Animation {
 
 
     say(segments: TextSegment[]) {
-        this.currentAnimation = this.guy_look_to_the_right
+        this.currentAnimation = this.guyPosition.lookToTheRight
           ? this.getTalkingRightAnimation()
           : this.getTalkingLeftAnimation();
         this.state = GUY_STATE.TALKING;
-        this.textAnimation = new TextAnimation(segments, this.guy_left + guy_left_still.width / 2, this.guy_top - 1);
+        const talkAnchorLeft = Math.round(this.guyPosition.left + guy_left_still.width / 2);
+        const talkAnchorBottom = this.guyPosition.top - 1;
+        this.textAnimation = new TextAnimation(segments, talkAnchorLeft, talkAnchorBottom);
     }
 
     tick(): PaintTask[] | undefined {
@@ -80,8 +82,8 @@ export class GuyAnimation implements Animation {
 
             // Keep walking
             const paintTasks = this.currentAnimation.tick();
-            this.guy_left = paintTasks[0].left;
-            this.guy_top = paintTasks[0].top;
+            this.guyPosition.left = paintTasks[0].left;
+            this.guyPosition.top = paintTasks[0].top;
             return paintTasks;
         }
 
@@ -105,7 +107,7 @@ export class GuyAnimation implements Animation {
         }
 
         this.walkingXDestination = x;
-        const walkToLeft = x < this.guy_left;
+        const walkToLeft = x < this.guyPosition.left;
         if (walkToLeft && this.state !== GUY_STATE.WALKING_TO_THE_LEFT) {
             this.walkToLeft();
             return;
@@ -118,7 +120,7 @@ export class GuyAnimation implements Animation {
     }
 
     private getWalkLeftAnimation(): Animation {
-        return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
                     image: guy_left_still,
@@ -156,13 +158,13 @@ export class GuyAnimation implements Animation {
 
     walkToLeft() {
         this.state = GUY_STATE.WALKING_TO_THE_LEFT;
-        this.guy_look_to_the_right = false;
+        this.guyPosition.lookToTheRight = false;
         this.currentAnimation = this.getWalkLeftAnimation();
     }
 
 
     private getWalkRightAnimation(): Animation {
-        return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
                     image: guy_right_still,
@@ -200,13 +202,13 @@ export class GuyAnimation implements Animation {
 
     walkToRight() {
         this.state = GUY_STATE.WALKING_TO_THE_RIGHT;
-        this.guy_look_to_the_right = true;
+        this.guyPosition.lookToTheRight = true;
         this.currentAnimation = this.getWalkRightAnimation();
     }
 
 
     private getTalkingLeftAnimation(): Animation {
-        return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
                     image: guy_left_talking0,
@@ -231,7 +233,7 @@ export class GuyAnimation implements Animation {
 
 
     private getTalkingRightAnimation(): Animation {
-        return new ImageAnimation(this.guy_left, this.guy_top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
             [
                 {
                     image: guy_right_talking0,

@@ -1,5 +1,5 @@
 import { getPaintTaskZ, AnimationZ, SceneEvent } from "../scene";
-import { createFullHotspot, Hotspot, HotspotMap, combine } from "../hotspots";
+import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition } from "../hotspots";
 import { dog } from "../animation/animations";
 import { Action } from "../actions";
 import { GameScreen } from "./gameScreen";
@@ -18,9 +18,13 @@ const iceCreamShopHotspotMap = new HotspotMap();
 iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP, { description: 'ice cream shop', rightClickAction: Action.LOOK })
 iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP_DOOR, { description: 'Enter ice cream shop', isMovementHotspot: true })
 iceCreamShopHotspotMap.set(Hotspot.DOG, { description: 'dog', rightClickAction: Action.LOOK})
-
+const initialGuyPosition: GuyPosition = {
+    left: 8,
+    top: 14,
+    lookToTheRight: true
+};
 export const iceCreamShop = new GameScreen([ iceCreamShopBackground ], [ dogAnimation ], iceCreamShopHotspotMap,
-    true, 8, 14, true, 0);
+    true, initialGuyPosition, 0);
 
 const sceneListener = (sceneEvent: SceneEvent) => {
     if (sceneEvent.action === Action.CHANGE_SCREEN) {

@@ -1,5 +1,5 @@
 import { Scene, PaintTaskZ, AnimationZ, SceneListener } from "../scene";
-import { HotspotMap } from "../hotspots";
+import { HotspotMap, GuyPosition } from "../hotspots";
 import { GuyAnimation } from "../animation/guy_animation";
 import { Action } from "../actions";
 import { TextSegment } from "src/dialog";
@@ -11,8 +11,7 @@ export class GameScreen {
 
     constructor(private images: PaintTaskZ[],
                 private animations: AnimationZ[], private hotspotMap: HotspotMap | undefined,
-                private showActionBar: boolean, private guy_left = -1,
-                private guy_top = -1, private guy_look_to_the_right = true,
+                private showActionBar: boolean, private guyPosition: GuyPosition | undefined,
                 private guyZIndex = 0) {
     }
 
@@ -39,8 +38,8 @@ export class GameScreen {
         scene.setHotspotMap(this.hotspotMap);
         scene.setShowActionBar(this.showActionBar);
 
-        if (this.guy_left !== -1 && this.guy_top !== 1) {
-            this.guyAnimation = new GuyAnimation(this.guy_left, this.guy_top, this.guy_look_to_the_right);
+        if (this.guyPosition) {
+            this.guyAnimation = new GuyAnimation(this.guyPosition);
             scene.addAnimation({ animation: this.guyAnimation, zIndex: this.guyZIndex});
         } else {
             this.guyAnimation = undefined;
