@@ -57,6 +57,7 @@ function loadTextFile(filename: string): string[] {
   return content.split('\n');
 }
 
+
 export function loadSprite(filename: string):AsciiImage {
   const lines = loadTextFile(filename);
   let width = -1;
@@ -96,15 +97,3 @@ export function loadSprite(filename: string):AsciiImage {
   }
 }
 
-function reverse(s: string): string {
-  return s.split('').reverse().join('');
-}
-
-export function mirror(img: AsciiImage): AsciiImage {
-  return {
-    width: img.width,
-    height: img.height,
-    rows: img.rows.map(row => reverse(row)),
-    mask: img.mask.map(row => reverse(row)),
-  };
-}
