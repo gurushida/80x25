@@ -1,4 +1,4 @@
-import { Scene, PaintTaskZ, AnimationZ, SceneListener } from "./scene";
+import { SceneEngine, PaintTaskZ, AnimationZ, SceneListener } from "./sceneEngine";
 import { HotspotMap, GuyPosition } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy_animation";
 import { Action } from "./actions";
@@ -24,23 +24,23 @@ export class GameScreen {
     /**
      * Sets this game screen as the one currently rendered.
      */
-    show(scene: Scene) {
-        scene.reset();
+    show(sceneEngine: SceneEngine) {
+        sceneEngine.reset();
 
         for (const image of this.images) {
-            scene.addImage(image);
+            sceneEngine.addImage(image);
         }
 
         for (const animation of this.animations) {
-            scene.addAnimation(animation);
+            sceneEngine.addAnimation(animation);
         }
 
-        scene.setHotspotMap(this.hotspotMap);
-        scene.setShowActionBar(this.showActionBar);
+        sceneEngine.setHotspotMap(this.hotspotMap);
+        sceneEngine.setShowActionBar(this.showActionBar);
 
         if (this.guyPosition) {
             this.guyAnimation = new GuyAnimation(this.guyPosition);
-            scene.addAnimation({ animation: this.guyAnimation, zIndex: this.guyZIndex});
+            sceneEngine.addAnimation({ animation: this.guyAnimation, zIndex: this.guyZIndex});
         } else {
             this.guyAnimation = undefined;
         }
@@ -49,7 +49,7 @@ export class GameScreen {
         // or generic events like walking. The handling of
         // game screen specific events is delegated to the scene
         // listener field
-        scene.addSceneListener(e => {
+        sceneEngine.addSceneListener(e => {
             if (e.action === Action.QUIT) {
                 process.exit(0);
             }

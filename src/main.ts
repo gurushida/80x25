@@ -1,5 +1,5 @@
 import { UI } from './ui';
-import { Scene } from './scene';
+import { SceneEngine } from './sceneEngine';
 import { Clock } from './clock';
 import { Action } from './actions';
 import { iceCreamShop } from './resources/gamescreens/ice_cream_shop';
@@ -10,7 +10,7 @@ export function debug(str: string) {
   ui.debug(str);
 }
 
-const scene = new Scene(ui.buffer);
+const sceneEngine = new SceneEngine(ui.buffer);
 
 /*const bankBackground = getPaintTaskZ(background.bank, 0, 0, 0, createFullHotspot(Hotspots.BANK));
 const boomBlasterAnimation: AnimationZ = { animation: boom_blaster, zIndex: 0};
@@ -27,27 +27,27 @@ bankHotspotMap.set(Hotspots.BANK, {
 const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ], bankHotspotMap, true);
 */
 
-iceCreamShop.show(scene);
+iceCreamShop.show(sceneEngine);
 
 ui.render();
 
 ui.addMoveListener(e => {
   ui.setTitle(`${e.x},${e.y}`);
-  scene.setCurrentHotspot(e.x, e.y, undefined, e.hotspot);
+  sceneEngine.setCurrentHotspot(e.x, e.y, undefined, e.hotspot);
 });
 
 ui.addClickListener(e => {
-  scene.setCurrentHotspot(e.x, e.y, e.button, e.hotspot);
+  sceneEngine.setCurrentHotspot(e.x, e.y, e.button, e.hotspot);
 });
 
-ui.addKeyListener(['escape', 'q', 'C-c'], () => scene.fireSceneAction(Action.QUIT));
-ui.addKeyListener(['space', 'enter'], () => scene.fireSceneAction(Action.SKIP));
-ui.addKeyListener('m', () => scene.fireSceneAction(Action.SHOW_MAP));
-ui.addKeyListener('i', () => scene.fireSceneAction(Action.SHOW_INVENTORY));
+ui.addKeyListener(['escape', 'q', 'C-c'], () => sceneEngine.fireSceneAction(Action.QUIT));
+ui.addKeyListener(['space', 'enter'], () => sceneEngine.fireSceneAction(Action.SKIP));
+ui.addKeyListener('m', () => sceneEngine.fireSceneAction(Action.SHOW_MAP));
+ui.addKeyListener('i', () => sceneEngine.fireSceneAction(Action.SHOW_INVENTORY));
 
 const clock = new Clock(ui);
 clock.repeat(0, () => {
-  scene.tick();
+  sceneEngine.tick();
   ui.render();
 });
 

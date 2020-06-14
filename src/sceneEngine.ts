@@ -25,7 +25,7 @@ export interface AnimationZ {
     zIndex: number;
 }
 
-export class Scene {
+export class SceneEngine {
 
     private buffer: ScreenBuffer;
     private staticImages: PaintTaskZ[];

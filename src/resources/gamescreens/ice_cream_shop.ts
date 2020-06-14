@@ -1,4 +1,4 @@
-import { getPaintTaskZ, AnimationZ, SceneEvent } from "../../scene";
+import { getPaintTaskZ, AnimationZ, SceneEvent } from "../../sceneEngine";
 import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition } from "../../hotspots";
 import { ANIM_DOG } from "../animations/dog";
 import { Action } from "../../actions";
