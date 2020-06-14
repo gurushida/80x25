@@ -1,4 +1,4 @@
-import { OPAQUE } from "./imagesUtils";
+import { OPAQUE } from "./images";
 import { PaintTask } from "./animations";
 import { HotspotScreenBuffer, Hotspot } from "./hotspots";
 import { Action } from "./actions";

@@ -1,4 +1,4 @@
-import { AsciiImage } from "./imagesUtils";
+import { AsciiImage } from "./images";
 import { HotspotFilter } from "./hotspots";
 
 /**

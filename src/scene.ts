@@ -1,6 +1,6 @@
 import { Animation, PaintTask } from "./animations";
 import { ScreenBuffer, HEIGHT } from "./screenbuffer";
-import { AsciiImage } from "./imagesUtils";
+import { AsciiImage } from "./images";
 import { HotspotFilter, Hotspot, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";

@@ -1,4 +1,4 @@
-import { AsciiImage, OPAQUE } from "./imagesUtils";
+import { AsciiImage, OPAQUE } from "./images";
 import { WIDTH, HEIGHT } from "./screenbuffer";
 import { Action } from "./actions";
 

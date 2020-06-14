@@ -1,4 +1,4 @@
-import { loadSprite } from "../imagesUtils";
+import { loadSprite } from "../images";
 
 export const SPR_BOOM_BLASTER_0 = loadSprite('asciiart/sprites/boom_blaster0.txt');
 export const SPR_BOOM_BLASTER_1 = loadSprite('asciiart/sprites/boom_blaster1.txt');
