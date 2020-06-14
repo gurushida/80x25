@@ -1,4 +1,13 @@
-import { ICanTalkAnimation } from "./animations";
+
+/**
+ * This enum identifies each character that can be involved
+ * in a dialog.
+ */
+export enum TalkingCharacter {
+    GUY = 'GUY',
+    DOG = 'DOG',
+}
+
 
 // A cue corresponds to lines meant to be displayed
 // at the same, stacked above each other like this:
@@ -11,7 +20,7 @@ export type Cue = string[];
 
 // A dialog part is a piece of text pronounced by the same character
 export interface DialogPart {
-    character: ICanTalkAnimation;
+    character: TalkingCharacter;
     content: Cue[];
 }
 
