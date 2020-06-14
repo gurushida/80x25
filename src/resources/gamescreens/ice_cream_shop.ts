@@ -2,7 +2,7 @@ import { getPaintTaskZ, AnimationZ, SceneEvent } from "../../sceneEngine";
 import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition } from "../../hotspots";
 import { ANIM_DOG } from "../animations/dog";
 import { Action } from "../../actions";
-import { GameScreen } from "../../gameScreen";
+import { Scene } from "../../scene";
 import { BG_ICE_CREAM_SHOP } from "../background";
 
 const fullFilter = createFullHotspot(Hotspot.ICE_CREAM_SHOP);
@@ -23,7 +23,7 @@ const initialGuyPosition: GuyPosition = {
     top: 14,
     lookToTheRight: true
 };
-export const iceCreamShop = new GameScreen([ iceCreamShopBackground ], [ dogAnimation ], iceCreamShopHotspotMap,
+export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ dogAnimation ], iceCreamShopHotspotMap,
     true, initialGuyPosition, 0);
 
 const sceneListener = (sceneEvent: SceneEvent) => {

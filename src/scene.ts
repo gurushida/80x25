@@ -4,7 +4,7 @@ import { GuyAnimation } from "./resources/animations/guy_animation";
 import { Action } from "./actions";
 import { TextSegment } from "./dialog";
 
-export class GameScreen {
+export class Scene {
 
     private guyAnimation: GuyAnimation | undefined = undefined;
     private sceneListener: SceneListener | undefined;
