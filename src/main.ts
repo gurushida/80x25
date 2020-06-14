@@ -2,7 +2,7 @@ import { UI } from './ui';
 import { Scene } from './scene';
 import { Clock } from './clock';
 import { Action } from './actions';
-import { iceCreamShop } from './gamescreens/ice_cream_shop';
+import { iceCreamShop } from './resources/gamescreens/ice_cream_shop';
 
 const ui = new UI();
 
