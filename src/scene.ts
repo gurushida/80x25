@@ -1,17 +1,17 @@
-import { SceneEngine, PaintTaskZ, AnimationZ, SceneListener } from "./sceneEngine";
+import { SceneEngine, SceneListener } from "./sceneEngine";
 import { HotspotMap, GuyPosition } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy_animation";
 import { Action } from "./actions";
 import { TextSegment } from "./dialog";
-import { ZIndex } from "./zIndex";
+import { Animation, PaintTask } from "./animations";
 
 export class Scene {
 
     private guyAnimation: GuyAnimation | undefined = undefined;
     private sceneListener: SceneListener | undefined;
 
-    constructor(private images: PaintTaskZ[],
-                private animations: AnimationZ[], private hotspotMap: HotspotMap | undefined,
+    constructor(private images: PaintTask[],
+                private animations: Animation[], private hotspotMap: HotspotMap | undefined,
                 private showActionBar: boolean, private guyPosition: GuyPosition | undefined) {
     }
 
@@ -40,7 +40,7 @@ export class Scene {
 
         if (this.guyPosition) {
             this.guyAnimation = new GuyAnimation(this.guyPosition);
-            sceneEngine.addAnimation({ animation: this.guyAnimation, zIndex: ZIndex.GUY});
+            sceneEngine.addAnimation(this.guyAnimation);
         } else {
             this.guyAnimation = undefined;
         }

@@ -1,5 +1,7 @@
 import { AsciiImage } from "./images";
 import { HotspotFilter } from "./hotspots";
+import { ZIndex } from "./zIndex";
+
 
 /**
  * Defines something to paint and where to paint it.
@@ -7,6 +9,7 @@ import { HotspotFilter } from "./hotspots";
 export interface PaintTask {
     top: number;
     left: number;
+    zIndex: ZIndex;
     image: AsciiImage;
     hotspotFilter?: HotspotFilter;
 }
@@ -41,6 +44,7 @@ export class ImageAnimation implements Animation {
 
     left: number;
     top: number;
+    zIndex: ZIndex;
     steps: AnimationStep[];
     loop: boolean;
     currentStep: number;
@@ -48,9 +52,11 @@ export class ImageAnimation implements Animation {
     defaultHotspotFilter: HotspotFilter | undefined;
 
 
-    constructor(initialLeft: number, initialTop: number, loop: boolean, hotspotFilter: HotspotFilter | undefined, steps: AnimationStep[]) {
+    constructor(initialLeft: number, initialTop: number, zIndex: ZIndex, loop: boolean,
+                hotspotFilter: HotspotFilter | undefined, steps: AnimationStep[]) {
         this.left = initialLeft;
         this.top = initialTop;
+        this.zIndex = zIndex;
         this.steps = steps;
         this.loop = loop;
         this.currentStep = 0;
@@ -70,6 +76,7 @@ export class ImageAnimation implements Animation {
         const paintTask: PaintTask = {
             left: this.left,
             top: this.top,
+            zIndex: this.zIndex,
             image: this.steps[this.currentStep].image,
             hotspotFilter: this.steps[this.currentStep].hotspotFilter
               ? this.steps[this.currentStep].hotspotFilter

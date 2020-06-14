@@ -4,7 +4,6 @@ import { AsciiImage } from "./images";
 import { HotspotFilter, Hotspot, HotspotMap } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
-import { ZIndex } from "./zIndex";
 
 export interface SceneEvent {
     x: number;
@@ -16,21 +15,11 @@ export interface SceneEvent {
 
 export type SceneListener = (event: SceneEvent) => void;
 
-export interface PaintTaskZ {
-    task: PaintTask;
-    zIndex: ZIndex;
-}
-
-export interface AnimationZ {
-    animation: Animation;
-    zIndex: ZIndex;
-}
-
 export class SceneEngine {
 
     private buffer: ScreenBuffer;
-    private staticImages: PaintTaskZ[];
-    private animations: AnimationZ[];
+    private staticImages: PaintTask[];
+    private animations: Animation[];
     private showActionBar: boolean = false;
     private selectedAction: Action | undefined;
     private inventoryObject: InventoryObject | undefined;
@@ -61,19 +50,20 @@ export class SceneEngine {
 
     tick() {
         this.buffer.clear();
-        this.staticImages.sort((a, b) => a.zIndex - b.zIndex);
-        this.animations.sort((a, b) => a.zIndex - b.zIndex);
-        for (const task of this.staticImages) {
-            this.buffer.paint(task.task);
-        }
+        const paintTasks: PaintTask[] = [ ...this.staticImages ];
 
         for (const animation of this.animations) {
-            const tasks = animation.animation.tick();
+            const tasks = animation.tick();
             if (tasks) {
                 for (const task of tasks) {
-                    this.buffer.paint(task);
+                    paintTasks.push(task);
                 }
             }
+        }
+
+        paintTasks.sort((a, b) => a.zIndex - b.zIndex);
+        for (const task of paintTasks) {
+            this.buffer.paint(task);
         }
 
         if (this.setShowActionBar) {
@@ -198,22 +188,22 @@ export class SceneEngine {
         this.fireSceneAction(Action.SHOW_INVENTORY);
     }
 
-    addImage(task: PaintTaskZ) {
+    addImage(task: PaintTask) {
         this.staticImages.push(task);
     }
 
-    removeImage(task: PaintTaskZ) {
+    removeImage(task: PaintTask) {
         const pos = this.staticImages.indexOf(task);
         if (pos !== - 1) {
             this.staticImages.splice(pos, 1);
         }
     }
 
-    addAnimation(animation: AnimationZ) {
+    addAnimation(animation: Animation) {
         this.animations.push(animation);
     }
 
-    removeAnimation(animation: AnimationZ) {
+    removeAnimation(animation: Animation) {
         const pos = this.animations.indexOf(animation);
         if (pos !== - 1) {
             this.animations.splice(pos, 1);
@@ -253,12 +243,9 @@ export class SceneEngine {
 }
 
 
-export function getPaintTaskZ(image: AsciiImage, left: number, top: number, zIndex: number,
-                              hotspotFilter: HotspotFilter | undefined): PaintTaskZ {
+export function getPaintTask(image: AsciiImage, left: number, top: number, zIndex: number,
+                              hotspotFilter: HotspotFilter | undefined): PaintTask {
     return {
-        zIndex,
-        task: {
-            left, top, image, hotspotFilter
-        }
+        left, top, zIndex,image, hotspotFilter
     };
 }

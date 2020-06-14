@@ -1,10 +1,11 @@
 import { ImageAnimation } from "../../animations";
 import { SPR_DOG_0, SPR_DOG_1 } from "../sprites";
 import { createMaskHotspot, Hotspot } from "../../hotspots";
+import { ZIndex } from "../../zIndex";
 
 const DOG_HOTSPOT = createMaskHotspot(SPR_DOG_0, Hotspot.DOG);
 
-export const ANIM_DOG = new ImageAnimation(50, 17, true, DOG_HOTSPOT,
+export const ANIM_DOG = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, DOG_HOTSPOT,
     [
         {
             image: SPR_DOG_0,

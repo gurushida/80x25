@@ -7,4 +7,10 @@ export enum ZIndex {
 
     // Where to draw the guy
     GUY = 0,
+
+    // Thing that must be rendered in front of the guy
+    FRONT = 10,
+
+    // Text should always be rendered on top of everything
+    TEXT = 100,
 }

@@ -1,4 +1,4 @@
-import { getPaintTaskZ, AnimationZ, SceneEvent } from "../../sceneEngine";
+import { SceneEvent, getPaintTask } from "../../sceneEngine";
 import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition } from "../../hotspots";
 import { ANIM_DOG } from "../animations/dog";
 import { Action } from "../../actions";
@@ -13,8 +13,7 @@ const doorFilter = (x: number, y: number) => {
     }
     return Hotspot.NONE;
 };
-const iceCreamShopBackground = getPaintTaskZ(BG_ICE_CREAM_SHOP, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
-const dogAnimation: AnimationZ = { animation: ANIM_DOG, zIndex: ZIndex.BEHIND_GUY };
+const iceCreamShopBackground = getPaintTask(BG_ICE_CREAM_SHOP, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
 const iceCreamShopHotspotMap = new HotspotMap();
 iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP, { description: 'ice cream shop', rightClickAction: Action.LOOK })
 iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP_DOOR, { description: 'Enter ice cream shop', isMovementHotspot: true })
@@ -24,7 +23,7 @@ const initialGuyPosition: GuyPosition = {
     top: 14,
     lookToTheRight: true
 };
-export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ dogAnimation ], iceCreamShopHotspotMap,
+export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ ANIM_DOG ], iceCreamShopHotspotMap,
     true, initialGuyPosition);
 
 const sceneListener = (sceneEvent: SceneEvent) => {

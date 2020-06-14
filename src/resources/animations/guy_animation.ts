@@ -6,6 +6,7 @@ import { WIDTH } from "../../screenbuffer";
 import { TextSegment } from "../../dialog";
 import { TextAnimation } from "./text_animation";
 import { GuyPosition } from "src/hotspots";
+import { ZIndex } from "../../zIndex";
 
 export enum GUY_STATE {
     STILL,
@@ -30,7 +31,7 @@ export class GuyAnimation implements Animation {
 
 
     private getStillAnimation(): Animation {
-        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
             [
                 {
                     image: this.guyPosition.lookToTheRight ? SPR_GUY_RIGHT_STILL_0 : SPR_GUY_LEFT_STILL_0,
@@ -127,7 +128,7 @@ export class GuyAnimation implements Animation {
     }
 
     private getWalkLeftAnimation(): Animation {
-        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
             [
                 {
                     image: SPR_GUY_LEFT_STILL_0,
@@ -171,7 +172,7 @@ export class GuyAnimation implements Animation {
 
 
     private getWalkRightAnimation(): Animation {
-        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
             [
                 {
                     image: SPR_GUY_RIGHT_STILL_0,
@@ -215,7 +216,7 @@ export class GuyAnimation implements Animation {
 
 
     private getTalkingLeftAnimation(): Animation {
-        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
             [
                 {
                     image: SPR_GUY_LEFT_TALKING_0,
@@ -240,7 +241,7 @@ export class GuyAnimation implements Animation {
 
 
     private getTalkingRightAnimation(): Animation {
-        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, true, undefined,
+        return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
             [
                 {
                     image: SPR_GUY_RIGHT_TALKING_0,

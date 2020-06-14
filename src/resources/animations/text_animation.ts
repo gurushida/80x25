@@ -2,6 +2,7 @@ import { Animation, PaintTask, AnimationStep, ImageAnimation } from "../../anima
 import { TextSegment, getDurationInTicks } from "../../dialog";
 import { center } from "../../utils";
 import { WIDTH, HEIGHT } from "../../screenbuffer";
+import { ZIndex } from "../../zIndex";
 
 export class TextAnimation implements Animation {
 
@@ -79,7 +80,7 @@ export class TextAnimation implements Animation {
             top = HEIGHT - 2 - height;
         }
 
-        return new ImageAnimation(left, top, false, undefined, steps);
+        return new ImageAnimation(left, top, ZIndex.TEXT, false, undefined, steps);
     }
 
 
