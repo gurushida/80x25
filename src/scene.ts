@@ -75,7 +75,13 @@ export class Scene {
             }
 
             if (e.action === Action.WALK) {
-                this.walkToPoint(e.x, e.y);
+                if (e.guyPosition) {
+                    // If the user has clicked on a hotspot with
+                    // a specified position for the guy, let's use it
+                    this.walkTo(e.guyPosition, undefined);
+                } else {
+                    this.walkToPoint(e.x, e.y);
+                }
             }
 
             if (this.sceneListener) {
