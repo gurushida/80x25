@@ -1,7 +1,7 @@
 import { ICanTalkAnimation, Animation } from "../../animations";
 import { Cue } from "../../dialog";
 import { PaintTask } from "../../paintTask";
-import { TextAnimation } from "./text_animation";
+import { TextAnimation } from "./text";
 
 export abstract class CanTalkAnimation implements ICanTalkAnimation {
 

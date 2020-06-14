@@ -1,5 +1,5 @@
 import * as blessed from 'blessed';
-import { WIDTH, HEIGHT, ScreenBuffer } from './screenbuffer';
+import { WIDTH, HEIGHT, ScreenBuffer } from './screenBuffer';
 import { HotspotScreenBuffer, Hotspot } from './hotspots';
 
 export interface MouseEvent {

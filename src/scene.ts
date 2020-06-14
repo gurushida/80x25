@@ -1,6 +1,6 @@
 import { SceneEngine, SceneListener } from "./sceneEngine";
 import { HotspotMap, GuyPosition } from "./hotspots";
-import { GuyAnimation } from "./resources/animations/guy_animation";
+import { GuyAnimation } from "./resources/animations/guy";
 import { Action } from "./actions";
 import { Cue } from "./dialog";
 import { Animation } from "./animations";
