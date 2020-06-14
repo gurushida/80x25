@@ -4,6 +4,7 @@ import { Clock } from './clock';
 import { Action } from './actions';
 import { iceCreamShop } from './resources/scenes/iceCreamShop';
 
+
 const ui = new UI();
 
 export function debug(str: string) {

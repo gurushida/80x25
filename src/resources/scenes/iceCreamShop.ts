@@ -6,6 +6,7 @@ import { Scene } from "../../scene";
 import { BG_ICE_CREAM_SHOP } from "../background";
 import { ZIndex } from "../../zIndex";
 import { PaintTask, getPaintTask } from "../../paintTask";
+import { loadDialogGrf } from "../../dialog";
 
 const fullFilter = createFullHotspot(Hotspot.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
@@ -56,3 +57,5 @@ const sceneListener = (sceneEvent: SceneEvent) => {
 };
 
 iceCreamShop.setSceneListener(sceneListener);
+
+export const dialogWithDog = loadDialogGrf('src/resources/dialogs/dog.grf');

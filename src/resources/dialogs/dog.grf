@@ -1,0 +1,43 @@
+#Unigraph
+SIZE 1532 840
+FONT Times New Roman:  10
+OFONT Arial Unicode MS:B 12
+BCOLOR 16777215
+FCOLOR 0
+ACOLOR 13487565
+SCOLOR 16711680
+CCOLOR 255
+DBOXES y
+DFRAME y
+DDATE y
+DFILE y
+DDIR n
+DRIG n
+DRST n
+FITS 100
+PORIENT L
+#
+23
+"<E>/GUY,DOG" 70 200 3 2 5 17 
+"" 1429 291 0 
+"GUY:+Waf waf, waf waf waf ?" 250 99 1 3 
+"DOG:+WOOOOOOOOF !" 455 76 1 4 
+"DOG:+Woof Woof Woof Woof,+woof woof woof!" 601 69 1 6 
+"GUY:+Do you want a 1\/2 sugar\+water?/IF!:DOG_0,TRIGGER:DOG_0" 252 200 1 7 
+"GUY:+I wish I could understand what+you are saying my friend." 770 65 1 1 
+"DOG:+Of course I do." 457 197 1 8 
+"GUY:+Holy cow! You can talk!" 589 199 1 9 
+"DOG:+Wof." 579 316 2 10 11 
+"GUY:+See ? You did again !/IF!:DOG_1,TRIGGER:DOG_1" 678 274 1 9 
+"GUY:+Woah. This homebrewed tequila+from yesterday was really hard." 685 352 1 13 
+"DOG:+Tell me about it." 653 449 1 14 
+"GUY:+I knew the 29th shot was one too much." 899 352 1 15 
+"DOG:+Last time I had it, it tasted+like a car battery leak./TRIGGER:KNOW_ABOUT_TEQUILA" 774 453 1 16 
+"GUY:+At least it wasn't a chili-flavored+one from this crazy Mexican place. " 1172 351 1 12 
+"DOG:+And not a good one." 1032 462 1 0 
+"GUY:+Do you want to taste this ?/IF:HAS_TEQUILA" 207 549 1 18 
+"DOG:+Waf waf waf!" 415 548 1 19 
+"DOG:+Gulp, gulp, gulp, gulp," 525 551 1 20 
+"DOG:+gulp, gulp, gulp, gulp." 687 555 1 21 
+"DOG:+Aaaaaaaah ! That was good.+Now I feel like a loaded flamethrower." 852 566 1 22 
+"DOG:+Thanks man." 1111 564 1 1 
