@@ -1,5 +1,5 @@
 import { ImageAnimation } from "./animationsUtils";
-import { boom_blaster0, boom_blaster1, dog0, dog1 } from "../sprite";
+import { boom_blaster0, boom_blaster1, dog0, dog1 } from "../resources/sprites";
 import { createMaskHotspot, Hotspot } from "../hotspots";
 
 const BOOM_BLASTER_HOTSPOT = createMaskHotspot(boom_blaster0, Hotspot.BOOM_BLASTER);

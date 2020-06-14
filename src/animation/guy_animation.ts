@@ -1,6 +1,7 @@
 import { Animation, PaintTask, ImageAnimation } from "./animationsUtils";
 import { guy_right_still, guy_left_still, guy_left_walking0, guy_left_walking1, guy_left_walking2,
-  guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3, guy_left_talking0, guy_left_talking1, guy_right_talking0, guy_right_talking1 } from "../sprite";
+  guy_left_walking3, guy_right_walking0, guy_right_walking1, guy_right_walking2, guy_right_walking3,
+  guy_left_talking0, guy_left_talking1, guy_right_talking0, guy_right_talking1 } from "../resources/sprites";
 import { WIDTH } from "../screenbuffer";
 import { TextSegment } from "../dialog";
 import { TextAnimation } from "./text_animation";
