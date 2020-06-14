@@ -1,7 +1,7 @@
-import { Animation, PaintTask, AnimationStep, ImageAnimation } from "../animations";
-import { TextSegment, getDurationInTicks } from "../dialog";
-import { center } from "../utils";
-import { WIDTH, HEIGHT } from "../screenbuffer";
+import { Animation, PaintTask, AnimationStep, ImageAnimation } from "../../animations";
+import { TextSegment, getDurationInTicks } from "../../dialog";
+import { center } from "../../utils";
+import { WIDTH, HEIGHT } from "../../screenbuffer";
 
 export class TextAnimation implements Animation {
 

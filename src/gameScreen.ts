@@ -1,6 +1,6 @@
 import { Scene, PaintTaskZ, AnimationZ, SceneListener } from "./scene";
 import { HotspotMap, GuyPosition } from "./hotspots";
-import { GuyAnimation } from "./animation/guy_animation";
+import { GuyAnimation } from "./resources/animations/guy_animation";
 import { Action } from "./actions";
 import { TextSegment } from "./dialog";
 
