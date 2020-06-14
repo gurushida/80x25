@@ -1,4 +1,4 @@
-import { Animation, ImageAnimation } from "../../animations";
+import { Animation, ImageAnimation, CanTalkAnimation } from "../../animations";
 import { SPR_GUY_RIGHT_STILL_0, SPR_GUY_LEFT_STILL_0, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
   SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
   SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1, SPR_GUY_LEFT_STILL_1 } from "../sprites";
@@ -18,7 +18,7 @@ export enum GUY_STATE {
 }
 
 
-export class GuyAnimation implements Animation {
+export class GuyAnimation implements CanTalkAnimation {
     
     private state: GUY_STATE = GUY_STATE.STILL;
     private currentAnimation: Animation;
@@ -278,7 +278,7 @@ export class GuyAnimation implements Animation {
     }
 
 
-    skipToNextTextSegment() {
+    skipToNextCue() {
         if (this.textAnimation) {
             this.textAnimation.skipToNextTextSegment();
         }

@@ -2,6 +2,7 @@ import { AsciiImage } from "./images";
 import { HotspotFilter } from "./hotspots";
 import { ZIndex } from "./zIndex";
 import { PaintTask } from "./paintTask";
+import { Cue } from "./dialog";
 
 
 /**
@@ -27,6 +28,12 @@ export interface AnimationStep {
  */
 export interface Animation {
     tick: () => PaintTask[] | undefined;
+}
+
+
+export interface CanTalkAnimation extends Animation {
+    say(cues: Cue[]);
+    skipToNextCue();
 }
 
 

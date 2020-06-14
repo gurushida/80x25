@@ -92,7 +92,7 @@ export class Scene {
 
     skip() {
         if (this.guyAnimation) {
-            this.guyAnimation.skipToNextTextSegment();
+            this.guyAnimation.skipToNextCue();
         }
     }
 
