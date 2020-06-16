@@ -34,7 +34,7 @@ export class SceneEngine {
     private y: number;
     private hotspot: Hotspot | undefined;
 
-    constructor(private clock: Clock, buffer: ScreenBuffer) {
+    constructor(buffer: ScreenBuffer) {
         this.buffer = buffer;
         this.staticImages = [];
         this.animations = [];
@@ -67,7 +67,7 @@ export class SceneEngine {
         paintTasks.sort((a, b) => a.zIndex - b.zIndex);
         for (const task of paintTasks) {
             if (task.runnable) {
-                this.clock.defer(task.runnable);
+                Clock.clock.defer(task.runnable);
             }
             this.buffer.paint(task);
         }

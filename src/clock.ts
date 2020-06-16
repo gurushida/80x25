@@ -1,4 +1,3 @@
-import { UI } from "./ui";
 import { Runnable } from "./runnable";
 
 
@@ -11,16 +10,16 @@ interface ScheduledTask {
 
 export class Clock {
 
-    ui: UI;
+    public static clock = new Clock();
+
     currentTick: number;
 
     timerId: NodeJS.Timeout | undefined;
     scheduledTasks: ScheduledTask[];
 
-    constructor(ui: UI) {
+    private constructor() {
         this.currentTick = 0;
         this.scheduledTasks = [];
-        this.ui = ui;
     }
 
 

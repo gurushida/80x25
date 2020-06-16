@@ -2,14 +2,18 @@ import { ICanTalkAnimation, Animation } from "../../animations";
 import { Cue } from "../../dialog";
 import { PaintTask } from "../../paintTask";
 import { TextAnimation } from "./text";
+import { Runnable } from "../../runnable";
+import { Clock } from "../../clock";
 
 export abstract class CanTalkAnimation implements ICanTalkAnimation {
 
     private characterAnimation: Animation | undefined;
     private textAnimation: TextAnimation | undefined = undefined;
+    private postTalkAction: Runnable | undefined = undefined;
 
 
-    say(cues: Cue[]) {
+    say(cues: Cue[], then: Runnable | undefined) {
+        this.postTalkAction = then;
         this.characterAnimation = this.startTalkingAnimation();
         const { talkAnchorLeft, talkAnchorBottom } = this.getTalkAnchor();
         this.textAnimation = new TextAnimation(cues, talkAnchorLeft, talkAnchorBottom);
@@ -18,6 +22,7 @@ export abstract class CanTalkAnimation implements ICanTalkAnimation {
 
     shutUp() {
         if (this.isTalking()) {
+            this.postTalkAction = undefined;
             this.textAnimation = undefined;
             this.characterAnimation = undefined;
             this.stopTalkingAnimation();
@@ -44,6 +49,9 @@ export abstract class CanTalkAnimation implements ICanTalkAnimation {
         }
         // If the character is done talking, let's stop the animation
         // and go back to normal
+        if (this.postTalkAction) {
+            Clock.clock.defer(this.postTalkAction);
+        }
         this.shutUp();
         return this.tickNonTalking();
     }

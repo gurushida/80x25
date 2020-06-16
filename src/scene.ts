@@ -2,10 +2,11 @@ import { SceneEngine, SceneListener } from "./sceneEngine";
 import { HotspotMap, GuyPosition } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy";
 import { Action } from "./actions";
-import { Cue } from "./dialog";
+import { Cue, Dialog } from "./dialog";
 import { Animation } from "./animations";
 import { PaintTask } from "./paintTask";
 import { Runnable } from "./runnable";
+import { Trigger } from "./triggers";
 
 export class Scene {
 
@@ -96,13 +97,13 @@ export class Scene {
         }
     }
 
-    say(textSegments: Cue[]) {
+    say(textSegments: Cue[], then?: Runnable) {
         if (this.guyAnimation) {
-            this.guyAnimation.say(textSegments);
+            this.guyAnimation.say(textSegments, then);
         }
     }
 
-    walkTo(pos: GuyPosition, then: Runnable | undefined) {
+    walkTo(pos: GuyPosition, then?: Runnable) {
         if (this.guyAnimation) {
             if (pos) {
                 this.guyAnimation.walkTo({ pos, then });
@@ -124,4 +125,7 @@ export class Scene {
         this.walkTo(dst, undefined);
     }
 
+    runDialog(dialog: Dialog, triggers: Trigger[]) {
+
+    }
 }

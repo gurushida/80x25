@@ -3,6 +3,7 @@ import { HotspotFilter } from "./hotspots";
 import { ZIndex } from "./zIndex";
 import { PaintTask } from "./paintTask";
 import { Cue } from "./dialog";
+import { Runnable } from "./runnable";
 
 
 /**
@@ -37,7 +38,7 @@ export interface Animation {
 export interface ICanTalkAnimation extends Animation {
 
     // Invoke this method to start talking
-    say(cues: Cue[]);
+    say(cues: Cue[], then: Runnable | undefined);
 
     // Invoke this method to make the character stop talking.
     // Does nothing if the character is not talking
