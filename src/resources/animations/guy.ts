@@ -9,6 +9,7 @@ import { ZIndex } from "../../zIndex";
 import { PaintTask } from "../../paintTask";
 import { WalkingDestination } from "../../actions";
 import { CanTalkAnimation } from "./talkingCharacter";
+import { Clock } from "../../clock";
 
 export enum GUY_STATE {
     STILL,
@@ -84,8 +85,10 @@ export class GuyAnimation extends CanTalkAnimation {
                 // If we have reach our destination, adjust the guy's orientation and stop
                 this.guyPosition.lookToTheRight = this.walkingDestination.pos.lookToTheRight;
                 this.standStill();
-                const paintTask: PaintTask = this.currentAnimation.tick() [0];
-                return [{ ...paintTask, runnable: this.walkingDestination.then }];
+                if (this.walkingDestination.then) {
+                    Clock.clock.defer(this.walkingDestination.then);
+                }
+                return this.currentAnimation.tick();
             }
 
             // Keep walking

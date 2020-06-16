@@ -4,7 +4,6 @@ import { Hotspot, HotspotMap, GuyPosition } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
-import { Clock } from "./clock";
 
 export interface SceneEvent {
     x: number;
@@ -66,9 +65,6 @@ export class SceneEngine {
 
         paintTasks.sort((a, b) => a.zIndex - b.zIndex);
         for (const task of paintTasks) {
-            if (task.runnable) {
-                Clock.clock.defer(task.runnable);
-            }
             this.buffer.paint(task);
         }
 
