@@ -5,6 +5,7 @@
 export enum TalkingCharacter {
     GUY = 'GUY',
     DOG = 'DOG',
+    LITTLE_GIRL = 'LITTLE_GIRL',
 }
 
 

@@ -82,6 +82,7 @@ export function loadDialogGrf(filename: string): Dialog {
         states
     };
 
+    sanityCheck(dialog);
     return dialog;
 }
 
@@ -223,4 +224,61 @@ function parseBoxContent(content: string): GrfBox {
     }
 
     return box;
+}
+
+
+/**
+ * This function verifies that some conditions are met,
+ * like for instance not having undeclared characters speaking
+ * or making sure that when their are multiple branches to choose
+ * from, they all corresponding to the guy.
+ */
+function sanityCheck(dialog: Dialog) {
+    checkCharacters(dialog);
+    checkChoices(dialog);
+}
+
+
+function checkCharacters(dialog: Dialog) {
+    if (dialog.characters.length !== new Set(dialog.characters).size) {
+        throw new Error(`Duplicate character: ${dialog.characters}`);
+    }
+
+    const used: TalkingCharacter[] = [];
+    for (const state of dialog.states) {
+        if (!state.step) continue;
+        if (!dialog.characters.includes(state.step.character)) {
+            throw new Error(`Undeclared character: '${state.step.character}'`);
+        }
+        if (!used.includes(state.step.character)) {
+            used.push(state.step.character);
+        }
+    }
+
+    if (used.length !== dialog.characters.length) {
+        throw new Error(`Declared character: ${dialog.characters}, used: ${used}`);
+    }
+}
+
+function checkChoices(dialog: Dialog) {
+    for (let index = 0 ; index < dialog.states.length ; index++) {
+        const state = dialog.states[index];
+        if (state.destinations.length === 0 && index !== 1) {
+            throw new Error(`Only the final state is allowed not to have transitions:\n${JSON.stringify(state)}`);
+        }
+
+        if (state.destinations.length > 1) {
+            // If there are multiple branches, it means there is choice.
+            // Since it is only for the guy that it makes sense, check that
+            // this is the case
+            for (const dst of state.destinations) {
+                if (dst === 1) {
+                    throw new Error(`Cannot have a choice between final state and something else:\n${JSON.stringify(state)}`);
+                }
+                if (!dialog.states[dst].step || dialog.states[dst].step.character !== TalkingCharacter.GUY) {
+                    throw new Error(`Cannot have a choice not for the guy:\n${JSON.stringify(state)}`);
+                }
+            }
+        }
+    }
 }
