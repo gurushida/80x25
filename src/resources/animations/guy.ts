@@ -10,6 +10,7 @@ import { PaintTask } from "../../paintTask";
 import { WalkingDestination } from "../../actions";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { Clock } from "../../clock";
+import { TalkingCharacter } from "../../characters";
 
 export enum GUY_STATE {
     STILL,
@@ -29,7 +30,11 @@ export class GuyAnimation extends CanTalkAnimation {
                 private minLeft = 0, private maxLeft = WIDTH - SPR_GUY_LEFT_STILL_0.width) {
         super();
         this.standStill();
-   }
+    }
+
+    public getCharacter(): TalkingCharacter {
+        return TalkingCharacter.GUY;
+    }
 
 
     private getStillAnimation(): Animation {

@@ -8,6 +8,8 @@ import { center } from "./utils";
 export const WIDTH = 80;
 export const HEIGHT = 25;
 
+const EMPTY_LINE = ' '.repeat(WIDTH);
+
 export class ScreenBuffer {
 
     buffer: string[][];
@@ -111,6 +113,33 @@ export class ScreenBuffer {
         }
 
         this.actionBar = this.actionBar + center(text, WIDTH - 'Talk Use Give Take Look map ...'.length);
+    }
+
+
+    private printString(left: number, top: number, str: string) {
+        if (top < 0 || top >= HEIGHT) {
+            return;
+        }
+
+        for (let i = 0 ; i < str.length ; i++) {
+            const x = left + i;
+            if (x < 0 || x >= WIDTH) {
+                continue;
+            }
+            this.set(str.charAt(i), x, top);
+        }
+    }
+
+
+    /**
+     * If there is a dialog running, the lower lines are used to display the options.
+     * If there is no option at all, the last line is left empty.
+     */
+    paintDialogOptions(options: string[]) {
+        for (let i = 0 ; i < options.length ; i++) {
+            this.printString(0, HEIGHT - options.length + i, EMPTY_LINE);
+            this.printString(0, HEIGHT - options.length + i, options[i]);
+        }
     }
 
 }

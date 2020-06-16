@@ -4,6 +4,7 @@ import { Hotspot, HotspotMap, GuyPosition } from "./hotspots";
 import { Action } from "./actions";
 import { InventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
+import { DialogEngine } from "./dialogEngine";
 
 export interface SceneEvent {
     x: number;
@@ -19,6 +20,7 @@ export type SceneListener = (event: SceneEvent) => void;
 
 export class SceneEngine {
 
+    private currentDialog: DialogEngine | undefined = undefined;
     private buffer: ScreenBuffer;
     private staticImages: PaintTask[];
     private animations: Animation[];
@@ -48,6 +50,7 @@ export class SceneEngine {
         this.inventoryObject = undefined;
         this.hotspotMap = undefined;
         this.sceneListeners = [];
+        this.currentDialog = undefined;
     }
 
     tick() {
@@ -68,10 +71,13 @@ export class SceneEngine {
             this.buffer.paint(task);
         }
 
-        if (this.setShowActionBar) {
+        if (this.currentDialog) {
+            this.buffer.paintDialogOptions(this.currentDialog.getOptionsToChooseFrom());
+        } else if (this.setShowActionBar) {
             this.paintActionBar();
         }
     }
+
 
     private paintActionBar() {
         // When painting the action bar, we only take the hotspot, if any,
@@ -87,6 +93,10 @@ export class SceneEngine {
             this.buffer.paintActionBar(this.selectedAction, hotspotInfo && hotspotInfo.description,
                 hotspotInfo && hotspotInfo.rightClickAction, this.inventoryObject);
         }
+    }
+
+    setCurrentDialog(currentDialog: DialogEngine) {
+        this.currentDialog = currentDialog;
     }
 
     setHotspotMap(map: HotspotMap | undefined) {
@@ -107,6 +117,13 @@ export class SceneEngine {
     }
 
     setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspot | undefined) {
+        if (this.currentDialog) {
+            if (buttonClicked) {
+                this.processDialogClick(y);
+            }
+            return;
+        }
+
         this.x = x;
         this.y = y;
         this.hotspot = hotspot;
@@ -122,6 +139,26 @@ export class SceneEngine {
             this.processRightClick();
         }
     }
+
+
+    private processDialogClick(y: number) {
+        const nOptions = this.currentDialog.getOptionsToChooseFrom().length;
+        if (nOptions === 0) {
+            // Do nothing
+            return;
+        }
+
+        if (y < HEIGHT - nOptions) {
+            return;
+        }
+
+        const index = y - (HEIGHT - nOptions);
+        if (index < nOptions) {
+            // We have clicked on an option
+            this.currentDialog.setPlayerChoice(index);
+        }
+    }
+
 
     private processLeftClick() {
         if (this.showActionBar && this.y === HEIGHT - 1) {

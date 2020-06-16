@@ -4,13 +4,13 @@ import { PaintTask } from "../../paintTask";
 import { TextAnimation } from "./text";
 import { Runnable } from "../../runnable";
 import { Clock } from "../../clock";
+import { TalkingCharacter } from "../../characters";
 
 export abstract class CanTalkAnimation implements ICanTalkAnimation {
 
     private characterAnimation: Animation | undefined;
     private textAnimation: TextAnimation | undefined = undefined;
     private postTalkAction: Runnable | undefined = undefined;
-
 
     say(cues: Cue[], then: Runnable | undefined) {
         this.postTalkAction = then;
@@ -60,6 +60,7 @@ export abstract class CanTalkAnimation implements ICanTalkAnimation {
         return this.textAnimation !== undefined;
     }
 
+    abstract getCharacter(): TalkingCharacter;
     abstract getTalkAnchor(): { talkAnchorLeft: number, talkAnchorBottom: number };
     abstract startTalkingAnimation(): Animation;
     abstract stopTalkingAnimation();

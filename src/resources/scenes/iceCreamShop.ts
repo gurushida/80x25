@@ -1,12 +1,13 @@
 import { SceneEvent } from "../../sceneEngine";
 import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition } from "../../hotspots";
-import { ANIM_DOG } from "../animations/dog";
+import { DogAnimation } from "../animations/dog";
 import { Action } from "../../actions";
 import { Scene } from "../../scene";
 import { BG_ICE_CREAM_SHOP } from "../background";
 import { ZIndex } from "../../zIndex";
 import { PaintTask, getPaintTask } from "../../paintTask";
 import { loadDialogGrf } from "../../dialog";
+import { TRIGGERS } from "../../triggers";
 
 const fullFilter = createFullHotspot(Hotspot.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
@@ -23,18 +24,20 @@ iceCreamShopHotspotMap.set(Hotspot.DOG, {
     description: 'dog',
     rightClickAction: Action.LOOK,
     guyPositionForAction: {
-        left: 43,
+        left: 41,
         top: 14,
         lookToTheRight: true
     }
 });
 const initialGuyPosition: GuyPosition = {
-    left: 8,
+    left: 28,
     top: 14,
     lookToTheRight: true
 };
-export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ ANIM_DOG ], iceCreamShopHotspotMap,
+export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ new DogAnimation() ], iceCreamShopHotspotMap,
     true, initialGuyPosition);
+
+export const dialogWithDog = loadDialogGrf('src/resources/dialogs/dog.grf');
 
 const sceneListener = (sceneEvent: SceneEvent) => {
     if (sceneEvent.action === Action.CHANGE_SCREEN) {
@@ -51,11 +54,12 @@ const sceneListener = (sceneEvent: SceneEvent) => {
         } else if (sceneEvent.action === Action.USE) {
             iceCreamShop.say([['Huh ? What ?']]);
         } else if (sceneEvent.action === Action.TALK) {
-            iceCreamShop.say([['Waf waf, waf waf waf ?']]);
+            iceCreamShop.walkTo(sceneEvent.guyPosition, () => {
+                iceCreamShop.runDialog(dialogWithDog, TRIGGERS);
+            });
         }
     }
 };
 
 iceCreamShop.setSceneListener(sceneListener);
 
-export const dialogWithDog = loadDialogGrf('src/resources/dialogs/dog.grf');

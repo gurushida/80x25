@@ -4,6 +4,7 @@ import { ZIndex } from "./zIndex";
 import { PaintTask } from "./paintTask";
 import { Cue } from "./dialog";
 import { Runnable } from "./runnable";
+import { TalkingCharacter } from "./characters";
 
 
 /**
@@ -37,6 +38,9 @@ export interface Animation {
  */
 export interface ICanTalkAnimation extends Animation {
 
+    // Who is talking in this animation
+    getCharacter(): TalkingCharacter;
+
     // Invoke this method to start talking
     say(cues: Cue[], then: Runnable | undefined);
 
@@ -60,6 +64,11 @@ export interface ICanTalkAnimation extends Animation {
     // Delegate tick method describing what to do when
     // the character is not talking
     tickNonTalking: () => PaintTask[] | undefined;
+}
+
+
+export function isCanTalkAnimation(a: Animation): a is ICanTalkAnimation {
+    return 'getCharacter' in a && 'say' in a && 'shutUp' in a;
 }
 
 

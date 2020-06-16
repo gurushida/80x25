@@ -33,3 +33,12 @@ export interface Condition {
 export function isValidTrigger(t: any): t is Trigger {
     return Object.values(Trigger).includes(t);
 }
+
+
+export function isVerified(condition: Condition, triggers: Trigger[]) {
+    if (condition.mustHave) {
+        return triggers.includes(condition.trigger);
+    }
+
+    return !triggers.includes(condition.trigger);
+}

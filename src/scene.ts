@@ -3,15 +3,19 @@ import { HotspotMap, GuyPosition } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy";
 import { Action } from "./actions";
 import { Cue, Dialog } from "./dialog";
-import { Animation } from "./animations";
+import { Animation, isCanTalkAnimation, ICanTalkAnimation } from "./animations";
 import { PaintTask } from "./paintTask";
 import { Runnable } from "./runnable";
 import { Trigger } from "./triggers";
+import { TalkingCharacter } from "./characters";
+import { DialogEngine } from "./dialogEngine";
 
 export class Scene {
 
     private guyAnimation: GuyAnimation | undefined = undefined;
     private sceneListener: SceneListener | undefined;
+    private sceneEngine: SceneEngine | undefined;
+    private dialogEngine: DialogEngine | undefined;
 
     constructor(private images: PaintTask[],
                 private animations: Animation[], private hotspotMap: HotspotMap | undefined,
@@ -28,6 +32,7 @@ export class Scene {
      * Sets this game screen as the one currently rendered.
      */
     show(sceneEngine: SceneEngine) {
+        this.sceneEngine = sceneEngine;
         sceneEngine.reset();
 
         for (const image of this.images) {
@@ -92,6 +97,11 @@ export class Scene {
     }
 
     skip() {
+        if (this.dialogEngine) {
+            this.dialogEngine.skipToNextCue();
+            return;
+        }
+
         if (this.guyAnimation) {
             this.guyAnimation.skipToNextCue();
         }
@@ -126,6 +136,22 @@ export class Scene {
     }
 
     runDialog(dialog: Dialog, triggers: Trigger[]) {
+        const characterMap = new Map<TalkingCharacter, ICanTalkAnimation>();
+        for (const animation of this.animations) {
+            if (isCanTalkAnimation(animation)) {
+                characterMap.set(animation.getCharacter(), animation);
+            }
+        }
+        if (this.guyAnimation) {
+            characterMap.set(this.guyAnimation.getCharacter(), this.guyAnimation);
+        }
 
+        for (const ch of dialog.characters) {
+            if (!characterMap.get(ch)) {
+                throw new Error(`No animation for character ${ch}`);
+            }
+        }
+        this.dialogEngine = new DialogEngine(this.sceneEngine, dialog, triggers, characterMap);
+        this.dialogEngine.run(() => this.dialogEngine = undefined);
     }
 }

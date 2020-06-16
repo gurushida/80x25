@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { isValidTrigger, Trigger, Condition } from './triggers';
+import { isValidTrigger, Trigger, Condition, isVerified } from './triggers';
 import { TalkingCharacter, isValidTalkingCharacter } from './characters';
 
 
@@ -18,7 +18,7 @@ const MINIMUM_SEGMENT_DURATION_IN_TICKS = 80;
 
 export function getDurationInTicks(cue: Cue): number {
     const totalLength = cue.join(',').length;
-    const duration = Math.round(totalLength * 2.5);
+    const duration = Math.round(totalLength * 2.7);
     return duration < MINIMUM_SEGMENT_DURATION_IN_TICKS ? MINIMUM_SEGMENT_DURATION_IN_TICKS : duration;
 }
 
@@ -174,9 +174,9 @@ function parseOutput(output: string | undefined): { triggers: Trigger[], conditi
         }
 
         if (parts[0] === 'IF') {
-            conditions.push({ mustHave: false, trigger });
-        } else if (parts[0] === 'IF!') {
             conditions.push({ mustHave: true, trigger });
+        } else if (parts[0] === 'IF!') {
+            conditions.push({ mustHave: false, trigger });
         } else if (parts[0] === 'TRIGGER') {
             triggers.push(trigger);
         } else {
@@ -281,4 +281,17 @@ function checkChoices(dialog: Dialog) {
             }
         }
     }
+}
+
+
+export function isEnabled(state: DialogState, triggers: Trigger[]): boolean {
+    if (!state.step || !state.step.conditions) {
+        return true;
+    }
+    for (const condition of state.step.conditions) {
+        if (!isVerified(condition, triggers)) {
+            return false;
+        }
+    }
+    return true;
 }
