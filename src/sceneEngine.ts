@@ -36,6 +36,7 @@ export class SceneEngine {
     private x: number;
     private y: number;
     private hotspot: Hotspot | undefined;
+    private actionToHighlight: Action | undefined;
 
     constructor(private ui: UI) {
         this.buffer = ui.buffer;
@@ -100,10 +101,11 @@ export class SceneEngine {
           : undefined;
 
         if (hotspotInfo && hotspotInfo.isMovementHotspot) {
-            this.buffer.paintActionBar(undefined, hotspotInfo.description, undefined, undefined);
+            this.buffer.paintActionBar(undefined, hotspotInfo.description, this.actionToHighlight, undefined);
         } else {
             this.buffer.paintActionBar(this.selectedAction, hotspotInfo && hotspotInfo.description,
-                hotspotInfo && hotspotInfo.rightClickAction, this.inventoryObject);
+                (hotspotInfo && hotspotInfo.rightClickAction) || this.actionToHighlight,
+                this.inventoryObject);
         }
     }
 
@@ -129,6 +131,8 @@ export class SceneEngine {
     }
 
     setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspot | undefined) {
+        this.actionToHighlight = undefined;
+
         if (this.currentDialog) {
             this.currentDialogOption = this.getDialogOption(y);
             if (buttonClicked) {
@@ -153,6 +157,9 @@ export class SceneEngine {
             this.processLeftClick();
         } else if (buttonClicked === 'right') {
             this.processRightClick();
+        } else if (this.showActionBar && this.y === HEIGHT - 1) {
+            const action = this.getActionBarZone(this.x);
+            this.actionToHighlight = action;
         }
     }
 
@@ -219,27 +226,40 @@ export class SceneEngine {
         }
     }
 
+    private getActionBarZone(x: number): Action | undefined {
+        if (this.x >= 0 && this.x <= 3) {
+            return Action.TALK;
+        } else if (this.x >= 5 && this.x <= 7) {
+            return Action.USE;
+        } else if (this.x >= 9 && this.x <= 12) {
+            return Action.GIVE;
+        } else if (this.x >= 14 && this.x <= 17) {
+            return Action.TAKE;
+        } else if (this.x >= 19 && this.x <= 22) {
+            return Action.LOOK;
+        } else if (this.x >= 24 && this.x <= 26) {
+            return Action.SHOW_MAP;
+        } else if (this.x >= 28 && this.x <= 30) {
+            return Action.INVENTORY;
+        } else {
+            return undefined;
+        }
+    }
+
     /**
      * When clicking on the action bar, we treat left and right clicks the same.
      */
     private processActionBarClick() {
-        if (this.x >= 0 && this.x <= 3) {
-            this.setSelectedAction(Action.TALK);
-        } else if (this.x >= 5 && this.x <= 7) {
-            this.setSelectedAction(Action.USE);
-        } else if (this.x >= 9 && this.x <= 12) {
-            this.setSelectedAction(Action.GIVE);
-        } else if (this.x >= 14 && this.x <= 17) {
-            this.setSelectedAction(Action.TAKE);
-        } else if (this.x >= 19 && this.x <= 22) {
-            this.setSelectedAction(Action.LOOK);
-        } else if (this.x >= 24 && this.x <= 26) {
-            this.clickedOnMapButton();
-        } else if (this.x >= 28 && this.x <= 30) {
+        const action = this.getActionBarZone(this.x);
+        if (action === Action.INVENTORY) {
             this.clickedOnInventoryButton();
-        } else {
+        } else if (action === Action.SHOW_MAP) {
+            this.clickedOnMapButton();
+        } else if (action === undefined) {
             this.ui.hideInventory();
             this.setSelectedAction(undefined);
+        } else {
+            this.setSelectedAction(action);
         }
     }
 
