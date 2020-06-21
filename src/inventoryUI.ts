@@ -19,8 +19,9 @@ export class Inventory {
     private hoveredItem: number | undefined = undefined;
     private listeners: InventoryListener[] = [];
 
-    constructor(screen: blessed.Widgets.Screen) {
+    constructor(private parent: blessed.Widgets.BoxElement) {
         this.box = blessed.box({
+            top: 0,
             left: 'center',
             width: WIDTH + 2,
             height: HEIGHT + 2,
@@ -33,7 +34,7 @@ export class Inventory {
         this.box.on('mousemove', (data) => {
             this.hoveredItem = this.getItemIndex(data.y);
             this.render();
-            this.fireInventoryEvent(this.hoveredItem ? this.items[this.hoveredItem] : undefined, undefined);
+            this.fireInventoryEvent(this.hoveredItem !== undefined ? this.items[this.hoveredItem] : undefined, undefined);
         });
         this.box.on('mouseout', (data) => {
             this.hoveredItem = undefined;
@@ -43,14 +44,14 @@ export class Inventory {
         this.box.on('click', (data) => {
             this.hoveredItem = this.getItemIndex(data.y);
             this.render();
-            this.fireInventoryEvent(this.hoveredItem ? this.items[this.hoveredItem] : undefined, data.button);
+            this.fireInventoryEvent(this.hoveredItem !== undefined ? this.items[this.hoveredItem] : undefined, data.button);
         });
         this.box.on('wheeldown', (data) => {
             if ((this.items.length - 1 - this.topVisibleItem) >= HEIGHT) {
                 this.topVisibleItem++;
                 this.hoveredItem = this.getItemIndex(data.y);
                 this.render();
-                this.fireInventoryEvent(this.hoveredItem ? this.items[this.hoveredItem] : undefined, data.button);
+                this.fireInventoryEvent(this.hoveredItem !== undefined ? this.items[this.hoveredItem] : undefined, data.button);
             }
         });
         this.box.on('wheelup', (data) => {
@@ -58,15 +59,15 @@ export class Inventory {
                 this.topVisibleItem--;
                 this.hoveredItem = this.getItemIndex(data.y);
                 this.render();
-                this.fireInventoryEvent(this.hoveredItem ? this.items[this.hoveredItem] : undefined, data.button);
+                this.fireInventoryEvent(this.hoveredItem !== undefined ? this.items[this.hoveredItem] : undefined, data.button);
             }
         });
         this.box.hide();
-        screen.append(this.box);
+        parent.append(this.box);
     }
 
     private getItemIndex(mouseY: number): number | undefined {
-        let Y = mouseY - (this.box.top as number) - 1;
+        let Y = mouseY - (this.parent.top as number) - 2;
         if (Y < 0 || Y + this.topVisibleItem >= this.items.length) {
             return undefined;
         } else {
@@ -74,8 +75,7 @@ export class Inventory {
         }
     }
 
-    public show(top: number, items: InventoryObject[]) {
-        this.box.top = top;
+    public show(items: InventoryObject[]) {
         this.items = items;
         this.topVisibleItem = 0;
         this.hoveredItem = undefined;

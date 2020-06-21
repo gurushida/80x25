@@ -62,7 +62,7 @@ export class UI {
             this.fireEvent(this.clickListeners, data.x, data.y, data.button);
         });
 
-        this.inventory = new Inventory(this.screen);
+        this.inventory = new Inventory(this.box);
 
         this.render();
     }
@@ -133,7 +133,7 @@ export class UI {
     }
 
     showInventory(items: InventoryObject[]) {
-        this.inventory.show((this.box.top as number) + 1, items);
+        this.inventory.show(items);
     }
 
     hideInventory() {
