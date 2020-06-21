@@ -21,6 +21,7 @@ export type SceneListener = (event: SceneEvent) => void;
 export class SceneEngine {
 
     private currentDialog: DialogEngine | undefined = undefined;
+    private currentDialogOption: number | undefined = undefined;
     private buffer: ScreenBuffer;
     private staticImages: PaintTask[];
     private animations: Animation[];
@@ -72,7 +73,7 @@ export class SceneEngine {
         }
 
         if (this.currentDialog) {
-            this.buffer.paintDialogOptions(this.currentDialog.getOptionsToChooseFrom());
+            this.buffer.paintDialogOptions(this.currentDialogOption, this.currentDialog.getOptionsToChooseFrom());
         } else if (this.setShowActionBar) {
             this.paintActionBar();
         }
@@ -118,12 +119,16 @@ export class SceneEngine {
 
     setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspot | undefined) {
         if (this.currentDialog) {
+            this.currentDialogOption = this.getDialogOption(y);
             if (buttonClicked) {
-                this.processDialogClick(y);
+                if (this.currentDialogOption !== undefined) {
+                    this.currentDialog.setPlayerChoice(this.currentDialogOption);
+                }
             }
             return;
         }
 
+        this.currentDialogOption = undefined;
         this.x = x;
         this.y = y;
         this.hotspot = hotspot;
@@ -141,22 +146,19 @@ export class SceneEngine {
     }
 
 
-    private processDialogClick(y: number) {
+    private getDialogOption(mouseY: number): number | undefined {
         const nOptions = this.currentDialog.getOptionsToChooseFrom().length;
         if (nOptions === 0) {
             // Do nothing
-            return;
+            return undefined;
         }
 
-        if (y < HEIGHT - nOptions) {
-            return;
+        if (mouseY < HEIGHT - nOptions) {
+            return undefined;
         }
 
-        const index = y - (HEIGHT - nOptions);
-        if (index < nOptions) {
-            // We have clicked on an option
-            this.currentDialog.setPlayerChoice(index);
-        }
+        const index = mouseY - (HEIGHT - nOptions);
+        return index < nOptions ? index : undefined;
     }
 
 

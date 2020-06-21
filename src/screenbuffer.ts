@@ -15,6 +15,7 @@ export class ScreenBuffer {
     buffer: string[][];
     hotspotBuffer: HotspotScreenBuffer;
     actionBar: string | undefined;
+    hoveredDialogLine: number | undefined;
 
     constructor() {
         this.hotspotBuffer = new HotspotScreenBuffer();
@@ -26,6 +27,7 @@ export class ScreenBuffer {
         this.buffer = [];
         this.hotspotBuffer.clear();
         this.actionBar = undefined;
+        this.hoveredDialogLine = undefined;
 
         for (let top = 0 ; top < HEIGHT; top++) {
             this.buffer[top] = [];
@@ -45,6 +47,9 @@ export class ScreenBuffer {
         const lines = this.buffer.map(row => row.join(''));
         if (this.actionBar) {
             lines[HEIGHT - 1] = this.actionBar;
+        }
+        if (this.hoveredDialogLine !== undefined) {
+            lines[this.hoveredDialogLine] = '{bold}' + lines[this.hoveredDialogLine] + '{/bold}';
         }
         return lines.join('\n');
     }
@@ -135,10 +140,13 @@ export class ScreenBuffer {
      * If there is a dialog running, the lower lines are used to display the options.
      * If there is no option at all, the last line is left empty.
      */
-    paintDialogOptions(options: string[]) {
+    paintDialogOptions(hoveredOption: number, options: string[]) {
         for (let i = 0 ; i < options.length ; i++) {
             this.printString(0, HEIGHT - options.length + i, EMPTY_LINE);
             this.printString(0, HEIGHT - options.length + i, options[i]);
+            if (i === hoveredOption) {
+                this.hoveredDialogLine = HEIGHT - options.length + i;
+            }
         }
     }
 
