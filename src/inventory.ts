@@ -47,7 +47,7 @@ export const INVENTORY: InventoryObject[] = [
     InventoryObject.E,
     InventoryObject.F,
     InventoryObject.G,
-    InventoryObject.H,
+    /*InventoryObject.H,
     InventoryObject.I,
     InventoryObject.J,
     InventoryObject.K,
@@ -65,5 +65,5 @@ export const INVENTORY: InventoryObject[] = [
     InventoryObject.W,
     InventoryObject.X,
     InventoryObject.Y,
-    InventoryObject.Z,
+    InventoryObject.Z,*/
 ];

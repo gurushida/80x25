@@ -2,7 +2,7 @@ import * as blessed from 'blessed';
 import { InventoryObject } from './inventory';
 
 const WIDTH = 30;
-const HEIGHT = 15;
+const HEIGHT = 6;
 
 export interface InventoryEvent {
     item: InventoryObject | undefined;
@@ -21,7 +21,6 @@ export class Inventory {
 
     constructor(screen: blessed.Widgets.Screen) {
         this.box = blessed.box({
-            top: 'center',
             left: 'center',
             width: WIDTH + 2,
             height: HEIGHT + 2,
@@ -75,7 +74,8 @@ export class Inventory {
         }
     }
 
-    public show(items: InventoryObject[]) {
+    public show(top: number, items: InventoryObject[]) {
+        this.box.top = top;
         this.items = items;
         this.topVisibleItem = 0;
         this.hoveredItem = undefined;

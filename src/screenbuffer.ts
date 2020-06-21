@@ -10,6 +10,16 @@ export const HEIGHT = 25;
 
 const EMPTY_LINE = ' '.repeat(WIDTH);
 
+export enum ActionBarButton {
+    TALK = 'Talk',
+    USE = 'Use',
+    GIVE = 'Give',
+    TAKE = 'Take',
+    LOOK = 'Look',
+    MAP = 'map',
+    INVENTORY = '...',
+}
+
 export class ScreenBuffer {
 
     buffer: string[][];
@@ -79,18 +89,18 @@ export class ScreenBuffer {
     }
 
     paintActionBar(selectedAction: Action | undefined, description: string | undefined,
-                   actionToHighlight: Action | undefined, inventoryObject: InventoryObject | undefined) {
-        if (!actionToHighlight) {
+                   buttonToHighlight: ActionBarButton | undefined, inventoryObject: InventoryObject | undefined) {
+        if (!buttonToHighlight) {
             this.actionBar = 'Talk Use Give Take Look map ...';
         } else {
-            switch(actionToHighlight) {
-                case Action.TALK: this.actionBar = '{bold}Talk{/bold} Use Give Take Look map ...'; break;
-                case Action.USE: this.actionBar = 'Talk {bold}Use{/bold} Give Take Look map ...'; break;
-                case Action.GIVE: this.actionBar = 'Talk Use {bold}Give{/bold} Take Look map ...'; break;
-                case Action.TAKE: this.actionBar = 'Talk Use Give {bold}Take{/bold} Look map ...'; break;
-                case Action.LOOK: this.actionBar = 'Talk Use Give Take {bold}Look{/bold} map ...'; break;
-                case Action.SHOW_MAP: this.actionBar = 'Talk Use Give Take Look {bold}map{/bold} ...'; break;
-                case Action.INVENTORY: this.actionBar = 'Talk Use Give Take Look map {bold}...{/bold}'; break;
+            switch(buttonToHighlight) {
+                case ActionBarButton.TALK: this.actionBar = '{bold}Talk{/bold} Use Give Take Look map ...'; break;
+                case ActionBarButton.USE: this.actionBar = 'Talk {bold}Use{/bold} Give Take Look map ...'; break;
+                case ActionBarButton.GIVE: this.actionBar = 'Talk Use {bold}Give{/bold} Take Look map ...'; break;
+                case ActionBarButton.TAKE: this.actionBar = 'Talk Use Give {bold}Take{/bold} Look map ...'; break;
+                case ActionBarButton.LOOK: this.actionBar = 'Talk Use Give Take {bold}Look{/bold} map ...'; break;
+                case ActionBarButton.MAP: this.actionBar = 'Talk Use Give Take Look {bold}map{/bold} ...'; break;
+                case ActionBarButton.INVENTORY: this.actionBar = 'Talk Use Give Take Look map {bold}...{/bold}'; break;
             }
         }
 

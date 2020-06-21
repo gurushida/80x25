@@ -133,7 +133,7 @@ export class UI {
     }
 
     showInventory(items: InventoryObject[]) {
-        this.inventory.show(items);
+        this.inventory.show((this.box.top as number) + 1, items);
     }
 
     hideInventory() {

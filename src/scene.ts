@@ -66,12 +66,6 @@ export class Scene {
                 this.skip();
             }
 
-            if (e.action === Action.SHOW_MAP) {
-                this.say([
-                    ['Well, time to go somewhere else.'],
-                ]);
-            }
-
             if (e.action === Action.WALK) {
                 if (e.guyPosition) {
                     // If the user has clicked on a hotspot with
@@ -80,6 +74,10 @@ export class Scene {
                 } else {
                     this.walkToPoint(e.x, e.y);
                 }
+            }
+
+            if (e.action === Action.DESCRIBE_INVENTORY_ITEM) {
+                this.say([[ `This is a ${e.inventoryObject}` ]]);
             }
 
             if (this.sceneListener) {

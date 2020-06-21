@@ -43,7 +43,7 @@ ui.addClickListener(e => {
 
 ui.addKeyListener(['escape', 'q', 'C-c'], () => sceneEngine.fireSceneAction(Action.QUIT));
 ui.addKeyListener(['space', 'enter'], () => sceneEngine.fireSceneAction(Action.SKIP));
-ui.addKeyListener('m', () => sceneEngine.fireSceneAction(Action.SHOW_MAP));
+ui.addKeyListener('m', () => sceneEngine.clickedOnMapButton());
 ui.addKeyListener('i', () => sceneEngine.clickedOnInventoryButton());
 
 Clock.clock.repeat(0, () => {
