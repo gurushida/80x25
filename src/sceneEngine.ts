@@ -2,9 +2,10 @@ import { Animation } from "./animations";
 import { ScreenBuffer, HEIGHT } from "./screenbuffer";
 import { Hotspot, HotspotMap, GuyPosition } from "./hotspots";
 import { Action } from "./actions";
-import { InventoryObject } from "./inventory";
+import { InventoryObject, INVENTORY } from "./inventory";
 import { PaintTask } from "./paintTask";
 import { DialogEngine } from "./dialogEngine";
+import { UI } from "./ui";
 
 export interface SceneEvent {
     x: number;
@@ -36,8 +37,8 @@ export class SceneEngine {
     private y: number;
     private hotspot: Hotspot | undefined;
 
-    constructor(buffer: ScreenBuffer) {
-        this.buffer = buffer;
+    constructor(private ui: UI) {
+        this.buffer = ui.buffer;
         this.staticImages = [];
         this.animations = [];
         this.sceneListeners = [];
@@ -77,6 +78,16 @@ export class SceneEngine {
         } else if (this.setShowActionBar) {
             this.paintActionBar();
         }
+    }
+
+
+    showInventory(items: InventoryObject[]) {
+        this.ui.showInventory(items);
+    }
+
+
+    hideInventory() {
+        this.ui.hideInventory();
     }
 
 
@@ -168,6 +179,11 @@ export class SceneEngine {
             return;
         }
 
+        if (this.ui.isInventoryVisible()) {
+            this.ui.hideInventory();
+            return;
+        }
+
         if (!this.hotspot || !this.selectedAction) {
             // By default, we want to walk to the click position
             this.fireSceneAction(Action.WALK);
@@ -192,6 +208,11 @@ export class SceneEngine {
             return;
         }
 
+        if (this.ui.isInventoryVisible()) {
+            this.ui.hideInventory();
+            return;
+        }
+
         const hotspotInfo = this.hotspotMap && this.hotspotMap.get(this.hotspot);
         if (hotspotInfo && hotspotInfo.rightClickAction) {
             this.fireSceneAction(hotspotInfo.rightClickAction);
@@ -213,20 +234,31 @@ export class SceneEngine {
         } else if (this.x >= 19 && this.x <= 22) {
             this.setSelectedAction(Action.LOOK);
         } else if (this.x >= 24 && this.x <= 26) {
-            this.showMap();
+            this.clickedOnMapButton();
         } else if (this.x >= 28 && this.x <= 30) {
-            this.showInventory();
+            this.clickedOnInventoryButton();
         } else {
+            this.ui.hideInventory();
             this.setSelectedAction(undefined);
         }
     }
 
-    public showMap() {
+    public clickedOnMapButton() {
+        this.ui.hideInventory();
         this.fireSceneAction(Action.SHOW_MAP);
     }
 
-    public showInventory() {
-        this.fireSceneAction(Action.SHOW_INVENTORY);
+    public clickedOnInventoryButton() {
+        if (!this.showActionBar || this.currentDialog) {
+            // We don't want to use the inventory when the action bar
+            // isn't visible or if there is a dialog going on
+            return;
+        }
+        if (this.ui.isInventoryVisible()) {
+            this.ui.hideInventory();
+        } else {
+            this.ui.showInventory(INVENTORY);
+        }
     }
 
     addImage(task: PaintTask) {
@@ -263,9 +295,8 @@ export class SceneEngine {
     }
 
     fireSceneAction(action: Action) {
-        if ((action === Action.SHOW_INVENTORY || action === Action.SHOW_MAP)
-            && !this.showActionBar) {
-            // Inventory and map only make sense when the action bar is visible
+        if (action === Action.SHOW_MAP && !this.showActionBar) {
+            // Map only make sense when the action bar is visible
             return;
         }
 

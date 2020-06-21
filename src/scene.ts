@@ -66,14 +66,6 @@ export class Scene {
                 this.skip();
             }
 
-            if (e.action === Action.SHOW_INVENTORY) {
-                this.say([
-                    ['My god.'],
-                    ['It looks like things are messed', 'up big time in my pockets.'],
-                    ['I should probably clean up', 'before my mom hear about it', 'and roast me.']
-                ]);
-            }
-
             if (e.action === Action.SHOW_MAP) {
                 this.say([
                     ['Well, time to go somewhere else.'],

@@ -1,6 +1,8 @@
 import * as blessed from 'blessed';
 import { WIDTH, HEIGHT, ScreenBuffer } from './screenBuffer';
 import { HotspotScreenBuffer, Hotspot } from './hotspots';
+import { InventoryObject } from './inventory';
+import { Inventory, InventoryListener } from './inventoryUI';
 
 export interface MouseEvent {
     x: number;
@@ -18,6 +20,8 @@ export class UI {
 
     // The 80x25 area the game + 1 character border around it
     private box: blessed.Widgets.BoxElement;
+
+    private inventory: Inventory;
 
     private clickListeners: MouseListener[] = [];
     private moveListeners: MouseListener[] = [];
@@ -57,6 +61,8 @@ export class UI {
         this.box.on('click', (data) => {
             this.fireEvent(this.clickListeners, data.x, data.y, data.button);
         });
+
+        this.inventory = new Inventory(this.screen);
 
         this.render();
     }
@@ -105,6 +111,14 @@ export class UI {
         }
     }
 
+    addInventoryListener(listener: InventoryListener) {
+        this.inventory.addInventoryListener(listener);
+    }
+
+    removeInventoryListener(listener: InventoryListener) {
+        this.inventory.removeInventoryListener(listener);
+    }
+
     render() {
         this.box.setContent(this.buffer.getContent(this.hotspotBuffer));
         this.screen.render();
@@ -116,5 +130,17 @@ export class UI {
 
     setTitle(msg: string) {
         this.screen.title = msg;
+    }
+
+    showInventory(items: InventoryObject[]) {
+        this.inventory.show(items);
+    }
+
+    hideInventory() {
+        this.inventory.hide();
+    }
+
+    isInventoryVisible() {
+        return this.inventory.isVisible();
     }
 }

@@ -11,7 +11,7 @@ export function debug(str: string) {
   ui.debug(str);
 }
 
-const sceneEngine = new SceneEngine(ui.buffer);
+const sceneEngine = new SceneEngine(ui);
 
 /*const bankBackground = getPaintTaskZ(background.bank, 0, 0, 0, createFullHotspot(Hotspots.BANK));
 const boomBlasterAnimation: AnimationZ = { animation: boom_blaster, zIndex: 0};
@@ -44,7 +44,7 @@ ui.addClickListener(e => {
 ui.addKeyListener(['escape', 'q', 'C-c'], () => sceneEngine.fireSceneAction(Action.QUIT));
 ui.addKeyListener(['space', 'enter'], () => sceneEngine.fireSceneAction(Action.SKIP));
 ui.addKeyListener('m', () => sceneEngine.fireSceneAction(Action.SHOW_MAP));
-ui.addKeyListener('i', () => sceneEngine.fireSceneAction(Action.SHOW_INVENTORY));
+ui.addKeyListener('i', () => sceneEngine.clickedOnInventoryButton());
 
 Clock.clock.repeat(0, () => {
   sceneEngine.tick();
