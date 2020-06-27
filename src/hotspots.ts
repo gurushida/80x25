@@ -91,6 +91,9 @@ export class HotspotScreenBuffer {
     }
 
     public get(x: number, y: number): Hotspot {
+        if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
+            return Hotspot.NONE;
+        }
         return this.pixels[x + y * WIDTH];
     }
 

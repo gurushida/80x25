@@ -1,6 +1,6 @@
 import { Animation } from "./animations";
 import { ScreenBuffer, HEIGHT, ActionBarButton } from "./screenbuffer";
-import { Hotspot, HotspotMap, GuyPosition } from "./hotspots";
+import { Hotspot, HotspotMap, GuyPosition, HotspotScreenBuffer } from "./hotspots";
 import { Action, getActionButton, getAction } from "./actions";
 import { InventoryObject, INVENTORY } from "./inventory";
 import { PaintTask } from "./paintTask";
@@ -25,6 +25,7 @@ export class SceneEngine {
     private currentDialog: DialogEngine | undefined = undefined;
     private currentDialogOption: number | undefined = undefined;
     private buffer: ScreenBuffer;
+    private hotspotBuffer = new HotspotScreenBuffer();
     private staticImages: PaintTask[];
     private animations: Animation[];
     private showActionBar: boolean = false;
@@ -47,6 +48,20 @@ export class SceneEngine {
         this.ui.addInventoryListener(event => {
             this.processInventoryEvent(event);
         });
+
+        ui.addMoveListener(e => {
+            ui.setTitle(`${e.x},${e.y}`);
+            this.setCurrentHotspot(e.x, e.y, undefined, this.hotspotBuffer.get(e.x, e.y));
+        });
+
+        ui.addClickListener(e => {
+            this.setCurrentHotspot(e.x, e.y, e.button, this.hotspotBuffer.get(e.x, e.y));
+        });
+
+        ui.addKeyListener(['escape', 'q', 'C-c'], () => this.fireSceneAction(Action.QUIT));
+        ui.addKeyListener(['space', 'enter'], () => this.fireSceneAction(Action.SKIP));
+        ui.addKeyListener('m', () => this.clickedOnMapButton());
+        ui.addKeyListener('i', () => this.clickedOnInventoryButton());
     }
 
     reset() {
@@ -83,6 +98,8 @@ export class SceneEngine {
         } else if (this.setShowActionBar) {
             this.paintActionBar();
         }
+
+        this.buffer.copyHotspotScreenBuffer(this.hotspotBuffer);
     }
 
 
@@ -100,7 +117,7 @@ export class SceneEngine {
         // When painting the action bar, we only take the hotspot, if any,
         // into account if it is not located on the same line as the action
         // bar itself
-        const hotspotInfo = (this.hotspotMap && this.hotspot && this.y != (HEIGHT - 1))
+        const hotspotInfo = (this.hotspotMap && this.hotspot !== Hotspot.NONE && this.y != (HEIGHT - 1))
           ? this.hotspotMap.get(this.hotspot)
           : undefined;
 
@@ -134,7 +151,7 @@ export class SceneEngine {
         this.inventoryObject = obj;
     }
 
-    setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspot | undefined) {
+    setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspot) {
         this.buttonToHighlight = undefined;
 
         if (this.currentDialog) {
@@ -152,7 +169,7 @@ export class SceneEngine {
         this.y = y;
         this.hotspot = hotspot;
 
-        const info = this.hotspot && this.hotspotMap.get(this.hotspot);
+        const info = this.hotspot !== Hotspot.NONE && this.hotspotMap.get(this.hotspot);
         if (buttonClicked && info && info.isMovementHotspot) {
             if (this.ui.isInventoryVisible()) {
                 this.ui.hideInventory();
@@ -200,7 +217,7 @@ export class SceneEngine {
             return;
         }
 
-        if (!this.hotspot || !this.selectedAction) {
+        if (this.hotspot === Hotspot.NONE || !this.selectedAction) {
             // By default, we want to walk to the click position
             this.fireSceneAction(Action.WALK);
             return;
@@ -272,11 +289,11 @@ export class SceneEngine {
         }
     }
 
-    public clickedOnMapButton() {
+    private clickedOnMapButton() {
         this.ui.hideInventory();
     }
 
-    public clickedOnInventoryButton() {
+    private clickedOnInventoryButton() {
         if (!this.showActionBar || this.currentDialog) {
             // We don't want to use the inventory when the action bar
             // isn't visible or if there is a dialog going on
@@ -323,7 +340,7 @@ export class SceneEngine {
     }
 
     fireSceneAction(action: Action, object?: InventoryObject) {
-        const info = this.hotspot && this.hotspotMap.get(this.hotspot);
+        const info = this.hotspot !== Hotspot.NONE && this.hotspotMap.get(this.hotspot);
         const event: SceneEvent = {
             action,
             x: this.x,

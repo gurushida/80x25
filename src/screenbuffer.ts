@@ -52,8 +52,11 @@ export class ScreenBuffer {
         this.buffer[top][left] = ch;
     }
 
-    getContent(dst: HotspotScreenBuffer) {
+    copyHotspotScreenBuffer(dst: HotspotScreenBuffer) {
         dst.copyFrom(this.hotspotBuffer);
+    }
+
+    getContent() {
         const lines = this.buffer.map(row => row.join(''));
         if (this.actionBar) {
             lines[HEIGHT - 1] = this.actionBar;

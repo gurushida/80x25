@@ -1,13 +1,11 @@
 import * as blessed from 'blessed';
 import { WIDTH, HEIGHT, ScreenBuffer } from './screenBuffer';
-import { HotspotScreenBuffer, Hotspot } from './hotspots';
 import { InventoryObject } from './inventory';
 import { Inventory, InventoryListener } from './inventoryUI';
 
 export interface MouseEvent {
     x: number;
     y: number;
-    hotspot: Hotspot;
     button?: 'left' | 'right';
 }
 
@@ -27,7 +25,6 @@ export class UI {
     private moveListeners: MouseListener[] = [];
 
     buffer = new ScreenBuffer;
-    private hotspotBuffer = new HotspotScreenBuffer();
 
     constructor() {
         this.screen = blessed.screen({
@@ -82,8 +79,8 @@ export class UI {
         }
 
         const event: MouseEvent = (X === -1 || Y === -1)
-            ? { x: -1, y: -1, hotspot: undefined, button: undefined }
-            : { x: X, y: Y, hotspot: this.hotspotBuffer.get(X, Y), button };
+            ? { x: -1, y: -1, button: undefined }
+            : { x: X, y: Y, button };
         for (const listener of listeners) {
             listener(event);
         }
@@ -120,7 +117,7 @@ export class UI {
     }
 
     render() {
-        this.box.setContent(this.buffer.getContent(this.hotspotBuffer));
+        this.box.setContent(this.buffer.getContent());
         this.screen.render();
     }
 

@@ -1,7 +1,6 @@
 import { UI } from './ui';
 import { SceneEngine } from './sceneEngine';
 import { Clock } from './clock';
-import { Action } from './actions';
 import { iceCreamShop } from './resources/scenes/iceCreamShop';
 
 
@@ -29,22 +28,6 @@ const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ],
 */
 
 iceCreamShop.show(sceneEngine);
-
-ui.render();
-
-ui.addMoveListener(e => {
-  ui.setTitle(`${e.x},${e.y}`);
-  sceneEngine.setCurrentHotspot(e.x, e.y, undefined, e.hotspot);
-});
-
-ui.addClickListener(e => {
-  sceneEngine.setCurrentHotspot(e.x, e.y, e.button, e.hotspot);
-});
-
-ui.addKeyListener(['escape', 'q', 'C-c'], () => sceneEngine.fireSceneAction(Action.QUIT));
-ui.addKeyListener(['space', 'enter'], () => sceneEngine.fireSceneAction(Action.SKIP));
-ui.addKeyListener('m', () => sceneEngine.clickedOnMapButton());
-ui.addKeyListener('i', () => sceneEngine.clickedOnInventoryButton());
 
 Clock.clock.repeat(0, () => {
   sceneEngine.tick();
