@@ -1,4 +1,4 @@
-import { createFullHotspot, Hotspot, HotspotMap, combine, GuyPosition, HotspotInfo, isHotspotInfo } from "../../hotspots";
+import { createFullHotspot, HotspotId, HotspotMap, combine, GuyPosition, HotspotInfo, isHotspotInfo } from "../../hotspots";
 import { DogAnimation } from "../animations/dog";
 import { Action } from "../../actions";
 import { Scene, SceneId, DefaultSceneActionListener } from "../../scene";
@@ -9,26 +9,26 @@ import { loadDialogGrf } from "../../dialog";
 import { TRIGGERS } from "../../triggers";
 import { InventoryObject } from "src/inventory";
 
-const fullFilter = createFullHotspot(Hotspot.ICE_CREAM_SHOP);
+const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
     if (x >= 32 && x <= 41 && y >= 8 && y <= 14) {
-        return Hotspot.ICE_CREAM_SHOP_DOOR;
+        return HotspotId.ICE_CREAM_SHOP_DOOR;
     }
     return undefined;
 };
 const iceCreamShopBackground: PaintTask = getPaintTask(BG_ICE_CREAM_SHOP, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
 const iceCreamShopHotspotMap = new HotspotMap();
-iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP, {
-    hotspotId: Hotspot.ICE_CREAM_SHOP,
+iceCreamShopHotspotMap.set(HotspotId.ICE_CREAM_SHOP, {
+    hotspotId: HotspotId.ICE_CREAM_SHOP,
     description: 'ice cream shop',
     rightClickAction: Action.LOOK
 });
-iceCreamShopHotspotMap.set(Hotspot.ICE_CREAM_SHOP_DOOR, {
-    hotspotId: Hotspot.ICE_CREAM_SHOP_DOOR,
+iceCreamShopHotspotMap.set(HotspotId.ICE_CREAM_SHOP_DOOR, {
+    hotspotId: HotspotId.ICE_CREAM_SHOP_DOOR,
     description: 'Enter ice cream shop',
     movementHotspot: SceneId.INSIDE_ICE_CREAM_SHOP });
-iceCreamShopHotspotMap.set(Hotspot.DOG, {
-    hotspotId: Hotspot.DOG,
+iceCreamShopHotspotMap.set(HotspotId.DOG, {
+    hotspotId: HotspotId.DOG,
     description: 'dog',
     rightClickAction: Action.LOOK,
     guyPositionForAction: {
@@ -50,7 +50,7 @@ export const dialogWithDog = loadDialogGrf('src/resources/dialogs/dog.grf');
 let IceCreamShopSceneListener = class extends DefaultSceneActionListener {
 
     look(what: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(what) && what.hotspotId === Hotspot.DOG) {
+        if (isHotspotInfo(what) && what.hotspotId === HotspotId.DOG) {
             this.scene.walkTo(what.guyPositionForAction, () => {
                 this.scene.say([['It\'s a good dog']]);
             });
@@ -60,7 +60,7 @@ let IceCreamShopSceneListener = class extends DefaultSceneActionListener {
     }
 
     take(what: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(what) && what.hotspotId === Hotspot.DOG) {
+        if (isHotspotInfo(what) && what.hotspotId === HotspotId.DOG) {
             this.scene.say([['I\'m not sure he would agree']]);
         } else {
             super.take(what);
@@ -68,7 +68,7 @@ let IceCreamShopSceneListener = class extends DefaultSceneActionListener {
     }
 
     use(what: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(what) && what.hotspotId === Hotspot.DOG) {
+        if (isHotspotInfo(what) && what.hotspotId === HotspotId.DOG) {
             this.scene.say([[ 'Huh ? What ?' ]]);
         } else {
             super.use(what);
@@ -76,7 +76,7 @@ let IceCreamShopSceneListener = class extends DefaultSceneActionListener {
     }
 
     talk(who: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(who) && who.hotspotId === Hotspot.DOG) {
+        if (isHotspotInfo(who) && who.hotspotId === HotspotId.DOG) {
             this.scene.walkTo(who.guyPositionForAction, () => {
                 this.scene.runDialog(dialogWithDog, TRIGGERS);
             });
