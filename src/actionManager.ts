@@ -293,8 +293,8 @@ export class ActionManager {
         if (this.selectedAction === ActionBarButton.GIVE) {
             // We can give an object from the inventory
             if (first) {
-                text = `Give ${first} to ${hovered}`;
-            } else if (hovered && isInventoryObject(hovered)) {
+                text = `Give ${first.objectId} to ${hovered}`;
+            } else if (this.hovered && isInventoryObject(this.hovered)) {
                 text = `Give ${hovered}`;
             } else {
                 text = 'Give';
@@ -302,9 +302,9 @@ export class ActionManager {
         } else if (this.selectedAction === ActionBarButton.USE) {
             if (first) {
                 if (this.canUseDirectly(first)) {
-                    text = `Use ${first}`;
+                    text = `Use ${first.objectId}`;
                 } else {
-                    text = `Use ${first} with ${hovered}`;
+                    text = `Use ${first.objectId} with ${hovered}`;
                 }
             } else if (hovered) {
                 text = `Use ${hovered}`;
@@ -324,7 +324,7 @@ export class ActionManager {
             }
 
             if (first) {
-                text = `${verb} ${first}`;
+                text = `${verb} ${first.objectId}`;
             } else if (hovered) {
                 text = `${verb} ${hovered}`;
             } else {
