@@ -1,6 +1,6 @@
 import { OPAQUE } from "./images";
 import { PaintTask } from "./paintTask";
-import { HotspotScreenBuffer, Hotspot } from "./hotspots";
+import { HotspotScreenBuffer } from "./hotspots";
 import { center } from "./utils";
 import { ActionBarPaintInfo } from "./actionManager";
 
@@ -81,9 +81,9 @@ export class ScreenBuffer {
                 if (task.image.mask[j][i] === OPAQUE) {
                     this.set(task.image.rows[j][i], xPos, yPos);
                 }
-                const hotspot = task.hotspotFilter ? task.hotspotFilter(i, j) : Hotspot.NONE;
+                const hotspot = task.hotspotFilter ? task.hotspotFilter(i, j) : undefined;
 
-                if (hotspot !== Hotspot.NONE) {
+                if (hotspot) {
                     this.hotspotBuffer.set(xPos, yPos, hotspot);
                 }
             }

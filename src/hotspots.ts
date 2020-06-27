@@ -8,7 +8,6 @@ import { SceneId } from "./scene";
  * Defines all the possible hotspots to interact with.
  */
 export enum Hotspot {
-    NONE = 'H_NONE',
     BANK = 'H_BANK',
     BOOM_BLASTER = 'H_BOOM_BLASTER',
     ICE_CREAM_SHOP = 'H_ICE_CREAM_SHOP',
@@ -19,8 +18,8 @@ export enum Hotspot {
 export class HotspotMap {
     private map = new Map<Hotspot, HotspotInfo>();
 
-    get(h: Hotspot): HotspotInfo {
-        return h === Hotspot.NONE ? undefined : this.map.get(h);
+    get(h: Hotspot | undefined): HotspotInfo {
+        return !h ? undefined : this.map.get(h);
     }
 
     set(h: Hotspot, info: HotspotInfo) {
@@ -33,7 +32,7 @@ export class HotspotMap {
  * Given a position in an image relative to its top-left corner, returns
  * the corresponding hotspot or NONE if the location is not a hotspot.
  */
-export type HotspotFilter = (x: number, y: number) => Hotspot;
+export type HotspotFilter = (x: number, y: number) => Hotspot | undefined;
 
 /**
  * All the area is a hotspot.
@@ -50,12 +49,12 @@ export function createFullHotspot(hotspot: Hotspot): HotspotFilter {
 export function combine(...filters: HotspotFilter[]): HotspotFilter {
     return (x: number, y: number) => {
         for (const filter of filters) {
-            const hotspot: Hotspot = filter(x, y);
-            if (hotspot !== Hotspot.NONE) {
+            const hotspot: Hotspot | undefined = filter(x, y);
+            if (hotspot) {
                 return hotspot;
             }
         }
-        return Hotspot.NONE;
+        return undefined;
     };
 }
 
@@ -65,25 +64,25 @@ export function combine(...filters: HotspotFilter[]): HotspotFilter {
  */
 export function createMaskHotspot(image: AsciiImage, hotspot: Hotspot): HotspotFilter {
   return (x: number, y: number) => {
-    return (image.mask[y][x] === OPAQUE) ? hotspot : Hotspot.NONE;
+    return (image.mask[y][x] === OPAQUE) ? hotspot : undefined;
   };
 }
 
 
 export class HotspotScreenBuffer {
 
-    private pixels: Hotspot[];
+    private pixels: (Hotspot | undefined)[];
 
     constructor() {
         this.pixels = [];
         for (let i = 0 ; i < WIDTH * HEIGHT ; i++) {
-            this.pixels.push(Hotspot.NONE);
+            this.pixels.push(undefined);
         }
     }
 
     public clear() {
         for (let i = 0 ; i < WIDTH * HEIGHT ; i++) {
-            this.pixels[i] = Hotspot.NONE;
+            this.pixels[i] = undefined;
         }
     }
 
@@ -93,7 +92,7 @@ export class HotspotScreenBuffer {
 
     public get(x: number, y: number): Hotspot {
         if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
-            return Hotspot.NONE;
+            return undefined;
         }
         return this.pixels[x + y * WIDTH];
     }

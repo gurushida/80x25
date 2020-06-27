@@ -14,7 +14,7 @@ const doorFilter = (x: number, y: number) => {
     if (x >= 32 && x <= 41 && y >= 8 && y <= 14) {
         return Hotspot.ICE_CREAM_SHOP_DOOR;
     }
-    return Hotspot.NONE;
+    return undefined;
 };
 const iceCreamShopBackground: PaintTask = getPaintTask(BG_ICE_CREAM_SHOP, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
 const iceCreamShopHotspotMap = new HotspotMap();
