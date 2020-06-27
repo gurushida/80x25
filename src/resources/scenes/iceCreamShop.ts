@@ -1,4 +1,4 @@
-import { createFullHotspot, HotspotId, HotspotMap, combine, GuyPosition, Hotspot, isHotspot } from "../../hotspots";
+import { createFullHotspot, HotspotId, combine, GuyPosition, Hotspot, isHotspot } from "../../hotspots";
 import { DogAnimation } from "../animations/dog";
 import { Action } from "../../actions";
 import { Scene, SceneId, DefaultSceneActionListener } from "../../scene";
@@ -17,32 +17,34 @@ const doorFilter = (x: number, y: number) => {
     return undefined;
 };
 const iceCreamShopBackground: PaintTask = getPaintTask(BG_ICE_CREAM_SHOP, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
-const iceCreamShopHotspotMap = new HotspotMap();
-iceCreamShopHotspotMap.set(HotspotId.ICE_CREAM_SHOP, {
-    hotspotId: HotspotId.ICE_CREAM_SHOP,
-    description: 'ice cream shop',
-    rightClickAction: Action.LOOK
-});
-iceCreamShopHotspotMap.set(HotspotId.ICE_CREAM_SHOP_DOOR, {
-    hotspotId: HotspotId.ICE_CREAM_SHOP_DOOR,
-    description: 'Enter ice cream shop',
-    movementHotspot: SceneId.INSIDE_ICE_CREAM_SHOP });
-iceCreamShopHotspotMap.set(HotspotId.DOG, {
-    hotspotId: HotspotId.DOG,
-    description: 'dog',
-    rightClickAction: Action.LOOK,
-    guyPositionForAction: {
-        left: 41,
-        top: 14,
-        lookToTheRight: true
+const iceCreamShopHotspots = [
+    {
+        hotspotId: HotspotId.ICE_CREAM_SHOP,
+        description: 'ice cream shop',
+        rightClickAction: Action.LOOK
+    },
+    {
+        hotspotId: HotspotId.ICE_CREAM_SHOP_DOOR,
+        description: 'Enter ice cream shop',
+        movementHotspot: SceneId.INSIDE_ICE_CREAM_SHOP
+    },
+    {
+        hotspotId: HotspotId.DOG,
+        description: 'dog',
+        rightClickAction: Action.LOOK,
+        guyPositionForAction: {
+            left: 41,
+            top: 14,
+            lookToTheRight: true
+        }
     }
-});
+];
 const initialGuyPosition: GuyPosition = {
     left: 28,
     top: 14,
     lookToTheRight: true
 };
-export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ new DogAnimation() ], iceCreamShopHotspotMap,
+export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ new DogAnimation() ], iceCreamShopHotspots,
     true, initialGuyPosition);
 
 export const dialogWithDog = loadDialogGrf('src/resources/dialogs/dog.grf');

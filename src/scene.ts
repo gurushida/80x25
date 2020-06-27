@@ -1,5 +1,5 @@
 import { SceneEngine } from "./sceneEngine";
-import { HotspotMap, GuyPosition, Hotspot } from "./hotspots";
+import { GuyPosition, Hotspot } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy";
 import { Cue, Dialog } from "./dialog";
 import { Animation, isCanTalkAnimation, ICanTalkAnimation } from "./animations";
@@ -19,7 +19,7 @@ export class Scene {
     private sceneListener: SceneActionListener | undefined;
 
     constructor(private images: PaintTask[],
-                private animations: Animation[], private hotspotMap: HotspotMap | undefined,
+                private animations: Animation[], private hotspots: Hotspot[],
                 private showActionBar: boolean, private guyPosition: GuyPosition | undefined) {
     }
 
@@ -43,7 +43,7 @@ export class Scene {
             sceneEngine.addAnimation(animation);
         }
 
-        sceneEngine.setHotspotMap(this.hotspotMap);
+        sceneEngine.setHotspots(this.hotspots);
         sceneEngine.setShowActionBar(this.showActionBar);
 
         if (this.guyPosition) {

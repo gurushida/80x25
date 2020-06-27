@@ -14,20 +14,6 @@ export enum HotspotId {
     ICE_CREAM_SHOP_DOOR = 'ICE_CREAM_SHOP_DOOR',
     DOG = 'DOG',
 }
-
-export class HotspotMap {
-    private map = new Map<HotspotId, Hotspot>();
-
-    get(h: HotspotId | undefined): Hotspot {
-        return !h ? undefined : this.map.get(h);
-    }
-
-    set(h: HotspotId, info: Hotspot) {
-        return this.map.set(h, info);
-    }
-
-}
-
 /**
  * Given a position in an image relative to its top-left corner, returns
  * the corresponding hotspot or NONE if the location is not a hotspot.

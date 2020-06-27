@@ -1,6 +1,6 @@
 import { Animation } from "./animations";
 import { ScreenBuffer, HEIGHT, ActionBarButton } from "./screenbuffer";
-import { HotspotMap, HotspotScreenBuffer } from "./hotspots";
+import { HotspotScreenBuffer, Hotspot } from "./hotspots";
 import { INVENTORY } from "./inventory";
 import { PaintTask } from "./paintTask";
 import { DialogEngine } from "./dialogEngine";
@@ -14,14 +14,15 @@ export class SceneEngine {
     private currentDialogOption: number | undefined = undefined;
     private buffer: ScreenBuffer;
     private hotspotBuffer = new HotspotScreenBuffer();
+    private hotspots: Hotspot[];
     private staticImages: PaintTask[];
     private animations: Animation[];
     private showActionBar: boolean = false;
-    private hotspotMap: HotspotMap | undefined = undefined;
     private actionManager = new ActionManager();
 
     constructor(private ui: UI) {
         this.buffer = ui.buffer;
+        this.hotspots = []
         this.staticImages = [];
         this.animations = [];
         this.ui.addInventoryListener(event => {
@@ -55,7 +56,7 @@ export class SceneEngine {
         this.staticImages = [];
         this.animations = [];
         this.showActionBar = false;
-        this.hotspotMap = undefined;
+        this.hotspots = [];
         this.currentDialog = undefined;
         this.actionManager.reset();
     }
@@ -99,8 +100,8 @@ export class SceneEngine {
         this.currentDialog = currentDialog;
     }
 
-    setHotspotMap(map: HotspotMap | undefined) {
-        this.hotspotMap = map;
+    setHotspots(hotspots: Hotspot[]) {
+        this.hotspots = hotspots;
     }
 
     setShowActionBar(show: boolean) {
@@ -114,6 +115,15 @@ export class SceneEngine {
                 this.currentDialog.setPlayerChoice(this.currentDialogOption);
             }
         }
+    }
+
+    private getHotspot(x: number, y: number): Hotspot | undefined {
+        const hotspotId = this.hotspotBuffer.get(x, y);
+        if (!hotspotId) {
+            return undefined;
+        }
+
+        return this.hotspots.find(h => h.hotspotId === hotspotId);
     }
 
     /**
@@ -130,7 +140,7 @@ export class SceneEngine {
         }
 
         this.currentDialogOption = undefined;
-        const hotspot = this.hotspotMap.get(this.hotspotBuffer.get(x, y));
+        const hotspot = this.getHotspot(x, y);
         const action = this.getActionBarButton(x, y);
 
         if (action) {
