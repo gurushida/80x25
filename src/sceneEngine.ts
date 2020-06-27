@@ -59,9 +59,10 @@ export class SceneEngine implements SceneActionListener {
                 case InternalAction.HIDE_MAP: this.hideMap(); break;
             }
         });
+        this.actionManager.addSceneActionListener(this);
     }
 
-    reset() {
+    private reset() {
         this.staticImages = [];
         this.animations = [];
         this.showActionBar = false;
@@ -90,7 +91,7 @@ export class SceneEngine implements SceneActionListener {
 
         if (this.currentDialog) {
             this.buffer.paintDialogOptions(this.currentDialogOption, this.currentDialog.getOptionsToChooseFrom());
-        } else if (this.setShowActionBar) {
+        } else if (this.showActionBar) {
             this.paintActionBar();
         }
 
@@ -98,7 +99,7 @@ export class SceneEngine implements SceneActionListener {
     }
 
 
-    hideMap() {
+    private hideMap() {
     }
 
     private paintActionBar() {
@@ -108,15 +109,6 @@ export class SceneEngine implements SceneActionListener {
     setCurrentDialog(currentDialog: DialogEngine) {
         this.currentDialog = currentDialog;
     }
-
-    setHotspots(hotspots: Hotspot[]) {
-        this.hotspots = hotspots;
-    }
-
-    setShowActionBar(show: boolean) {
-        this.showActionBar = show;
-    }
-
     private handleDialogMouseEvent(y: number, buttonClicked: 'left' | 'right' | undefined) {
         this.currentDialogOption = this.getDialogOption(y);
         if (buttonClicked) {
@@ -220,35 +212,28 @@ export class SceneEngine implements SceneActionListener {
         }
     }
 
-    addImage(task: PaintTask) {
+    private addImage(task: PaintTask) {
         this.staticImages.push(task);
     }
 
-    removeImage(task: PaintTask) {
+    /*
+    private removeImage(task: PaintTask) {
         const pos = this.staticImages.indexOf(task);
         if (pos !== - 1) {
             this.staticImages.splice(pos, 1);
         }
-    }
+    }*/
 
-    addAnimation(animation: Animation) {
+    private addAnimation(animation: Animation) {
         this.animations.push(animation);
     }
 
-    removeAnimation(animation: Animation) {
+    /*private removeAnimation(animation: Animation) {
         const pos = this.animations.indexOf(animation);
         if (pos !== - 1) {
             this.animations.splice(pos, 1);
         }
-    }
-
-    addSceneActionListener(listener: SceneActionListener) {
-        this.actionManager.addSceneActionListener(listener);
-    }
-
-    removeSceneActionListener(listener: SceneActionListener) {
-        this.actionManager.removeSceneActionListener(listener);
-    }
+    }*/
 
     private processInventoryEvent(event: InventoryEvent) {
         this.actionManager.handleInventoryEvent(event.item, event.button);
@@ -271,8 +256,8 @@ export class SceneEngine implements SceneActionListener {
             this.addAnimation(animation);
         }
 
-        this.setHotspots(sceneData.hotspots);
-        this.setShowActionBar(sceneData.showActionBar);
+        this.hotspots = sceneData.hotspots;
+        this.showActionBar = sceneData.showActionBar;
 
         if (sceneData.guyPosition) {
             this.guyPosition = {
@@ -286,10 +271,9 @@ export class SceneEngine implements SceneActionListener {
             this.guyPosition = undefined;
             this.guyAnimation = undefined;
         }
-        this.addSceneActionListener(this);
     }
 
-    walkTo(pos: GuyPosition | undefined, then?: Runnable) {
+    private walkTo(pos: GuyPosition | undefined, then?: Runnable) {
         if (this.guyAnimation) {
             if (pos) {
                 this.guyAnimation.walkTo({ pos, then });
@@ -336,7 +320,7 @@ export class SceneEngine implements SceneActionListener {
         this.say([[ 'I cannot use this with that.' ]]);
     }
 
-    runDialog(dialog: Dialog, triggers: Trigger[]) {
+    private runDialog(dialog: Dialog, triggers: Trigger[]) {
         const characterMap = new Map<TalkingCharacter, ICanTalkAnimation>();
         for (const animation of this.animations) {
             if (isCanTalkAnimation(animation)) {

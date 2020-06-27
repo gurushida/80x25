@@ -44,7 +44,6 @@ export class ActionManager {
     private sceneActionListeners: SceneActionListener[] = [];
 
     reset() {
-        this.sceneActionListeners = [];
         this.selectedAction = undefined;
         this.buttonToHighlight = undefined;
         this.first = undefined;
