@@ -67,3 +67,7 @@ export const INVENTORY: InventoryObject[] = [
     InventoryObject.Y,
     InventoryObject.Z,*/
 ];
+
+export function isInventoryObject(obj: any): obj is InventoryObject {
+    return Object.values(InventoryObject).includes(obj);
+}

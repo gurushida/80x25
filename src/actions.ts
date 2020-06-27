@@ -10,11 +10,7 @@ export enum Action {
   LOOK = 'Look at',
 
   WALK = 'Walk',
-  DESCRIBE_INVENTORY_ITEM = 'Describe inventory item',
   CHANGE_SCREEN = 'Change screen',
-
-  QUIT = 'Quit',
-  SKIP = 'Skip',
 }
 
 export interface WalkingDestination {

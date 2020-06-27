@@ -1,24 +1,12 @@
 import { Animation } from "./animations";
 import { ScreenBuffer, HEIGHT, ActionBarButton } from "./screenbuffer";
-import { Hotspot, HotspotMap, GuyPosition, HotspotScreenBuffer } from "./hotspots";
-import { Action, getActionButton, getAction } from "./actions";
-import { InventoryObject, INVENTORY } from "./inventory";
+import { HotspotMap, HotspotScreenBuffer } from "./hotspots";
+import { INVENTORY } from "./inventory";
 import { PaintTask } from "./paintTask";
 import { DialogEngine } from "./dialogEngine";
 import { UI } from "./ui";
 import { InventoryEvent } from "./inventoryUI";
-
-export interface SceneEvent {
-    x: number;
-    y: number;
-    hotspot: Hotspot;
-    // Where the guy should be to interact with the hotspot
-    guyPosition?: GuyPosition;
-    inventoryObject: InventoryObject | undefined;
-    action: Action | undefined;
-}
-
-export type SceneListener = (event: SceneEvent) => void;
+import { ActionManager, InternalAction, SceneActionListener } from "./actionManager";
 
 export class SceneEngine {
 
@@ -29,50 +17,47 @@ export class SceneEngine {
     private staticImages: PaintTask[];
     private animations: Animation[];
     private showActionBar: boolean = false;
-    private selectedAction: Action | undefined;
-    private inventoryObject: InventoryObject | undefined;
-
     private hotspotMap: HotspotMap | undefined = undefined;
-    private sceneListeners: SceneListener[];
-
-    private x: number;
-    private y: number;
-    private hotspot: Hotspot | undefined;
-    private buttonToHighlight: ActionBarButton | undefined;
+    private actionManager = new ActionManager();
 
     constructor(private ui: UI) {
         this.buffer = ui.buffer;
         this.staticImages = [];
         this.animations = [];
-        this.sceneListeners = [];
         this.ui.addInventoryListener(event => {
             this.processInventoryEvent(event);
         });
 
         ui.addMoveListener(e => {
             ui.setTitle(`${e.x},${e.y}`);
-            this.setCurrentHotspot(e.x, e.y, undefined, this.hotspotBuffer.get(e.x, e.y));
+            this.handleMouseEvent(e.x, e.y, undefined);
         });
 
         ui.addClickListener(e => {
-            this.setCurrentHotspot(e.x, e.y, e.button, this.hotspotBuffer.get(e.x, e.y));
+            this.handleMouseEvent(e.x, e.y, e.button);
         });
 
-        ui.addKeyListener(['escape', 'q', 'C-c'], () => this.fireSceneAction(Action.QUIT));
-        ui.addKeyListener(['space', 'enter'], () => this.fireSceneAction(Action.SKIP));
+        ui.addKeyListener(['escape', 'q', 'C-c'], () => this.actionManager.quit());
+        ui.addKeyListener(['space', 'enter'], () => this.actionManager.skip());
         ui.addKeyListener('m', () => this.clickedOnMapButton());
         ui.addKeyListener('i', () => this.clickedOnInventoryButton());
+        this.actionManager.addInternalActionListener(action => {
+            switch (action) {
+                case InternalAction.CLICK_ON_INVENTORY_BUTTON: this.clickedOnInventoryButton(); break;
+                case InternalAction.CLICK_ON_MAP_BUTTON: this.clickedOnMapButton(); break;
+                case InternalAction.HIDE_INVENTORY: this.ui.hideInventory(); break;
+                case InternalAction.HIDE_MAP: this.hideMap(); break;
+            }
+        });
     }
 
     reset() {
         this.staticImages = [];
         this.animations = [];
         this.showActionBar = false;
-        this.selectedAction = undefined;
-        this.inventoryObject = undefined;
         this.hotspotMap = undefined;
-        this.sceneListeners = [];
         this.currentDialog = undefined;
+        this.actionManager.reset();
     }
 
     tick() {
@@ -103,31 +88,11 @@ export class SceneEngine {
     }
 
 
-    showInventory(items: InventoryObject[]) {
-        this.ui.showInventory(items);
+    hideMap() {
     }
-
-
-    hideInventory() {
-        this.ui.hideInventory();
-    }
-
 
     private paintActionBar() {
-        // When painting the action bar, we only take the hotspot, if any,
-        // into account if it is not located on the same line as the action
-        // bar itself
-        const hotspotInfo = (this.hotspotMap && this.hotspot !== Hotspot.NONE && this.y != (HEIGHT - 1))
-          ? this.hotspotMap.get(this.hotspot)
-          : undefined;
-
-        if (hotspotInfo && hotspotInfo.isMovementHotspot) {
-            this.buffer.paintActionBar(undefined, hotspotInfo.description, this.buttonToHighlight, undefined);
-        } else {
-            this.buffer.paintActionBar(this.selectedAction, hotspotInfo && hotspotInfo.description,
-                (hotspotInfo && getActionButton(hotspotInfo.rightClickAction)) || this.buttonToHighlight,
-                this.inventoryObject);
-        }
+        this.buffer.paintActionBar(this.actionManager.getActionBarPaintInfo());
     }
 
     setCurrentDialog(currentDialog: DialogEngine) {
@@ -142,50 +107,41 @@ export class SceneEngine {
         this.showActionBar = show;
     }
 
-    setSelectedAction(action: Action | undefined) {
-        this.selectedAction = action;
-        this.setInventoryObject(undefined);
-    }
-
-    setInventoryObject(obj: InventoryObject | undefined) {
-        this.inventoryObject = obj;
-    }
-
-    setCurrentHotspot(x: number, y: number, buttonClicked: 'left' | 'right' | undefined, hotspot: Hotspot) {
-        this.buttonToHighlight = undefined;
-
-        if (this.currentDialog) {
-            this.currentDialogOption = this.getDialogOption(y);
-            if (buttonClicked) {
-                if (this.currentDialogOption !== undefined) {
-                    this.currentDialog.setPlayerChoice(this.currentDialogOption);
-                }
+    private handleDialogMouseEvent(y: number, buttonClicked: 'left' | 'right' | undefined) {
+        this.currentDialogOption = this.getDialogOption(y);
+        if (buttonClicked) {
+            if (this.currentDialogOption !== undefined) {
+                this.currentDialog.setPlayerChoice(this.currentDialogOption);
             }
+        }
+    }
+
+    /**
+     * Invoked when we get a mouse event that is neither about
+     * the inventory nor the map.
+     * @param x -1 if outside the zone; a value in [0;WIDTH[ otherwise
+     * @param y -1 if outside the zone; a value in [0;HEIGHT[ otherwise
+     * @param buttonClicked button clicked or undefined if the event is just a mouse move
+     */
+    private handleMouseEvent(x: number, y: number, buttonClicked: 'left' | 'right' | undefined) {
+        if (this.currentDialog) {
+            this.handleDialogMouseEvent(y, buttonClicked);
             return;
         }
 
         this.currentDialogOption = undefined;
-        this.x = x;
-        this.y = y;
-        this.hotspot = hotspot;
+        const hotspot = this.hotspotMap.get(this.hotspotBuffer.get(x, y));
+        const action = this.getActionBarButton(x, y);
 
-        const info = this.hotspot !== Hotspot.NONE && this.hotspotMap.get(this.hotspot);
-        if (buttonClicked && info && info.isMovementHotspot) {
-            if (this.ui.isInventoryVisible()) {
+        if (action) {
+            this.actionManager.handleMouseEventActionBar(action, buttonClicked);
+        } else {
+            // When we click anywhere else than an action button or inside the inventory,
+            // we want to hide the inventory
+            if (buttonClicked) {
                 this.ui.hideInventory();
-                return;
             }
-            this.fireSceneAction(Action.CHANGE_SCREEN);
-            return;
-        }
-
-        if (buttonClicked === 'left') {
-            this.processLeftClick();
-        } else if (buttonClicked === 'right') {
-            this.processRightClick();
-        } else if (this.showActionBar && this.y === HEIGHT - 1) {
-            const action = this.getActionBarButton(this.x);
-            this.buttonToHighlight = action;
+            this.actionManager.handleMouseEventHotspot(hotspot, x, y, buttonClicked);
         }
     }
 
@@ -205,87 +161,26 @@ export class SceneEngine {
         return index < nOptions ? index : undefined;
     }
 
-
-    private processLeftClick() {
-        if (this.showActionBar && this.y === HEIGHT - 1) {
-            this.processActionBarClick();
-            return;
+    private getActionBarButton(x: number, y: number): ActionBarButton | undefined {
+        if (!this.showActionBar || y !== HEIGHT - 1) {
+            return undefined;
         }
-
-        if (this.ui.isInventoryVisible()) {
-            this.ui.hideInventory();
-            return;
-        }
-
-        if (this.hotspot === Hotspot.NONE || !this.selectedAction) {
-            // By default, we want to walk to the click position
-            this.fireSceneAction(Action.WALK);
-            return;
-        }
-
-        // If we have both a hotspot and a selected action,
-        // we need to check if this is a GIVE/USE action that
-        // requires an inventory object to be completed
-        if (this.selectedAction === Action.GIVE || this.selectedAction === Action.USE) {
-            if (this.inventoryObject) {
-                this.fireSceneAction(this.selectedAction);
-            }
-        } else {
-            this.fireSceneAction(this.selectedAction);
-        }
-    }
-
-    private processRightClick() {
-        if (this.showActionBar && this.y === HEIGHT - 1) {
-            this.processActionBarClick();
-            return;
-        }
-
-        if (this.ui.isInventoryVisible()) {
-            this.ui.hideInventory();
-            return;
-        }
-
-        const hotspotInfo = this.hotspotMap && this.hotspotMap.get(this.hotspot);
-        if (hotspotInfo && hotspotInfo.rightClickAction) {
-            this.fireSceneAction(hotspotInfo.rightClickAction);
-        }
-    }
-
-    private getActionBarButton(x: number): ActionBarButton | undefined {
-        if (this.x >= 0 && this.x <= 3) {
+        if (x >= 0 && x <= 3) {
             return ActionBarButton.TALK;
-        } else if (this.x >= 5 && this.x <= 7) {
+        } else if (x >= 5 && x <= 7) {
             return  ActionBarButton.USE;
-        } else if (this.x >= 9 && this.x <= 12) {
+        } else if (x >= 9 && x <= 12) {
             return ActionBarButton.GIVE;
-        } else if (this.x >= 14 && this.x <= 17) {
+        } else if (x >= 14 && x <= 17) {
             return ActionBarButton.TAKE;
-        } else if (this.x >= 19 && this.x <= 22) {
+        } else if (x >= 19 && x <= 22) {
             return ActionBarButton.LOOK;
-        } else if (this.x >= 24 && this.x <= 26) {
+        } else if (x >= 24 && x <= 26) {
             return ActionBarButton.MAP;
-        } else if (this.x >= 28 && this.x <= 30) {
+        } else if (x >= 28 && x <= 30) {
             return ActionBarButton.INVENTORY;
         } else {
             return undefined;
-        }
-    }
-
-    /**
-     * When clicking on the action bar, we treat left and right clicks the same.
-     */
-    private processActionBarClick() {
-        const button = this.getActionBarButton(this.x);
-        if (button === ActionBarButton.INVENTORY) {
-            this.clickedOnInventoryButton();
-        } else if (button === ActionBarButton.MAP) {
-            this.clickedOnMapButton();
-        } else if (button === undefined) {
-            this.ui.hideInventory();
-            this.setSelectedAction(undefined);
-        } else {
-            this.setSelectedAction(getAction(button));
         }
     }
 
@@ -328,40 +223,15 @@ export class SceneEngine {
         }
     }
 
-    addSceneListener(listener: SceneListener) {
-        this.sceneListeners.push(listener);
+    addSceneActionListener(listener: SceneActionListener) {
+        this.actionManager.addSceneActionListener(listener);
     }
 
-    removeSceneListener(listener: SceneListener) {
-        const pos = this.sceneListeners.indexOf(listener);
-        if (pos !== - 1) {
-            this.sceneListeners.splice(pos, 1);
-        }
-    }
-
-    fireSceneAction(action: Action, object?: InventoryObject) {
-        const info = this.hotspot !== Hotspot.NONE && this.hotspotMap.get(this.hotspot);
-        const event: SceneEvent = {
-            action,
-            x: this.x,
-            y: this.y,
-            hotspot: this.hotspot,
-            guyPosition: info && info.guyPositionForAction,
-            inventoryObject: object ? object : this.inventoryObject,
-        }
-        for (const listener of this.sceneListeners) {
-            listener(event);
-        }
+    removeSceneActionListener(listener: SceneActionListener) {
+        this.actionManager.removeSceneActionListener(listener);
     }
 
     private processInventoryEvent(event: InventoryEvent) {
-        if (event.item) {
-            this.buttonToHighlight = ActionBarButton.LOOK;
-            if (event.button === 'right') {
-                this.fireSceneAction(Action.DESCRIBE_INVENTORY_ITEM, event.item);
-            }
-        } else {
-            this.buttonToHighlight = undefined;
-        }
+        this.actionManager.handleInventoryEvent(event.item, event.button);
     }
 }

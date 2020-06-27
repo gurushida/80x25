@@ -1,9 +1,8 @@
 import { OPAQUE } from "./images";
 import { PaintTask } from "./paintTask";
 import { HotspotScreenBuffer, Hotspot } from "./hotspots";
-import { Action } from "./actions";
-import { InventoryObject } from "./inventory";
 import { center } from "./utils";
+import { ActionBarPaintInfo } from "./actionManager";
 
 export const WIDTH = 80;
 export const HEIGHT = 25;
@@ -91,12 +90,11 @@ export class ScreenBuffer {
         }
     }
 
-    paintActionBar(selectedAction: Action | undefined, description: string | undefined,
-                   buttonToHighlight: ActionBarButton | undefined, inventoryObject: InventoryObject | undefined) {
-        if (!buttonToHighlight) {
+    paintActionBar(info: ActionBarPaintInfo) {
+        if (!info.actionToHighlight) {
             this.actionBar = 'Talk Use Give Take Look map ...';
         } else {
-            switch(buttonToHighlight) {
+            switch(info.actionToHighlight) {
                 case ActionBarButton.TALK: this.actionBar = '{bold}Talk{/bold} Use Give Take Look map ...'; break;
                 case ActionBarButton.USE: this.actionBar = 'Talk {bold}Use{/bold} Give Take Look map ...'; break;
                 case ActionBarButton.GIVE: this.actionBar = 'Talk Use {bold}Give{/bold} Take Look map ...'; break;
@@ -107,32 +105,7 @@ export class ScreenBuffer {
             }
         }
 
-        let text: string;
-        if (selectedAction) {
-            text = selectedAction;
-            if (selectedAction === Action.GIVE) {
-                // We can object an object from the inventory
-                if (inventoryObject) {
-                    text = text + ' ' + inventoryObject + ' to';
-                    if (description) {
-                        text = text + ' ' + description;
-                    }
-                }
-            } else {
-                if (selectedAction === Action.USE && inventoryObject) {
-                    text = text + ' ' + inventoryObject + ' with';
-                }
-                if (description) {
-                    text = text + ' ' + description;
-                }
-            }
-        } else if (description) {
-            text = description;
-        } else {
-            text = '';
-        }
-
-        this.actionBar = this.actionBar + center(text, WIDTH - 'Talk Use Give Take Look map ...'.length);
+        this.actionBar = this.actionBar + center(info.text, WIDTH - 'Talk Use Give Take Look map ...'.length);
     }
 
 

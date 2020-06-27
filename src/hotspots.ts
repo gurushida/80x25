@@ -1,25 +1,26 @@
 import { AsciiImage, OPAQUE } from "./images";
 import { WIDTH, HEIGHT } from "./screenbuffer";
 import { Action } from "./actions";
+import { SceneId } from "./scene";
 
 
 /**
  * Defines all the possible hotspots to interact with.
  */
 export enum Hotspot {
-    NONE,
-    BANK,
-    BOOM_BLASTER,
-    ICE_CREAM_SHOP,
-    ICE_CREAM_SHOP_DOOR,
-    DOG,
+    NONE = 'H_NONE',
+    BANK = 'H_BANK',
+    BOOM_BLASTER = 'H_BOOM_BLASTER',
+    ICE_CREAM_SHOP = 'H_ICE_CREAM_SHOP',
+    ICE_CREAM_SHOP_DOOR = 'H_ICE_CREAM_SHOP_DOOR',
+    DOG = 'H_DOG',
 }
 
 export class HotspotMap {
     private map = new Map<Hotspot, HotspotInfo>();
 
     get(h: Hotspot): HotspotInfo {
-        return this.map.get(h);
+        return h === Hotspot.NONE ? undefined : this.map.get(h);
     }
 
     set(h: Hotspot, info: HotspotInfo) {
@@ -114,18 +115,29 @@ export interface GuyPosition {
 
 
 export interface HotspotInfo {
+    hotspotId: Hotspot;
+
     description: string;
 
     // The default action to execute on this hotspot, if any
     rightClickAction?: Action;
 
-    // If defined and true, this indicates that this hotspot is a
+    // If defined, this indicates that this hotspot is a
     // location that, when clicked on, trigger a game screen change.
     // Such hotspots cannot be combined with action and their description
     // is supposed to be fully descriptive like 'Enter bank'
-    isMovementHotspot?: boolean;
+    movementHotspot?: SceneId;
 
     // When a hotspot is an object or character that the guy needs to come
     // close to to interact with, this represents where the guy should be
     guyPositionForAction?: GuyPosition;
+}
+
+
+export function isHotspot(obj: any): obj is Hotspot {
+    return Object.values(Hotspot).includes(obj);
+}
+
+export function isHotspotInfo(obj: any): obj is HotspotInfo {
+    return typeof obj === 'object' && 'description' in obj;
 }

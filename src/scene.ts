@@ -1,7 +1,6 @@
-import { SceneEngine, SceneListener } from "./sceneEngine";
-import { HotspotMap, GuyPosition } from "./hotspots";
+import { SceneEngine } from "./sceneEngine";
+import { HotspotMap, GuyPosition, HotspotInfo } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy";
-import { Action } from "./actions";
 import { Cue, Dialog } from "./dialog";
 import { Animation, isCanTalkAnimation, ICanTalkAnimation } from "./animations";
 import { PaintTask } from "./paintTask";
@@ -9,22 +8,23 @@ import { Runnable } from "./runnable";
 import { Trigger } from "./triggers";
 import { TalkingCharacter } from "./characters";
 import { DialogEngine } from "./dialogEngine";
+import { SceneActionListener } from "./actionManager";
+import { InventoryObject, isInventoryObject } from "./inventory";
 
 export class Scene {
 
     private guyAnimation: GuyAnimation | undefined = undefined;
-    private sceneListener: SceneListener | undefined;
     private sceneEngine: SceneEngine | undefined;
     private dialogEngine: DialogEngine | undefined;
+    private sceneListener: SceneActionListener | undefined;
 
     constructor(private images: PaintTask[],
                 private animations: Animation[], private hotspotMap: HotspotMap | undefined,
                 private showActionBar: boolean, private guyPosition: GuyPosition | undefined) {
     }
 
-
-    setSceneListener(l: SceneListener) {
-        this.sceneListener = l;
+    setSceneListener(listener: SceneActionListener) {
+        this.sceneListener = listener;
     }
 
 
@@ -52,38 +52,7 @@ export class Scene {
         } else {
             this.guyAnimation = undefined;
         }
-
-        // We handle here system events like quitting the game
-        // or generic events like walking. The handling of
-        // game screen specific events is delegated to the scene
-        // listener field
-        sceneEngine.addSceneListener(e => {
-            if (e.action === Action.QUIT) {
-                process.exit(0);
-            }
-
-            if (e.action === Action.SKIP) {
-                this.skip();
-            }
-
-            if (e.action === Action.WALK) {
-                if (e.guyPosition) {
-                    // If the user has clicked on a hotspot with
-                    // a specified position for the guy, let's use it
-                    this.walkTo(e.guyPosition, undefined);
-                } else {
-                    this.walkToPoint(e.x, e.y);
-                }
-            }
-
-            if (e.action === Action.DESCRIBE_INVENTORY_ITEM) {
-                this.say([[ `This is a ${e.inventoryObject}` ]]);
-            }
-
-            if (this.sceneListener) {
-                this.sceneListener(e);
-            }
-        });
+        sceneEngine.addSceneActionListener(this.sceneListener);
     }
 
     skip() {
@@ -144,4 +113,63 @@ export class Scene {
         this.dialogEngine = new DialogEngine(this.sceneEngine, dialog, triggers, characterMap);
         this.dialogEngine.run(() => this.dialogEngine = undefined);
     }
+}
+
+export enum SceneId {
+    OUTSIDE_ICE_CREAM_SHOP,
+    INSIDE_ICE_CREAM_SHOP,
+}
+
+export class DefaultSceneActionListener implements SceneActionListener {
+
+    public constructor(protected scene: Scene) {}
+
+    walk(x: number, y: number) {
+        this.scene.walkToPoint(x, y);
+    }
+
+    give(what: InventoryObject, to: HotspotInfo) {
+        this.scene.say([[ 'I cannot do that.' ]]);
+    }
+
+    use(what: InventoryObject | HotspotInfo) {
+        this.scene.say([[ 'I cannot use this.' ]]);
+    }
+
+    useObjectOn(what: InventoryObject, on: InventoryObject | HotspotInfo) {
+        this.scene.say([[ 'I cannot use this with that.' ]]);
+    }
+
+    talk(who: InventoryObject | HotspotInfo) {
+        this.scene.say([[ 'I cannot talk to that.' ]]);
+    }
+
+    take(what: InventoryObject | HotspotInfo) {
+        if (isInventoryObject(what)) {
+            this.scene.say([[ 'I already have it.' ]]);
+        } else {
+            this.scene.say([[ 'I cannot take that.' ]]);
+        }
+    }
+
+    look(what: InventoryObject | HotspotInfo) {
+        if (isInventoryObject(what)) {
+            this.scene.say([[ `This is a ${what}` ]]);
+        } else {
+            this.scene.say([[ `This is a ${what.description}` ]]);
+        }
+    }
+
+    changeScene(sceneId: SceneId, pos: GuyPosition | undefined) {
+        this.scene.say([[ `Change scene to ${sceneId}` ]]);
+    }
+
+    quit() {
+        process.exit(0);
+    }
+
+    skip() {
+        this.scene.skip();
+    }
+
 }
