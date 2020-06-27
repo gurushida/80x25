@@ -1,13 +1,11 @@
-import { createFullHotspot, HotspotId, combine, GuyPosition, Hotspot, isHotspot } from "../../hotspots";
+import { createFullHotspot, HotspotId, combine, GuyPosition, Hotspot } from "../../hotspots";
 import { DogAnimation } from "../animations/dog";
 import { Action } from "../../actions";
-import { Scene, SceneId, DefaultSceneActionListener } from "../../scene";
+import { SceneId, SceneLoader, SceneData } from "../../scene";
 import { BG_ICE_CREAM_SHOP } from "../background";
 import { ZIndex } from "../../zIndex";
 import { PaintTask, getPaintTask } from "../../paintTask";
 import { loadDialogGrf } from "../../dialog";
-import { TRIGGERS } from "../../triggers";
-import { InventoryObject } from "src/inventory";
 
 const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
@@ -17,16 +15,18 @@ const doorFilter = (x: number, y: number) => {
     return undefined;
 };
 const iceCreamShopBackground: PaintTask = getPaintTask(BG_ICE_CREAM_SHOP, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
-const iceCreamShopHotspots = [
+const iceCreamShopHotspots: Hotspot[] = [
     {
         hotspotId: HotspotId.ICE_CREAM_SHOP,
         description: 'ice cream shop',
-        rightClickAction: Action.LOOK
+        rightClickAction: Action.LOOK,
+        lookAt: [[ 'This is an ice cream shop known', 'for its avant-garde flavors.' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM_SHOP_DOOR,
         description: 'Enter ice cream shop',
-        movementHotspot: SceneId.INSIDE_ICE_CREAM_SHOP
+        movementHotspot: SceneId.INSIDE_ICE_CREAM_SHOP,
+        lookAt: [[]]
     },
     {
         hotspotId: HotspotId.DOG,
@@ -36,7 +36,11 @@ const iceCreamShopHotspots = [
             left: 41,
             top: 14,
             lookToTheRight: true
-        }
+        },
+        dialog: loadDialogGrf('src/resources/dialogs/dog.grf'),
+        lookAt: [['It\'s a good dog.']],
+        take: { comment: [['I\'m not sure he would agree.']] },
+        useDirectly: { comment: [['Huh ? What ?']] }
     }
 ];
 const initialGuyPosition: GuyPosition = {
@@ -44,52 +48,16 @@ const initialGuyPosition: GuyPosition = {
     top: 14,
     lookToTheRight: true
 };
-export const iceCreamShop = new Scene([ iceCreamShopBackground ], [ new DogAnimation() ], iceCreamShopHotspots,
-    true, initialGuyPosition);
 
-export const dialogWithDog = loadDialogGrf('src/resources/dialogs/dog.grf');
-
-let IceCreamShopSceneListener = class extends DefaultSceneActionListener {
-
-    look(what: InventoryObject | Hotspot) {
-        if (isHotspot(what) && what.hotspotId === HotspotId.DOG) {
-            this.scene.walkTo(what.guyPositionForAction, () => {
-                this.scene.say([['It\'s a good dog']]);
-            });
-        } else {
-            super.look(what);
-        }
+export const OUTSIDE_ICE_CREAM_SHOP_LOADER: SceneLoader = {
+    sceneId: SceneId.OUTSIDE_ICE_CREAM_SHOP,
+    load(): SceneData {
+        return {
+            showActionBar: true,
+            guyPosition: initialGuyPosition,
+            images: [ iceCreamShopBackground ],
+            animations: [ new DogAnimation() ],
+            hotspots: iceCreamShopHotspots
+        };
     }
-
-    take(what: InventoryObject | Hotspot) {
-        if (isHotspot(what) && what.hotspotId === HotspotId.DOG) {
-            this.scene.say([['I\'m not sure he would agree']]);
-        } else {
-            super.take(what);
-        }
-    }
-
-    use(what: InventoryObject | Hotspot) {
-        if (isHotspot(what) && what.hotspotId === HotspotId.DOG) {
-            this.scene.say([[ 'Huh ? What ?' ]]);
-        } else {
-            super.use(what);
-        }
-    }
-
-    talk(who: InventoryObject | Hotspot) {
-        if (isHotspot(who) && who.hotspotId === HotspotId.DOG) {
-            this.scene.walkTo(who.guyPositionForAction, () => {
-                this.scene.runDialog(dialogWithDog, TRIGGERS);
-            });
-        } else {
-            super.talk(who);
-        }
-    }
-
-};
-
-const sceneListener = new IceCreamShopSceneListener(iceCreamShop);
-
-iceCreamShop.setSceneListener(sceneListener);
-
+}

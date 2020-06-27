@@ -2,6 +2,7 @@ import { AsciiImage, OPAQUE } from "./images";
 import { WIDTH, HEIGHT } from "./screenbuffer";
 import { Action } from "./actions";
 import { SceneId } from "./scene";
+import { Dialog, Cue } from "./dialog";
 
 
 /**
@@ -99,6 +100,17 @@ export interface GuyPosition {
 }
 
 
+// Describes what happens when trying to take a hotspot
+export interface TakeAction {
+    comment: Cue[];
+}
+
+// Describes what happens when trying to use directly a hotspot
+export interface UseDirectlyAction {
+    comment: Cue[];
+}
+
+
 export interface Hotspot {
     hotspotId: HotspotId;
 
@@ -116,6 +128,13 @@ export interface Hotspot {
     // When a hotspot is an object or character that the guy needs to come
     // close to to interact with, this represents where the guy should be
     guyPositionForAction?: GuyPosition;
+
+    // Defined if we can talk to this hotspot, with the dialog to use
+    dialog?: Dialog;
+
+    lookAt: Cue[];
+    take?: TakeAction;
+    useDirectly?: UseDirectlyAction;
 }
 
 

@@ -1,7 +1,7 @@
 import { UI } from './ui';
 import { SceneEngine } from './sceneEngine';
 import { Clock } from './clock';
-import { iceCreamShop } from './resources/scenes/iceCreamShop';
+import { SceneId } from './scene';
 
 
 const ui = new UI();
@@ -27,7 +27,9 @@ bankHotspotMap.set(Hotspots.BANK, {
 const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ], bankHotspotMap, true);
 */
 
-iceCreamShop.show(sceneEngine);
+//iceCreamShop.show(sceneEngine);
+
+sceneEngine.loadScene(SceneId.OUTSIDE_ICE_CREAM_SHOP);
 
 Clock.clock.repeat(0, () => {
   sceneEngine.tick();

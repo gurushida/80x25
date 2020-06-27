@@ -88,9 +88,9 @@ export class Inventory {
         for (let i = 0 ; i < HEIGHT && i + this.topVisibleItem < this.items.length; i++) {
             const item = i + this.topVisibleItem;
             if (item === this.hoveredItem) {
-                content = content + `{bold}${this.items[item]}{/bold}\n`;
+                content = content + `{bold}${this.items[item].objectId}{/bold}\n`;
             } else {
-                content = content + `${this.items[item]}\n`;
+                content = content + `${this.items[item].objectId}\n`;
             }
         }
         this.box.setContent(content);

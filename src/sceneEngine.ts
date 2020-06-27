@@ -1,14 +1,21 @@
-import { Animation } from "./animations";
+import { Animation, ICanTalkAnimation, isCanTalkAnimation } from "./animations";
 import { ScreenBuffer, HEIGHT, ActionBarButton } from "./screenbuffer";
-import { HotspotScreenBuffer, Hotspot } from "./hotspots";
-import { INVENTORY } from "./inventory";
+import { HotspotScreenBuffer, Hotspot, GuyPosition, isHotspot } from "./hotspots";
+import { INVENTORY, InventoryObject, isInventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
 import { DialogEngine } from "./dialogEngine";
 import { UI } from "./ui";
 import { InventoryEvent } from "./inventoryUI";
 import { ActionManager, InternalAction, SceneActionListener } from "./actionManager";
+import { SceneId, SceneLoader, SceneData } from "./scene";
+import { TRIGGERS, Trigger } from "./triggers";
+import { GuyAnimation } from "./resources/animations/guy";
+import { Runnable } from "./runnable";
+import { Cue, Dialog } from "./dialog";
+import { TalkingCharacter } from "./characters";
+import { OUTSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShop";
 
-export class SceneEngine {
+export class SceneEngine implements SceneActionListener {
 
     private currentDialog: DialogEngine | undefined = undefined;
     private currentDialogOption: number | undefined = undefined;
@@ -19,6 +26,8 @@ export class SceneEngine {
     private animations: Animation[];
     private showActionBar: boolean = false;
     private actionManager = new ActionManager();
+    private guyAnimation: GuyAnimation | undefined;
+    private guyPosition: GuyPosition | undefined;
 
     constructor(private ui: UI) {
         this.buffer = ui.buffer;
@@ -244,4 +253,164 @@ export class SceneEngine {
     private processInventoryEvent(event: InventoryEvent) {
         this.actionManager.handleInventoryEvent(event.item, event.button);
     }
+
+
+    loadScene(sceneId: SceneId) {
+        const sceneData = loadSceneData(sceneId, TRIGGERS);
+        if (!sceneData) {
+            return;
+        }
+
+        this.reset();
+
+        for (const image of sceneData.images) {
+            this.addImage(image);
+        }
+
+        for (const animation of sceneData.animations) {
+            this.addAnimation(animation);
+        }
+
+        this.setHotspots(sceneData.hotspots);
+        this.setShowActionBar(sceneData.showActionBar);
+
+        if (sceneData.guyPosition) {
+            this.guyPosition = {
+                left: sceneData.guyPosition.left,
+                top: sceneData.guyPosition.top,
+                lookToTheRight: sceneData.guyPosition.lookToTheRight
+            }
+            this.guyAnimation = new GuyAnimation(sceneData.guyPosition)
+            this.addAnimation(this.guyAnimation);
+        } else {
+            this.guyPosition = undefined;
+            this.guyAnimation = undefined;
+        }
+        this.addSceneActionListener(this);
+    }
+
+    walkTo(pos: GuyPosition | undefined, then?: Runnable) {
+        if (this.guyAnimation) {
+            if (pos) {
+                this.guyAnimation.walkTo({ pos, then });
+            } else {
+                if (then) {
+                    then();
+                }
+            }
+        }
+    }
+
+    walk(x: number, y: number) {
+        if (!this.guyPosition) {
+            return;
+        }
+        const moveToRight = x > this.guyPosition.left;
+        const dst: GuyPosition = {
+            left: x,
+            top: y,
+            lookToTheRight: moveToRight
+        };
+        this.walkTo(dst, undefined);
+    }
+
+    say(textSegments: Cue[], then?: Runnable) {
+        if (this.guyAnimation) {
+            this.guyAnimation.say(textSegments, then);
+        }
+    }
+
+    give(what: InventoryObject, to: Hotspot) {
+        this.say([[ 'I cannot do that.' ]]);
+    }
+
+    use(what: InventoryObject | Hotspot) {
+        if (!isHotspot(what) || !what.useDirectly) {
+            this.say([[ 'I cannot use this.' ]]);
+        } else {
+            this.say(what.useDirectly.comment);
+        }
+    }
+
+    useObjectOn(what: InventoryObject, on: InventoryObject | Hotspot) {
+        this.say([[ 'I cannot use this with that.' ]]);
+    }
+
+    runDialog(dialog: Dialog, triggers: Trigger[]) {
+        const characterMap = new Map<TalkingCharacter, ICanTalkAnimation>();
+        for (const animation of this.animations) {
+            if (isCanTalkAnimation(animation)) {
+                characterMap.set(animation.getCharacter(), animation);
+            }
+        }
+        if (this.guyAnimation) {
+            characterMap.set(this.guyAnimation.getCharacter(), this.guyAnimation);
+        }
+
+        for (const ch of dialog.characters) {
+            if (!characterMap.get(ch)) {
+                throw new Error(`No animation for character ${ch}`);
+            }
+        }
+        const dialogEngine = new DialogEngine(this, dialog, triggers, characterMap);
+        dialogEngine.run(undefined);
+    }
+
+    talk(who: InventoryObject | Hotspot) {
+        if (!isHotspot(who) || !who.dialog) {
+            this.say([[ 'I cannot talk to that.' ]]);
+        } else {
+            this.walkTo(who.guyPositionForAction, () => {
+                this.runDialog(who.dialog, TRIGGERS);
+            });
+        }
+    }
+
+    take(what: InventoryObject | Hotspot) {
+        if (isInventoryObject(what)) {
+            this.say([[ 'I already have it.' ]]);
+        } else if (!what.take) {
+            this.say([[ 'I cannot take that.' ]]);
+        } else {
+            this.say(what.take.comment);
+        }
+    }
+
+    look(what: InventoryObject | Hotspot) {
+        this.say(what.lookAt);
+    }
+
+    changeScene(sceneId: SceneId, pos: GuyPosition | undefined) {
+        this.say([[ `Change scene to ${sceneId}` ]]);
+    }
+
+    quit() {
+        process.exit(0);
+    }
+
+    skip() {
+        if (this.currentDialog) {
+            this.currentDialog.skipToNextCue();
+            return;
+        }
+
+        if (this.guyAnimation) {
+            this.guyAnimation.skipToNextCue();
+        }
+    }
+
+}
+
+
+function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
+    switch(sceneId) {
+        case SceneId.OUTSIDE_ICE_CREAM_SHOP: return OUTSIDE_ICE_CREAM_SHOP_LOADER;
+        default: return undefined;
+    }
+}
+
+
+function loadSceneData(sceneId: SceneId, triggers: Trigger[]): SceneData | undefined {
+    const loader = getSceneLoader(sceneId);
+    return loader ? loader.load(triggers) : undefined;
 }

@@ -279,7 +279,9 @@ export class ActionManager {
             };
         }
         const first = this.first ? this.first : undefined;
-        const hovered = isHotspot(this.hovered) ? this.hovered.description : (this.hovered || '');
+        const hovered = !this.hovered
+            ? ''
+            : (isHotspot(this.hovered) ? this.hovered.description : this.hovered.objectId);
 
         if (!this.selectedAction) {
             return {
