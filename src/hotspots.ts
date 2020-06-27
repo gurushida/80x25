@@ -16,13 +16,13 @@ export enum HotspotId {
 }
 
 export class HotspotMap {
-    private map = new Map<HotspotId, HotspotInfo>();
+    private map = new Map<HotspotId, Hotspot>();
 
-    get(h: HotspotId | undefined): HotspotInfo {
+    get(h: HotspotId | undefined): Hotspot {
         return !h ? undefined : this.map.get(h);
     }
 
-    set(h: HotspotId, info: HotspotInfo) {
+    set(h: HotspotId, info: Hotspot) {
         return this.map.set(h, info);
     }
 
@@ -113,7 +113,7 @@ export interface GuyPosition {
 }
 
 
-export interface HotspotInfo {
+export interface Hotspot {
     hotspotId: HotspotId;
 
     description: string;
@@ -133,10 +133,10 @@ export interface HotspotInfo {
 }
 
 
-export function isHotspot(obj: any): obj is HotspotId {
+export function isHotspotId(obj: any): obj is HotspotId {
     return Object.values(HotspotId).includes(obj);
 }
 
-export function isHotspotInfo(obj: any): obj is HotspotInfo {
-    return typeof obj === 'object' && 'description' in obj;
+export function isHotspot(obj: any): obj is Hotspot {
+    return typeof obj === 'object' && 'hotspotId' in obj && 'description' in obj;
 }

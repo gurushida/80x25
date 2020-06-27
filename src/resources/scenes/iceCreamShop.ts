@@ -1,4 +1,4 @@
-import { createFullHotspot, HotspotId, HotspotMap, combine, GuyPosition, HotspotInfo, isHotspotInfo } from "../../hotspots";
+import { createFullHotspot, HotspotId, HotspotMap, combine, GuyPosition, Hotspot, isHotspot } from "../../hotspots";
 import { DogAnimation } from "../animations/dog";
 import { Action } from "../../actions";
 import { Scene, SceneId, DefaultSceneActionListener } from "../../scene";
@@ -49,8 +49,8 @@ export const dialogWithDog = loadDialogGrf('src/resources/dialogs/dog.grf');
 
 let IceCreamShopSceneListener = class extends DefaultSceneActionListener {
 
-    look(what: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(what) && what.hotspotId === HotspotId.DOG) {
+    look(what: InventoryObject | Hotspot) {
+        if (isHotspot(what) && what.hotspotId === HotspotId.DOG) {
             this.scene.walkTo(what.guyPositionForAction, () => {
                 this.scene.say([['It\'s a good dog']]);
             });
@@ -59,24 +59,24 @@ let IceCreamShopSceneListener = class extends DefaultSceneActionListener {
         }
     }
 
-    take(what: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(what) && what.hotspotId === HotspotId.DOG) {
+    take(what: InventoryObject | Hotspot) {
+        if (isHotspot(what) && what.hotspotId === HotspotId.DOG) {
             this.scene.say([['I\'m not sure he would agree']]);
         } else {
             super.take(what);
         }
     }
 
-    use(what: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(what) && what.hotspotId === HotspotId.DOG) {
+    use(what: InventoryObject | Hotspot) {
+        if (isHotspot(what) && what.hotspotId === HotspotId.DOG) {
             this.scene.say([[ 'Huh ? What ?' ]]);
         } else {
             super.use(what);
         }
     }
 
-    talk(who: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(who) && who.hotspotId === HotspotId.DOG) {
+    talk(who: InventoryObject | Hotspot) {
+        if (isHotspot(who) && who.hotspotId === HotspotId.DOG) {
             this.scene.walkTo(who.guyPositionForAction, () => {
                 this.scene.runDialog(dialogWithDog, TRIGGERS);
             });

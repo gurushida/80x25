@@ -1,5 +1,5 @@
 import { SceneEngine } from "./sceneEngine";
-import { HotspotMap, GuyPosition, HotspotInfo } from "./hotspots";
+import { HotspotMap, GuyPosition, Hotspot } from "./hotspots";
 import { GuyAnimation } from "./resources/animations/guy";
 import { Cue, Dialog } from "./dialog";
 import { Animation, isCanTalkAnimation, ICanTalkAnimation } from "./animations";
@@ -128,23 +128,23 @@ export class DefaultSceneActionListener implements SceneActionListener {
         this.scene.walkToPoint(x, y);
     }
 
-    give(what: InventoryObject, to: HotspotInfo) {
+    give(what: InventoryObject, to: Hotspot) {
         this.scene.say([[ 'I cannot do that.' ]]);
     }
 
-    use(what: InventoryObject | HotspotInfo) {
+    use(what: InventoryObject | Hotspot) {
         this.scene.say([[ 'I cannot use this.' ]]);
     }
 
-    useObjectOn(what: InventoryObject, on: InventoryObject | HotspotInfo) {
+    useObjectOn(what: InventoryObject, on: InventoryObject | Hotspot) {
         this.scene.say([[ 'I cannot use this with that.' ]]);
     }
 
-    talk(who: InventoryObject | HotspotInfo) {
+    talk(who: InventoryObject | Hotspot) {
         this.scene.say([[ 'I cannot talk to that.' ]]);
     }
 
-    take(what: InventoryObject | HotspotInfo) {
+    take(what: InventoryObject | Hotspot) {
         if (isInventoryObject(what)) {
             this.scene.say([[ 'I already have it.' ]]);
         } else {
@@ -152,7 +152,7 @@ export class DefaultSceneActionListener implements SceneActionListener {
         }
     }
 
-    look(what: InventoryObject | HotspotInfo) {
+    look(what: InventoryObject | Hotspot) {
         if (isInventoryObject(what)) {
             this.scene.say([[ `This is a ${what}` ]]);
         } else {

@@ -1,5 +1,5 @@
 import { ActionBarButton } from "./screenbuffer";
-import { HotspotInfo, GuyPosition, isHotspotInfo } from "./hotspots";
+import { Hotspot, GuyPosition, isHotspot } from "./hotspots";
 import { InventoryObject, isInventoryObject } from "./inventory";
 import { Action } from "./actions";
 import { SceneId } from "./scene";
@@ -15,12 +15,12 @@ export type InternalActionListener = (action: InternalAction) => void;
 
 export interface SceneActionListener {
     walk(x: number, y: number);
-    give(what: InventoryObject, to: HotspotInfo);
-    use(what: InventoryObject | HotspotInfo);
-    useObjectOn(what: InventoryObject, on: InventoryObject | HotspotInfo);
-    talk(who: InventoryObject | HotspotInfo);
-    take(what: InventoryObject | HotspotInfo);
-    look(what: InventoryObject | HotspotInfo);
+    give(what: InventoryObject, to: Hotspot);
+    use(what: InventoryObject | Hotspot);
+    useObjectOn(what: InventoryObject, on: InventoryObject | Hotspot);
+    talk(who: InventoryObject | Hotspot);
+    take(what: InventoryObject | Hotspot);
+    look(what: InventoryObject | Hotspot);
 
     changeScene(sceneId: SceneId, pos: GuyPosition | undefined);
     quit();
@@ -38,7 +38,7 @@ export class ActionManager {
     private first?: InventoryObject;
 
     // The thing currently hovered by the mouse
-    private hovered: HotspotInfo | InventoryObject | undefined;
+    private hovered: Hotspot | InventoryObject | undefined;
 
     private internalActionListeners: InternalActionListener[] = [];
     private sceneActionListeners: SceneActionListener[] = [];
@@ -102,7 +102,7 @@ export class ActionManager {
         }
     }
 
-    handleMouseEventHotspot(hotspot: HotspotInfo | undefined, x: number, y: number,
+    handleMouseEventHotspot(hotspot: Hotspot | undefined, x: number, y: number,
                             buttonClicked: 'left' | 'right' | undefined) {
         if (hotspot && hotspot.movementHotspot) {
             if (buttonClicked) {
@@ -131,7 +131,7 @@ export class ActionManager {
         }
     }
 
-    private processLeftClick(hotspot: HotspotInfo | undefined, x: number, y: number) {
+    private processLeftClick(hotspot: Hotspot | undefined, x: number, y: number) {
         if (!hotspot || !this.selectedAction) {
             // By default, we want to walk to the click position
             this.fireWalkAction(x, y);
@@ -196,7 +196,7 @@ export class ActionManager {
         }
     }
 
-    private fireGiveAction(obj: InventoryObject, to: HotspotInfo) {
+    private fireGiveAction(obj: InventoryObject, to: Hotspot) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
             listener.give(obj, to);
@@ -208,42 +208,42 @@ export class ActionManager {
      * something else. This function returns true for
      * things that can be used directly like a light switch.
      */
-    private canUseDirectly(obj: InventoryObject | HotspotInfo) {
-        if (isHotspotInfo(obj)) {
+    private canUseDirectly(obj: InventoryObject | Hotspot) {
+        if (isHotspot(obj)) {
             return true;
         }
         return false;
     }
 
-    private fireUseAction(obj: InventoryObject | HotspotInfo) {
+    private fireUseAction(obj: InventoryObject | Hotspot) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
             listener.use(obj);
         }
     }
 
-    private fireUseObjectOnAction(obj: InventoryObject, on: InventoryObject | HotspotInfo) {
+    private fireUseObjectOnAction(obj: InventoryObject, on: InventoryObject | Hotspot) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
             listener.useObjectOn(obj, on);
         }
     }
 
-    private fireTalkAction(who: InventoryObject | HotspotInfo) {
+    private fireTalkAction(who: InventoryObject | Hotspot) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
             listener.talk(who);
         }
     }
 
-    private fireTakeAction(what: InventoryObject | HotspotInfo) {
+    private fireTakeAction(what: InventoryObject | Hotspot) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
             listener.take(what);
         }
     }
 
-    private fireLookAction(what: InventoryObject | HotspotInfo) {
+    private fireLookAction(what: InventoryObject | Hotspot) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
             listener.look(what);
@@ -270,7 +270,7 @@ export class ActionManager {
     }
 
     public getActionBarPaintInfo(): ActionBarPaintInfo {
-        if (isHotspotInfo(this.hovered) && this.hovered.movementHotspot) {
+        if (isHotspot(this.hovered) && this.hovered.movementHotspot) {
             // If we have a hotspot like a door, its description
             // is something like 'Enter shop' that must be used as is
             return {
@@ -279,7 +279,7 @@ export class ActionManager {
             };
         }
         const first = this.first ? this.first : undefined;
-        const hovered = isHotspotInfo(this.hovered) ? this.hovered.description : (this.hovered || '');
+        const hovered = isHotspot(this.hovered) ? this.hovered.description : (this.hovered || '');
 
         if (!this.selectedAction) {
             return {
