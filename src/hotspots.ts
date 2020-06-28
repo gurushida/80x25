@@ -1,7 +1,7 @@
 import { AsciiImage, OPAQUE } from "./images";
-import { Action } from "./actions";
 import { SceneId } from "./scene";
 import { Dialog, Cue } from "./dialog";
+import { ActionBarButton } from "./screenbuffer";
 
 
 /**
@@ -79,7 +79,7 @@ export interface Hotspot {
     description: string;
 
     // The default action to execute on this hotspot, if any
-    rightClickAction?: Action;
+    rightClickAction?: ActionBarButton;
 
     // If defined, this indicates that this hotspot is a
     // location that, when clicked on, trigger a game screen change.

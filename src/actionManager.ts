@@ -1,7 +1,6 @@
-import { ActionBarButton } from "./screenbuffer";
+import { ActionBarButton, isActionBarButton } from "./screenbuffer";
 import { Hotspot, GuyPosition, isHotspot } from "./hotspots";
 import { InventoryObject, isInventoryObject } from "./inventory";
-import { Action } from "./actions";
 import { SceneId } from "./scene";
 
 export enum InternalAction {
@@ -32,31 +31,28 @@ export class ActionManager {
     // The action the player has clicked on
     private selectedAction?: ActionBarButton;
 
-    private buttonToHighlight: ActionBarButton | undefined;
-
     // The first thing the player has clicked on
     private first?: InventoryObject;
 
     // The thing currently hovered by the mouse
-    private hovered: Hotspot | InventoryObject | undefined;
+    private hovered: ActionBarButton | Hotspot | InventoryObject | undefined;
 
     private internalActionListeners: InternalActionListener[] = [];
     private sceneActionListeners: SceneActionListener[] = [];
 
     reset() {
         this.selectedAction = undefined;
-        this.buttonToHighlight = undefined;
         this.first = undefined;
         this.hovered = undefined;
     }
 
     setSelectedAction(action: ActionBarButton | undefined) {
         this.selectedAction = action;
-        this.buttonToHighlight = undefined;
         this.first = undefined;
     }
 
     handleMouseEventActionBar(action: ActionBarButton, button: 'left' | 'right' | undefined) {
+        this.hovered = action;
         if (button) {
             if (action === ActionBarButton.INVENTORY) {
                 this.fireInternalAction(InternalAction.CLICK_ON_INVENTORY_BUTTON);
@@ -65,18 +61,10 @@ export class ActionManager {
             } else {
                 this.setSelectedAction(action);
             }
-        } else {
-            this.buttonToHighlight = action;
-            this.hovered = undefined;
         }
     }
 
-    handleInventoryEvent(item: InventoryObject | undefined, button: 'left' | 'right' | undefined) {
-        if (!item) {
-            return;
-        }
-
-        this.buttonToHighlight = ActionBarButton.LOOK;
+    handleInventoryEvent(item: InventoryObject, button: 'left' | 'right' | undefined) {
         this.hovered = item;
         if (button === 'right') {
             this.fireLookAction(item);
@@ -103,6 +91,7 @@ export class ActionManager {
 
     handleMouseEventHotspot(hotspot: Hotspot | undefined, x: number, y: number,
                             buttonClicked: 'left' | 'right' | undefined) {
+        this.hovered = hotspot;
         if (hotspot !== undefined && hotspot.movementHotspot) {
             if (buttonClicked) {
                 this.fireChangeSceneAction(hotspot.movementHotspot, hotspot.guyPositionForAction);
@@ -113,20 +102,15 @@ export class ActionManager {
         }
 
         if (buttonClicked === 'left') {
-            this.hovered = undefined;
             this.processLeftClick(hotspot, x, y);
         } else if (buttonClicked === 'right') {
-            this.hovered = undefined;
             if (hotspot && hotspot.rightClickAction) {
                 switch (hotspot.rightClickAction) {
-                    case Action.LOOK: this.fireLookAction(hotspot); break;
-                    case Action.TALK: this.fireTalkAction(hotspot); break;
-                    case Action.USE: this.fireUseAction(hotspot); break;
+                    case ActionBarButton.LOOK: this.fireLookAction(hotspot); break;
+                    case ActionBarButton.TALK: this.fireTalkAction(hotspot); break;
+                    case ActionBarButton.USE: this.fireUseAction(hotspot); break;
                 }
             }
-        } else {
-            // Just hovering
-            this.hovered = hotspot;
         }
     }
 
@@ -268,24 +252,40 @@ export class ActionManager {
         }
     }
 
+    private getActionButtonToHighlight(): ActionBarButton | undefined {
+        if (this.hovered === undefined) {
+            return undefined;
+        }
+        if (isInventoryObject(this.hovered)) {
+            return ActionBarButton.LOOK;
+        }
+        if (isHotspot(this.hovered)) {
+            return this.hovered.rightClickAction;
+        }
+        return this.hovered;
+    }
+
     public getActionBarPaintInfo(): ActionBarPaintInfo {
+
         if (isHotspot(this.hovered) && this.hovered.movementHotspot) {
             // If we have a hotspot like a door, its description
             // is something like 'Enter shop' that must be used as is
             return {
                 text: this.hovered.description,
-                actionToHighlight: this.buttonToHighlight,
+                actionToHighlight: this.getActionButtonToHighlight(),
             };
         }
         const first = this.first ? this.first : undefined;
-        const hovered = !this.hovered
+        const hoveredObject: InventoryObject | Hotspot | undefined =
+          !isActionBarButton(this.hovered) ? this.hovered : undefined;
+        const hoveredDescription = hoveredObject == undefined
             ? ''
-            : (isHotspot(this.hovered) ? this.hovered.description : this.hovered.objectId);
+            : (isHotspot(hoveredObject) ? hoveredObject.description : hoveredObject.objectId);
 
         if (!this.selectedAction) {
             return {
-                text: hovered,
-                actionToHighlight: this.buttonToHighlight,
+                text: hoveredDescription,
+                actionToHighlight: this.getActionButtonToHighlight(),
             };
         }
 
@@ -293,9 +293,9 @@ export class ActionManager {
         if (this.selectedAction === ActionBarButton.GIVE) {
             // We can give an object from the inventory
             if (first) {
-                text = `Give ${first.objectId} to ${hovered}`;
-            } else if (this.hovered && isInventoryObject(this.hovered)) {
-                text = `Give ${hovered}`;
+                text = `Give ${first.objectId} to ${hoveredDescription}`;
+            } else if (isInventoryObject(hoveredObject)) {
+                text = `Give ${hoveredDescription}`;
             } else {
                 text = 'Give';
             }
@@ -304,12 +304,10 @@ export class ActionManager {
                 if (this.canUseDirectly(first)) {
                     text = `Use ${first.objectId}`;
                 } else {
-                    text = `Use ${first.objectId} with ${hovered}`;
+                    text = `Use ${first.objectId} with ${hoveredDescription}`;
                 }
-            } else if (hovered) {
-                text = `Use ${hovered}`;
             } else {
-                text = 'Use';
+                text = `Use ${hoveredDescription}`;
             }
         } else {
             let verb: string;
@@ -325,16 +323,14 @@ export class ActionManager {
 
             if (first) {
                 text = `${verb} ${first.objectId}`;
-            } else if (hovered) {
-                text = `${verb} ${hovered}`;
             } else {
-                text = `${verb}`;
+                text = `${verb} ${hoveredDescription}`;
             }
         }
 
         return {
             text: text.trim(),
-            actionToHighlight: this.buttonToHighlight,
+            actionToHighlight: this.getActionButtonToHighlight(),
         }
     }
 }

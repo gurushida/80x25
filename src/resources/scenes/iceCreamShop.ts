@@ -1,12 +1,12 @@
 import { createFullHotspot, HotspotId, combine, GuyPosition, Hotspot } from "../../hotspots";
 import { DogAnimation } from "../animations/dog";
-import { Action } from "../../actions";
 import { SceneId, SceneLoader, SceneData } from "../../scene";
 import { BG_ICE_CREAM_SHOP } from "../background";
 import { ZIndex } from "../../zIndex";
 import { PaintTask, getPaintTask } from "../../paintTask";
 import { loadDialogGrf } from "../../dialog";
-import { Trigger } from "src/triggers";
+import { Trigger } from "../../triggers";
+import { ActionBarButton } from "../../screenbuffer";
 
 const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
@@ -20,7 +20,7 @@ const iceCreamShopHotspots: Hotspot[] = [
     {
         hotspotId: HotspotId.ICE_CREAM_SHOP,
         description: 'ice cream shop',
-        rightClickAction: Action.LOOK,
+        rightClickAction: ActionBarButton.LOOK,
         lookAt: [[ 'This is an ice cream shop known', 'for its avant-garde flavors.' ]]
     },
     {
@@ -32,7 +32,7 @@ const iceCreamShopHotspots: Hotspot[] = [
     {
         hotspotId: HotspotId.DOG,
         description: 'dog',
-        rightClickAction: Action.LOOK,
+        rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 41,
             top: 14,

@@ -2,10 +2,10 @@ import { PaintTask, getPaintTask } from "../../paintTask";
 import { BG_BANK } from "../background";
 import { ZIndex } from "../../zIndex";
 import { combine, createFullHotspot, HotspotId, GuyPosition, Hotspot } from "../../hotspots";
-import { Action } from "../../actions";
 import { ANIM_BOOM_BLASTER } from "../animations/boomBlaster";
 import { SceneLoader, SceneId, SceneData } from "../../scene";
 import { Trigger } from "../../triggers";
+import { ActionBarButton } from "../../screenbuffer";
 
 
 const fullFilter = createFullHotspot(HotspotId.BANK);
@@ -15,13 +15,13 @@ const bankHotspots: Hotspot[] = [
     {
         hotspotId: HotspotId.BANK,
         description: 'bank',
-        rightClickAction: Action.LOOK,
+        rightClickAction: ActionBarButton.LOOK,
         lookAt: [[ 'This is the town\'s bank.' ]]
     },
     {
         hotspotId: HotspotId.BOOM_BLASTER,
         description: 'boom blaster',
-        rightClickAction: Action.LOOK,
+        rightClickAction: ActionBarButton.LOOK,
         lookAt: [[ 'I\'m not convinced the noise emitted', 'by this thing qualifies as music.' ]],
         take: { comment: [[ 'The owner may object.' ]] },
         useDirectly: { comment: [[ 'Let\'s turn it off.' ]] }

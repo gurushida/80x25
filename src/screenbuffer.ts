@@ -20,6 +20,10 @@ export enum ActionBarButton {
     INVENTORY = '...',
 }
 
+export function isActionBarButton(obj: any): obj is ActionBarButton {
+    return Object.values(ActionBarButton).includes(obj);
+}
+
 export class ScreenBuffer {
 
     buffer: string[][];
