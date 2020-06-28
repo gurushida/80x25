@@ -3,7 +3,7 @@ import { WIDTH, HEIGHT, ScreenBuffer } from './screenBuffer';
 import { InventoryObject } from './inventory';
 import { Inventory, InventoryListener } from './inventoryUI';
 import { Trigger } from './triggers';
-import { GameMap } from './mapUI';
+import { GameMap, MapListener } from './mapUI';
 
 export interface MouseEvent {
     x: number;
@@ -118,6 +118,14 @@ export class UI {
 
     removeInventoryListener(listener: InventoryListener) {
         this.inventory.removeInventoryListener(listener);
+    }
+
+    addMapListener(listener: MapListener) {
+        this.map.addMapListener(listener);
+    }
+
+    removeMapListener(listener: MapListener) {
+        this.map.removeMapListener(listener);
     }
 
     render() {

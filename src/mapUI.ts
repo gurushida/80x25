@@ -19,7 +19,6 @@ export class GameMap {
 
     private clickMap = new Matrix<SceneId | MapCommand>(WIDTH, HEIGHT);
     private locations: MapLocation[] = [];
-    private hovered?: SceneId | MapCommand;
 
     constructor(private parent: blessed.Widgets.BoxElement) {
         this.box = blessed.box({
@@ -34,21 +33,18 @@ export class GameMap {
             },
         });
         this.box.on('mousemove', (data) => {
-            this.hovered = this.getScene(data.x, data.y);
-            this.render();
+            this.render(this.getClickTarget(data.x, data.y));
         });
         this.box.on('mouseout', (data) => {
-            this.hovered = undefined;
-            this.render();
+            this.render(undefined);
         });
         this.box.on('click', (data) => {
-            this.hovered = this.getScene(data.x, data.y);
-            this.render();
-            if (this.hovered) {
-                if (this.hovered === MapCommand.EXIT) {
-                    this.hide();
-                } else {
-                    this.fireSceneSelected(this.hovered);
+            const hovered = this.getClickTarget(data.x, data.y);
+            this.render(hovered);
+            if (hovered !== undefined) {
+                this.hide();
+                if (hovered !== MapCommand.EXIT) {
+                    this.fireSceneSelected(hovered);
                 }
             }
         });
@@ -56,7 +52,7 @@ export class GameMap {
         parent.append(this.box);
     }
 
-    private getScene(mouseX: number, mouseY): SceneId | MapCommand | undefined {
+    private getClickTarget(mouseX: number, mouseY): SceneId | MapCommand | undefined {
         let X = mouseX - (this.parent.left as number) - 2;
         let Y = mouseY - (this.parent.top as number) - 2;
         return this.clickMap.get(X, Y);
@@ -65,31 +61,31 @@ export class GameMap {
     public show(triggers: Trigger[]) {
         this.locations = getLocationsToShow(triggers);
         this.buildClickMap();
-        this.render();
+        this.render(undefined);
         this.box.show();
     }
 
-    private render() {
+    private render(hovered: SceneId | MapCommand | undefined) {
         let content = '';
         for (let y = 0 ; y < HEIGHT ; y++) {
             const locations = this.locations.filter(l => l.centerY === y).sort((a,b)=> a.centerX - b.centerX);
-            content = content + this.drawMapLine(locations) + '\n';
+            content = content + this.drawMapLine(hovered, locations) + '\n';
         }
         this.box.setContent(content);
     }
 
-    private drawMapLine(locations: MapLocation[]): string {
+    private drawMapLine(hovered: SceneId | MapCommand | undefined, locations: MapLocation[]): string {
         let line = '';
         let x = 0;
         for (const loc of locations) {
             const start = this.getLabelStart(loc);
             let paddingBefore = ' '.repeat(start - x);
             line += paddingBefore;
-            if (this.hovered === loc.sceneId) {
+            if (hovered === loc.sceneId) {
                 line += '{bold}';
             }
             line += loc.label;
-            if (this.hovered === loc.sceneId) {
+            if (hovered === loc.sceneId) {
                 line += '{/bold}';
             }
             x += start + loc.label.length;

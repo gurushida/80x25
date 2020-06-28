@@ -15,6 +15,7 @@ import { Cue, Dialog } from "./dialog";
 import { TalkingCharacter } from "./characters";
 import { OUTSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShop";
 import { Matrix } from "./matrix";
+import { debug } from "./main";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -38,6 +39,7 @@ export class SceneEngine implements SceneActionListener {
         this.ui.addInventoryListener(event => {
             this.processInventoryEvent(event);
         });
+        this.ui.addMapListener(sceneId => this.loadScene(sceneId));
 
         ui.addMoveListener(e => {
             ui.setTitle(`${e.x},${e.y}`);
@@ -56,7 +58,7 @@ export class SceneEngine implements SceneActionListener {
             switch (action) {
                 case InternalAction.CLICK_ON_INVENTORY_BUTTON: this.clickedOnInventoryButton(); break;
                 case InternalAction.CLICK_ON_MAP_BUTTON: this.clickedOnMapButton(); break;
-                case InternalAction.HIDE_INVENTORY: this.ui.hideInventory(); break;
+                case InternalAction.HIDE_INVENTORY: this.hideInventory(); break;
                 case InternalAction.HIDE_MAP: this.hideMap(); break;
             }
         });
@@ -70,6 +72,8 @@ export class SceneEngine implements SceneActionListener {
         this.hotspots = [];
         this.currentDialog = undefined;
         this.actionManager.reset();
+        this.hideMap();
+        this.hideInventory();
     }
 
     tick() {
@@ -99,6 +103,9 @@ export class SceneEngine implements SceneActionListener {
         this.buffer.copyHotspotScreenBuffer(this.hotspotBuffer);
     }
 
+    private hideInventory() {
+        this.ui.hideInventory();
+    }
 
     private hideMap() {
         this.ui.hideMap();
@@ -199,7 +206,8 @@ export class SceneEngine implements SceneActionListener {
 
     private clickedOnMapButton() {
         if (this.ui.isMapVisible()) {
-            this.ui.hideMap();
+            this.hideMap();
+        } else if (!this.showActionBar || this.currentDialog || this.ui.isMapVisible()) {
         } else {
             this.ui.showMap(TRIGGERS);
         }
@@ -249,20 +257,25 @@ export class SceneEngine implements SceneActionListener {
     loadScene(sceneId: SceneId) {
         const sceneData = loadSceneData(sceneId, TRIGGERS);
         if (!sceneData) {
+            debug(`No data for scene ${sceneId}`);
             return;
         }
 
+        debug(`load scene ${sceneId}`);
         this.reset();
 
+        debug(`Loading ${sceneData.images.length} images`);
         for (const image of sceneData.images) {
             this.addImage(image);
         }
 
+        debug(`Loading ${sceneData.animations.length} animations`);
         for (const animation of sceneData.animations) {
             this.addAnimation(animation);
         }
 
         this.hotspots = sceneData.hotspots;
+        debug(`Loading ${sceneData.hotspots.length} hotspots`);
         this.showActionBar = sceneData.showActionBar;
 
         if (sceneData.guyPosition) {
@@ -277,6 +290,7 @@ export class SceneEngine implements SceneActionListener {
             this.guyPosition = undefined;
             this.guyAnimation = undefined;
         }
+        debug('scene loaded');
     }
 
     private walkTo(pos: GuyPosition | undefined, then?: Runnable) {

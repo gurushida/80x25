@@ -6,6 +6,7 @@ import { BG_ICE_CREAM_SHOP } from "../background";
 import { ZIndex } from "../../zIndex";
 import { PaintTask, getPaintTask } from "../../paintTask";
 import { loadDialogGrf } from "../../dialog";
+import { Trigger } from "src/triggers";
 
 const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
@@ -51,7 +52,7 @@ const initialGuyPosition: GuyPosition = {
 
 export const OUTSIDE_ICE_CREAM_SHOP_LOADER: SceneLoader = {
     sceneId: SceneId.OUTSIDE_ICE_CREAM_SHOP,
-    load(): SceneData {
+    load(triggers: Trigger[]): SceneData {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,

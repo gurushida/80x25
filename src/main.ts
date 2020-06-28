@@ -1,7 +1,7 @@
 import { UI } from './ui';
 import { SceneEngine } from './sceneEngine';
 import { Clock } from './clock';
-import { SceneId } from './scene';
+//import { SceneId } from './scene';
 
 
 const ui = new UI();
@@ -29,7 +29,7 @@ const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ],
 
 //iceCreamShop.show(sceneEngine);
 
-sceneEngine.loadScene(SceneId.OUTSIDE_ICE_CREAM_SHOP);
+//sceneEngine.loadScene(SceneId.OUTSIDE_ICE_CREAM_SHOP);
 
 Clock.clock.repeat(0, () => {
   sceneEngine.tick();
@@ -37,3 +37,4 @@ Clock.clock.repeat(0, () => {
 });
 
 Clock.clock.play();
+ui.showMap([]);
