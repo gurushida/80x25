@@ -1,5 +1,5 @@
 import fs from 'fs';
-import { isValidTrigger, Trigger, Condition, isVerified } from './triggers';
+import { isValidTrigger, Trigger, Condition } from './triggers';
 import { TalkingCharacter, isValidTalkingCharacter } from './characters';
 
 
@@ -281,17 +281,4 @@ function checkChoices(dialog: Dialog) {
             }
         }
     }
-}
-
-
-export function isEnabled(state: DialogState, triggers: Trigger[]): boolean {
-    if (!state.step || !state.step.conditions) {
-        return true;
-    }
-    for (const condition of state.step.conditions) {
-        if (!isVerified(condition, triggers)) {
-            return false;
-        }
-    }
-    return true;
 }

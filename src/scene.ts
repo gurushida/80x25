@@ -1,7 +1,7 @@
 import { GuyPosition, Hotspot } from "./hotspots";
 import { Animation } from "./animations";
 import { PaintTask } from "./paintTask";
-import { Trigger } from "./triggers";
+import { Triggers } from "./triggers";
 
 
 export interface SceneData {
@@ -20,7 +20,7 @@ export interface SceneData {
  */
 export interface SceneLoader {
     sceneId: SceneId;
-    load(triggers: Trigger[]): SceneData;
+    load(triggers: Triggers): SceneData;
 }
 
 

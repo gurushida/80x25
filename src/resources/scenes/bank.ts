@@ -4,7 +4,7 @@ import { ZIndex } from "../../zIndex";
 import { combine, createFullHotspot, HotspotId, GuyPosition, Hotspot } from "../../hotspots";
 import { ANIM_BOOM_BLASTER } from "../animations/boomBlaster";
 import { SceneLoader, SceneId, SceneData } from "../../scene";
-import { Trigger } from "../../triggers";
+import { Trigger, Triggers } from "../../triggers";
 import { ActionBarButton } from "../../screenbuffer";
 
 
@@ -38,7 +38,8 @@ const initialGuyPosition: GuyPosition = {
 
 export const OUTSIDE_BANK_LOADER: SceneLoader = {
     sceneId: SceneId.OUTSIDE_BANK,
-    load(triggers: Trigger[]): SceneData {
+    load(triggers: Triggers): SceneData {
+        triggers.add(Trigger.BANK_VISITED);
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,

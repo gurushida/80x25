@@ -1,5 +1,5 @@
-import { Dialog, DialogState, isEnabled } from "./dialog";
-import { Trigger } from "./triggers";
+import { Dialog, DialogState } from "./dialog";
+import { Triggers } from "./triggers";
 import { TalkingCharacter } from "./characters";
 import { ICanTalkAnimation } from "./animations";
 import { SceneEngine } from "./sceneEngine";
@@ -14,7 +14,7 @@ export class DialogEngine {
     private currentTalkingCharacter: ICanTalkAnimation | undefined;
     private postDialogAction: Runnable | undefined;
 
-    constructor(private sceneEngine: SceneEngine, private dialog: Dialog, private triggers: Trigger[],
+    constructor(private sceneEngine: SceneEngine, private dialog: Dialog, private triggers: Triggers,
                 private characterMap: Map<TalkingCharacter, ICanTalkAnimation>) {
     }
 
@@ -66,7 +66,7 @@ export class DialogEngine {
         const reachableStates: DialogState[] = [];
         set.forEach(index => {
             const state = this.dialog.states[index];
-            if (isEnabled(state, this.triggers)) {
+            if (this.isEnabled(state)) {
                 reachableStates.push(state);
             }
         });
@@ -93,7 +93,7 @@ export class DialogEngine {
 
         // If this dialog states has triggers, let add them to the trigger list
         for (const t of state.step.triggers) {
-            this.triggers.push(t);
+            this.triggers.add(t);
         }
 
         Clock.clock.scheduleOnce(pause ? 5 : 0,
@@ -132,5 +132,17 @@ export class DialogEngine {
         if (this.currentTalkingCharacter) {
             this.currentTalkingCharacter.skipToNextCue();
         }
+    }
+
+    private isEnabled(state: DialogState): boolean {
+        if (!state.step || !state.step.conditions) {
+            return true;
+        }
+        for (const condition of state.step.conditions) {
+            if (!this.triggers.isVerified(condition)) {
+                return false;
+            }
+        }
+        return true;
     }
 }

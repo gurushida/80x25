@@ -5,7 +5,7 @@ import { BG_ICE_CREAM_SHOP } from "../background";
 import { ZIndex } from "../../zIndex";
 import { PaintTask, getPaintTask } from "../../paintTask";
 import { loadDialogGrf } from "../../dialog";
-import { Trigger } from "../../triggers";
+import { Triggers } from "../../triggers";
 import { ActionBarButton } from "../../screenbuffer";
 
 const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
@@ -57,7 +57,7 @@ const initialGuyPosition: GuyPosition = {
 
 export const OUTSIDE_ICE_CREAM_SHOP_LOADER: SceneLoader = {
     sceneId: SceneId.OUTSIDE_ICE_CREAM_SHOP,
-    load(triggers: Trigger[]): SceneData {
+    load(triggers: Triggers): SceneData {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,

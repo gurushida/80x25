@@ -1,6 +1,6 @@
 import { GuyPosition } from "../../hotspots";
 import { SceneId, SceneLoader, SceneData } from "../../scene";
-import { Trigger } from "../../triggers";
+import { Triggers } from "../../triggers";
 
 const initialGuyPosition: GuyPosition = {
     left: 28,
@@ -10,7 +10,7 @@ const initialGuyPosition: GuyPosition = {
 
 export const INSIDE_ICE_CREAM_SHOP_LOADER: SceneLoader = {
     sceneId: SceneId.INSIDE_ICE_CREAM_SHOP,
-    load(triggers: Trigger[]): SceneData {
+    load(triggers: Triggers): SceneData {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,

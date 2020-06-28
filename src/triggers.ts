@@ -14,12 +14,6 @@ export enum Trigger {
 }
 
 
-/**
- * This array contains all the triggers activated during the game.
- * It represents the progression in the game.
- */
-export const TRIGGERS: Trigger[] = [];
-
 
 /**
  * This represents a condition based on the TRIGGERS array.
@@ -38,10 +32,25 @@ export function isValidTrigger(t: any): t is Trigger {
 }
 
 
-export function isVerified(condition: Condition, triggers: Trigger[]) {
-    if (condition.mustHave) {
-        return triggers.includes(condition.trigger);
+export class Triggers {
+
+    public constructor(private triggers: Trigger[]) {}
+
+    add(t: Trigger) {
+        if (!this.isSet(t)) {
+            this.triggers.push(t);
+        }
     }
 
-    return !triggers.includes(condition.trigger);
+    isSet(t: Trigger): boolean {
+        return this.triggers.includes(t);
+    }
+
+    isVerified(condition: Condition) {
+        if (condition.mustHave) {
+            return this.isSet(condition.trigger);
+        }
+
+        return !this.isSet(condition.trigger);
+    }
 }

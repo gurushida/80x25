@@ -1,6 +1,6 @@
 import * as blessed from 'blessed';
 import { SceneId } from './scene';
-import { Trigger } from './triggers';
+import { Trigger, Triggers } from './triggers';
 import { Matrix } from './matrix';
 
 const WIDTH = 78;
@@ -58,7 +58,7 @@ export class GameMap {
         return this.clickMap.get(X, Y);
     }
 
-    public show(triggers: Trigger[]) {
+    public show(triggers: Triggers) {
         this.locations = getLocationsToShow(triggers);
         this.buildClickMap();
         this.render(undefined);
@@ -167,25 +167,25 @@ function getIceCreamShop(): MapLocation {
     };
 }
 
-function getBank(triggers: Trigger[]): MapLocation {
+function getBank(triggers: Triggers): MapLocation {
     return {
-        label: triggers.includes(Trigger.BANK_VISITED) ? 'Bank' : '???',
+        label: triggers.isSet(Trigger.BANK_VISITED) ? 'Bank' : '???',
         centerX: 23,
         centerY: 18,
         sceneId: SceneId.OUTSIDE_BANK
     };
 }
 
-function getPub(triggers: Trigger[]): MapLocation {
+function getPub(triggers: Triggers): MapLocation {
     return {
-        label: triggers.includes(Trigger.HEARD_ABOUT_PUB) ? 'Ales & Bells' : undefined,
+        label: triggers.isSet(Trigger.HEARD_ABOUT_PUB) ? 'Ales & Bells' : undefined,
         centerX: 62,
         centerY: 11,
         sceneId: SceneId.PUB
     };
 }
 
-function getLocationsToShow(triggers: Trigger[]): MapLocation[] {
+function getLocationsToShow(triggers: Triggers): MapLocation[] {
     const locations: MapLocation[] = [];
     locations.push(getExit());
     locations.push(getIceCreamShop());

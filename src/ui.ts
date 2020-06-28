@@ -2,7 +2,7 @@ import * as blessed from 'blessed';
 import { WIDTH, HEIGHT, ScreenBuffer } from './screenBuffer';
 import { InventoryObject } from './inventory';
 import { Inventory, InventoryListener } from './inventoryUI';
-import { Trigger } from './triggers';
+import { Triggers } from './triggers';
 import { GameMap, MapListener } from './mapUI';
 
 export interface MouseEvent {
@@ -153,7 +153,7 @@ export class UI {
         return this.inventory.isVisible();
     }
 
-    showMap(triggers: Trigger[]) {
+    showMap(triggers: Triggers) {
         this.map.show(triggers);
     }
 

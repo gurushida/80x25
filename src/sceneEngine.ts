@@ -8,7 +8,7 @@ import { UI } from "./ui";
 import { InventoryEvent } from "./inventoryUI";
 import { ActionManager, InternalAction, SceneActionListener } from "./actionManager";
 import { SceneId, SceneLoader, SceneData } from "./scene";
-import { TRIGGERS, Trigger } from "./triggers";
+import { Triggers } from "./triggers";
 import { GuyAnimation } from "./resources/animations/guy";
 import { Runnable } from "./runnable";
 import { Cue, Dialog } from "./dialog";
@@ -33,7 +33,7 @@ export class SceneEngine implements SceneActionListener {
     private guyAnimation: GuyAnimation | undefined;
     private guyPosition: GuyPosition | undefined;
 
-    constructor(private ui: UI) {
+    constructor(private ui: UI, private triggers: Triggers) {
         this.buffer = ui.buffer;
         this.hotspots = []
         this.staticImages = [];
@@ -211,7 +211,7 @@ export class SceneEngine implements SceneActionListener {
             this.hideMap();
         } else if (!this.showActionBar || this.currentDialog || this.ui.isMapVisible()) {
         } else {
-            this.ui.showMap(TRIGGERS);
+            this.ui.showMap(this.triggers);
         }
     }
 
@@ -257,7 +257,7 @@ export class SceneEngine implements SceneActionListener {
 
 
     loadScene(sceneId: SceneId) {
-        const sceneData = loadSceneData(sceneId, TRIGGERS);
+        const sceneData = loadSceneData(sceneId, this.triggers);
         if (!sceneData) {
             debug(`No data for scene ${sceneId}`);
             return;
@@ -346,7 +346,7 @@ export class SceneEngine implements SceneActionListener {
         this.say([[ 'I cannot use this with that.' ]]);
     }
 
-    private runDialog(dialog: Dialog, triggers: Trigger[]) {
+    private runDialog(dialog: Dialog, triggers: Triggers) {
         const characterMap = new Map<TalkingCharacter, ICanTalkAnimation>();
         for (const animation of this.animations) {
             if (isCanTalkAnimation(animation)) {
@@ -371,7 +371,7 @@ export class SceneEngine implements SceneActionListener {
             this.say([[ 'I cannot talk to that.' ]]);
         } else {
             this.walkTo(who.guyPositionForAction, () => {
-                this.runDialog(who.dialog, TRIGGERS);
+                this.runDialog(who.dialog, this.triggers);
             });
         }
     }
@@ -422,7 +422,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
 }
 
 
-function loadSceneData(sceneId: SceneId, triggers: Trigger[]): SceneData | undefined {
+function loadSceneData(sceneId: SceneId, triggers: Triggers): SceneData | undefined {
     const loader = getSceneLoader(sceneId);
     return loader ? loader.load(triggers) : undefined;
 }
