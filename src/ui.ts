@@ -2,6 +2,8 @@ import * as blessed from 'blessed';
 import { WIDTH, HEIGHT, ScreenBuffer } from './screenBuffer';
 import { InventoryObject } from './inventory';
 import { Inventory, InventoryListener } from './inventoryUI';
+import { Trigger } from './triggers';
+import { GameMap } from './mapUI';
 
 export interface MouseEvent {
     x: number;
@@ -20,6 +22,7 @@ export class UI {
     private box: blessed.Widgets.BoxElement;
 
     private inventory: Inventory;
+    private map: GameMap;
 
     private clickListeners: MouseListener[] = [];
     private moveListeners: MouseListener[] = [];
@@ -60,6 +63,7 @@ export class UI {
         });
 
         this.inventory = new Inventory(this.box);
+        this.map = new GameMap(this.box);
 
         this.render();
     }
@@ -139,5 +143,17 @@ export class UI {
 
     isInventoryVisible() {
         return this.inventory.isVisible();
+    }
+
+    showMap(triggers: Trigger[]) {
+        this.map.show(triggers);
+    }
+
+    hideMap() {
+        this.map.hide();
+    }
+
+    isMapVisible() {
+        return this.map.isVisible();
     }
 }

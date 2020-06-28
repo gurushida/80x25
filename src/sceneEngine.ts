@@ -101,6 +101,7 @@ export class SceneEngine implements SceneActionListener {
 
 
     private hideMap() {
+        this.ui.hideMap();
     }
 
     private paintActionBar() {
@@ -197,11 +198,15 @@ export class SceneEngine implements SceneActionListener {
     }
 
     private clickedOnMapButton() {
-        this.ui.hideInventory();
+        if (this.ui.isMapVisible()) {
+            this.ui.hideMap();
+        } else {
+            this.ui.showMap(TRIGGERS);
+        }
     }
 
     private clickedOnInventoryButton() {
-        if (!this.showActionBar || this.currentDialog) {
+        if (!this.showActionBar || this.currentDialog || this.ui.isMapVisible()) {
             // We don't want to use the inventory when the action bar
             // isn't visible or if there is a dialog going on
             return;
