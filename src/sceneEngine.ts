@@ -16,6 +16,7 @@ import { TalkingCharacter } from "./characters";
 import { OUTSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShop";
 import { Matrix } from "./matrix";
 import { debug } from "./main";
+import { OUTSIDE_BANK_LOADER } from "./resources/scenes/bank";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -409,6 +410,7 @@ export class SceneEngine implements SceneActionListener {
 function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
     switch(sceneId) {
         case SceneId.OUTSIDE_ICE_CREAM_SHOP: return OUTSIDE_ICE_CREAM_SHOP_LOADER;
+        case SceneId.OUTSIDE_BANK: return OUTSIDE_BANK_LOADER;
         default: return undefined;
     }
 }

@@ -172,7 +172,7 @@ function getBank(triggers: Trigger[]): MapLocation {
         label: triggers.includes(Trigger.BANK_VISITED) ? 'Bank' : '???',
         centerX: 23,
         centerY: 18,
-        sceneId: SceneId.BANK
+        sceneId: SceneId.OUTSIDE_BANK
     };
 }
 

@@ -12,23 +12,6 @@ export function debug(str: string) {
 
 const sceneEngine = new SceneEngine(ui);
 
-/*const bankBackground = getPaintTaskZ(background.bank, 0, 0, 0, createFullHotspot(Hotspots.BANK));
-const boomBlasterAnimation: AnimationZ = { animation: boom_blaster, zIndex: 0};
-const bankHotspotMap = new HotspotMap();
-bankHotspotMap.set(Hotspots.BOOM_BLASTER, {
-  description: 'boom blaster',
-  rightClickAction: Action.LOOK,
-});
-bankHotspotMap.set(Hotspots.BANK, {
-  description: 'bank',
-  rightClickAction: Action.TAKE,
-});
-
-const bank = new GameScreen(scene, [ bankBackground ], [ boomBlasterAnimation ], bankHotspotMap, true);
-*/
-
-//iceCreamShop.show(sceneEngine);
-
 //sceneEngine.loadScene(SceneId.OUTSIDE_ICE_CREAM_SHOP);
 
 Clock.clock.repeat(0, () => {

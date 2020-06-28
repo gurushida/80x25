@@ -103,7 +103,7 @@ export class ActionManager {
 
     handleMouseEventHotspot(hotspot: Hotspot | undefined, x: number, y: number,
                             buttonClicked: 'left' | 'right' | undefined) {
-        if (hotspot && hotspot.movementHotspot) {
+        if (hotspot !== undefined && hotspot.movementHotspot) {
             if (buttonClicked) {
                 this.fireChangeSceneAction(hotspot.movementHotspot, hotspot.guyPositionForAction);
             } else {
