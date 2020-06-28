@@ -1,6 +1,6 @@
 import { Animation, ICanTalkAnimation, isCanTalkAnimation } from "./animations";
-import { ScreenBuffer, HEIGHT, ActionBarButton } from "./screenbuffer";
-import { HotspotScreenBuffer, Hotspot, GuyPosition, isHotspot } from "./hotspots";
+import { ScreenBuffer, HEIGHT, ActionBarButton, WIDTH } from "./screenbuffer";
+import { Hotspot, GuyPosition, isHotspot, HotspotId } from "./hotspots";
 import { INVENTORY, InventoryObject, isInventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
 import { DialogEngine } from "./dialogEngine";
@@ -14,13 +14,14 @@ import { Runnable } from "./runnable";
 import { Cue, Dialog } from "./dialog";
 import { TalkingCharacter } from "./characters";
 import { OUTSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShop";
+import { Matrix } from "./matrix";
 
 export class SceneEngine implements SceneActionListener {
 
     private currentDialog: DialogEngine | undefined = undefined;
     private currentDialogOption: number | undefined = undefined;
     private buffer: ScreenBuffer;
-    private hotspotBuffer = new HotspotScreenBuffer();
+    private hotspotBuffer = new Matrix<HotspotId>(WIDTH, HEIGHT);
     private hotspots: Hotspot[];
     private staticImages: PaintTask[];
     private animations: Animation[];

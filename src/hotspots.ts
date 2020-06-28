@@ -1,5 +1,4 @@
 import { AsciiImage, OPAQUE } from "./images";
-import { WIDTH, HEIGHT } from "./screenbuffer";
 import { Action } from "./actions";
 import { SceneId } from "./scene";
 import { Dialog, Cue } from "./dialog";
@@ -53,43 +52,6 @@ export function createMaskHotspot(image: AsciiImage, hotspot: HotspotId): Hotspo
   return (x: number, y: number) => {
     return (image.mask[y][x] === OPAQUE) ? hotspot : undefined;
   };
-}
-
-
-export class HotspotScreenBuffer {
-
-    private pixels: (HotspotId | undefined)[];
-
-    constructor() {
-        this.pixels = [];
-        for (let i = 0 ; i < WIDTH * HEIGHT ; i++) {
-            this.pixels.push(undefined);
-        }
-    }
-
-    public clear() {
-        for (let i = 0 ; i < WIDTH * HEIGHT ; i++) {
-            this.pixels[i] = undefined;
-        }
-    }
-
-    public set(x: number, y: number, hotspot: HotspotId) {
-        this.pixels[x + y * WIDTH] = hotspot;
-    }
-
-    public get(x: number, y: number): HotspotId {
-        if (x < 0 || x >= WIDTH || y < 0 || y >= HEIGHT) {
-            return undefined;
-        }
-        return this.pixels[x + y * WIDTH];
-    }
-
-    public copyFrom(other: HotspotScreenBuffer) {
-        for (let i = 0 ; i < WIDTH * HEIGHT ; i++) {
-            this.pixels[i] = other.pixels[i];
-        }
-    }
-
 }
 
 

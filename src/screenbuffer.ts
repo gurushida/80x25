@@ -1,8 +1,9 @@
 import { OPAQUE } from "./images";
 import { PaintTask } from "./paintTask";
-import { HotspotScreenBuffer } from "./hotspots";
+import { Matrix } from "./matrix";
 import { center } from "./utils";
 import { ActionBarPaintInfo } from "./actionManager";
+import { HotspotId } from "./hotspots";
 
 export const WIDTH = 80;
 export const HEIGHT = 25;
@@ -22,12 +23,12 @@ export enum ActionBarButton {
 export class ScreenBuffer {
 
     buffer: string[][];
-    hotspotBuffer: HotspotScreenBuffer;
+    hotspotBuffer: Matrix<HotspotId>;
     actionBar: string | undefined;
     hoveredDialogLine: number | undefined;
 
     constructor() {
-        this.hotspotBuffer = new HotspotScreenBuffer();
+        this.hotspotBuffer = new Matrix<HotspotId>(WIDTH, HEIGHT);
         this.buffer = [];
         this.clear();
     }
@@ -51,7 +52,7 @@ export class ScreenBuffer {
         this.buffer[top][left] = ch;
     }
 
-    copyHotspotScreenBuffer(dst: HotspotScreenBuffer) {
+    copyHotspotScreenBuffer(dst: Matrix<HotspotId>) {
         dst.copyFrom(this.hotspotBuffer);
     }
 

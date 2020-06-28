@@ -8,6 +8,9 @@ export enum Trigger {
     DOG_1 = 'DOG_1',
     HAS_TEQUILA = 'HAS_TEQUILA',
     KNOW_ABOUT_TEQUILA = 'KNOW_ABOUT_TEQUILA',
+    BANK_VISITED = 'BANK_VISITED',
+    HEARD_ABOUT_PUB = 'HEARD_ABOUT_PUB',
+
 }
 
 
