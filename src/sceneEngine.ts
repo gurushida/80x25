@@ -13,10 +13,11 @@ import { GuyAnimation } from "./resources/animations/guy";
 import { Runnable } from "./runnable";
 import { Cue, Dialog } from "./dialog";
 import { TalkingCharacter } from "./characters";
-import { OUTSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShop";
+import { OUTSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShopOutside";
 import { Matrix } from "./matrix";
 import { debug } from "./main";
 import { OUTSIDE_BANK_LOADER } from "./resources/scenes/bank";
+import { INSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShopInside";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -303,6 +304,10 @@ export class SceneEngine implements SceneActionListener {
                     then();
                 }
             }
+        } else {
+            if (then) {
+                then();
+            }
         }
     }
 
@@ -386,7 +391,7 @@ export class SceneEngine implements SceneActionListener {
     }
 
     changeScene(sceneId: SceneId, pos: GuyPosition | undefined) {
-        this.say([[ `Change scene to ${sceneId}` ]]);
+        this.walkTo(pos, () => this.loadScene(sceneId));
     }
 
     quit() {
@@ -409,6 +414,7 @@ export class SceneEngine implements SceneActionListener {
 
 function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
     switch(sceneId) {
+        case SceneId.INSIDE_ICE_CREAM_SHOP: return INSIDE_ICE_CREAM_SHOP_LOADER;
         case SceneId.OUTSIDE_ICE_CREAM_SHOP: return OUTSIDE_ICE_CREAM_SHOP_LOADER;
         case SceneId.OUTSIDE_BANK: return OUTSIDE_BANK_LOADER;
         default: return undefined;

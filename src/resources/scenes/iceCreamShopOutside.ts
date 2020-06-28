@@ -27,6 +27,11 @@ const iceCreamShopHotspots: Hotspot[] = [
         hotspotId: HotspotId.ICE_CREAM_SHOP_DOOR,
         description: 'Enter ice cream shop',
         movementHotspot: SceneId.INSIDE_ICE_CREAM_SHOP,
+        guyPositionForAction: {
+            left: 33,
+            top: 14,
+            lookToTheRight: true
+        },
         lookAt: [[]]
     },
     {
