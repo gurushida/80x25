@@ -1,7 +1,7 @@
 import { Animation, ICanTalkAnimation, isCanTalkAnimation } from "./animations";
 import { ScreenBuffer, HEIGHT, ActionBarButton, WIDTH } from "./screenbuffer";
 import { Hotspot, GuyPosition, isHotspot, HotspotId } from "./hotspots";
-import { INVENTORY, InventoryObject, isInventoryObject } from "./inventory";
+import { Inventory, InventoryObject, isInventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
 import { DialogEngine } from "./dialogEngine";
 import { UI } from "./ui";
@@ -33,7 +33,7 @@ export class SceneEngine implements SceneActionListener {
     private guyAnimation: GuyAnimation | undefined;
     private guyPosition: GuyPosition | undefined;
 
-    constructor(private ui: UI, private triggers: Triggers) {
+    constructor(private ui: UI, private triggers: Triggers, private inventory: Inventory) {
         this.buffer = ui.buffer;
         this.hotspots = []
         this.staticImages = [];
@@ -224,7 +224,7 @@ export class SceneEngine implements SceneActionListener {
         if (this.ui.isInventoryVisible()) {
             this.ui.hideInventory();
         } else {
-            this.ui.showInventory(INVENTORY);
+            this.ui.showInventory(this.inventory);
         }
     }
 

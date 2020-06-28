@@ -10,43 +10,57 @@ export enum InventoryId {
     JUMPING_ROPE = 'jumping rope',
 }
 
+const AllObjects: InventoryObject[] = [];
+
 export interface InventoryObject {
     objectId: InventoryId;
     lookAt: Cue[];
 }
 
 
-export const COIN: InventoryObject = {
+AllObjects.push({
     objectId: InventoryId.COIN,
     lookAt: [[ 'This is a piece of legacy', 'transactional hardware' ], [ 'colloquially known as a coin.' ]]
-};
+});
 
-export const ICE_CREAM: InventoryObject = {
+AllObjects.push({
     objectId: InventoryId.ICE_CREAM,
     lookAt: [[ 'This is a vanilla and', 'lemon ice cream.' ]]
-};
+});
 
-export const JUMPING_ROPE: InventoryObject = {
+AllObjects.push({
     objectId: InventoryId.JUMPING_ROPE,
     lookAt: [[ 'This is a jumping rope.' ]]
-};
+});
 
-export const MOVIE_REVIEW: InventoryObject = {
+AllObjects.push({
     objectId: InventoryId.MOVIE_REVIEW,
     lookAt: [[ 'This is a very enthusiastic', 'review of a movie:' ],
              [ '"One of the best experiences', 'I ever had.' ],
              [ 'If this cannot get emotion', 'tears out of you,' ],
              [ 'you need to start questionning', 'your ability to feel."' ]]
-};
+});
 
 
-// This is the global inventory
-export const INVENTORY: InventoryObject[] = [
-    COIN,
-    ICE_CREAM,
-    JUMPING_ROPE,
-    MOVIE_REVIEW,
-];
+function getObject(id: InventoryId): InventoryObject {
+    const item: InventoryObject | undefined = AllObjects.find(item => item.objectId === id);
+    if (item === undefined) {
+        throw new Error(`Missing object for id ${id}`);
+    }
+    return item;
+}
+
+export class Inventory {
+
+    items: InventoryObject[] = [];
+
+    constructor(ids: InventoryId[]) {
+        for (const id of ids) {
+            this.items.push(getObject(id));
+        }
+    }
+}
+
 
 export function isInventoryId(obj: any): obj is InventoryObject {
     return Object.values(InventoryId).includes(obj);

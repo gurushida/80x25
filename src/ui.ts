@@ -1,7 +1,7 @@
 import * as blessed from 'blessed';
 import { WIDTH, HEIGHT, ScreenBuffer } from './screenBuffer';
-import { InventoryObject } from './inventory';
-import { Inventory, InventoryListener } from './inventoryUI';
+import { Inventory } from './inventory';
+import { InventoryUI, InventoryListener } from './inventoryUI';
 import { Triggers } from './triggers';
 import { GameMap, MapListener } from './mapUI';
 
@@ -21,7 +21,7 @@ export class UI {
     // The 80x25 area the game + 1 character border around it
     private box: blessed.Widgets.BoxElement;
 
-    private inventory: Inventory;
+    private inventory: InventoryUI;
     private map: GameMap;
 
     private clickListeners: MouseListener[] = [];
@@ -62,7 +62,7 @@ export class UI {
             this.fireEvent(this.clickListeners, data.x, data.y, data.button);
         });
 
-        this.inventory = new Inventory(this.box);
+        this.inventory = new InventoryUI(this.box);
         this.map = new GameMap(this.box);
 
         this.render();
@@ -141,8 +141,8 @@ export class UI {
         this.screen.title = msg;
     }
 
-    showInventory(items: InventoryObject[]) {
-        this.inventory.show(items);
+    showInventory(inventory: Inventory) {
+        this.inventory.show(inventory);
     }
 
     hideInventory() {

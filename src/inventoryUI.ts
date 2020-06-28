@@ -1,5 +1,5 @@
 import * as blessed from 'blessed';
-import { InventoryObject } from './inventory';
+import { InventoryObject, Inventory } from './inventory';
 
 const WIDTH = 30;
 const HEIGHT = 6;
@@ -11,7 +11,7 @@ export interface InventoryEvent {
 
 export type InventoryListener = (event: InventoryEvent) => void;
 
-export class Inventory {
+export class InventoryUI {
 
     private box: blessed.Widgets.BoxElement;
     private items: InventoryObject[] = [];
@@ -75,8 +75,8 @@ export class Inventory {
         }
     }
 
-    public show(items: InventoryObject[]) {
-        this.items = items;
+    public show(inventory: Inventory) {
+        this.items = inventory.items;
         this.topVisibleItem = 0;
         this.hoveredItem = undefined;
         this.render();
