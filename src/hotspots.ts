@@ -1,7 +1,7 @@
 import { AsciiImage, OPAQUE } from "./images";
 import { SceneId } from "./scene";
 import { Dialog, Cue } from "./dialog";
-import { ActionBarButton } from "./screenbuffer";
+import { ActionBarButton } from "./screenBuffer";
 
 
 /**

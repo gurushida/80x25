@@ -1,9 +1,9 @@
-import { ImageAnimation, Animation } from "../../animations";
+import { ImageAnimation, Animation } from "@/animations";
 import { SPR_DOG_0, SPR_DOG_1 } from "../sprites";
-import { createMaskHotspot, HotspotId } from "../../hotspots";
-import { ZIndex } from "../../zIndex";
+import { createMaskHotspot, HotspotId } from "@/hotspots";
+import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
-import { TalkingCharacter } from "../../characters";
+import { TalkingCharacter } from "@/characters";
 
 const DOG_HOTSPOT = createMaskHotspot(SPR_DOG_0, HotspotId.DOG);
 

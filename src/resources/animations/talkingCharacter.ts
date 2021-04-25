@@ -1,10 +1,10 @@
-import { ICanTalkAnimation, Animation } from "../../animations";
-import { Cue } from "../../dialog";
-import { PaintTask } from "../../paintTask";
+import { ICanTalkAnimation, Animation } from "@/animations";
+import { Cue } from "@/dialog";
+import { PaintTask } from "@/paintTask";
 import { TextAnimation } from "./text";
-import { Runnable } from "../../runnable";
-import { Clock } from "../../clock";
-import { TalkingCharacter } from "../../characters";
+import { Runnable } from "@/runnable";
+import { Clock } from "@/clock";
+import { TalkingCharacter } from "@/characters";
 
 export abstract class CanTalkAnimation implements ICanTalkAnimation {
 

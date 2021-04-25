@@ -1,11 +1,11 @@
-import { PaintTask, getPaintTask } from "../../paintTask";
+import { PaintTask, getPaintTask } from "@/paintTask";
 import { BG_BANK } from "../background";
-import { ZIndex } from "../../zIndex";
-import { combine, createFullHotspot, HotspotId, GuyPosition, Hotspot } from "../../hotspots";
+import { ZIndex } from "@/zIndex";
+import { combine, createFullHotspot, HotspotId, GuyPosition, Hotspot } from "@/hotspots";
 import { ANIM_BOOM_BLASTER } from "../animations/boomBlaster";
-import { SceneLoader, SceneId, SceneData } from "../../scene";
-import { Trigger, Triggers } from "../../triggers";
-import { ActionBarButton } from "../../screenbuffer";
+import { SceneLoader, SceneId, SceneData } from "@/scene";
+import { Trigger, Triggers } from "@/triggers";
+import { ActionBarButton } from "@/screenBuffer";
 
 
 const fullFilter = createFullHotspot(HotspotId.BANK);

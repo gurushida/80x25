@@ -1,4 +1,4 @@
-import { ActionBarButton, isActionBarButton } from "./screenbuffer";
+import { ActionBarButton, isActionBarButton } from "./screenBuffer";
 import { Hotspot, GuyPosition, isHotspot } from "./hotspots";
 import { InventoryObject, isInventoryObject } from "./inventory";
 import { SceneId } from "./scene";

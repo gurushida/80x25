@@ -1,7 +1,7 @@
-import { ImageAnimation } from "../../animations";
+import { ImageAnimation } from "@/animations";
 import { SPR_BOOM_BLASTER_0, SPR_BOOM_BLASTER_1 } from "../sprites";
-import { createMaskHotspot, HotspotId } from "../../hotspots";
-import { ZIndex } from "../../zIndex";
+import { createMaskHotspot, HotspotId } from "@/hotspots";
+import { ZIndex } from "@/zIndex";
 
 const BOOM_BLASTER_HOTSPOT = createMaskHotspot(SPR_BOOM_BLASTER_0, HotspotId.BOOM_BLASTER);
 

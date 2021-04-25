@@ -1,9 +1,9 @@
-import { Animation, AnimationStep, ImageAnimation } from "../../animations";
-import { Cue, getDurationInTicks } from "../../dialog";
-import { center } from "../../utils";
-import { WIDTH, HEIGHT } from "../../screenbuffer";
-import { ZIndex } from "../../zIndex";
-import { PaintTask } from "../../paintTask";
+import { Animation, AnimationStep, ImageAnimation } from "@/animations";
+import { Cue, getDurationInTicks } from "@/dialog";
+import { center } from "@/utils";
+import { WIDTH, HEIGHT } from "@/screenBuffer";
+import { ZIndex } from "@/zIndex";
+import { PaintTask } from "@/paintTask";
 
 export class TextAnimation implements Animation {
 

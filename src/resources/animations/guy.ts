@@ -1,16 +1,16 @@
-import { Animation, ImageAnimation } from "../../animations";
+import { Animation, ImageAnimation } from "@/animations";
 import { SPR_GUY_RIGHT_STILL_0, SPR_GUY_LEFT_STILL_0, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
   SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
   SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1,
   SPR_GUY_LEFT_STILL_1 } from "../sprites";
-import { WIDTH } from "../../screenbuffer";
-import { GuyPosition } from "src/hotspots";
-import { ZIndex } from "../../zIndex";
-import { PaintTask } from "../../paintTask";
-import { WalkingDestination } from "../../actions";
+import { WIDTH } from "@/screenBuffer";
+import { GuyPosition } from "@/hotspots";
+import { ZIndex } from "@/zIndex";
+import { PaintTask } from "@/paintTask";
+import { WalkingDestination } from "@/actions";
 import { CanTalkAnimation } from "./talkingCharacter";
-import { Clock } from "../../clock";
-import { TalkingCharacter } from "../../characters";
+import { Clock } from "@/clock";
+import { TalkingCharacter } from "@/characters";
 
 export enum GUY_STATE {
     STILL,

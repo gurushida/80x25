@@ -1,6 +1,6 @@
-import { GuyPosition } from "../../hotspots";
-import { SceneId, SceneLoader, SceneData } from "../../scene";
-import { Triggers } from "../../triggers";
+import { GuyPosition } from "@/hotspots";
+import { SceneId, SceneLoader, SceneData } from "@/scene";
+import { Triggers } from "@/triggers";
 
 const initialGuyPosition: GuyPosition = {
     left: 28,

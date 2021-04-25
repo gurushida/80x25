@@ -2,22 +2,20 @@
   "name": "80x25",
   "version": "0.0.1",
   "description": "A terminal point-and-click game",
-  "main": "dist/index.js",
+  "main": "80x25.js",
   "scripts": {
-    "clean": "ncc cache clean",
-    "build": "ncc build -m src/main.ts",
-    "run": "ncc run src/main.ts",
-    "pkg": "pkg -t macos dist/index.js -o 80x25",
-    "pkg-linux": "pkg -t linux dist/index.js -o 80x25-linux",
-    "pkg-win": "pkg -t win dist/index.js -o 80x25.exe"
+    "build": "esbuild --outfile=80x25.js --target=node14 --banner='#!/usr/bin/env node' --bundle --platform=node --minify --tsconfig=./tsconfig.json src/main.ts --external:blessed && chmod a+x 80x25.js",
+    "pkg-mac": "pkg -t macos 80x25.js -o 80x25",
+    "pkg-linux": "pkg -t linux 80x25.js -o 80x25-linux",
+    "pkg-win": "pkg -t win 80x25.js -o 80x25.exe"
   },
   "dependencies": {
     "@types/blessed": "^0.1.17",
     "blessed": "^0.1.81"
   },
   "devDependencies": {
-    "@zeit/ncc": "^0.22.3",
-    "pkg": "^4.4.8",
-    "typescript": "^3.2.2"
+    "@types/node": "^14.14.37",
+    "esbuild": "^0.8.42",
+    "pkg": "^4.4.8"
   }
 }

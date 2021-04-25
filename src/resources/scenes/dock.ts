@@ -1,8 +1,8 @@
-import { PaintTask, getPaintTask } from "../../paintTask";
-import { ZIndex } from "../../zIndex";
-import { combine, createFullHotspot, GuyPosition, HotspotId } from "../../hotspots";
-import { SceneLoader, SceneId, SceneData } from "../../scene";
-import { Triggers, Trigger } from "../../triggers";
+import { PaintTask, getPaintTask } from "@/paintTask";
+import { ZIndex } from "@/zIndex";
+import { combine, createFullHotspot, GuyPosition, HotspotId } from "@/hotspots";
+import { SceneLoader, SceneId, SceneData } from "@/scene";
+import { Triggers, Trigger } from "@/triggers";
 import { ANIM_SEA } from "../animations/sea";
 import { SPR_DOCK_0 } from "../sprites";
 

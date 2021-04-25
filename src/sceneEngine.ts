@@ -1,5 +1,5 @@
 import { Animation, ICanTalkAnimation, isCanTalkAnimation } from "./animations";
-import { ScreenBuffer, HEIGHT, ActionBarButton, WIDTH } from "./screenbuffer";
+import { ScreenBuffer, HEIGHT, ActionBarButton, WIDTH } from "./screenBuffer";
 import { Hotspot, GuyPosition, isHotspot, HotspotId } from "./hotspots";
 import { Inventory, InventoryObject, isInventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
