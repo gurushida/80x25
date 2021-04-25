@@ -22,7 +22,7 @@ export class Matrix<T> {
         this.matrix[x + y * this.WIDTH] = value;
     }
 
-    public get(x: number, y: number): T {
+    public get(x: number, y: number): T | undefined {
         if (x < 0 || x >= this.WIDTH || y < 0 || y >= this.HEIGHT) {
             return undefined;
         }

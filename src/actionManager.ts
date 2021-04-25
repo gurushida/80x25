@@ -13,17 +13,17 @@ export enum InternalAction {
 export type InternalActionListener = (action: InternalAction) => void;
 
 export interface SceneActionListener {
-    walk(x: number, y: number);
-    give(what: InventoryObject, to: Hotspot);
-    use(what: InventoryObject | Hotspot);
-    useObjectOn(what: InventoryObject, on: InventoryObject | Hotspot);
-    talk(who: InventoryObject | Hotspot);
-    take(what: InventoryObject | Hotspot);
-    look(what: InventoryObject | Hotspot);
+    walk(x: number, y: number): void;
+    give(what: InventoryObject, to: Hotspot): void;
+    use(what: InventoryObject | Hotspot): void;
+    useObjectOn(what: InventoryObject, on: InventoryObject | Hotspot): void;
+    talk(who: InventoryObject | Hotspot): void;
+    take(what: InventoryObject | Hotspot): void;
+    look(what: InventoryObject | Hotspot): void;
 
-    changeScene(sceneId: SceneId, pos: GuyPosition | undefined);
-    quit();
-    skip();
+    changeScene(sceneId: SceneId, pos: GuyPosition | undefined): void;
+    quit(): void;
+    skip(): void;
 }
 
 export class ActionManager {

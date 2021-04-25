@@ -93,7 +93,7 @@ interface GrfBox {
 }
 
 
-function parseGrfState(line: string, index: number, characters: TalkingCharacter[]): DialogState | undefined{
+function parseGrfState(line: string, index: number, characters: TalkingCharacter[]): DialogState {
     if (index === 1) {
         return {
             destinations: []
@@ -275,7 +275,7 @@ function checkChoices(dialog: Dialog) {
                 if (dst === 1) {
                     throw new Error(`Cannot have a choice between final state and something else:\n${JSON.stringify(state)}`);
                 }
-                if (!dialog.states[dst].step || dialog.states[dst].step.character !== TalkingCharacter.GUY) {
+                if (dialog.states[dst].step?.character !== TalkingCharacter.GUY) {
                     throw new Error(`Cannot have a choice not for the guy:\n${JSON.stringify(state)}`);
                 }
             }

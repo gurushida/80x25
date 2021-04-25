@@ -2,6 +2,7 @@ import * as blessed from 'blessed';
 import { SceneId } from './scene';
 import { Trigger, Triggers } from './triggers';
 import { Matrix } from './matrix';
+import { invariant } from './utils';
 
 const WIDTH = 78;
 const HEIGHT = 23;
@@ -52,7 +53,7 @@ export class GameMap {
         parent.append(this.box);
     }
 
-    private getClickTarget(mouseX: number, mouseY): SceneId | MapCommand | undefined {
+    private getClickTarget(mouseX: number, mouseY: number): SceneId | MapCommand | undefined {
         let X = mouseX - (this.parent.left as number) - 2;
         let Y = mouseY - (this.parent.top as number) - 2;
         return this.clickMap.get(X, Y);
@@ -78,6 +79,9 @@ export class GameMap {
         let line = '';
         let x = 0;
         for (const loc of locations) {
+            if (!loc.label) {
+                continue;
+            }
             const start = this.getLabelStart(loc);
             let paddingBefore = ' '.repeat(start - x);
             line += paddingBefore;
@@ -123,6 +127,9 @@ export class GameMap {
     private buildClickMap() {
         this.clickMap.clear();
         for (const location of this.locations) {
+            if (!location.label) {
+                continue;
+            }
             const left = this.getLabelStart(location);
             const y = location.centerY;
             for (let x = left ; x < (left + location.label.length) ; x++) {
@@ -137,6 +144,7 @@ export class GameMap {
      * given by the map location.
      */
     private getLabelStart(location: MapLocation) {
+        invariant(location.label, 'label should be defined');
         let x = location.centerX - Math.round((location.label.length / 2));
         if (x < 0) {
             x = 0;

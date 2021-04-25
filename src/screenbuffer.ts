@@ -45,7 +45,6 @@ export class ScreenBuffer {
 
         for (let top = 0 ; top < HEIGHT; top++) {
             this.buffer[top] = [];
-            this.hotspotBuffer[top] = [];
             for (let left = 0 ; left < WIDTH; left++) {
                 this.set(' ', left, top);
             }
@@ -133,7 +132,7 @@ export class ScreenBuffer {
      * If there is a dialog running, the lower lines are used to display the options.
      * If there is no option at all, the last line is left empty.
      */
-    paintDialogOptions(hoveredOption: number, options: string[]) {
+    paintDialogOptions(hoveredOption: number | undefined, options: string[]) {
         for (let i = 0 ; i < options.length ; i++) {
             this.printString(0, HEIGHT - options.length + i, EMPTY_LINE);
             this.printString(0, HEIGHT - options.length + i, options[i]);

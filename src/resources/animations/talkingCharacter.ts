@@ -5,6 +5,7 @@ import { TextAnimation } from "./text";
 import { Runnable } from "@/runnable";
 import { Clock } from "@/clock";
 import { TalkingCharacter } from "@/characters";
+import { invariant } from "@/utils";
 
 export abstract class CanTalkAnimation implements ICanTalkAnimation {
 
@@ -42,10 +43,15 @@ export abstract class CanTalkAnimation implements ICanTalkAnimation {
             return this.tickNonTalking();
         }
 
+        invariant(this.textAnimation, 'textAnimation should be defined');
         const tasks = this.textAnimation.tick();
         if (tasks) {
             // Still talking
-            return [...tasks, ...this.characterAnimation.tick()];
+            invariant(this.characterAnimation, 'characterAnimation should be defined');
+            const animationTasks = this.characterAnimation.tick();
+            invariant(animationTasks !== undefined, 'animationTasks should be defined');
+
+            return [...tasks, ...animationTasks];
         }
         // If the character is done talking, let's stop the animation
         // and go back to normal
@@ -63,6 +69,6 @@ export abstract class CanTalkAnimation implements ICanTalkAnimation {
     abstract getCharacter(): TalkingCharacter;
     abstract getTalkAnchor(): { talkAnchorLeft: number, talkAnchorBottom: number };
     abstract startTalkingAnimation(): Animation;
-    abstract stopTalkingAnimation();
-    abstract tickNonTalking();
+    abstract stopTalkingAnimation(): void;
+    abstract tickNonTalking(): PaintTask[] | undefined;
 }

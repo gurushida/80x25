@@ -42,21 +42,21 @@ export interface ICanTalkAnimation extends Animation {
     getCharacter(): TalkingCharacter;
 
     // Invoke this method to start talking
-    say(cues: Cue[], then: Runnable | undefined);
+    say(cues: Cue[], then: Runnable | undefined): void;
 
     // Invoke this method to make the character stop talking.
     // Does nothing if the character is not talking
-    shutUp();
+    shutUp(): void;
 
     // Where to anchor the text when starting to talk
     getTalkAnchor(): { talkAnchorLeft: number, talkAnchorBottom: number };
 
-    skipToNextCue();
+    skipToNextCue(): void;
 
     // How to start/stop the character animation (mouth, gestures, ...)
     // when talking begins/stops
     startTalkingAnimation(): Animation;
-    stopTalkingAnimation();
+    stopTalkingAnimation(): void;
 
     // Indicates whether or not the character is currently talking
     isTalking(): boolean;
@@ -100,7 +100,7 @@ export class ImageAnimation implements Animation {
         this.ticksUntilUpdate = 0;
     }
 
-    tick(): PaintTask[] {
+    tick(): PaintTask[] | undefined {
         if (this.currentStep >= this.steps.length) {
             return undefined;
         }

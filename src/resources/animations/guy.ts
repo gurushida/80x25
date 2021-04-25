@@ -11,6 +11,7 @@ import { WalkingDestination } from "@/actions";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { Clock } from "@/clock";
 import { TalkingCharacter } from "@/characters";
+import { invariant } from "@/utils";
 
 export enum GUY_STATE {
     STILL,
@@ -33,6 +34,7 @@ export class GuyAnimation extends CanTalkAnimation {
         this.minLeft = guyPosition.minLeft !== undefined ? guyPosition.minLeft : 0;
         this.maxLeft = guyPosition.maxLeft !== undefined ? guyPosition.maxLeft : WIDTH - SPR_GUY_LEFT_STILL_0.width;
         this.standStill();
+        this.currentAnimation = this.getStillAnimation();
     }
 
     public getCharacter(): TalkingCharacter {
@@ -89,6 +91,7 @@ export class GuyAnimation extends CanTalkAnimation {
         }
 
         if (this.state === GUY_STATE.WALKING_TO_THE_LEFT || this.state === GUY_STATE.WALKING_TO_THE_RIGHT) {
+            invariant(this.walkingDestination, 'walkingDestination should be defined');
             if (this.guyPosition.left === this.walkingDestination.pos.left) {
                 // If we have reach our destination, adjust the guy's orientation and stop
                 this.guyPosition.lookToTheRight = this.walkingDestination.pos.lookToTheRight;
@@ -101,6 +104,7 @@ export class GuyAnimation extends CanTalkAnimation {
 
             // Keep walking
             const paintTasks = this.currentAnimation.tick();
+            invariant(paintTasks, 'paintTasks should not be empty');
             this.guyPosition.left = paintTasks[0].left;
             this.guyPosition.top = paintTasks[0].top;
             return paintTasks;

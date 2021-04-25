@@ -5,6 +5,7 @@ import { ICanTalkAnimation } from "./animations";
 import { SceneEngine } from "./sceneEngine";
 import { Runnable } from "./runnable";
 import { Clock } from "./clock";
+import { invariant } from "./utils";
 
 export class DialogEngine {
 
@@ -89,21 +90,25 @@ export class DialogEngine {
 
 
     private playDialogStep(state: DialogState, pause: boolean) {
-        this.currentTalkingCharacter = this.characterMap.get(state.step.character);
+        const step = state.step;
+        invariant(step, 'step should be defined');
+        this.currentTalkingCharacter = this.characterMap.get(step.character);
+        const character = this.currentTalkingCharacter;
+        invariant(character, 'character should be defined');
 
         // If this dialog states has triggers, let add them to the trigger list
-        for (const t of state.step.triggers) {
+        for (const t of step.triggers) {
             this.triggers.add(t);
         }
 
         Clock.clock.scheduleOnce(pause ? 5 : 0,
-            () => this.currentTalkingCharacter.say([ state.step.cue ], () => this.processCurrentOptions(state.destinations)));
+            () =>  character.say([ step.cue ], () => this.processCurrentOptions(state.destinations)));
     }
 
 
     private waitForPlayChoice(states: DialogState[]) {
         this.currentStatesToChooseFrom = [ ...states ];
-        this.currentOptionsToChooseFrom = this.currentStatesToChooseFrom.map(state => state.step.cue.join(' '));
+        this.currentOptionsToChooseFrom = this.currentStatesToChooseFrom.map(state => state.step!.cue.join(' '));
     }
 
 

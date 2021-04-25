@@ -19,6 +19,7 @@ import { debug } from "./main";
 import { OUTSIDE_BANK_LOADER } from "./resources/scenes/bank";
 import { INSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShopInside";
 import { DOCK_LOADER } from "./resources/scenes/dock";
+import { invariant } from "./utils";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -118,10 +119,12 @@ export class SceneEngine implements SceneActionListener {
         this.buffer.paintActionBar(this.actionManager.getActionBarPaintInfo());
     }
 
-    setCurrentDialog(currentDialog: DialogEngine) {
+    setCurrentDialog(currentDialog: DialogEngine | undefined) {
         this.currentDialog = currentDialog;
     }
+
     private handleDialogMouseEvent(y: number, buttonClicked: 'left' | 'right' | undefined) {
+        invariant(this.currentDialog, 'currentDialog should be defined');
         this.currentDialogOption = this.getDialogOption(y);
         if (buttonClicked) {
             if (this.currentDialogOption !== undefined) {
@@ -170,6 +173,7 @@ export class SceneEngine implements SceneActionListener {
 
 
     private getDialogOption(mouseY: number): number | undefined {
+        invariant(this.currentDialog, 'currentDialog should be defined');
         const nOptions = this.currentDialog.getOptionsToChooseFrom().length;
         if (nOptions === 0) {
             // Do nothing
@@ -253,7 +257,9 @@ export class SceneEngine implements SceneActionListener {
     }*/
 
     private processInventoryEvent(event: InventoryEvent) {
-        this.actionManager.handleInventoryEvent(event.item, event.button);
+        if (event.item) {
+            this.actionManager.handleInventoryEvent(event.item, event.button);
+        }
     }
 
 
@@ -373,8 +379,9 @@ export class SceneEngine implements SceneActionListener {
         if (!isHotspot(who) || !who.dialog) {
             this.say([[ 'I cannot talk to that.' ]]);
         } else {
+            const dialog = who.dialog;
             this.walkTo(who.guyPositionForAction, () => {
-                this.runDialog(who.dialog, this.triggers);
+                this.runDialog(dialog, this.triggers);
             });
         }
     }
