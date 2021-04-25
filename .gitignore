@@ -3,6 +3,9 @@
 80x25-linux
 80x25.exe
 .DS_Store
+src/resources/generated/
+compileResources.js
+
 # Logs
 logs
 *.log

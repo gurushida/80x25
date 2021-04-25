@@ -3,15 +3,16 @@
  * like for instance learning about a new location that will
  * appear on the map or obtaining an object that unlocks new possibilities.
  */
-export enum Trigger {
-    DOG_0 = 'DOG_0',
-    DOG_1 = 'DOG_1',
-    HAS_TEQUILA = 'HAS_TEQUILA',
-    KNOW_ABOUT_TEQUILA = 'KNOW_ABOUT_TEQUILA',
-    BANK_VISITED = 'BANK_VISITED',
-    DOCK_VISITED = 'DOCK_VISITED',
-    HEARD_ABOUT_PUB = 'HEARD_ABOUT_PUB',
-}
+const triggers = [
+    'DOG_0',
+    'DOG_1',
+    'HAS_TEQUILA',
+    'KNOW_ABOUT_TEQUILA',
+    'BANK_VISITED',
+    'DOCK_VISITED',
+    'HEARD_ABOUT_PUB'
+] as const;
+export type Trigger = typeof triggers[number];
 
 
 
@@ -28,7 +29,7 @@ export interface Condition {
 
 
 export function isValidTrigger(t: any): t is Trigger {
-    return Object.values(Trigger).includes(t);
+    return triggers.includes(t);
 }
 
 

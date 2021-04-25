@@ -1,11 +1,11 @@
 import { PaintTask, getPaintTask } from "@/paintTask";
-import { BG_BANK } from "../background";
 import { ZIndex } from "@/zIndex";
 import { combine, createFullHotspot, HotspotId, GuyPosition, Hotspot } from "@/hotspots";
 import { ANIM_BOOM_BLASTER } from "../animations/boomBlaster";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
-import { Trigger, Triggers } from "@/triggers";
+import { Triggers } from "@/triggers";
 import { ActionBarButton } from "@/screenBuffer";
+import { BG_BANK } from "../generated/images/BG_BANK";
 
 
 const fullFilter = createFullHotspot(HotspotId.BANK);
@@ -39,7 +39,7 @@ const initialGuyPosition: GuyPosition = {
 export const OUTSIDE_BANK_LOADER: SceneLoader = {
     sceneId: SceneId.OUTSIDE_BANK,
     load(triggers: Triggers): SceneData {
-        triggers.add(Trigger.BANK_VISITED);
+        triggers.add('BANK_VISITED');
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,

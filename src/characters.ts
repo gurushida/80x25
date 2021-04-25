@@ -2,14 +2,11 @@
  * This enum identifies each character that can be involved
  * in a dialog.
  */
-export enum TalkingCharacter {
-    GUY = 'GUY',
-    DOG = 'DOG',
-    LITTLE_GIRL = 'LITTLE_GIRL',
-}
+const talkingCharacters = ['GUY', 'DOG', 'LITTLE_GIRL'] as const;
+export type TalkingCharacter = typeof talkingCharacters[number];
 
 
 export function isValidTalkingCharacter(name: any): name is TalkingCharacter {
-    return Object.values(TalkingCharacter).includes(name);
+    return talkingCharacters.includes(name);
 }
 

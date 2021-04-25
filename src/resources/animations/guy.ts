@@ -1,8 +1,4 @@
 import { Animation, ImageAnimation } from "@/animations";
-import { SPR_GUY_RIGHT_STILL_0, SPR_GUY_LEFT_STILL_0, SPR_GUY_LEFT_WALKING_0, SPR_GUY_LEFT_WALKING_1, SPR_GUY_LEFT_WALKING_2,
-  SPR_GUY_LEFT_WALKING_3, SPR_GUY_RIGHT_WALKING_0, SPR_GUY_RIGHT_WALKING_1, SPR_GUY_RIGHT_WALKING_2, SPR_GUY_RIGHT_WALKING_3,
-  SPR_GUY_LEFT_TALKING_0, SPR_GUY_LEFT_TALKING_1, SPR_GUY_RIGHT_TALKING_0, SPR_GUY_RIGHT_TALKING_1, SPR_GUY_RIGHT_STILL_1,
-  SPR_GUY_LEFT_STILL_1 } from "../sprites";
 import { WIDTH } from "@/screenBuffer";
 import { GuyPosition } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
@@ -12,6 +8,22 @@ import { CanTalkAnimation } from "./talkingCharacter";
 import { Clock } from "@/clock";
 import { TalkingCharacter } from "@/characters";
 import { invariant } from "@/utils";
+import { SPR_GUY_LEFT_STILL_0 } from "../generated/images/SPR_GUY_LEFT_STILL_0";
+import { SPR_GUY_LEFT_STILL_1 } from "../generated/images/SPR_GUY_LEFT_STILL_1";
+import { SPR_GUY_LEFT_TALKING_0 } from "../generated/images/SPR_GUY_LEFT_TALKING_0";
+import { SPR_GUY_LEFT_TALKING_1 } from "../generated/images/SPR_GUY_LEFT_TALKING_1";
+import { SPR_GUY_LEFT_WALKING_0 } from "../generated/images/SPR_GUY_LEFT_WALKING_0";
+import { SPR_GUY_LEFT_WALKING_1 } from "../generated/images/SPR_GUY_LEFT_WALKING_1";
+import { SPR_GUY_LEFT_WALKING_2 } from "../generated/images/SPR_GUY_LEFT_WALKING_2";
+import { SPR_GUY_LEFT_WALKING_3 } from "../generated/images/SPR_GUY_LEFT_WALKING_3";
+import { SPR_GUY_RIGHT_STILL_0 } from "../generated/images/SPR_GUY_RIGHT_STILL_0";
+import { SPR_GUY_RIGHT_STILL_1 } from "../generated/images/SPR_GUY_RIGHT_STILL_1";
+import { SPR_GUY_RIGHT_TALKING_0 } from "../generated/images/SPR_GUY_RIGHT_TALKING_0";
+import { SPR_GUY_RIGHT_TALKING_1 } from "../generated/images/SPR_GUY_RIGHT_TALKING_1";
+import { SPR_GUY_RIGHT_WALKING_0 } from "../generated/images/SPR_GUY_RIGHT_WALKING_0";
+import { SPR_GUY_RIGHT_WALKING_1 } from "../generated/images/SPR_GUY_RIGHT_WALKING_1";
+import { SPR_GUY_RIGHT_WALKING_2 } from "../generated/images/SPR_GUY_RIGHT_WALKING_2";
+import { SPR_GUY_RIGHT_WALKING_3 } from "../generated/images/SPR_GUY_RIGHT_WALKING_3";
 
 export enum GUY_STATE {
     STILL,
@@ -38,7 +50,7 @@ export class GuyAnimation extends CanTalkAnimation {
     }
 
     public getCharacter(): TalkingCharacter {
-        return TalkingCharacter.GUY;
+        return 'GUY';
     }
 
 

@@ -1,12 +1,12 @@
 import { createFullHotspot, HotspotId, combine, GuyPosition, Hotspot } from "@/hotspots";
 import { DogAnimation } from "../animations/dog";
 import { SceneId, SceneLoader, SceneData } from "@/scene";
-import { BG_ICE_CREAM_SHOP } from "../background";
 import { ZIndex } from "@/zIndex";
 import { PaintTask, getPaintTask } from "@/paintTask";
-import { loadDialogGrf } from "@/dialog";
 import { Triggers } from "@/triggers";
 import { ActionBarButton } from "@/screenBuffer";
+import { BG_ICE_CREAM_SHOP } from "../generated/images/BG_ICE_CREAM_SHOP";
+import { DIALOG_DOG } from "../generated/dialogs/DIALOG_DOG";
 
 const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
 const doorFilter = (x: number, y: number) => {
@@ -43,7 +43,7 @@ const iceCreamShopHotspots: Hotspot[] = [
             top: 14,
             lookToTheRight: true
         },
-        dialog: loadDialogGrf('src/resources/dialogs/dog.grf'),
+        dialog: DIALOG_DOG,
         lookAt: [['It\'s a good dog.']],
         take: { comment: [['I\'m not sure he would agree.']] },
         useDirectly: { comment: [['Huh ? What ?']] }

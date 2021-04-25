@@ -1,6 +1,6 @@
 import * as blessed from 'blessed';
 import { SceneId } from './scene';
-import { Trigger, Triggers } from './triggers';
+import { Triggers } from './triggers';
 import { Matrix } from './matrix';
 import { invariant } from './utils';
 
@@ -177,7 +177,7 @@ function getIceCreamShop(): MapLocation {
 
 function getBank(triggers: Triggers): MapLocation {
     return {
-        label: triggers.isSet(Trigger.BANK_VISITED) ? 'Bank' : '???',
+        label: triggers.isSet('BANK_VISITED') ? 'Bank' : '???',
         centerX: 23,
         centerY: 18,
         sceneId: SceneId.OUTSIDE_BANK
@@ -186,7 +186,7 @@ function getBank(triggers: Triggers): MapLocation {
 
 function getDock(triggers: Triggers): MapLocation {
     return {
-        label: triggers.isSet(Trigger.DOCK_VISITED) ? 'Dock' : '???',
+        label: triggers.isSet('DOCK_VISITED') ? 'Dock' : '???',
         centerX: 47,
         centerY: 5,
         sceneId: SceneId.DOCK
@@ -195,7 +195,7 @@ function getDock(triggers: Triggers): MapLocation {
 
 function getPub(triggers: Triggers): MapLocation {
     return {
-        label: triggers.isSet(Trigger.HEARD_ABOUT_PUB) ? 'Ales & Bells' : undefined,
+        label: triggers.isSet('HEARD_ABOUT_PUB') ? 'Ales & Bells' : undefined,
         centerX: 62,
         centerY: 11,
         sceneId: SceneId.PUB

@@ -5,6 +5,7 @@
   "main": "80x25.js",
   "scripts": {
     "check": "npx tsc --noEmit",
+    "compileResources": "esbuild --outfile=compileResources.js --target=node14 --banner='#!/usr/bin/env node' --bundle --platform=node --minify --tsconfig=./tsconfig.json src/resources/compileResources.ts && chmod a+x compileResources.js && ./compileResources.js",
     "build": "esbuild --outfile=80x25.js --target=node14 --banner='#!/usr/bin/env node' --bundle --platform=node --minify --tsconfig=./tsconfig.json src/main.ts --external:blessed && chmod a+x 80x25.js",
     "pkg-mac": "pkg -t macos 80x25.js -o 80x25",
     "pkg-linux": "pkg -t linux 80x25.js -o 80x25-linux",

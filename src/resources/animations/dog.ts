@@ -1,9 +1,10 @@
 import { ImageAnimation, Animation } from "@/animations";
-import { SPR_DOG_0, SPR_DOG_1 } from "../sprites";
 import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
+import { SPR_DOG_0 } from "../generated/images/SPR_DOG_0";
+import { SPR_DOG_1 } from "../generated/images/SPR_DOG_1";
 
 const DOG_HOTSPOT = createMaskHotspot(SPR_DOG_0, HotspotId.DOG);
 
@@ -26,7 +27,7 @@ const ANIM_DOG = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, DOG_HOTSPOT
 export class DogAnimation extends CanTalkAnimation {
 
     getCharacter(): TalkingCharacter {
-        return TalkingCharacter.DOG;
+        return 'DOG';
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
