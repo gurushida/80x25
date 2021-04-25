@@ -83,10 +83,17 @@ export function loadSprite(filename: string):AsciiImage {
   }
 
   const mask = rows.splice(rows.length / 2, rows.length / 2);
+  for (let row = 0 ; row < mask.length ; row++) {
+    for (let col = 0 ; col < width ; col++) {
+      if (mask[row][col] !== ' ' && mask[row][col] !== '#') {
+        throw new Error(`Mask of ${filename} should only contain ' ' and '#'. Found mask[${row}][${col}]='${mask[row][col]}' (${mask[row][col].charCodeAt(0)})\n`);
+      }
+    }
+  }
 
   const fullMask = mask.join('');
   if (!fullMask.match(/^[ #]*$/)) {
-    throw new Error(`Mask of ${filename} should only contain ' ' and '#'`);
+    throw new Error(`Mask of ${filename} should only contain ' ' and '#' (sprite: width = ${width}, height = ${rows.length / 2})\n`);
   }
 
   return {

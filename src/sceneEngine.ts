@@ -18,6 +18,7 @@ import { Matrix } from "./matrix";
 import { debug } from "./main";
 import { OUTSIDE_BANK_LOADER } from "./resources/scenes/bank";
 import { INSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShopInside";
+import { DOCK_LOADER } from "./resources/scenes/dock";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -417,6 +418,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
         case SceneId.INSIDE_ICE_CREAM_SHOP: return INSIDE_ICE_CREAM_SHOP_LOADER;
         case SceneId.OUTSIDE_ICE_CREAM_SHOP: return OUTSIDE_ICE_CREAM_SHOP_LOADER;
         case SceneId.OUTSIDE_BANK: return OUTSIDE_BANK_LOADER;
+        case SceneId.DOCK: return DOCK_LOADER;
         default: return undefined;
     }
 }

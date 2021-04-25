@@ -176,6 +176,15 @@ function getBank(triggers: Triggers): MapLocation {
     };
 }
 
+function getDock(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet(Trigger.DOCK_VISITED) ? 'Dock' : '???',
+        centerX: 47,
+        centerY: 5,
+        sceneId: SceneId.DOCK
+    };
+}
+
 function getPub(triggers: Triggers): MapLocation {
     return {
         label: triggers.isSet(Trigger.HEARD_ABOUT_PUB) ? 'Ales & Bells' : undefined,
@@ -191,6 +200,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getIceCreamShop());
     locations.push(getBank(triggers));
     locations.push(getPub(triggers));
+    locations.push(getDock(triggers));
     return locations.filter(l => l.label);
 }
 

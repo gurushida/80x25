@@ -24,3 +24,10 @@ export const SPR_GUY_LEFT_WALKING_3 = loadSprite('asciiart/sprites/guy_left_walk
 
 export const SPR_DOG_0 = loadSprite('asciiart/sprites/dog0.txt');
 export const SPR_DOG_1 = loadSprite('asciiart/sprites/dog1.txt');
+
+export const SPR_SEA_0 = loadSprite('asciiart/sprites/sea0.txt');
+export const SPR_SEA_1 = loadSprite('asciiart/sprites/sea1.txt');
+export const SPR_SEA_2 = loadSprite('asciiart/sprites/sea2.txt');
+export const SPR_SEA_3 = loadSprite('asciiart/sprites/sea3.txt');
+
+export const SPR_DOCK_0 = loadSprite('asciiart/sprites/dock0.txt');

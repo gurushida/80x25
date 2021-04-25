@@ -13,6 +13,8 @@ export enum HotspotId {
     ICE_CREAM_SHOP = 'ICE_CREAM_SHOP',
     ICE_CREAM_SHOP_DOOR = 'ICE_CREAM_SHOP_DOOR',
     DOG = 'DOG',
+    SEA = 'SEA',
+    DOCK = 'DOCK',
 }
 /**
  * Given a position in an image relative to its top-left corner, returns

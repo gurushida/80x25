@@ -1,7 +1,7 @@
 Opening scene
 
 At home with Amy. Everything fine with syrupy love. Want
-to google for proposal ring. The search engine has a diclaimer
+to google for proposal ring. The search engine has a disclaimer
 popup saying it has been updated to use automatic suggestion from
 searches done in your geographical neighborhood. Start typing "pro..."
 and get horrible results. Amy sees it and makes a scene. Try to call her
@@ -10,12 +10,27 @@ but she has blocker the number. Guy needs a miracle.
 
 Part 1: the miracle
 
+Get net from Scottish fisherman at the docks.
+In the arcade shop, learn about drones and that the pharmacy uses one.
+Talk to the pharmacist and learn that he uses one to deliver prescriptions.
+Talk to the biker bouncer at the pub that has a cold. Offer to take
+his prescription paper to the pharmacy for him. Give it to the pharmacist so
+he uses his drone to deliver the drug.
+Capture the drone that delivers drugs from the pharmacy with net.
+Talk to the arcade guy to convince him that the drone is yours and that
+you lost the remote controller to get a new one.
+
 Go inside the cinema. Jam the popcorn machine. Go outside.
 Talk to the cashier about the popcorn machine to have him
 leave. Take the movie review. Go to the ice cream shop.
 Give the review to the cashier to get a free ice cream.
 Go give the ice cream to the little girl in exchange for
 her jumping rope.
+
+Go the pub. The bouncer asks for ID. Make a joke rant about about
+how we are always supposed to get some ID in adventure games.
+In the pub, talk to cosplayers and learn about the forge (evil queen,
+chinese master, monk, Brian April).
 
 Go to the arcade. Take the hard drive out of the broken machine.
 Give the drive to the blacksmith so he can crush it. Take the magnet.
@@ -24,12 +39,12 @@ Combine the rope, the drone and the magnet. Go to the park
 and fish coins from the fountain.
 
 Go to the arcade. Use coins to play evil spell. Beat the highscore
-to win the prize of the day?
+to win the prize of the day: the djinn lamp.
 
-Convinces the bragging scottish fisherman to fish the djinn bottle.
-Open the bottle. Talk to the djinn and ask him to unblock your number
-on Amy's phone. Call Amy, explain the misunderstanding. Tell her
-you will go for a ring.
+Use the lamp to get the djinn out. When he asks for your wish,
+have multiple joke wishes, including one about character death with
+a joke about the Holy Book of Ron that says characters should never die.
+
 
 
 Part 2: the ring
@@ -37,13 +52,21 @@ Part 2: the ring
 Go to the jewellery. Learn how much money is needed for the ring.
 Go the bank. Learn about m-coin and the italian startup. Go the restaurant.
 Talk to Don Covfefe to learn about 'Mining Analog Flows Of Input Association'.
-Get shady assignment completed to earn some m-coins. The assignment is to
-carry a package to some address, but the address is unreadable. Once the
+Get a shady assignment completed to earn some m-coins.
+
+The assignment is to help a guy at some address, but the address is unreadable. Once the
 assignment is given, Don Covfefe pretends he doesn't know anything about
 it and won't help with the address. Go the pharmacy to have the address
 deciphered by the pharmacist.
 
-Take package from farm with brother Shane to Mr Wolf.
+The guy is a farmer that needs you to give him a "business growth hacking device",
+i.e. a bomb to get rid of a neighbour's barn. Th explosive is
+dioxyphenylethanolisopropylamine. The recipe to make it is a McGyver one: chewing-gum,
+makeup powder, fat-free yogurt, etc.
+
+
+Take package from circus (juggler, monker, acrobats on the teeterboard).
+
 
 Go to the bank with the m-coins. Learn that the currency went down.
 Learn about Business Disability Act that could re-boost the value of the m-coin
@@ -82,7 +105,4 @@ ideas:
 - blind man
 - birthday cake
 - ballerina (movie poster ?)
-- biker/bouncer has a cold and is blowing his nose all the time.
-  -> give a him medicine from the pharmacy so that he lets us in the pub
-- cosplay characters waiting for blacksmith for weapons (evil queen, chinese master)
 - crane
