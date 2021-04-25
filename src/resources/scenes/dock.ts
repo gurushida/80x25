@@ -12,7 +12,8 @@ const dockBackground: PaintTask = getPaintTask(SPR_DOCK_0, 0, 18, ZIndex.BEHIND_
 const initialGuyPosition: GuyPosition = {
     left: 5,
     top: 12,
-    lookToTheRight: true
+    lookToTheRight: true,
+    maxLeft: 50,
 };
 
 export const DOCK_LOADER: SceneLoader = {

@@ -61,6 +61,8 @@ export interface GuyPosition {
     left: number;
     top: number;
     lookToTheRight: boolean
+    minLeft?: number;
+    maxLeft?: number;
 }
 
 

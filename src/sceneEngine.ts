@@ -285,7 +285,9 @@ export class SceneEngine implements SceneActionListener {
             this.guyPosition = {
                 left: sceneData.guyPosition.left,
                 top: sceneData.guyPosition.top,
-                lookToTheRight: sceneData.guyPosition.lookToTheRight
+                lookToTheRight: sceneData.guyPosition.lookToTheRight,
+                minLeft: sceneData.guyPosition.minLeft,
+                maxLeft: sceneData.guyPosition.maxLeft,
             }
             this.guyAnimation = new GuyAnimation(this.guyPosition)
             this.addAnimation(this.guyAnimation);

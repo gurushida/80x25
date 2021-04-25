@@ -25,10 +25,13 @@ export class GuyAnimation extends CanTalkAnimation {
     private state: GUY_STATE = GUY_STATE.STILL;
     private currentAnimation: Animation;
     private walkingDestination: WalkingDestination | undefined = undefined;
+    private minLeft: number;
+    private maxLeft: number;
 
-    constructor(private guyPosition: GuyPosition,
-                private minLeft = 0, private maxLeft = WIDTH - SPR_GUY_LEFT_STILL_0.width) {
+    constructor(private guyPosition: GuyPosition) {
         super();
+        this.minLeft = guyPosition.minLeft !== undefined ? guyPosition.minLeft : 0;
+        this.maxLeft = guyPosition.maxLeft !== undefined ? guyPosition.maxLeft : WIDTH - SPR_GUY_LEFT_STILL_0.width;
         this.standStill();
     }
 
