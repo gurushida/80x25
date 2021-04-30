@@ -1,4 +1,4 @@
-import { ImageAnimation, Animation } from "@/animations";
+import { ImageAnimation, Animation, NO_LEFT_MOVEMENT } from "@/animations";
 import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
@@ -10,6 +10,7 @@ import { SPR_HIGHLANDER_RIGHT_2 } from "../generated/images/SPR_HIGHLANDER_RIGHT
 const HIGHLANDER_HOTSPOT = createMaskHotspot(SPR_HIGHLANDER_RIGHT_0, HotspotId.HIGHLANDER);
 
 const ANIM_HIGHLANDER = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
+    NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_HIGHLANDER_RIGHT_0,

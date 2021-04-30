@@ -7,6 +7,9 @@ import { Runnable } from "./runnable";
 import { TalkingCharacter } from "./characters";
 
 
+export const NO_LEFT_MOVEMENT = (left: number) => left;
+
+
 /**
  * This represents an animation step, i.e.
  * what to draw, how long until next update,
@@ -85,7 +88,10 @@ export class ImageAnimation implements Animation {
 
 
     constructor(initialLeft: number, initialTop: number, zIndex: ZIndex, loop: boolean,
-                hotspotFilter: HotspotFilter | undefined, steps: AnimationStep[]) {
+                hotspotFilter: HotspotFilter | undefined,
+                private adjustLeft: (left: number) => number,
+                steps: AnimationStep[],
+                ) {
         this.left = initialLeft;
         this.top = initialTop;
         this.zIndex = zIndex;
@@ -120,6 +126,9 @@ export class ImageAnimation implements Animation {
         if (this.ticksUntilUpdate <= 0) {
             // Time to move on the next step
             this.left = this.left + this.steps[this.currentStep].offsetX;
+            if (this.adjustLeft !== undefined) {
+                this.left = this.adjustLeft(this.left);
+            }
             this.top = this.top + this.steps[this.currentStep].offsetY;
             this.currentStep = this.currentStep + 1;
 

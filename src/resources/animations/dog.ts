@@ -1,4 +1,4 @@
-import { ImageAnimation, Animation } from "@/animations";
+import { ImageAnimation, Animation, NO_LEFT_MOVEMENT } from "@/animations";
 import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
@@ -8,7 +8,7 @@ import { SPR_DOG_1 } from "../generated/images/SPR_DOG_1";
 
 const DOG_HOTSPOT = createMaskHotspot(SPR_DOG_0, HotspotId.DOG);
 
-const ANIM_DOG = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, DOG_HOTSPOT,
+const ANIM_DOG = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, DOG_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_DOG_0,

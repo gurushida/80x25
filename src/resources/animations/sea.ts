@@ -1,4 +1,4 @@
-import { ImageAnimation } from "@/animations";
+import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
 import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { SPR_SEA_0 } from "../generated/images/SPR_SEA_0";
@@ -8,7 +8,7 @@ import { SPR_SEA_3 } from "../generated/images/SPR_SEA_3";
 
 const SEA_HOTSPOT = createMaskHotspot(SPR_SEA_0, HotspotId.SEA);
 
-export const ANIM_SEA = new ImageAnimation(0, 21, ZIndex.BACKGROUND, true, SEA_HOTSPOT,
+export const ANIM_SEA = new ImageAnimation(0, 21, ZIndex.BACKGROUND, true, SEA_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_SEA_0,

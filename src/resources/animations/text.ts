@@ -1,4 +1,4 @@
-import { Animation, AnimationStep, ImageAnimation } from "@/animations";
+import { Animation, AnimationStep, ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
 import { Cue, getDurationInTicks } from "@/dialog";
 import { center } from "@/utils";
 import { WIDTH, HEIGHT } from "@/screenBuffer";
@@ -81,7 +81,7 @@ export class TextAnimation implements Animation {
             top = HEIGHT - 2 - height;
         }
 
-        return new ImageAnimation(left, top, ZIndex.TEXT, false, undefined, steps);
+        return new ImageAnimation(left, top, ZIndex.TEXT, false, undefined, NO_LEFT_MOVEMENT, steps);
     }
 
 

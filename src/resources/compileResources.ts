@@ -48,6 +48,14 @@ compileSprite('asciiart/sprites/sea3.txt', 'SPR_SEA_3');
 
 compileSprite('asciiart/sprites/dock0.txt', 'SPR_DOCK_0');
 
+compileSprite('asciiart/sprites/cloud0.txt', 'SPR_CLOUD_0');
+compileSprite('asciiart/sprites/cloud1.txt', 'SPR_CLOUD_1');
+compileSprite('asciiart/sprites/cloud2.txt', 'SPR_CLOUD_2');
+
+compileSprite('asciiart/sprites/bird0.txt', 'SPR_BIRD_0');
+compileSprite('asciiart/sprites/bird1.txt', 'SPR_BIRD_1');
+compileSprite('asciiart/sprites/bird2.txt', 'SPR_BIRD_2');
+
 compileSprite('asciiart/sprites/highlander_left0.txt', 'SPR_HIGHLANDER_LEFT_0');
 compileSprite('asciiart/sprites/highlander_left1.txt', 'SPR_HIGHLANDER_LEFT_1');
 compileSprite('asciiart/sprites/highlander_right0.txt', 'SPR_HIGHLANDER_RIGHT_0');

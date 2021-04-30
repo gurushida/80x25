@@ -1,4 +1,4 @@
-import { Animation, ImageAnimation } from "@/animations";
+import { Animation, ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
 import { WIDTH } from "@/screenBuffer";
 import { GuyPosition } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
@@ -56,6 +56,7 @@ export class GuyAnimation extends CanTalkAnimation {
 
     private getStillAnimation(): Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
+            NO_LEFT_MOVEMENT,
             [
                 {
                     image: this.guyPosition.lookToTheRight ? SPR_GUY_RIGHT_STILL_0 : SPR_GUY_LEFT_STILL_0,
@@ -165,6 +166,7 @@ export class GuyAnimation extends CanTalkAnimation {
 
     private getWalkLeftAnimation(): Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
+            NO_LEFT_MOVEMENT,
             [
                 {
                     image: SPR_GUY_LEFT_STILL_0,
@@ -209,6 +211,7 @@ export class GuyAnimation extends CanTalkAnimation {
 
     private getWalkRightAnimation(): Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
+            NO_LEFT_MOVEMENT,
             [
                 {
                     image: SPR_GUY_RIGHT_STILL_0,
@@ -253,6 +256,7 @@ export class GuyAnimation extends CanTalkAnimation {
 
     private getTalkingLeftAnimation(): Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
+            NO_LEFT_MOVEMENT,
             [
                 {
                     image: SPR_GUY_LEFT_TALKING_0,
@@ -278,6 +282,7 @@ export class GuyAnimation extends CanTalkAnimation {
 
     private getTalkingRightAnimation(): Animation {
         return new ImageAnimation(this.guyPosition.left, this.guyPosition.top, ZIndex.GUY, true, undefined,
+            NO_LEFT_MOVEMENT,
             [
                 {
                     image: SPR_GUY_RIGHT_TALKING_0,
