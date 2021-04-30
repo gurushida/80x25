@@ -12,25 +12,25 @@ export const ANIM_SEA = new ImageAnimation(0, 21, ZIndex.BACKGROUND, true, SEA_H
     [
         {
             image: SPR_SEA_0,
-            durationInTicks: 20,
+            durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
             image: SPR_SEA_1,
-            durationInTicks: 20,
+            durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
             image: SPR_SEA_2,
-            durationInTicks: 20,
+            durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
             image: SPR_SEA_3,
-            durationInTicks: 20,
+            durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },

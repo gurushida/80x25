@@ -2,7 +2,12 @@
  * This enum identifies each character that can be involved
  * in a dialog.
  */
-const talkingCharacters = ['GUY', 'DOG', 'LITTLE_GIRL'] as const;
+const talkingCharacters = [
+    'GUY',
+    'DOG',
+    'LITTLE_GIRL',
+    'HIGHLANDER',
+] as const;
 export type TalkingCharacter = typeof talkingCharacters[number];
 
 

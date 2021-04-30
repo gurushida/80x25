@@ -15,6 +15,7 @@ export enum HotspotId {
     DOG = 'DOG',
     SEA = 'SEA',
     DOCK = 'DOCK',
+    HIGHLANDER = 'HIGHLANDER',
 }
 /**
  * Given a position in an image relative to its top-left corner, returns

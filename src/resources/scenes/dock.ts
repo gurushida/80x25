@@ -5,6 +5,7 @@ import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { ANIM_SEA } from "../animations/sea";
 import { SPR_DOCK_0 } from "../generated/images/SPR_DOCK_0";
+import { HighlanderAnimation } from "../animations/highlander";
 
 const dockFilter = createFullHotspot(HotspotId.DOCK);
 const dockBackground: PaintTask = getPaintTask(SPR_DOCK_0, 0, 18, ZIndex.BEHIND_GUY, combine(dockFilter));
@@ -13,7 +14,7 @@ const initialGuyPosition: GuyPosition = {
     left: 5,
     top: 12,
     lookToTheRight: true,
-    maxLeft: 50,
+    maxLeft: 35,
 };
 
 export const DOCK_LOADER: SceneLoader = {
@@ -24,7 +25,7 @@ export const DOCK_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [dockBackground],
-            animations: [ ANIM_SEA ],
+            animations: [ ANIM_SEA, new HighlanderAnimation() ],
             hotspots: []
         };
     }
