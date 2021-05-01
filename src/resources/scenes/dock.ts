@@ -12,11 +12,14 @@ import { SPR_CLOUD_2 } from "../generated/images/SPR_CLOUD_2";
 import { ANIM_BIRD, ANIM_BIRD2 } from "../animations/bird";
 import { ActionBarButton } from "@/screenBuffer";
 import { DIALOG_HIGHLANDER } from "../generated/dialogs/DIALOG_HIGHLANDER";
+import { SPR_FISHING_NET } from "../generated/images/SPR_FISHING_NET";
 
 const dockBackground: PaintTask = getPaintTask(SPR_DOCK_0, 0, 18, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.DOCK));
 const cloud0: PaintTask = getPaintTask(SPR_CLOUD_0, 9, 2, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_CLOUD_0, HotspotId.CLOUDS));
 const cloud1: PaintTask = getPaintTask(SPR_CLOUD_1, 23, 0, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_CLOUD_1, HotspotId.CLOUDS));
 const cloud2: PaintTask = getPaintTask(SPR_CLOUD_2, 48, 0, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_CLOUD_2, HotspotId.CLOUDS));
+
+const fishingNet: PaintTask = getPaintTask(SPR_FISHING_NET, 46, 21, ZIndex.FRONT, createFullHotspot(HotspotId.FISHING_NET));
 
 const dockHotspots: Hotspot[] = [
     {
@@ -55,6 +58,12 @@ const dockHotspots: Hotspot[] = [
         },
         dialog: DIALOG_HIGHLANDER,
     },
+    {
+        hotspotId: HotspotId.FISHING_NET,
+        description: 'fishing net',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['It\'s a good old fishing net.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -71,9 +80,10 @@ export const DOCK_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [dockBackground, cloud0, cloud1, cloud2],
+            images: [dockBackground, cloud0, cloud1, cloud2, fishingNet],
             animations: [ ANIM_SEA, ANIM_BIRD, ANIM_BIRD2, new HighlanderAnimation() ],
             hotspots: dockHotspots,
         };
     }
 }
+
