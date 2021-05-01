@@ -6,6 +6,7 @@ import { ZIndex } from "@/zIndex";
 import { ANIM_ARCADE_SIGN } from "../animations/arcade_sign";
 import { ANIM_LAMP } from "../animations/lamp";
 import { SPR_ARCADE_CABINET } from "../generated/images/SPR_ARCADE_CABINET";
+import { SPR_ARCADE_COUNTER } from "../generated/images/SPR_ARCADE_COUNTER";
 import { SPR_ARCADE_TABLE } from "../generated/images/SPR_ARCADE_TABLE";
 
 const game1: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 0, 10, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME1));
@@ -17,6 +18,7 @@ const game5: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 59, 10, ZIndex.BEHIND_
 const game6: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 70, 10, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME6));
 
 const table: PaintTask = getPaintTask(SPR_ARCADE_TABLE, 62, 21, ZIndex.FRONT, undefined);
+const counter: PaintTask = getPaintTask(SPR_ARCADE_COUNTER, 32, 7, ZIndex.BEHIND_GUY, undefined);
 
 
 const initialGuyPosition: GuyPosition = {
@@ -32,7 +34,7 @@ export const ARCADE_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [game1, game2, game3, game4, game5, game6, table],
+            images: [game1, game2, game3, game4, game5, game6, table, counter],
             animations: [ANIM_LAMP, ANIM_ARCADE_SIGN],
             hotspots: [],
         };
