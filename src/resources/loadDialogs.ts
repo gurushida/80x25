@@ -6,7 +6,7 @@ import fs from 'fs';
 
 /**
  * Loads a Unitex .grf file representing a dialog and
- * parses it to generate a GrfDialog object.
+ * parses it to generate a Dialog object.
  */
  export function loadDialogGrf(filename: string): Dialog {
     const content = fs.readFileSync(filename, 'utf8');
@@ -63,7 +63,7 @@ function parseGrfState(line: string, index: number, characters: TalkingCharacter
     }
 
     // We have a regular state. The first line is supposed
-    // to be a character name + ':'. The next lines are the cue.
+    // to be a character name + ':'. The next lines are the cues.
     // The output, if any, describes conditions and triggers.
     if (grfBox.lines.length <= 1 || !grfBox.lines[0].endsWith(':')) {
         throw new Error(`Invalid state: ${line}`);
