@@ -18,6 +18,9 @@ export enum HotspotId {
     HIGHLANDER = 'HIGHLANDER',
     CLOUDS = 'CLOUDS',
     FISHING_NET = 'FISHING_NET',
+    ARCADE_GAME1 = 'ARCADE_GAME1',
+    ARCADE_GAME2 = 'ARCADE_GAME2',
+    ARCADE_GAME3 = 'ARCADE_GAME3',
 }
 /**
  * Given a position in an image relative to its top-left corner, returns

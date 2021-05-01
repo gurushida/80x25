@@ -68,6 +68,10 @@ compileSprite('asciiart/sprites/highlander_talking2.txt', 'SPR_HIGHLANDER_TALKIN
 
 compileSprite('asciiart/sprites/fishing_net.txt', 'SPR_FISHING_NET');
 
+compileSprite('asciiart/sprites/lamp_off.txt', 'SPR_LAMP_OFF');
+compileSprite('asciiart/sprites/lamp_on.txt', 'SPR_LAMP_ON');
+compileSprite('asciiart/sprites/arcade_cabinet.txt', 'SPR_ARCADE_CABINET');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');

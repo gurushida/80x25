@@ -112,6 +112,10 @@ export class ImageAnimation implements Animation {
         this.ticksUntilUpdate = 0;
     }
 
+    getImage() {
+        return this.steps[this.currentStep].image;
+    }
+
     tick(): PaintTask[] | undefined {
         if (this.currentStep >= this.steps.length) {
             return undefined;
@@ -121,7 +125,7 @@ export class ImageAnimation implements Animation {
             left: this.left,
             top: this.top,
             zIndex: this.zIndex,
-            image: this.steps[this.currentStep].image,
+            image: this.getImage(),
             hotspotFilter: this.steps[this.currentStep].hotspotFilter
               ? this.steps[this.currentStep].hotspotFilter
               : this.defaultHotspotFilter,

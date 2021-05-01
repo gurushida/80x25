@@ -30,5 +30,6 @@ export enum SceneId {
     OUTSIDE_BANK,
     PUB,
     DOCK,
+    ARCADE,
 }
 

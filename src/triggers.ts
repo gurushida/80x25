@@ -10,7 +10,8 @@ const triggers = [
     'KNOW_ABOUT_TEQUILA',
     'BANK_VISITED',
     'DOCK_VISITED',
-    'HEARD_ABOUT_PUB'
+    'HEARD_ABOUT_PUB',
+    'ARCADE_VISITED',
 ] as const;
 export type Trigger = typeof triggers[number];
 

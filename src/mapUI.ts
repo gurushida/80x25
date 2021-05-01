@@ -193,6 +193,15 @@ function getDock(triggers: Triggers): MapLocation {
     };
 }
 
+function getArcade(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('ARCADE_VISITED') ? 'Arcade' : '???',
+        centerX: 18,
+        centerY: 15,
+        sceneId: SceneId.ARCADE,
+    };
+}
+
 function getPub(triggers: Triggers): MapLocation {
     return {
         label: triggers.isSet('HEARD_ABOUT_PUB') ? 'Ales & Bells' : undefined,
@@ -209,6 +218,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getBank(triggers));
     locations.push(getPub(triggers));
     locations.push(getDock(triggers));
+    locations.push(getArcade(triggers));
     return locations.filter(l => l.label);
 }
 
