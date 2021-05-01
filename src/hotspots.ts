@@ -21,6 +21,10 @@ export enum HotspotId {
     ARCADE_GAME1 = 'ARCADE_GAME1',
     ARCADE_GAME2 = 'ARCADE_GAME2',
     ARCADE_GAME3 = 'ARCADE_GAME3',
+    ARCADE_GAME4 = 'ARCADE_GAME4',
+    ARCADE_GAME5 = 'ARCADE_GAME5',
+    ARCADE_GAME6 = 'ARCADE_GAME6',
+    ARCADE_SIGN = 'ARCADE_SIGN',
 }
 /**
  * Given a position in an image relative to its top-left corner, returns

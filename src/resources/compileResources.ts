@@ -71,6 +71,9 @@ compileSprite('asciiart/sprites/fishing_net.txt', 'SPR_FISHING_NET');
 compileSprite('asciiart/sprites/lamp_off.txt', 'SPR_LAMP_OFF');
 compileSprite('asciiart/sprites/lamp_on.txt', 'SPR_LAMP_ON');
 compileSprite('asciiart/sprites/arcade_cabinet.txt', 'SPR_ARCADE_CABINET');
+compileSprite('asciiart/sprites/arcade_sign0.txt', 'SPR_ARCADE_SIGN0');
+compileSprite('asciiart/sprites/arcade_sign1.txt', 'SPR_ARCADE_SIGN1');
+compileSprite('asciiart/sprites/arcade_table.txt', 'SPR_ARCADE_TABLE');
 
 //--------------------------------------------------------------------------
 

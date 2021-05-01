@@ -49,7 +49,7 @@ class LampAnimation extends ImageAnimation {
     private onOffData: boolean[] = [ false ];
 
     constructor(initialLeft: number, initialTop: number) {
-        super(initialLeft, initialTop, ZIndex.BEHIND_GUY, true, undefined,
+        super(initialLeft, initialTop, ZIndex.FRONT, true, undefined,
             NO_LEFT_MOVEMENT,
             [
                 {
@@ -129,4 +129,4 @@ class LampAnimation extends ImageAnimation {
 }
 
 
-export const ANIM_LAMP = new LampAnimation(50, 5);
+export const ANIM_LAMP = new LampAnimation(63, 17);
