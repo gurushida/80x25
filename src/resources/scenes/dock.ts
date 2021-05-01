@@ -13,6 +13,7 @@ import { ANIM_BIRD, ANIM_BIRD2 } from "../animations/bird";
 import { ActionBarButton } from "@/screenBuffer";
 import { DIALOG_HIGHLANDER } from "../generated/dialogs/DIALOG_HIGHLANDER";
 import { SPR_FISHING_NET } from "../generated/images/SPR_FISHING_NET";
+import { DIALOG_TRYING_TO_TAKE_NET } from "../generated/dialogs/DIALOG_TRYING_TO_TAKE_NET";
 
 const dockBackground: PaintTask = getPaintTask(SPR_DOCK_0, 0, 18, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.DOCK));
 const cloud0: PaintTask = getPaintTask(SPR_CLOUD_0, 9, 2, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_CLOUD_0, HotspotId.CLOUDS));
@@ -62,7 +63,16 @@ const dockHotspots: Hotspot[] = [
         hotspotId: HotspotId.FISHING_NET,
         description: 'fishing net',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['It\'s a good old fishing net.']]
+        lookAt: [['It\'s a good old fishing net.']],
+        take: {
+            comment: [],
+            dialog: DIALOG_TRYING_TO_TAKE_NET,
+            guyPositionForAction: {
+                left: 35,
+                top: 12,
+                lookToTheRight: true
+            },
+        },
     },
 ];
 

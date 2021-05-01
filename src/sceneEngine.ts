@@ -391,6 +391,11 @@ export class SceneEngine implements SceneActionListener {
             this.say([[ 'I already have it.' ]]);
         } else if (!what.take) {
             this.say([[ 'I cannot take that.' ]]);
+        } else if (what.take.dialog) {
+            const dialog = what.take.dialog;
+            this.walkTo(what.take.guyPositionForAction, () => {
+                this.runDialog(dialog, this.triggers);
+            });
         } else {
             this.say(what.take.comment);
         }

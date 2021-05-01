@@ -72,6 +72,7 @@ compileSprite('asciiart/sprites/fishing_net.txt', 'SPR_FISHING_NET');
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
 compileDialog('dialogs/highlander.grf', 'DIALOG_HIGHLANDER');
+compileDialog('dialogs/trying_to_take_net.grf', 'DIALOG_TRYING_TO_TAKE_NET');
 
 //--------------------------------------------------------------------------
 

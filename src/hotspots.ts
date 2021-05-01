@@ -72,6 +72,10 @@ export interface GuyPosition {
 // Describes what happens when trying to take a hotspot
 export interface TakeAction {
     comment: Cue[];
+
+    // If defined, takes precedence over the comment property.
+    dialog?: Dialog;
+    guyPositionForAction?: GuyPosition;
 }
 
 // Describes what happens when trying to use directly a hotspot
