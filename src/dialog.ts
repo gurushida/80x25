@@ -35,7 +35,7 @@ export function getDurationInTicks(cue: Cue): number {
  */
 export interface DialogStep {
     character: TalkingCharacter,
-    cue: Cue;
+    cues: Cue[];
     triggers: Trigger[];
     conditions: Condition[];
 }

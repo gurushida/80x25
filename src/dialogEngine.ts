@@ -23,6 +23,9 @@ export class DialogEngine {
         this.currentTalkingCharacter = undefined;
         this.currentOptionsToChooseFrom = [];
         this.currentStatesToChooseFrom = [];
+        for (const animation of this.characterMap.values()) {
+            animation.startDialog();
+        }
         this.sceneEngine.setCurrentDialog(this);
         this.postDialogAction = then;
         this.processCurrentOptions(this.dialog.states[0].destinations);
@@ -30,6 +33,12 @@ export class DialogEngine {
 
 
     private endDialog() {
+        for (const animation of this.characterMap.values()) {
+            // Let's wait a tiny bit before returning to the normal
+            // animations to avoid ugly effects like a character
+            // immediately turning his back
+            Clock.clock.scheduleOnce(50, () => animation.endDialog());
+        }
         this.sceneEngine.setCurrentDialog(undefined);
         if (this.postDialogAction) {
             Clock.clock.defer(this.postDialogAction);
@@ -102,13 +111,13 @@ export class DialogEngine {
         }
 
         Clock.clock.scheduleOnce(pause ? 5 : 0,
-            () =>  character.say([ step.cue ], () => this.processCurrentOptions(state.destinations)));
+            () =>  character.say(step.cues, () => this.processCurrentOptions(state.destinations)));
     }
 
 
     private waitForPlayChoice(states: DialogState[]) {
         this.currentStatesToChooseFrom = [ ...states ];
-        this.currentOptionsToChooseFrom = this.currentStatesToChooseFrom.map(state => state.step!.cue.join(' '));
+        this.currentOptionsToChooseFrom = this.currentStatesToChooseFrom.map(state => state.step!.cues[0].join(' '));
     }
 
 

@@ -11,6 +11,7 @@ import { SPR_CLOUD_1 } from "../generated/images/SPR_CLOUD_1";
 import { SPR_CLOUD_2 } from "../generated/images/SPR_CLOUD_2";
 import { ANIM_BIRD, ANIM_BIRD2 } from "../animations/bird";
 import { ActionBarButton } from "@/screenBuffer";
+import { DIALOG_HIGHLANDER } from "../generated/dialogs/DIALOG_HIGHLANDER";
 
 const dockBackground: PaintTask = getPaintTask(SPR_DOCK_0, 0, 18, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.DOCK));
 const cloud0: PaintTask = getPaintTask(SPR_CLOUD_0, 9, 2, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_CLOUD_0, HotspotId.CLOUDS));
@@ -38,6 +39,21 @@ const dockHotspots: Hotspot[] = [
         description: 'clouds',
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['Cumulus.'], ['Low-level, puffy,', 'bright white'], ['and easy to draw.']]
+    },
+    {
+        hotspotId: HotspotId.HIGHLANDER,
+        description: 'highlander',
+        rightClickAction: ActionBarButton.TALK,
+        guyPositionForAction: {
+            left: 35,
+            top: 12,
+            lookToTheRight: true
+        },
+        lookAt: [['A fisherman,'], ['straight from A\’ Ghàidhealtachd', 'if I\'m not mistaken.']],
+        take: {
+            comment: [['Nah. I\'m good.'], ['I\'m not in the beheading immortals', ' business anymore.']],
+        },
+        dialog: DIALOG_HIGHLANDER,
     },
 ];
 

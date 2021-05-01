@@ -1,6 +1,7 @@
 import { TalkingCharacter, isValidTalkingCharacter } from "@/characters";
 import { Cue, Dialog, DialogState } from "@/dialog";
 import { Trigger, Condition, isValidTrigger } from "@/triggers";
+import { invariant } from "@/utils";
 import fs from 'fs';
 
 /**
@@ -72,18 +73,41 @@ function parseGrfState(line: string, index: number, characters: TalkingCharacter
         throw new Error(`Invalid character name: ${line}`);
     }
 
-    const cue: Cue = grfBox.lines.slice(1);
+    const cues: Cue[] = getCues(grfBox.lines.slice(1));
     const { triggers, conditions } = parseOutput(grfBox.output);
 
     return {
         destinations,
         step: {
             character,
-            cue,
+            cues,
             triggers,
             conditions
         }
     };
+}
+
+
+/**
+ * Given an array of lines like ['a', 'b', '<E>', 'c', 'd', '<E>', 'e'],
+ * splits it on the special value '<E>' to create cues like [['a', 'b'], ['c', 'd'], ['e']]
+ */
+function getCues(grfLines: string[]): Cue[] {
+    const cues: Cue[] = [];
+    let currentCue: Cue = [];
+    for (const line of grfLines) {
+        if (line === '<E>') {
+            invariant(currentCue.length !== 0, `Empty cue: ${JSON.stringify(grfLines)}`),
+            cues.push(currentCue);
+            currentCue = [];
+        } else {
+            invariant(!line.includes('<E') && !line.includes('E>'), `Buggy line: ${line}`);
+            currentCue.push(line);
+        }
+    }
+    invariant(currentCue.length !== 0, `Empty cue: ${JSON.stringify(grfLines)}`),
+    cues.push(currentCue);
+    return cues;
 }
 
 

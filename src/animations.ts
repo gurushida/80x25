@@ -67,6 +67,12 @@ export interface ICanTalkAnimation extends Animation {
     // Delegate tick method describing what to do when
     // the character is not talking
     tickNonTalking: () => PaintTask[] | undefined;
+
+    // Invoked when a dialog starts
+    startDialog(): void;
+
+    // Invoked when a dialog end
+    endDialog(): void;
 }
 
 

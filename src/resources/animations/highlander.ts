@@ -6,10 +6,16 @@ import { TalkingCharacter } from "@/characters";
 import { SPR_HIGHLANDER_RIGHT_0 } from "../generated/images/SPR_HIGHLANDER_RIGHT_0";
 import { SPR_HIGHLANDER_RIGHT_1 } from "../generated/images/SPR_HIGHLANDER_RIGHT_1";
 import { SPR_HIGHLANDER_RIGHT_2 } from "../generated/images/SPR_HIGHLANDER_RIGHT_2";
+import { SPR_HIGHLANDER_LEFT_0 } from "../generated/images/SPR_HIGHLANDER_LEFT_0";
+import { SPR_HIGHLANDER_LEFT_1 } from "../generated/images/SPR_HIGHLANDER_LEFT_1";
+import { SPR_HIGHLANDER_LEFT_2 } from "../generated/images/SPR_HIGHLANDER_LEFT_2";
+import { SPR_HIGHLANDER_TALKING_0 } from "../generated/images/SPR_HIGHLANDER_TALKING_0";
+import { SPR_HIGHLANDER_TALKING_1 } from "../generated/images/SPR_HIGHLANDER_TALKING_1";
+import { SPR_HIGHLANDER_TALKING_2 } from "../generated/images/SPR_HIGHLANDER_TALKING_2";
 
 const HIGHLANDER_HOTSPOT = createMaskHotspot(SPR_HIGHLANDER_RIGHT_0, HotspotId.HIGHLANDER);
 
-const ANIM_HIGHLANDER = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
+const ANIM_HIGHLANDER_RIGHT = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -80,6 +86,101 @@ const ANIM_HIGHLANDER = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true, HIGH
         },
     ]);
 
+
+const ANIM_HIGHLANDER_LEFT = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
+    NO_LEFT_MOVEMENT,
+    [
+        {
+            image: SPR_HIGHLANDER_LEFT_0,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_1,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_0,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_1,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_2,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_1,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_2,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_1,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_2,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_1,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_LEFT_2,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
+const ANIM_HIGHLANDER_TALKING = new ImageAnimation(47, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
+    NO_LEFT_MOVEMENT,
+    [
+        {
+            image: SPR_HIGHLANDER_TALKING_0,
+            durationInTicks: 7,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_TALKING_1,
+            durationInTicks: 7,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_HIGHLANDER_TALKING_2,
+            durationInTicks: 7,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
 export class HighlanderAnimation extends CanTalkAnimation {
 
     getCharacter(): TalkingCharacter {
@@ -87,11 +188,11 @@ export class HighlanderAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 60, talkAnchorBottom: 16 };
+        return { talkAnchorLeft: 52, talkAnchorBottom: 11 };
     }
 
     startTalkingAnimation(): Animation {
-        return ANIM_HIGHLANDER;
+        return ANIM_HIGHLANDER_TALKING;
     }
 
     stopTalkingAnimation() {
@@ -99,7 +200,21 @@ export class HighlanderAnimation extends CanTalkAnimation {
     }
 
     tickNonTalking() {
-        return ANIM_HIGHLANDER.tick();
+        if (this.isDialogInProgress()) {
+            return ANIM_HIGHLANDER_LEFT.tick();
+        } else {
+            return ANIM_HIGHLANDER_RIGHT.tick();
+        }
+    }
+
+    startDialog() {
+        super.startDialog();
+        this.characterAnimation = ANIM_HIGHLANDER_LEFT;
+    }
+
+    endDialog() {
+        super.endDialog();
+        this.characterAnimation = ANIM_HIGHLANDER_RIGHT;
     }
 
 }

@@ -9,9 +9,10 @@ import { invariant } from "@/utils";
 
 export abstract class CanTalkAnimation implements ICanTalkAnimation {
 
-    private characterAnimation: Animation | undefined;
+    protected characterAnimation: Animation | undefined;
     private textAnimation: TextAnimation | undefined = undefined;
     private postTalkAction: Runnable | undefined = undefined;
+    private dialogInProgress: boolean = false;
 
     say(cues: Cue[], then: Runnable | undefined) {
         this.postTalkAction = then;
@@ -64,6 +65,19 @@ export abstract class CanTalkAnimation implements ICanTalkAnimation {
 
     isTalking() {
         return this.textAnimation !== undefined;
+    }
+
+
+    startDialog() {
+        this.dialogInProgress = true;
+    }
+
+    endDialog() {
+        this.dialogInProgress = false;
+    }
+
+    isDialogInProgress() {
+        return this.dialogInProgress;
     }
 
     abstract getCharacter(): TalkingCharacter;
