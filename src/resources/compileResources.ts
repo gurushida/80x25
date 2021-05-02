@@ -81,6 +81,7 @@ compileSprite('asciiart/sprites/arcade_guy1.txt', 'SPR_ARCADE_GUY1');
 compileSprite('asciiart/sprites/arcade_guy2.txt', 'SPR_ARCADE_GUY2');
 compileSprite('asciiart/sprites/arcade_guy3.txt', 'SPR_ARCADE_GUY3');
 compileSprite('asciiart/sprites/arcade_guy4.txt', 'SPR_ARCADE_GUY4');
+compileSprite('asciiart/sprites/arcade_guy_talking.txt', 'SPR_ARCADE_GUY_TALKING');
 compileSprite('asciiart/sprites/tetris_hero.txt', 'SPR_TETRIS_HERO');
 compileSprite('asciiart/sprites/tetris_smashboy.txt', 'SPR_TETRIS_SMASHBOY');
 compileSprite('asciiart/sprites/tetris_teewee.txt', 'SPR_TETRIS_TEEWEE');
@@ -94,6 +95,7 @@ compileSprite('asciiart/sprites/tetris_rhode_island_z.txt', 'SPR_TETRIS_RHODE_IS
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
 compileDialog('dialogs/highlander.grf', 'DIALOG_HIGHLANDER');
 compileDialog('dialogs/trying_to_take_net.grf', 'DIALOG_TRYING_TO_TAKE_NET');
+compileDialog('dialogs/arcade_guy.grf', 'DIALOG_ARCADE_GUY');
 
 //--------------------------------------------------------------------------
 

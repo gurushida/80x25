@@ -7,6 +7,8 @@ import { ZIndex } from "@/zIndex";
 import { ArcadeGuyAnimation } from "../animations/arcade_guy";
 import { ANIM_ARCADE_SIGN } from "../animations/arcade_sign";
 import { ANIM_LAMP } from "../animations/lamp";
+import { DIALOG_ARCADE_GUY } from "../generated/dialogs/DIALOG_ARCADE_GUY";
+import { DIALOG_DOG } from "../generated/dialogs/DIALOG_DOG";
 import { BG_ARCADE } from "../generated/images/BG_ARCADE";
 import { SPR_ARCADE_CABINET } from "../generated/images/SPR_ARCADE_CABINET";
 import { SPR_ARCADE_TABLE } from "../generated/images/SPR_ARCADE_TABLE";
@@ -172,6 +174,19 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['This one is called Cleveland Z.']]
     },
+    {
+        hotspotId: HotspotId.ARCADE_GUY,
+        description: 'owner',
+        rightClickAction: ActionBarButton.TALK,
+        guyPositionForAction: {
+            left: 28,
+            top: 12,
+            lookToTheRight: true,
+        },
+        lookAt: [['This is the place owner.'], ['Looks more like a cowboy'], ['than the gaming type.']],
+        dialog: DIALOG_ARCADE_GUY,
+    },
+
 ];
 
 export const ARCADE_LOADER: SceneLoader = {

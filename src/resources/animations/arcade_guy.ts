@@ -8,6 +8,7 @@ import { SPR_ARCADE_GUY1 } from "../generated/images/SPR_ARCADE_GUY1";
 import { SPR_ARCADE_GUY2 } from "../generated/images/SPR_ARCADE_GUY2";
 import { SPR_ARCADE_GUY3 } from "../generated/images/SPR_ARCADE_GUY3";
 import { SPR_ARCADE_GUY4 } from "../generated/images/SPR_ARCADE_GUY4";
+import { SPR_ARCADE_GUY_TALKING } from "../generated/images/SPR_ARCADE_GUY_TALKING";
 
 const ARCADE_GUY_HOTSPOT = createMaskHotspot(SPR_ARCADE_GUY0, HotspotId.ARCADE_GUY);
 
@@ -78,6 +79,28 @@ const ANIM_ARCADE_GUY = new ImageAnimation(35, 10, ZIndex.BEHIND_GUY, true, ARCA
         },
     ]);
 
+const ANIM_ARCADE_GUY_TALKING = new ImageAnimation(35, 10, ZIndex.BEHIND_GUY, true, ARCADE_GUY_HOTSPOT, NO_LEFT_MOVEMENT,
+    [
+        {
+            image: SPR_ARCADE_GUY2,
+            durationInTicks: 7,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_ARCADE_GUY0,
+            durationInTicks: 7,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_ARCADE_GUY_TALKING,
+            durationInTicks: 7,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
 export class ArcadeGuyAnimation extends CanTalkAnimation {
 
     getCharacter(): TalkingCharacter {
@@ -85,11 +108,11 @@ export class ArcadeGuyAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 30, talkAnchorBottom: 16 };
+        return { talkAnchorLeft: 38, talkAnchorBottom: 10 };
     }
 
     startTalkingAnimation(): Animation {
-        return ANIM_ARCADE_GUY;
+        return ANIM_ARCADE_GUY_TALKING;
     }
 
     stopTalkingAnimation() {
