@@ -24,5 +24,5 @@ function createPubLamp(left: number, top: number) {
         ]);
 }
 
-export const ANIM_PUB_LAMP1 = createPubLamp(10, 4);
-export const ANIM_PUB_LAMP2 = createPubLamp(58, 4);
+export const ANIM_PUB_LAMP1 = createPubLamp(10, 2);
+export const ANIM_PUB_LAMP2 = createPubLamp(59, 2);

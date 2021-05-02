@@ -92,6 +92,8 @@ compileSprite('asciiart/sprites/tetris_rhode_island_z.txt', 'SPR_TETRIS_RHODE_IS
 
 compileSprite('asciiart/sprites/pub_lamp0.txt', 'SPR_PUB_LAMP0');
 compileSprite('asciiart/sprites/pub_lamp1.txt', 'SPR_PUB_LAMP1');
+compileSprite('asciiart/sprites/pub_window_devil.txt', 'SPR_PUB_WINDOW_DEVIL');
+compileSprite('asciiart/sprites/pub_window_bell.txt', 'SPR_PUB_WINDOW_BELL');
 
 //--------------------------------------------------------------------------
 
