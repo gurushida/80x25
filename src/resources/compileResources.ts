@@ -81,6 +81,13 @@ compileSprite('asciiart/sprites/arcade_guy1.txt', 'SPR_ARCADE_GUY1');
 compileSprite('asciiart/sprites/arcade_guy2.txt', 'SPR_ARCADE_GUY2');
 compileSprite('asciiart/sprites/arcade_guy3.txt', 'SPR_ARCADE_GUY3');
 compileSprite('asciiart/sprites/arcade_guy4.txt', 'SPR_ARCADE_GUY4');
+compileSprite('asciiart/sprites/tetris_hero.txt', 'SPR_TETRIS_HERO');
+compileSprite('asciiart/sprites/tetris_smashboy.txt', 'SPR_TETRIS_SMASHBOY');
+compileSprite('asciiart/sprites/tetris_teewee.txt', 'SPR_TETRIS_TEEWEE');
+compileSprite('asciiart/sprites/tetris_blue_ricky.txt', 'SPR_TETRIS_BLUE_RICKY');
+compileSprite('asciiart/sprites/tetris_orange_ricky.txt', 'SPR_TETRIS_ORANGE_RICKY');
+compileSprite('asciiart/sprites/tetris_cleveland_z.txt', 'SPR_TETRIS_CLEVELAND_Z');
+compileSprite('asciiart/sprites/tetris_rhode_island_z.txt', 'SPR_TETRIS_RHODE_ISLAND_Z');
 
 //--------------------------------------------------------------------------
 

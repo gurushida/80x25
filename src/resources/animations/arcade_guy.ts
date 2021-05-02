@@ -72,7 +72,7 @@ const ANIM_ARCADE_GUY = new ImageAnimation(35, 10, ZIndex.BEHIND_GUY, true, ARCA
         },
         {
             image: SPR_ARCADE_GUY2,
-            durationInTicks: CHEWING,
+            durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
