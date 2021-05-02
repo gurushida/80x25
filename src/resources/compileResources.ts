@@ -90,6 +90,9 @@ compileSprite('asciiart/sprites/tetris_orange_ricky.txt', 'SPR_TETRIS_ORANGE_RIC
 compileSprite('asciiart/sprites/tetris_cleveland_z.txt', 'SPR_TETRIS_CLEVELAND_Z');
 compileSprite('asciiart/sprites/tetris_rhode_island_z.txt', 'SPR_TETRIS_RHODE_ISLAND_Z');
 
+compileSprite('asciiart/sprites/pub_lamp0.txt', 'SPR_PUB_LAMP0');
+compileSprite('asciiart/sprites/pub_lamp1.txt', 'SPR_PUB_LAMP1');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');

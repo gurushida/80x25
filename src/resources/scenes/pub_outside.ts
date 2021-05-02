@@ -5,6 +5,7 @@ import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { ActionBarButton } from "@/screenBuffer";
 import { BG_PUB_OUTSIDE } from "../generated/images/BG_PUB_OUTSIDE";
+import { ANIM_PUB_LAMP1, ANIM_PUB_LAMP2 } from "../animations/pub_lamp";
 
 
 const fullFilter = createFullHotspot(HotspotId.PUB);
@@ -35,7 +36,7 @@ export const OUTSIDE_PUB_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ pubBackground ],
-            animations: [],
+            animations: [ANIM_PUB_LAMP1, ANIM_PUB_LAMP2],
             hotspots: pubHotspots
         };
     }

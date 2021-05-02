@@ -8,7 +8,6 @@ import { ArcadeGuyAnimation } from "../animations/arcade_guy";
 import { ANIM_ARCADE_SIGN } from "../animations/arcade_sign";
 import { ANIM_LAMP } from "../animations/lamp";
 import { DIALOG_ARCADE_GUY } from "../generated/dialogs/DIALOG_ARCADE_GUY";
-import { DIALOG_DOG } from "../generated/dialogs/DIALOG_DOG";
 import { BG_ARCADE } from "../generated/images/BG_ARCADE";
 import { SPR_ARCADE_CABINET } from "../generated/images/SPR_ARCADE_CABINET";
 import { SPR_ARCADE_TABLE } from "../generated/images/SPR_ARCADE_TABLE";
