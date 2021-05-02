@@ -403,7 +403,13 @@ export class SceneEngine implements SceneActionListener {
     }
 
     look(what: InventoryObject | Hotspot) {
-        this.say(what.lookAt);
+        if (isInventoryObject(what)) {
+            this.say(what.lookAt);
+        } else {
+            this.walkTo(what.guyPositionForAction, () => {
+                this.say(what.lookAt);
+            });
+        }
     }
 
     changeScene(sceneId: SceneId, pos: GuyPosition | undefined) {
