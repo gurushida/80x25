@@ -4,7 +4,7 @@ import { ZIndex } from "@/zIndex";
 import { SPR_PUB_LAMP0 } from "../generated/images/SPR_PUB_LAMP0";
 import { SPR_PUB_LAMP1 } from "../generated/images/SPR_PUB_LAMP1";
 
-const PUB_LAMP_HOTSPOT = createMaskHotspot(SPR_PUB_LAMP0, HotspotId.ARCADE_SIGN);
+const PUB_LAMP_HOTSPOT = createMaskHotspot(SPR_PUB_LAMP0, HotspotId.PUB);
 
 function createPubLamp(left: number, top: number) {
     return new ImageAnimation(left, top, ZIndex.BEHIND_GUY, true, PUB_LAMP_HOTSPOT, NO_LEFT_MOVEMENT,
