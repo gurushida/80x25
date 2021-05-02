@@ -76,6 +76,11 @@ compileSprite('asciiart/sprites/arcade_cabinet.txt', 'SPR_ARCADE_CABINET');
 compileSprite('asciiart/sprites/arcade_sign0.txt', 'SPR_ARCADE_SIGN0');
 compileSprite('asciiart/sprites/arcade_sign1.txt', 'SPR_ARCADE_SIGN1');
 compileSprite('asciiart/sprites/arcade_table.txt', 'SPR_ARCADE_TABLE');
+compileSprite('asciiart/sprites/arcade_guy0.txt', 'SPR_ARCADE_GUY0');
+compileSprite('asciiart/sprites/arcade_guy1.txt', 'SPR_ARCADE_GUY1');
+compileSprite('asciiart/sprites/arcade_guy2.txt', 'SPR_ARCADE_GUY2');
+compileSprite('asciiart/sprites/arcade_guy3.txt', 'SPR_ARCADE_GUY3');
+compileSprite('asciiart/sprites/arcade_guy4.txt', 'SPR_ARCADE_GUY4');
 
 //--------------------------------------------------------------------------
 

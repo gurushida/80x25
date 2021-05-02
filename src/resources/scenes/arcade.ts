@@ -3,6 +3,7 @@ import { PaintTask, getPaintTask } from "@/paintTask";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
+import { ArcadeGuyAnimation } from "../animations/arcade_guy";
 import { ANIM_ARCADE_SIGN } from "../animations/arcade_sign";
 import { ANIM_LAMP } from "../animations/lamp";
 import { BG_ARCADE } from "../generated/images/BG_ARCADE";
@@ -36,7 +37,7 @@ export const ARCADE_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [arcadeBackground, game1, game2, game3, game4, game5, game6, table,],
-            animations: [ANIM_LAMP, ANIM_ARCADE_SIGN],
+            animations: [ANIM_LAMP, ANIM_ARCADE_SIGN, new ArcadeGuyAnimation()],
             hotspots: [],
         };
     }
