@@ -13,7 +13,7 @@ fs.mkdirSync(DIALOGS_DIR, { recursive: true });
 compileOpaqueImage('asciiart/backgrounds/bank.txt', 'BG_BANK');
 compileOpaqueImage('asciiart/backgrounds/ice_cream_shop.txt', 'BG_ICE_CREAM_SHOP');
 compileOpaqueImage('asciiart/backgrounds/pub.txt', 'BG_PUB');
-compileOpaqueImage('asciiart/sprites/arcade_counter.txt', 'SPR_ARCADE_COUNTER');
+compileOpaqueImage('asciiart/backgrounds/arcade.txt', 'BG_ARCADE');
 
 
 //--------------------------------------------------------------------------
