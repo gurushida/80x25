@@ -1,4 +1,4 @@
-import { createFullHotspot, HotspotId, combine, GuyPosition, Hotspot } from "@/hotspots";
+import { createFullHotspot, HotspotId, combine, GuyPosition, Hotspot, createRectangleHotspot } from "@/hotspots";
 import { DogAnimation } from "../animations/dog";
 import { SceneId, SceneLoader, SceneData } from "@/scene";
 import { ZIndex } from "@/zIndex";
@@ -9,12 +9,8 @@ import { BG_ICE_CREAM_SHOP } from "../generated/images/BG_ICE_CREAM_SHOP";
 import { DIALOG_DOG } from "../generated/dialogs/DIALOG_DOG";
 
 const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
-const doorFilter = (x: number, y: number) => {
-    if (x >= 32 && x <= 41 && y >= 8 && y <= 14) {
-        return HotspotId.ICE_CREAM_SHOP_DOOR;
-    }
-    return undefined;
-};
+const doorFilter = createRectangleHotspot(HotspotId.ICE_CREAM_SHOP_DOOR, 32, 8, 9, 6);
+
 const iceCreamShopBackground: PaintTask = getPaintTask(BG_ICE_CREAM_SHOP, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
 const iceCreamShopHotspots: Hotspot[] = [
     {

@@ -26,11 +26,13 @@ export enum HotspotId {
     ARCADE_GAME6 = 'ARCADE_GAME6',
     ARCADE_SIGN = 'ARCADE_SIGN',
 }
+
 /**
  * Given a position in an image relative to its top-left corner, returns
  * the corresponding hotspot or NONE if the location is not a hotspot.
  */
 export type HotspotFilter = (x: number, y: number) => HotspotId | undefined;
+
 
 /**
  * All the area is a hotspot.
@@ -39,6 +41,19 @@ export function createFullHotspot(hotspot: HotspotId): HotspotFilter {
     return (x: number, y: number) => hotspot;
 }
 
+
+/**
+ * All the given rectangle area is a hotspot.
+ */
+ export function createRectangleHotspot(hotspot: HotspotId,
+                                        left: number, top: number, width: number, height: number): HotspotFilter {
+    return (x: number, y: number) => {
+        if (x >= left && x < left + width && y >= top && y < top + height) {
+            return hotspot;
+        }
+        return undefined;
+    };
+}
 
 /**
  * Creates a filter that, given a position (x,y), will look for the
