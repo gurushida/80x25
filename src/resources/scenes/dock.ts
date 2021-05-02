@@ -27,7 +27,7 @@ const dockHotspots: Hotspot[] = [
         hotspotId: HotspotId.DOCK,
         description: 'dock',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['This is the dock of the bay.'], ['Rumor has it some dude came all the', 'way from Georgia to sit here.']]
+        lookAt: [['This is the dock of the bay.'], ['Rumor has it some dude came all the', 'way from his hometown to sit here.']]
     },
     {
         hotspotId: HotspotId.SEA,
