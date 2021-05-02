@@ -204,10 +204,10 @@ function getArcade(triggers: Triggers): MapLocation {
 
 function getPub(triggers: Triggers): MapLocation {
     return {
-        label: triggers.isSet('HEARD_ABOUT_PUB') ? 'Ales & Bells' : undefined,
+        label: triggers.isSet('PUB_VISITED') ? 'Ales & Bells' : '???',
         centerX: 62,
         centerY: 11,
-        sceneId: SceneId.PUB
+        sceneId: SceneId.OUTSIDE_PUB
     };
 }
 

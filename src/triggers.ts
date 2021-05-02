@@ -12,6 +12,7 @@ const triggers = [
     'DOCK_VISITED',
     'HEARD_ABOUT_PUB',
     'ARCADE_VISITED',
+    'PUB_VISITED',
 ] as const;
 export type Trigger = typeof triggers[number];
 

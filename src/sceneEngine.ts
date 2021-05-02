@@ -21,6 +21,7 @@ import { INSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShopIns
 import { DOCK_LOADER } from "./resources/scenes/dock";
 import { invariant } from "./utils";
 import { ARCADE_LOADER } from "./resources/scenes/arcade";
+import { OUTSIDE_PUB_LOADER } from "./resources/scenes/pub_outside";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -441,6 +442,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
         case SceneId.OUTSIDE_BANK: return OUTSIDE_BANK_LOADER;
         case SceneId.DOCK: return DOCK_LOADER;
         case SceneId.ARCADE: return ARCADE_LOADER;
+        case SceneId.OUTSIDE_PUB: return OUTSIDE_PUB_LOADER;
         default: return undefined;
     }
 }
