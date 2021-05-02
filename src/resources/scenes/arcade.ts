@@ -1,4 +1,4 @@
-import { createMaskHotspot, createRectangleHotspot, GuyPosition, HotspotId } from "@/hotspots";
+import { createMaskHotspot, GuyPosition, HotspotId } from "@/hotspots";
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
@@ -7,7 +7,6 @@ import { ANIM_ARCADE_SIGN } from "../animations/arcade_sign";
 import { ANIM_LAMP } from "../animations/lamp";
 import { BG_ARCADE } from "../generated/images/BG_ARCADE";
 import { SPR_ARCADE_CABINET } from "../generated/images/SPR_ARCADE_CABINET";
-import { SPR_ARCADE_COUNTER } from "../generated/images/SPR_ARCADE_COUNTER";
 import { SPR_ARCADE_TABLE } from "../generated/images/SPR_ARCADE_TABLE";
 
 const game1: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 0, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME1));
