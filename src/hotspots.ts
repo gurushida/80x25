@@ -26,6 +26,7 @@ export enum HotspotId {
     ARCADE_GAME6 = 'ARCADE_GAME6',
     ARCADE_SIGN = 'ARCADE_SIGN',
     ARCADE_GUY = 'ARCADE_GUY',
+    LAMP = 'LAMP',
 }
 
 /**

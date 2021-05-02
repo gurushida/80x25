@@ -1,9 +1,11 @@
 import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
+import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { invariant } from "@/utils";
 import { ZIndex } from "@/zIndex";
 import { SPR_LAMP_OFF } from "../generated/images/SPR_LAMP_OFF";
 import { SPR_LAMP_ON } from "../generated/images/SPR_LAMP_ON";
 
+const LAMP_HOTSPOT = createMaskHotspot(SPR_LAMP_ON, HotspotId.LAMP);
 class LampAnimation extends ImageAnimation {
 
     private MORSE: Record<string,string> = {
@@ -49,7 +51,7 @@ class LampAnimation extends ImageAnimation {
     private onOffData: boolean[] = [ false ];
 
     constructor(initialLeft: number, initialTop: number) {
-        super(initialLeft, initialTop, ZIndex.FRONT, true, undefined,
+        super(initialLeft, initialTop, ZIndex.FRONT, true, LAMP_HOTSPOT,
             NO_LEFT_MOVEMENT,
             [
                 {
