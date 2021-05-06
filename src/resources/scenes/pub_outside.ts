@@ -9,6 +9,7 @@ import { ANIM_PUB_LAMP1, ANIM_PUB_LAMP2 } from "../animations/pub_lamp";
 import { SPR_PUB_WINDOW_DEVIL } from "../generated/images/SPR_PUB_WINDOW_DEVIL";
 import { SPR_PUB_WINDOW_BELL } from "../generated/images/SPR_PUB_WINDOW_BELL";
 import { BikerAnimation } from "../animations/biker";
+import { DIALOG_BIKER } from "../generated/dialogs/DIALOG_BIKER";
 
 
 const fullFilter = createFullHotspot(HotspotId.PUB);
@@ -50,6 +51,7 @@ const pubHotspots: Hotspot[] = [
         hotspotId: HotspotId.BIKER,
         description: 'biker',
         rightClickAction: ActionBarButton.TALK,
+        dialog: DIALOG_BIKER,
         guyPositionForAction: {
             left: 60,
             top: 14,

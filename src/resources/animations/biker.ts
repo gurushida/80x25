@@ -107,7 +107,7 @@ const ANIM_BIKER = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOT
     ]);
 
 
-const ANIM_BIKER_TALKING = new ImageAnimation(47, 12, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
+const ANIM_BIKER_TALKING = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -125,6 +125,17 @@ const ANIM_BIKER_TALKING = new ImageAnimation(47, 12, ZIndex.BEHIND_GUY, true, B
         {
             image: SPR_BIKER_TALKING2,
             durationInTicks: 7,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
+const ANIM_BIKER_NOT_TALKING = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
+        NO_LEFT_MOVEMENT,
+    [
+        {
+            image: SPR_BIKER0,
+            durationInTicks: 50,
             offsetX: 0,
             offsetY: 0,
         },
@@ -149,7 +160,11 @@ export class BikerAnimation extends CanTalkAnimation {
     }
 
     tickNonTalking() {
-        return ANIM_BIKER.tick();
+        if (this.isDialogInProgress()) {
+            return ANIM_BIKER_NOT_TALKING.tick();
+        } else {
+            return ANIM_BIKER.tick();
+        }
     }
 
 }

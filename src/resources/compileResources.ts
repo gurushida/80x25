@@ -112,6 +112,7 @@ compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
 compileDialog('dialogs/highlander.grf', 'DIALOG_HIGHLANDER');
 compileDialog('dialogs/trying_to_take_net.grf', 'DIALOG_TRYING_TO_TAKE_NET');
 compileDialog('dialogs/arcade_guy.grf', 'DIALOG_ARCADE_GUY');
+compileDialog('dialogs/biker.grf', 'DIALOG_BIKER');
 
 //--------------------------------------------------------------------------
 
