@@ -46,6 +46,17 @@ const pubHotspots: Hotspot[] = [
         },
         lookAt: [[ 'The bell of doom,'], ['feared since ancient times'], ['for its terrible omen:'], ['the pub is going to close.']]
     },
+    {
+        hotspotId: HotspotId.BIKER,
+        description: 'biker',
+        rightClickAction: ActionBarButton.TALK,
+        guyPositionForAction: {
+            left: 60,
+            top: 14,
+            lookToTheRight: false
+        },
+        lookAt: [[ 'A muscular road knight', 'without his mount,'], ['guardian of this', 'temple of liquid sin.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {

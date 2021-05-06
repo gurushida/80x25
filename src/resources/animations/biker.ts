@@ -15,7 +15,7 @@ import { SPR_BIKER5 } from "../generated/images/SPR_BIKER5";
 import { SPR_BIKER6 } from "../generated/images/SPR_BIKER6";
 import { SPR_BIKER7 } from "../generated/images/SPR_BIKER7";
 
-const BIKER_HOTSPOT = createMaskHotspot(SPR_BIKER0, HotspotId.HIGHLANDER);
+const BIKER_HOTSPOT = createMaskHotspot(SPR_BIKER0, HotspotId.BIKER);
 
 const ANIM_BIKER = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
     NO_LEFT_MOVEMENT,
