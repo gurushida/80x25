@@ -29,6 +29,7 @@ export enum SceneId {
     INSIDE_ICE_CREAM_SHOP,
     OUTSIDE_BANK,
     OUTSIDE_PUB,
+    INSIDE_PUB,
     DOCK,
     ARCADE,
 }

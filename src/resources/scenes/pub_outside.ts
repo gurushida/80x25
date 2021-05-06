@@ -1,6 +1,6 @@
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { ZIndex } from "@/zIndex";
-import { combine, createFullHotspot, HotspotId, GuyPosition, Hotspot, createMaskHotspot } from "@/hotspots";
+import { combine, createFullHotspot, HotspotId, GuyPosition, Hotspot, createMaskHotspot, createRectangleHotspot } from "@/hotspots";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { ActionBarButton } from "@/screenBuffer";
@@ -13,7 +13,9 @@ import { DIALOG_BIKER } from "../generated/dialogs/DIALOG_BIKER";
 
 
 const fullFilter = createFullHotspot(HotspotId.PUB);
-const pubBackground: PaintTask = getPaintTask(BG_PUB_OUTSIDE, 0, 0, ZIndex.BACKGROUND, combine(fullFilter));
+const doorFilter = createRectangleHotspot(HotspotId.PUB_DOOR, 29, 9, 17, 15);
+
+const pubBackground: PaintTask = getPaintTask(BG_PUB_OUTSIDE, 0, 0, ZIndex.BACKGROUND, combine(doorFilter, fullFilter));
 
 const window_devil: PaintTask = getPaintTask(SPR_PUB_WINDOW_DEVIL, 2, 8, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_PUB_WINDOW_DEVIL, HotspotId.PUB_WINDOW_DEVIL));
 const window_bell: PaintTask = getPaintTask(SPR_PUB_WINDOW_BELL, 51, 8, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_PUB_WINDOW_BELL, HotspotId.PUB_WINDOW_BELL));
@@ -24,6 +26,17 @@ const pubHotspots: Hotspot[] = [
         description: 'pub',
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [[ 'The best place in town'], ['for responsible consumption'], ['of organic plant-based beverages.']]
+    },
+    {
+        hotspotId: HotspotId.PUB_DOOR,
+        description: 'Enter pub',
+        movementHotspot: SceneId.INSIDE_PUB,
+        guyPositionForAction: {
+            left: 28,
+            top: 14,
+            lookToTheRight: true
+        },
+        lookAt: [[]]
     },
     {
         hotspotId: HotspotId.PUB_WINDOW_DEVIL,

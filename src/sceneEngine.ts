@@ -22,6 +22,7 @@ import { DOCK_LOADER } from "./resources/scenes/dock";
 import { invariant } from "./utils";
 import { ARCADE_LOADER } from "./resources/scenes/arcade";
 import { OUTSIDE_PUB_LOADER } from "./resources/scenes/pub_outside";
+import { INSIDE_PUB_LOADER } from "./resources/scenes/pub_inside";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -443,6 +444,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
         case SceneId.DOCK: return DOCK_LOADER;
         case SceneId.ARCADE: return ARCADE_LOADER;
         case SceneId.OUTSIDE_PUB: return OUTSIDE_PUB_LOADER;
+        case SceneId.INSIDE_PUB: return INSIDE_PUB_LOADER;
         default: return undefined;
     }
 }
