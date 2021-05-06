@@ -148,7 +148,7 @@ export class BikerAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 52, talkAnchorBottom: 11 };
+        return { talkAnchorLeft: 47, talkAnchorBottom: 9 };
     }
 
     startTalkingAnimation(): Animation {
