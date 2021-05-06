@@ -8,6 +8,7 @@ import { BG_PUB_OUTSIDE } from "../generated/images/BG_PUB_OUTSIDE";
 import { ANIM_PUB_LAMP1, ANIM_PUB_LAMP2 } from "../animations/pub_lamp";
 import { SPR_PUB_WINDOW_DEVIL } from "../generated/images/SPR_PUB_WINDOW_DEVIL";
 import { SPR_PUB_WINDOW_BELL } from "../generated/images/SPR_PUB_WINDOW_BELL";
+import { BikerAnimation } from "../animations/biker";
 
 
 const fullFilter = createFullHotspot(HotspotId.PUB);
@@ -63,7 +64,7 @@ export const OUTSIDE_PUB_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [pubBackground, window_devil, window_bell],
-            animations: [ANIM_PUB_LAMP1, ANIM_PUB_LAMP2],
+            animations: [ANIM_PUB_LAMP1, ANIM_PUB_LAMP2, new BikerAnimation()],
             hotspots: pubHotspots
         };
     }

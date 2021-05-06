@@ -37,6 +37,7 @@ export enum HotspotId {
     PUB = 'PUB',
     PUB_WINDOW_DEVIL = 'PUB_WINDOW_DEVIL',
     PUB_WINDOW_BELL = 'PUB_WINDOW_BELL',
+    BIKER = 'BIKER',
 }
 
 /**

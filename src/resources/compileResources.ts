@@ -94,6 +94,17 @@ compileSprite('asciiart/sprites/pub_lamp0.txt', 'SPR_PUB_LAMP0');
 compileSprite('asciiart/sprites/pub_lamp1.txt', 'SPR_PUB_LAMP1');
 compileSprite('asciiart/sprites/pub_window_devil.txt', 'SPR_PUB_WINDOW_DEVIL');
 compileSprite('asciiart/sprites/pub_window_bell.txt', 'SPR_PUB_WINDOW_BELL');
+compileSprite('asciiart/sprites/biker0.txt', 'SPR_BIKER0');
+compileSprite('asciiart/sprites/biker1.txt', 'SPR_BIKER1');
+compileSprite('asciiart/sprites/biker2.txt', 'SPR_BIKER2');
+compileSprite('asciiart/sprites/biker3.txt', 'SPR_BIKER3');
+compileSprite('asciiart/sprites/biker4.txt', 'SPR_BIKER4');
+compileSprite('asciiart/sprites/biker5.txt', 'SPR_BIKER5');
+compileSprite('asciiart/sprites/biker6.txt', 'SPR_BIKER6');
+compileSprite('asciiart/sprites/biker7.txt', 'SPR_BIKER7');
+compileSprite('asciiart/sprites/biker_talking0.txt', 'SPR_BIKER_TALKING0');
+compileSprite('asciiart/sprites/biker_talking1.txt', 'SPR_BIKER_TALKING1');
+compileSprite('asciiart/sprites/biker_talking2.txt', 'SPR_BIKER_TALKING2');
 
 //--------------------------------------------------------------------------
 
