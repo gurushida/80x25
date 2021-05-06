@@ -17,7 +17,7 @@ const MINIMUM_SEGMENT_DURATION_IN_TICKS = 80;
 
 export function getDurationInTicks(cue: Cue): number {
     const totalLength = cue.join(',').length;
-    const duration = Math.round(totalLength * 2.7);
+    const duration = Math.round(totalLength * 3);
     return duration < MINIMUM_SEGMENT_DURATION_IN_TICKS ? MINIMUM_SEGMENT_DURATION_IN_TICKS : duration;
 }
 
