@@ -40,9 +40,9 @@ const pubHotspots: Hotspot[] = [
         description: 'stained glass',
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
-            left: 49,
+            left: 70,
             top: 14,
-            lookToTheRight: true
+            lookToTheRight: false
         },
         lookAt: [[ 'The bell of doom,'], ['feared since ancient times'], ['for its terrible omen:'], ['the pub is going to close.']]
     },
