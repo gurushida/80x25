@@ -5,6 +5,8 @@ import { ActionBarButton } from "@/screenBuffer";
 import { ANIM_FOUNTAIN } from "../animations/fountain";
 import { LittleGirlAnimation } from "../animations/little_girl";
 import { DIALOG_LITTLE_GIRL } from "../generated/dialogs/DIALOG_LITTLE_GIRL";
+import { DIALOG_ROBOT } from "../generated/dialogs/DIALOG_ROBOT";
+import { RobotAnimation } from "../animations/robot";
 
 
 
@@ -30,6 +32,18 @@ const pubHotspots: Hotspot[] = [
             comment: [['I do admit having some', 'questionable hobbies'], ['but kidnapping is', 'not one of them.']],
         },
     },
+    {
+        hotspotId: HotspotId.ROBOT,
+        description: 'robot',
+        rightClickAction: ActionBarButton.TALK,
+        dialog: DIALOG_ROBOT,
+        guyPositionForAction: {
+            left: 35,
+            top: 13,
+            lookToTheRight: false
+        },
+        lookAt: [['A robot cop.']],
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -48,7 +62,7 @@ export const PARK_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [],
-            animations: [ANIM_FOUNTAIN, new LittleGirlAnimation()],
+            animations: [ANIM_FOUNTAIN, new LittleGirlAnimation(), new RobotAnimation()],
             hotspots: pubHotspots
         };
     }

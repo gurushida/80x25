@@ -115,6 +115,10 @@ compileSprite('asciiart/sprites/girl_jumping_rope3.txt', 'SPR_GIRL_JUMPING_ROPE3
 compileSprite('asciiart/sprites/girl_still0.txt', 'SPR_GIRL_STILL0');
 compileSprite('asciiart/sprites/girl_talking0.txt', 'SPR_GIRL_TALKING0');
 compileSprite('asciiart/sprites/girl_talking1.txt', 'SPR_GIRL_TALKING1');
+compileSprite('asciiart/sprites/robot0.txt', 'SPR_ROBOT0');
+compileSprite('asciiart/sprites/robot1.txt', 'SPR_ROBOT1');
+compileSprite('asciiart/sprites/robot_talking0.txt', 'SPR_ROBOT_TALKING0');
+compileSprite('asciiart/sprites/robot_talking1.txt', 'SPR_ROBOT_TALKING1');
 
 //--------------------------------------------------------------------------
 
@@ -124,6 +128,7 @@ compileDialog('dialogs/trying_to_take_net.grf', 'DIALOG_TRYING_TO_TAKE_NET');
 compileDialog('dialogs/arcade_guy.grf', 'DIALOG_ARCADE_GUY');
 compileDialog('dialogs/biker.grf', 'DIALOG_BIKER');
 compileDialog('dialogs/little_girl.grf', 'DIALOG_LITTLE_GIRL');
+compileDialog('dialogs/robot.grf', 'DIALOG_ROBOT');
 
 //--------------------------------------------------------------------------
 

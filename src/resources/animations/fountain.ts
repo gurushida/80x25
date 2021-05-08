@@ -6,7 +6,7 @@ import { SPR_FOUNTAIN1 } from "../generated/images/SPR_FOUNTAIN1";
 
 const FOUNTAIN_HOTSPOT = createMaskHotspot(SPR_FOUNTAIN0, HotspotId.FOUNTAIN);
 
-export const ANIM_FOUNTAIN = new ImageAnimation(5, 16, ZIndex.BACKGROUND, true, FOUNTAIN_HOTSPOT, NO_LEFT_MOVEMENT,
+export const ANIM_FOUNTAIN = new ImageAnimation(3, 16, ZIndex.BACKGROUND, true, FOUNTAIN_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_FOUNTAIN0,

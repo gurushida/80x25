@@ -41,6 +41,7 @@ export enum HotspotId {
     BIKER = 'BIKER',
     FOUNTAIN = 'FOUNTAIN',
     LITTLE_GIRL = 'LITTLE_GIRL',
+    ROBOT = 'ROBOT',
 }
 
 /**

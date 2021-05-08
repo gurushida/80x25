@@ -9,6 +9,7 @@ const talkingCharacters = [
     'HIGHLANDER',
     'ARCADE_GUY',
     'BIKER',
+    'ROBOT',
 ] as const;
 export type TalkingCharacter = typeof talkingCharacters[number];
 
