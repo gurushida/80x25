@@ -24,6 +24,9 @@ export class DialogEngine {
         this.currentOptionsToChooseFrom = [];
         this.currentStatesToChooseFrom = [];
         for (const animation of this.characterMap.values()) {
+            if (!this.dialog.characters.includes(animation.getCharacter())) {
+                continue;
+            }
             animation.startDialog();
         }
         this.sceneEngine.setCurrentDialog(this);
@@ -34,6 +37,10 @@ export class DialogEngine {
 
     private endDialog() {
         for (const animation of this.characterMap.values()) {
+            if (!this.dialog.characters.includes(animation.getCharacter())) {
+                continue;
+            }
+
             // Let's wait a tiny bit before returning to the normal
             // animations to avoid ugly effects like a character
             // immediately turning his back
