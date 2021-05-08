@@ -106,6 +106,9 @@ compileSprite('asciiart/sprites/biker_talking0.txt', 'SPR_BIKER_TALKING0');
 compileSprite('asciiart/sprites/biker_talking1.txt', 'SPR_BIKER_TALKING1');
 compileSprite('asciiart/sprites/biker_talking2.txt', 'SPR_BIKER_TALKING2');
 
+compileSprite('asciiart/sprites/fountain0.txt', 'SPR_FOUNTAIN0');
+compileSprite('asciiart/sprites/fountain1.txt', 'SPR_FOUNTAIN1');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');

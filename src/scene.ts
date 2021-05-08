@@ -32,5 +32,6 @@ export enum SceneId {
     INSIDE_PUB,
     DOCK,
     ARCADE,
+    PARK,
 }
 

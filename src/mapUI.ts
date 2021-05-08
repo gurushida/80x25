@@ -211,6 +211,15 @@ function getPub(triggers: Triggers): MapLocation {
     };
 }
 
+function getPark(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('PARK_VISITED') ? 'Park' : '???',
+        centerX: 50,
+        centerY: 18,
+        sceneId: SceneId.PARK
+    };
+}
+
 function getLocationsToShow(triggers: Triggers): MapLocation[] {
     const locations: MapLocation[] = [];
     locations.push(getExit());
@@ -219,6 +228,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getPub(triggers));
     locations.push(getDock(triggers));
     locations.push(getArcade(triggers));
+    locations.push(getPark(triggers));
     return locations.filter(l => l.label);
 }
 
