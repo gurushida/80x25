@@ -108,6 +108,13 @@ compileSprite('asciiart/sprites/biker_talking2.txt', 'SPR_BIKER_TALKING2');
 
 compileSprite('asciiart/sprites/fountain0.txt', 'SPR_FOUNTAIN0');
 compileSprite('asciiart/sprites/fountain1.txt', 'SPR_FOUNTAIN1');
+compileSprite('asciiart/sprites/girl_jumping_rope0.txt', 'SPR_GIRL_JUMPING_ROPE0');
+compileSprite('asciiart/sprites/girl_jumping_rope1.txt', 'SPR_GIRL_JUMPING_ROPE1');
+compileSprite('asciiart/sprites/girl_jumping_rope2.txt', 'SPR_GIRL_JUMPING_ROPE2');
+compileSprite('asciiart/sprites/girl_jumping_rope3.txt', 'SPR_GIRL_JUMPING_ROPE3');
+compileSprite('asciiart/sprites/girl_still0.txt', 'SPR_GIRL_STILL0');
+compileSprite('asciiart/sprites/girl_talking0.txt', 'SPR_GIRL_TALKING0');
+compileSprite('asciiart/sprites/girl_talking1.txt', 'SPR_GIRL_TALKING1');
 
 //--------------------------------------------------------------------------
 
@@ -116,6 +123,7 @@ compileDialog('dialogs/highlander.grf', 'DIALOG_HIGHLANDER');
 compileDialog('dialogs/trying_to_take_net.grf', 'DIALOG_TRYING_TO_TAKE_NET');
 compileDialog('dialogs/arcade_guy.grf', 'DIALOG_ARCADE_GUY');
 compileDialog('dialogs/biker.grf', 'DIALOG_BIKER');
+compileDialog('dialogs/little_girl.grf', 'DIALOG_LITTLE_GIRL');
 
 //--------------------------------------------------------------------------
 

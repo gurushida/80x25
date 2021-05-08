@@ -55,7 +55,7 @@ const dockHotspots: Hotspot[] = [
         },
         lookAt: [['A fisherman,'], ['straight from A\’ Ghàidhealtachd', 'if I\'m not mistaken.']],
         take: {
-            comment: [['Nah. I\'m good.'], ['I\'m not in the beheading immortals', ' business anymore.']],
+            comment: [['Nah. I\'m good.'], ['I\'m not in the beheading immortals', 'business anymore.']],
         },
         dialog: DIALOG_HIGHLANDER,
     },
