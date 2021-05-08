@@ -19,7 +19,7 @@ export interface SceneActionListener {
     useObjectOn(what: InventoryObject, on: InventoryObject | Hotspot): void;
     talk(who: InventoryObject | Hotspot): void;
     take(what: InventoryObject | Hotspot): void;
-    look(what: InventoryObject | Hotspot): void;
+    look(what: InventoryObject | Hotspot, xClick: number | undefined): void;
 
     changeScene(sceneId: SceneId, pos: GuyPosition | undefined): void;
     quit(): void;
@@ -67,14 +67,14 @@ export class ActionManager {
     handleInventoryEvent(item: InventoryObject, button: 'left' | 'right' | undefined) {
         this.hovered = item;
         if (button === 'right') {
-            this.fireLookAction(item);
+            this.fireLookAction(item, undefined);
         } else if (button === 'left' && this.selectedAction) {
             if (this.selectedAction === ActionBarButton.TALK) {
                 this.fireTalkAction(item);
             } else if (this.selectedAction === ActionBarButton.TAKE) {
                 this.fireTakeAction(item);
             } else if (this.selectedAction === ActionBarButton.LOOK) {
-                this.fireLookAction(item);
+                this.fireLookAction(item, undefined);
             } else if (this.selectedAction === ActionBarButton.GIVE) {
                 this.first = item;
             } else if (this.selectedAction === ActionBarButton.USE) {
@@ -106,7 +106,7 @@ export class ActionManager {
         } else if (buttonClicked === 'right') {
             if (hotspot && hotspot.rightClickAction) {
                 switch (hotspot.rightClickAction) {
-                    case ActionBarButton.LOOK: this.fireLookAction(hotspot); break;
+                    case ActionBarButton.LOOK: this.fireLookAction(hotspot, x); break;
                     case ActionBarButton.TALK: this.fireTalkAction(hotspot); break;
                     case ActionBarButton.USE: this.fireUseAction(hotspot); break;
                 }
@@ -139,7 +139,7 @@ export class ActionManager {
         } else if (this.selectedAction === ActionBarButton.TAKE) {
             this.fireTakeAction(hotspot);
         } else if (this.selectedAction === ActionBarButton.LOOK) {
-            this.fireLookAction(hotspot);
+            this.fireLookAction(hotspot, x);
         }
 
     }
@@ -226,10 +226,10 @@ export class ActionManager {
         }
     }
 
-    private fireLookAction(what: InventoryObject | Hotspot) {
+    private fireLookAction(what: InventoryObject | Hotspot, xClick: number | undefined) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
-            listener.look(what);
+            listener.look(what, xClick);
         }
     }
 

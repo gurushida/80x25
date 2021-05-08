@@ -405,11 +405,24 @@ export class SceneEngine implements SceneActionListener {
         }
     }
 
-    look(what: InventoryObject | Hotspot) {
+    look(what: InventoryObject | Hotspot, xClick: number | undefined) {
         if (isInventoryObject(what)) {
             this.say(what.lookAt);
         } else {
-            this.walkTo(what.guyPositionForAction, () => {
+            let positionForAction: GuyPosition | undefined;
+            if (what.guyPositionForAction) {
+                // If the object has a particular position to be at,
+                // let's go there
+                positionForAction = what.guyPositionForAction;
+            } else if (xClick !== undefined && this.guyPosition !== undefined) {
+                // Otehrwise, if there is a click x coordinate (i.e.
+                // we are looking at something in the scene, not at an
+                // inventory object), we just make sure the guy looks
+                // in the direction of the click
+                positionForAction = this.guyPosition;
+                positionForAction.lookToTheRight = xClick > (positionForAction.left + 2);
+            }
+            this.walkTo(positionForAction, () => {
                 this.say(what.lookAt);
             });
         }
