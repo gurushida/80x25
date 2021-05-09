@@ -23,7 +23,7 @@ const pubHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.TALK,
         dialog: DIALOG_LITTLE_GIRL,
         guyPositionForAction: {
-            left: 68,
+            left: 70,
             top: 13,
             lookToTheRight: false
         },
