@@ -8,10 +8,12 @@ import { SPR_POSTER_YODA } from "../generated/images/SPR_POSTER_YODA";
 import { SPR_POSTER_ROBIN_HOOD } from "../generated/images/SPR_POSTER_ROBIN_HOOD";
 import { SPR_POSTER_FREDDIE } from "../generated/images/SPR_POSTER_FREDDIE";
 import { SPR_POSTER_JAWS } from "../generated/images/SPR_POSTER_JAWS";
+import { BG_CINEMA_INSIDE } from "../generated/images/BG_CINEMA_INSIDE";
 
+const background: PaintTask = getPaintTask(BG_CINEMA_INSIDE, 0, 0, ZIndex.BEHIND_GUY, undefined);
 const posterFreddie: PaintTask = getPaintTask(SPR_POSTER_FREDDIE, 1, 0, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_POSTER_FREDDIE, HotspotId.POSTER_FREDDIE));
 const posterRobinHood: PaintTask = getPaintTask(SPR_POSTER_ROBIN_HOOD, 20, 0, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_POSTER_ROBIN_HOOD, HotspotId.POSTER_ROBIN_HOOD));
-const posterYoda: PaintTask = getPaintTask(SPR_POSTER_YODA, 39, 0, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_POSTER_YODA, HotspotId.POSTER_YODA));
+const posterYoda: PaintTask = getPaintTask(SPR_POSTER_YODA, 39, 2, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_POSTER_YODA, HotspotId.POSTER_YODA));
 const posterJaws: PaintTask = getPaintTask(SPR_POSTER_JAWS, 57, 0, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_POSTER_JAWS, HotspotId.POSTER_JAWS));
 
 const cinemaHotspots: Hotspot[] = [
@@ -54,7 +56,7 @@ export const INSIDE_CINEMA_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [posterFreddie, posterYoda, posterRobinHood, posterJaws],
+            images: [background, posterFreddie, posterYoda, posterRobinHood, posterJaws],
             animations: [  ],
             hotspots: cinemaHotspots,
         };
