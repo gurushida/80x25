@@ -139,6 +139,20 @@ compileOpaqueImage('asciiart/sprites/poster_yoda.txt', 'SPR_POSTER_YODA');
 compileOpaqueImage('asciiart/sprites/poster_freddie.txt', 'SPR_POSTER_FREDDIE');
 compileOpaqueImage('asciiart/sprites/poster_robin_hood.txt', 'SPR_POSTER_ROBIN_HOOD');
 compileOpaqueImage('asciiart/sprites/poster_jaws.txt', 'SPR_POSTER_JAWS');
+compileSprite('asciiart/sprites/popcorn_0.txt', 'SPR_POPCORN0');
+compileSprite('asciiart/sprites/popcorn_1.txt', 'SPR_POPCORN1');
+compileSprite('asciiart/sprites/popcorn_2.txt', 'SPR_POPCORN2');
+compileSprite('asciiart/sprites/popcorn_3.txt', 'SPR_POPCORN3');
+compileSprite('asciiart/sprites/popcorn_4.txt', 'SPR_POPCORN4');
+compileSprite('asciiart/sprites/popcorn_5.txt', 'SPR_POPCORN5');
+compileSprite('asciiart/sprites/popcorn_6.txt', 'SPR_POPCORN6');
+compileSprite('asciiart/sprites/popcorn_7.txt', 'SPR_POPCORN7');
+compileSprite('asciiart/sprites/popcorn_8.txt', 'SPR_POPCORN8');
+compileSprite('asciiart/sprites/popcorn_9.txt', 'SPR_POPCORN9');
+compileSprite('asciiart/sprites/popcorn_10.txt', 'SPR_POPCORN10');
+compileSprite('asciiart/sprites/popcorn_11.txt', 'SPR_POPCORN11');
+compileSprite('asciiart/sprites/popcorn_12.txt', 'SPR_POPCORN12');
+compileSprite('asciiart/sprites/popcorn_13.txt', 'SPR_POPCORN13');
 
 //--------------------------------------------------------------------------
 
