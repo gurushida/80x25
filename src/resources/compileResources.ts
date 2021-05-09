@@ -134,6 +134,11 @@ compileSprite('asciiart/sprites/cinema_cashier_talking0.txt', 'SPR_CINEMA_CASHIE
 compileSprite('asciiart/sprites/cinema_cashier_talking1.txt', 'SPR_CINEMA_CASHIER_TALKING1');
 compileSprite('asciiart/sprites/cinema_cashier_talking2.txt', 'SPR_CINEMA_CASHIER_TALKING2');
 
+compileOpaqueImage('asciiart/sprites/poster_yoda.txt', 'SPR_POSTER_YODA');
+compileOpaqueImage('asciiart/sprites/poster_freddie.txt', 'SPR_POSTER_FREDDIE');
+compileOpaqueImage('asciiart/sprites/poster_robin_hood.txt', 'SPR_POSTER_ROBIN_HOOD');
+compileOpaqueImage('asciiart/sprites/poster_jaws.txt', 'SPR_POSTER_JAWS');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
