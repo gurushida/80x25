@@ -11,11 +11,11 @@ import { SPR_CINEMA_SIGN1 } from "../generated/images/SPR_CINEMA_SIGN1";
 import { SPR_CINEMA_SIGN2 } from "../generated/images/SPR_CINEMA_SIGN2";
 
 const fullFilter = createFullHotspot(HotspotId.CINEMA);
-const doorFilter = createRectangleHotspot(HotspotId.CINEMA_DOOR, 31, 8, 25, 15);
+const doorFilter = createRectangleHotspot(HotspotId.CINEMA_DOOR, 28, 8, 25, 15);
 const programFilter = createRectangleHotspot(HotspotId.CINEMA_PROGRAM, 63, 10, 11, 6);
 
 
-const ANIM_SIGN = new ImageAnimation (30, 3, ZIndex.BEHIND_GUY, true, undefined, NO_LEFT_MOVEMENT,
+const ANIM_SIGN = new ImageAnimation (27, 2, ZIndex.BEHIND_GUY, true, undefined, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_CINEMA_SIGN0,
