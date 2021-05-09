@@ -71,7 +71,7 @@ export class CinemaCashierAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 55, talkAnchorBottom: 15 };
+        return { talkAnchorLeft: 13, talkAnchorBottom: 10 };
     }
 
     startTalkingAnimation(): Animation {
