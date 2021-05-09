@@ -15,6 +15,7 @@ compileOpaqueImage('asciiart/backgrounds/ice_cream_shop.txt', 'BG_ICE_CREAM_SHOP
 compileOpaqueImage('asciiart/backgrounds/pub_outside.txt', 'BG_PUB_OUTSIDE');
 compileOpaqueImage('asciiart/backgrounds/arcade.txt', 'BG_ARCADE');
 compileOpaqueImage('asciiart/backgrounds/park.txt', 'BG_PARK');
+compileOpaqueImage('asciiart/backgrounds/cinema.txt', 'BG_CINEMA');
 
 
 //--------------------------------------------------------------------------
@@ -122,6 +123,10 @@ compileSprite('asciiart/sprites/robot_talking0.txt', 'SPR_ROBOT_TALKING0');
 compileSprite('asciiart/sprites/robot_talking1.txt', 'SPR_ROBOT_TALKING1');
 compileSprite('asciiart/sprites/tree.txt', 'SPR_TREE');
 compileSprite('asciiart/sprites/seesaw.txt', 'SPR_SEESAW');
+
+compileSprite('asciiart/sprites/cinema_sign0.txt', 'SPR_CINEMA_SIGN0');
+compileSprite('asciiart/sprites/cinema_sign1.txt', 'SPR_CINEMA_SIGN1');
+compileSprite('asciiart/sprites/cinema_sign2.txt', 'SPR_CINEMA_SIGN2');
 
 //--------------------------------------------------------------------------
 

@@ -220,6 +220,15 @@ function getPark(triggers: Triggers): MapLocation {
     };
 }
 
+function getCinema(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('CINEMA_VISITED') ? 'Cinema' : '???',
+        centerX: 71,
+        centerY: 2,
+        sceneId: SceneId.OUTSIDE_CINEMA
+    };
+}
+
 function getLocationsToShow(triggers: Triggers): MapLocation[] {
     const locations: MapLocation[] = [];
     locations.push(getExit());
@@ -229,6 +238,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getDock(triggers));
     locations.push(getArcade(triggers));
     locations.push(getPark(triggers));
+    locations.push(getCinema(triggers));
     return locations.filter(l => l.label);
 }
 

@@ -24,6 +24,7 @@ import { ARCADE_LOADER } from "./resources/scenes/arcade";
 import { OUTSIDE_PUB_LOADER } from "./resources/scenes/pub_outside";
 import { INSIDE_PUB_LOADER } from "./resources/scenes/pub_inside";
 import { PARK_LOADER } from "./resources/scenes/park";
+import { OUTSIDE_CINEMA_LOADER } from "./resources/scenes/cinema_outside";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -460,6 +461,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
         case SceneId.OUTSIDE_PUB: return OUTSIDE_PUB_LOADER;
         case SceneId.INSIDE_PUB: return INSIDE_PUB_LOADER;
         case SceneId.PARK: return PARK_LOADER;
+        case SceneId.OUTSIDE_CINEMA: return OUTSIDE_CINEMA_LOADER;
         default: return undefined;
     }
 }
