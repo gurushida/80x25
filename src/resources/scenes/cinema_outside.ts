@@ -9,6 +9,8 @@ import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
 import { SPR_CINEMA_SIGN0 } from "../generated/images/SPR_CINEMA_SIGN0";
 import { SPR_CINEMA_SIGN1 } from "../generated/images/SPR_CINEMA_SIGN1";
 import { SPR_CINEMA_SIGN2 } from "../generated/images/SPR_CINEMA_SIGN2";
+import { CinemaCashierAnimation } from "../animations/cinema_cashier";
+import { DIALOG_CINEMA_CASHIER } from "../generated/dialogs/DIALOG_CINEMA_CASHIER";
 
 const fullFilter = createFullHotspot(HotspotId.CINEMA);
 const doorFilter = createRectangleHotspot(HotspotId.CINEMA_DOOR, 28, 8, 25, 15);
@@ -68,6 +70,18 @@ const cinemaHotspots: Hotspot[] = [
         },
         lookAt: [['This is the cinema program', 'for this week.']]
     },
+    {
+        hotspotId: HotspotId.CINEMA_CASHIER,
+        description: 'cashier',
+        rightClickAction: ActionBarButton.TALK,
+        lookAt: [['This is the cinema cashier.']],
+        dialog: DIALOG_CINEMA_CASHIER,
+        guyPositionForAction: {
+            left: 23,
+            top: 14,
+            lookToTheRight: false
+        },
+    },
 ];
 const initialGuyPosition: GuyPosition = {
     left: 24,
@@ -83,7 +97,7 @@ export const OUTSIDE_CINEMA_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ cinemaBackground ],
-            animations: [ANIM_SIGN],
+            animations: [ANIM_SIGN, new CinemaCashierAnimation()],
             hotspots: cinemaHotspots
         };
     }

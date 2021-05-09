@@ -127,6 +127,12 @@ compileSprite('asciiart/sprites/seesaw.txt', 'SPR_SEESAW');
 compileSprite('asciiart/sprites/cinema_sign0.txt', 'SPR_CINEMA_SIGN0');
 compileSprite('asciiart/sprites/cinema_sign1.txt', 'SPR_CINEMA_SIGN1');
 compileSprite('asciiart/sprites/cinema_sign2.txt', 'SPR_CINEMA_SIGN2');
+compileSprite('asciiart/sprites/cinema_cashier0.txt', 'SPR_CINEMA_CASHIER0');
+compileSprite('asciiart/sprites/cinema_cashier1.txt', 'SPR_CINEMA_CASHIER1');
+compileSprite('asciiart/sprites/cinema_cashier2.txt', 'SPR_CINEMA_CASHIER2');
+compileSprite('asciiart/sprites/cinema_cashier_talking0.txt', 'SPR_CINEMA_CASHIER_TALKING0');
+compileSprite('asciiart/sprites/cinema_cashier_talking1.txt', 'SPR_CINEMA_CASHIER_TALKING1');
+compileSprite('asciiart/sprites/cinema_cashier_talking2.txt', 'SPR_CINEMA_CASHIER_TALKING2');
 
 //--------------------------------------------------------------------------
 
@@ -137,6 +143,7 @@ compileDialog('dialogs/arcade_guy.grf', 'DIALOG_ARCADE_GUY');
 compileDialog('dialogs/biker.grf', 'DIALOG_BIKER');
 compileDialog('dialogs/little_girl.grf', 'DIALOG_LITTLE_GIRL');
 compileDialog('dialogs/robot.grf', 'DIALOG_ROBOT');
+compileDialog('dialogs/cinema_cashier.grf', 'DIALOG_CINEMA_CASHIER');
 
 //--------------------------------------------------------------------------
 

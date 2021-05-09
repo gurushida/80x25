@@ -47,6 +47,7 @@ export enum HotspotId {
     CINEMA = 'CINEMA',
     CINEMA_DOOR = 'CINEMA_DOOR',
     CINEMA_PROGRAM = 'CINEMA_PROGRAM',
+    CINEMA_CASHIER = 'CINEMA_CASHIER',
 }
 
 /**
