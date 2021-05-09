@@ -4,6 +4,8 @@ import { SceneId, SceneLoader, SceneData } from "@/scene";
 import { ActionBarButton } from "@/screenBuffer";
 import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
+import { BartenderAnimation } from "../animations/bartender";
+import { DIALOG_BARTENDER } from "../generated/dialogs/DIALOG_BARTENDER";
 import { BG_PUB_INSIDE } from "../generated/images/BG_PUB_INSIDE";
 import { SPR_POOL_TABLE } from "../generated/images/SPR_POOL_TABLE";
 
@@ -25,6 +27,18 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['Bad memories.'], ['I shouldn\'t have played', 'with this Fast Eddie guy.']]
     },
+    {
+        hotspotId: HotspotId.BARTENDER,
+        description: 'bartender',
+        rightClickAction: ActionBarButton.TALK,
+        lookAt: [['I\'m pretty sure the Dubliners', 'made a song about her.']],
+        dialog: DIALOG_BARTENDER,
+        guyPositionForAction: {
+            left: 26,
+            top: 13,
+            lookToTheRight: false
+        },
+    },
 ];
 
 export const INSIDE_PUB_LOADER: SceneLoader = {
@@ -34,7 +48,7 @@ export const INSIDE_PUB_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [background, pool_table1, pool_table2],
-            animations: [],
+            animations: [new BartenderAnimation()],
             hotspots,
         };
     }

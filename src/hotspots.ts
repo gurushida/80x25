@@ -54,6 +54,7 @@ export enum HotspotId {
     POSTER_JAWS = 'POSTER_JAWS',
     POPCORN_MACHINE = 'POPCORN_MACHINE',
     POOL_TABLE = 'POOL_TABLE',
+    BARTENDER = 'BARTENDER',
 }
 
 /**

@@ -156,6 +156,11 @@ compileSprite('asciiart/sprites/popcorn_12.txt', 'SPR_POPCORN12');
 compileSprite('asciiart/sprites/popcorn_13.txt', 'SPR_POPCORN13');
 
 compileSprite('asciiart/sprites/pool_table.txt', 'SPR_POOL_TABLE');
+compileSprite('asciiart/sprites/bartender0.txt', 'SPR_BARTENDER0');
+compileSprite('asciiart/sprites/bartender1.txt', 'SPR_BARTENDER1');
+compileSprite('asciiart/sprites/bartender_talking0.txt', 'SPR_BARTENDER_TALKING0');
+compileSprite('asciiart/sprites/bartender_talking1.txt', 'SPR_BARTENDER_TALKING1');
+compileSprite('asciiart/sprites/bartender_talking2.txt', 'SPR_BARTENDER_TALKING2');
 
 //--------------------------------------------------------------------------
 
@@ -167,6 +172,7 @@ compileDialog('dialogs/biker.grf', 'DIALOG_BIKER');
 compileDialog('dialogs/little_girl.grf', 'DIALOG_LITTLE_GIRL');
 compileDialog('dialogs/robot.grf', 'DIALOG_ROBOT');
 compileDialog('dialogs/cinema_cashier.grf', 'DIALOG_CINEMA_CASHIER');
+compileDialog('dialogs/bartender.grf', 'DIALOG_BARTENDER');
 
 //--------------------------------------------------------------------------
 
