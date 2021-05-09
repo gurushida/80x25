@@ -13,6 +13,7 @@ fs.mkdirSync(DIALOGS_DIR, { recursive: true });
 compileOpaqueImage('asciiart/backgrounds/bank.txt', 'BG_BANK');
 compileOpaqueImage('asciiart/backgrounds/ice_cream_shop.txt', 'BG_ICE_CREAM_SHOP');
 compileOpaqueImage('asciiart/backgrounds/pub_outside.txt', 'BG_PUB_OUTSIDE');
+compileOpaqueImage('asciiart/backgrounds/pub_inside.txt', 'BG_PUB_INSIDE');
 compileOpaqueImage('asciiart/backgrounds/arcade.txt', 'BG_ARCADE');
 compileOpaqueImage('asciiart/backgrounds/park.txt', 'BG_PARK');
 compileOpaqueImage('asciiart/backgrounds/cinema.txt', 'BG_CINEMA');
@@ -153,6 +154,8 @@ compileSprite('asciiart/sprites/popcorn_10.txt', 'SPR_POPCORN10');
 compileSprite('asciiart/sprites/popcorn_11.txt', 'SPR_POPCORN11');
 compileSprite('asciiart/sprites/popcorn_12.txt', 'SPR_POPCORN12');
 compileSprite('asciiart/sprites/popcorn_13.txt', 'SPR_POPCORN13');
+
+compileSprite('asciiart/sprites/pool_table.txt', 'SPR_POOL_TABLE');
 
 //--------------------------------------------------------------------------
 

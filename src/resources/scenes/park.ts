@@ -18,7 +18,7 @@ const parkBackground: PaintTask = getPaintTask(BG_PARK, 0, 0, ZIndex.BACKGROUND,
 const tree: PaintTask = getPaintTask(SPR_TREE, 10, 0, ZIndex.BACKGROUND, createMaskHotspot(SPR_TREE, HotspotId.TREE));
 const seesaw: PaintTask = getPaintTask(SPR_SEESAW, 44, 11, ZIndex.BACKGROUND, createMaskHotspot(SPR_SEESAW, HotspotId.SEESAW));
 
-const pubHotspots: Hotspot[] = [
+const hotspots: Hotspot[] = [
     {
         hotspotId: HotspotId.FOUNTAIN,
         description: 'fountain',
@@ -86,7 +86,7 @@ export const PARK_LOADER: SceneLoader = {
             guyPosition: initialGuyPosition,
             images: [parkBackground, tree, seesaw],
             animations: [ANIM_FOUNTAIN, new LittleGirlAnimation(), new RobotAnimation()],
-            hotspots: pubHotspots
+            hotspots: hotspots
         };
     }
 }
