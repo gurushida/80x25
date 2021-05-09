@@ -23,7 +23,7 @@ const ANIM_CASHIER = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, CASHIER
         },
         {
             image: SPR_CINEMA_CASHIER1,
-            durationInTicks: 7,
+            durationInTicks: 4,
             offsetX: 0,
             offsetY: 0,
         },
