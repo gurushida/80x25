@@ -13,7 +13,7 @@ import { SPR_GIRL_TALKING1 } from "../generated/images/SPR_GIRL_TALKING1";
 
 const GIRL_JUMPING_ROPE_HOTSPOT = createMaskHotspot(SPR_GIRL_JUMPING_ROPE2, HotspotId.LITTLE_GIRL);
 
-const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(48, 14, ZIndex.BEHIND_GUY, true, GIRL_JUMPING_ROPE_HOTSPOT,
+const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(48, 14, ZIndex.FRONT, true, GIRL_JUMPING_ROPE_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -44,7 +44,7 @@ const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(48, 14, ZIndex.BEHIND_GUY, tru
 
 const GIRL_STILL_HOTSPOT = createMaskHotspot(SPR_GIRL_STILL0, HotspotId.LITTLE_GIRL);
 
-const ANIM_GIRL_TALKING = new ImageAnimation(48, 16, ZIndex.BEHIND_GUY, true, GIRL_STILL_HOTSPOT,
+const ANIM_GIRL_TALKING = new ImageAnimation(48, 16, ZIndex.FRONT, true, GIRL_STILL_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -67,7 +67,7 @@ const ANIM_GIRL_TALKING = new ImageAnimation(48, 16, ZIndex.BEHIND_GUY, true, GI
         },
     ]);
 
-const ANIM_GIRL_NOT_TALKING = new ImageAnimation(48, 16, ZIndex.BEHIND_GUY, true, GIRL_STILL_HOTSPOT,
+const ANIM_GIRL_NOT_TALKING = new ImageAnimation(48, 16, ZIndex.FRONT, true, GIRL_STILL_HOTSPOT,
         NO_LEFT_MOVEMENT,
     [
         {
