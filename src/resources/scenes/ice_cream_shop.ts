@@ -16,6 +16,8 @@ import { SPR_ICE_CREAM6 } from "../generated/images/SPR_ICE_CREAM6";
 import { SPR_ICE_CREAM7 } from "../generated/images/SPR_ICE_CREAM7";
 import { SPR_ICE_CREAM8 } from "../generated/images/SPR_ICE_CREAM8";
 import { SPR_ICE_CREAM9 } from "../generated/images/SPR_ICE_CREAM9";
+import { AlfredoAnimation } from "../animations/alfredo";
+import { DIALOG_ALFREDO } from "../generated/dialogs/DIALOG_ALFREDO";
 
 const fullFilter = createFullHotspot(HotspotId.ICE_CREAM_SHOP);
 
@@ -105,6 +107,18 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [[ 'ice cream 10' ]]
     },
+    {
+        hotspotId: HotspotId.ALFREDO,
+        description: 'Alfredo',
+        rightClickAction: ActionBarButton.TALK,
+        guyPositionForAction: {
+            left: 26,
+            top: 14,
+            lookToTheRight: true,
+        },
+        lookAt: [['This Italian chef turned', 'ice cream into an art.'], ['Too bad it\'s crazy modern art.']],
+        dialog: DIALOG_ALFREDO,
+    },
 ];
 const initialGuyPosition: GuyPosition = {
     left: 18,
@@ -120,7 +134,7 @@ export const ICE_CREAM_SHOP_LOADER: SceneLoader = {
             guyPosition: initialGuyPosition,
             images: [ background, ice_cream0, ice_cream1, ice_cream2, ice_cream3, ice_cream4, ice_cream5, ice_cream6,
                 ice_cream7, ice_cream8, ice_cream9, ice_cream10 ],
-            animations: [ ],
+            animations: [ new AlfredoAnimation() ],
             hotspots: hotspots
         };
     }

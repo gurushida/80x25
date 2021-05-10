@@ -185,7 +185,6 @@ const arcadeHotspots: Hotspot[] = [
         lookAt: [['This is the place owner.'], ['Looks more like a cowboy'], ['than the gaming type.']],
         dialog: DIALOG_ARCADE_GUY,
     },
-
 ];
 
 export const ARCADE_LOADER: SceneLoader = {

@@ -182,6 +182,13 @@ compileOpaqueImage('asciiart/sprites/ice_cream7.txt', 'SPR_ICE_CREAM7');
 compileOpaqueImage('asciiart/sprites/ice_cream8.txt', 'SPR_ICE_CREAM8');
 compileOpaqueImage('asciiart/sprites/ice_cream9.txt', 'SPR_ICE_CREAM9');
 compileOpaqueImage('asciiart/sprites/ice_cream10.txt', 'SPR_ICE_CREAM10');
+compileSprite('asciiart/sprites/alfredo0.txt', 'SPR_ALFREDO0');
+compileSprite('asciiart/sprites/alfredo1.txt', 'SPR_ALFREDO1');
+compileSprite('asciiart/sprites/alfredo2.txt', 'SPR_ALFREDO2');
+compileSprite('asciiart/sprites/alfredo3.txt', 'SPR_ALFREDO3');
+compileSprite('asciiart/sprites/alfredo_talking0.txt', 'SPR_ALFREDO_TALKING0');
+compileSprite('asciiart/sprites/alfredo_talking1.txt', 'SPR_ALFREDO_TALKING1');
+compileSprite('asciiart/sprites/alfredo_talking2.txt', 'SPR_ALFREDO_TALKING2');
 
 //--------------------------------------------------------------------------
 
@@ -196,6 +203,7 @@ compileDialog('dialogs/cinema_cashier.grf', 'DIALOG_CINEMA_CASHIER');
 compileDialog('dialogs/bartender.grf', 'DIALOG_BARTENDER');
 compileDialog('dialogs/brian.grf', 'DIALOG_BRIAN');
 compileDialog('dialogs/evil_queen.grf', 'DIALOG_EVIL_QUEEN');
+compileDialog('dialogs/alfredo.grf', 'DIALOG_ALFREDO');
 
 //--------------------------------------------------------------------------
 
