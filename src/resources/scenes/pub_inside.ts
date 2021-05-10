@@ -5,7 +5,9 @@ import { ActionBarButton } from "@/screenBuffer";
 import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
 import { BartenderAnimation } from "../animations/bartender";
+import { BrianAnimation } from "../animations/brian";
 import { DIALOG_BARTENDER } from "../generated/dialogs/DIALOG_BARTENDER";
+import { DIALOG_BRIAN } from "../generated/dialogs/DIALOG_BRIAN";
 import { BG_PUB_INSIDE } from "../generated/images/BG_PUB_INSIDE";
 import { SPR_POOL_TABLE } from "../generated/images/SPR_POOL_TABLE";
 
@@ -39,6 +41,18 @@ const hotspots: Hotspot[] = [
             lookToTheRight: false
         },
     },
+    {
+        hotspotId: HotspotId.BRIAN,
+        description: 'guy in PhD costume',
+        rightClickAction: ActionBarButton.TALK,
+        lookAt: [['This guy is cosplaying a', 'famous astrophysicist,'], ['author of', '"A survey of radial velocities', 'in the zodiacal dust cloud"'], ['who also happens to be', 'an okayish musician.']],
+        dialog: DIALOG_BRIAN,
+        guyPositionForAction: {
+            left: 56,
+            top: 13,
+            lookToTheRight: true
+        },
+    },
 ];
 
 export const INSIDE_PUB_LOADER: SceneLoader = {
@@ -48,7 +62,7 @@ export const INSIDE_PUB_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [background, pool_table1, pool_table2],
-            animations: [new BartenderAnimation()],
+            animations: [new BartenderAnimation(), new BrianAnimation()],
             hotspots,
         };
     }
