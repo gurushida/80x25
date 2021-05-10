@@ -171,6 +171,18 @@ compileSprite('asciiart/sprites/evil_queen1.txt', 'SPR_EVIL_QUEEN1');
 compileSprite('asciiart/sprites/evil_queen2.txt', 'SPR_EVIL_QUEEN2');
 compileSprite('asciiart/sprites/evil_queen3.txt', 'SPR_EVIL_QUEEN3');
 
+compileOpaqueImage('asciiart/sprites/ice_cream0.txt', 'SPR_ICE_CREAM0');
+compileOpaqueImage('asciiart/sprites/ice_cream1.txt', 'SPR_ICE_CREAM1');
+compileOpaqueImage('asciiart/sprites/ice_cream2.txt', 'SPR_ICE_CREAM2');
+compileOpaqueImage('asciiart/sprites/ice_cream3.txt', 'SPR_ICE_CREAM3');
+compileOpaqueImage('asciiart/sprites/ice_cream4.txt', 'SPR_ICE_CREAM4');
+compileOpaqueImage('asciiart/sprites/ice_cream5.txt', 'SPR_ICE_CREAM5');
+compileOpaqueImage('asciiart/sprites/ice_cream6.txt', 'SPR_ICE_CREAM6');
+compileOpaqueImage('asciiart/sprites/ice_cream7.txt', 'SPR_ICE_CREAM7');
+compileOpaqueImage('asciiart/sprites/ice_cream8.txt', 'SPR_ICE_CREAM8');
+compileOpaqueImage('asciiart/sprites/ice_cream9.txt', 'SPR_ICE_CREAM9');
+compileOpaqueImage('asciiart/sprites/ice_cream10.txt', 'SPR_ICE_CREAM10');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
