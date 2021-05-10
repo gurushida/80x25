@@ -1,0 +1,28 @@
+#Unigraph
+SIZE 1634 840
+FONT Times New Roman:  10
+OFONT Arial Unicode MS:B 12
+BCOLOR 16777215
+FCOLOR 0
+ACOLOR 13487565
+SCOLOR 16711680
+CCOLOR 255
+DBOXES y
+DFRAME y
+DDATE y
+DFILE y
+DDIR n
+DRIG n
+DRST n
+FITS 100
+PORIENT L
+#
+8
+"<E>/GUY,EVIL_QUEEN" 70 200 1 2 
+"" 1437 265 0 
+"GUY:+Why are you angry ?" 155 92 1 4 
+"EVIL_QUEEN:+The adult industry has done+a lot of damage to the image+of step mothers." 1049 93 1 1 
+"EVIL_QUEEN:+I'm militing against the+injustices done to step mothers." 300 93 1 5 
+"GUY:+What injustices ?" 505 94 1 6 
+"EVIL_QUEEN:+Our core values are about+abandoning children in forests,+<E>+enslaving them+for house chores+<E>+or asking hunters to rip their+heart out of their chest." 643 94 1 7 
+"GUY:+Who would dare to cast+shame on such things ?" 842 95 1 3 

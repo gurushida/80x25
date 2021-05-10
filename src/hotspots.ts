@@ -56,6 +56,7 @@ export enum HotspotId {
     POOL_TABLE = 'POOL_TABLE',
     BARTENDER = 'BARTENDER',
     BRIAN = 'BRIAN',
+    EVIL_QUEEN = 'EVIL_QUEEN',
 }
 
 /**

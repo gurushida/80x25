@@ -215,7 +215,7 @@ const cinemaHotspots: Hotspot[] = [
         hotspotId: HotspotId.POSTER_YODA,
         description: 'poster',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['If the Hulk had an', 'affair with a lady gremlin,'], ['it would probably look like'], ['this tiny dyslexic', 'laser-yielding creature.']],
+        lookAt: [['If the Hulk had a child', 'with a lady gremlin,'], ['it would probably look like'], ['this tiny dyslexic', 'laser-wielding creature.']],
     },
     {
         hotspotId: HotspotId.POSTER_ROBIN_HOOD,

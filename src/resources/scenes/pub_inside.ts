@@ -6,8 +6,10 @@ import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
 import { BartenderAnimation } from "../animations/bartender";
 import { BrianAnimation } from "../animations/brian";
+import { EvilQueenAnimation } from "../animations/evil_queen";
 import { DIALOG_BARTENDER } from "../generated/dialogs/DIALOG_BARTENDER";
 import { DIALOG_BRIAN } from "../generated/dialogs/DIALOG_BRIAN";
+import { DIALOG_EVIL_QUEEN } from "../generated/dialogs/DIALOG_EVIL_QUEEN";
 import { BG_PUB_INSIDE } from "../generated/images/BG_PUB_INSIDE";
 import { SPR_POOL_TABLE } from "../generated/images/SPR_POOL_TABLE";
 
@@ -53,6 +55,18 @@ const hotspots: Hotspot[] = [
             lookToTheRight: true
         },
     },
+    {
+        hotspotId: HotspotId.EVIL_QUEEN,
+        description: 'angry woman',
+        rightClickAction: ActionBarButton.TALK,
+        lookAt: [['This woman cosplays a', 'very convincing evil queen.'], ['I\'m sure she talks', 'to her mirror.']],
+        dialog: DIALOG_EVIL_QUEEN,
+        guyPositionForAction: {
+            left: 46,
+            top: 13,
+            lookToTheRight: true
+        },
+    },
 ];
 
 export const INSIDE_PUB_LOADER: SceneLoader = {
@@ -62,7 +76,7 @@ export const INSIDE_PUB_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [background, pool_table1, pool_table2],
-            animations: [new BartenderAnimation(), new BrianAnimation()],
+            animations: [new BartenderAnimation(), new BrianAnimation(), new EvilQueenAnimation()],
             hotspots,
         };
     }

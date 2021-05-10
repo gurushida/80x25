@@ -166,6 +166,10 @@ compileSprite('asciiart/sprites/brian1.txt', 'SPR_BRIAN1');
 compileSprite('asciiart/sprites/brian_talking0.txt', 'SPR_BRIAN_TALKING0');
 compileSprite('asciiart/sprites/brian_talking1.txt', 'SPR_BRIAN_TALKING1');
 compileSprite('asciiart/sprites/brian_talking2.txt', 'SPR_BRIAN_TALKING2');
+compileSprite('asciiart/sprites/evil_queen0.txt', 'SPR_EVIL_QUEEN0');
+compileSprite('asciiart/sprites/evil_queen1.txt', 'SPR_EVIL_QUEEN1');
+compileSprite('asciiart/sprites/evil_queen2.txt', 'SPR_EVIL_QUEEN2');
+compileSprite('asciiart/sprites/evil_queen3.txt', 'SPR_EVIL_QUEEN3');
 
 //--------------------------------------------------------------------------
 
@@ -179,6 +183,7 @@ compileDialog('dialogs/robot.grf', 'DIALOG_ROBOT');
 compileDialog('dialogs/cinema_cashier.grf', 'DIALOG_CINEMA_CASHIER');
 compileDialog('dialogs/bartender.grf', 'DIALOG_BARTENDER');
 compileDialog('dialogs/brian.grf', 'DIALOG_BRIAN');
+compileDialog('dialogs/evil_queen.grf', 'DIALOG_EVIL_QUEEN');
 
 //--------------------------------------------------------------------------
 
