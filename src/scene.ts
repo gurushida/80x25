@@ -25,8 +25,7 @@ export interface SceneLoader {
 
 
 export enum SceneId {
-    OUTSIDE_ICE_CREAM_SHOP,
-    INSIDE_ICE_CREAM_SHOP,
+    ICE_CREAM_SHOP,
     OUTSIDE_BANK,
     OUTSIDE_PUB,
     INSIDE_PUB,

@@ -171,7 +171,7 @@ function getIceCreamShop(): MapLocation {
         label: 'Ice cream paradise',
         centerX: 20,
         centerY: 4,
-        sceneId: SceneId.OUTSIDE_ICE_CREAM_SHOP
+        sceneId: SceneId.ICE_CREAM_SHOP
     };
 }
 

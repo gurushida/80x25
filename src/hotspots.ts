@@ -11,7 +11,6 @@ export enum HotspotId {
     BANK = 'BANK',
     BOOM_BLASTER = 'BOOM_BLASTER',
     ICE_CREAM_SHOP = 'ICE_CREAM_SHOP',
-    ICE_CREAM_SHOP_DOOR = 'ICE_CREAM_SHOP_DOOR',
     DOG = 'DOG',
     SEA = 'SEA',
     DOCK = 'DOCK',

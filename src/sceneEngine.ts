@@ -13,11 +13,9 @@ import { GuyAnimation } from "./resources/animations/guy";
 import { Runnable } from "./runnable";
 import { Cue, Dialog } from "./dialog";
 import { TalkingCharacter } from "./characters";
-import { OUTSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShopOutside";
 import { Matrix } from "./matrix";
 import { debug } from "./main";
 import { OUTSIDE_BANK_LOADER } from "./resources/scenes/bank";
-import { INSIDE_ICE_CREAM_SHOP_LOADER } from "./resources/scenes/iceCreamShopInside";
 import { DOCK_LOADER } from "./resources/scenes/dock";
 import { invariant } from "./utils";
 import { ARCADE_LOADER } from "./resources/scenes/arcade";
@@ -26,6 +24,7 @@ import { INSIDE_PUB_LOADER } from "./resources/scenes/pub_inside";
 import { PARK_LOADER } from "./resources/scenes/park";
 import { OUTSIDE_CINEMA_LOADER } from "./resources/scenes/cinema_outside";
 import { INSIDE_CINEMA_LOADER } from "./resources/scenes/cinema_inside";
+import { ICE_CREAM_SHOP_LOADER } from "./resources/scenes/ice_cream_shop";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -454,8 +453,7 @@ export class SceneEngine implements SceneActionListener {
 
 function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
     switch(sceneId) {
-        case SceneId.INSIDE_ICE_CREAM_SHOP: return INSIDE_ICE_CREAM_SHOP_LOADER;
-        case SceneId.OUTSIDE_ICE_CREAM_SHOP: return OUTSIDE_ICE_CREAM_SHOP_LOADER;
+        case SceneId.ICE_CREAM_SHOP: return ICE_CREAM_SHOP_LOADER;
         case SceneId.OUTSIDE_BANK: return OUTSIDE_BANK_LOADER;
         case SceneId.DOCK: return DOCK_LOADER;
         case SceneId.ARCADE: return ARCADE_LOADER;
