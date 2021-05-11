@@ -34,5 +34,6 @@ export enum SceneId {
     PARK,
     OUTSIDE_CINEMA,
     INSIDE_CINEMA,
+    PHARMACY,
 }
 

@@ -18,6 +18,7 @@ compileOpaqueImage('asciiart/backgrounds/arcade.txt', 'BG_ARCADE');
 compileOpaqueImage('asciiart/backgrounds/park.txt', 'BG_PARK');
 compileOpaqueImage('asciiart/backgrounds/cinema.txt', 'BG_CINEMA');
 compileOpaqueImage('asciiart/backgrounds/cinema_inside.txt', 'BG_CINEMA_INSIDE');
+compileOpaqueImage('asciiart/backgrounds/pharmacy_background.txt', 'BG_PHARMACY');
 
 
 //--------------------------------------------------------------------------
@@ -190,6 +191,8 @@ compileSprite('asciiart/sprites/alfredo_talking0.txt', 'SPR_ALFREDO_TALKING0');
 compileSprite('asciiart/sprites/alfredo_talking1.txt', 'SPR_ALFREDO_TALKING1');
 compileSprite('asciiart/sprites/alfredo_talking2.txt', 'SPR_ALFREDO_TALKING2');
 
+compileSprite('asciiart/sprites/pharmacy_foreground.txt', 'SPR_PHARMACY_FOREGROUND');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
@@ -204,6 +207,7 @@ compileDialog('dialogs/bartender.grf', 'DIALOG_BARTENDER');
 compileDialog('dialogs/brian.grf', 'DIALOG_BRIAN');
 compileDialog('dialogs/evil_queen.grf', 'DIALOG_EVIL_QUEEN');
 compileDialog('dialogs/alfredo.grf', 'DIALOG_ALFREDO');
+
 
 //--------------------------------------------------------------------------
 

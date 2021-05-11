@@ -193,6 +193,15 @@ function getDock(triggers: Triggers): MapLocation {
     };
 }
 
+function getPharmacy(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('PHARMACY_VISITED') ? 'Pharmacy' : '???',
+        centerX: 4,
+        centerY: 2,
+        sceneId: SceneId.PHARMACY
+    };
+}
+
 function getArcade(triggers: Triggers): MapLocation {
     return {
         label: triggers.isSet('ARCADE_VISITED') ? 'Arcade' : '???',
@@ -239,6 +248,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getArcade(triggers));
     locations.push(getPark(triggers));
     locations.push(getCinema(triggers));
+    locations.push(getPharmacy(triggers));
     return locations.filter(l => l.label);
 }
 
