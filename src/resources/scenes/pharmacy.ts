@@ -8,6 +8,7 @@ import { SPR_PHARMACY_FOREGROUND } from "../generated/images/SPR_PHARMACY_FOREGR
 import { ActionBarButton } from "@/screenBuffer";
 import { DIALOG_PHARMACIST } from "../generated/dialogs/DIALOG_PHARMACIST";
 import { PharmacistAnimation } from "../animations/pharmacist";
+import { ANIM_PHARMACY_SIGN } from "../animations/pharmacy_sign";
 
 const background: PaintTask = getPaintTask(BG_PHARMACY, 0, 0, ZIndex.BACKGROUND, undefined);
 const foreground: PaintTask = getPaintTask(SPR_PHARMACY_FOREGROUND, 0, 0, ZIndex.FRONT, undefined);
@@ -25,6 +26,12 @@ const hotspots: Hotspot[] = [
         lookAt: [['A pharmacist in his traditional', 'lab coat costume.']],
         dialog: DIALOG_PHARMACIST,
     },
+    {
+        hotspotId: HotspotId.PHARMACY_SIGN,
+        description: 'sign',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['I\'m pretty sure some', 'bureaucrats somewhere'], ['have codified the blinking', 'patterns of these signs.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -41,7 +48,7 @@ export const PHARMACY_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [background, foreground],
-            animations: [ new PharmacistAnimation() ],
+            animations: [ new PharmacistAnimation(), ANIM_PHARMACY_SIGN ],
             hotspots,
         };
     }

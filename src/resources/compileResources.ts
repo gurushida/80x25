@@ -196,6 +196,14 @@ compileSprite('asciiart/sprites/pharmacist0.txt', 'SPR_PHARMACIST0');
 compileSprite('asciiart/sprites/pharmacist_talking0.txt', 'SPR_PHARMACIST_TALKING0');
 compileSprite('asciiart/sprites/pharmacist_talking1.txt', 'SPR_PHARMACIST_TALKING1');
 compileSprite('asciiart/sprites/pharmacist_talking2.txt', 'SPR_PHARMACIST_TALKING2');
+compileSprite('asciiart/sprites/pharmacy_sign0.txt', 'SPR_PHARMACY_SIGN0');
+compileSprite('asciiart/sprites/pharmacy_sign1.txt', 'SPR_PHARMACY_SIGN1');
+compileSprite('asciiart/sprites/pharmacy_sign2.txt', 'SPR_PHARMACY_SIGN2');
+compileSprite('asciiart/sprites/pharmacy_sign3.txt', 'SPR_PHARMACY_SIGN3');
+compileSprite('asciiart/sprites/pharmacy_sign4.txt', 'SPR_PHARMACY_SIGN4');
+compileSprite('asciiart/sprites/pharmacy_sign5.txt', 'SPR_PHARMACY_SIGN5');
+compileSprite('asciiart/sprites/pharmacy_sign6.txt', 'SPR_PHARMACY_SIGN6');
+compileSprite('asciiart/sprites/pharmacy_sign7.txt', 'SPR_PHARMACY_SIGN7');
 
 //--------------------------------------------------------------------------
 

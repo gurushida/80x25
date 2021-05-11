@@ -69,6 +69,7 @@ export enum HotspotId {
     EVIL_QUEEN = 'EVIL_QUEEN',
     ALFREDO = 'ALFREDO',
     PHARMACIST = 'PHARMACIST',
+    PHARMACY_SIGN = 'PHARMACY_SIGN',
 }
 
 /**
