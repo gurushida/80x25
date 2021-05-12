@@ -204,6 +204,24 @@ compileSprite('asciiart/sprites/pharmacy_sign4.txt', 'SPR_PHARMACY_SIGN4');
 compileSprite('asciiart/sprites/pharmacy_sign5.txt', 'SPR_PHARMACY_SIGN5');
 compileSprite('asciiart/sprites/pharmacy_sign6.txt', 'SPR_PHARMACY_SIGN6');
 compileSprite('asciiart/sprites/pharmacy_sign7.txt', 'SPR_PHARMACY_SIGN7');
+compileSprite('asciiart/sprites/pharmacy_book_group0.txt', 'SPR_PHARMACY_BOOK_GROUP0');
+compileSprite('asciiart/sprites/pharmacy_book_group1.txt', 'SPR_PHARMACY_BOOK_GROUP1');
+compileSprite('asciiart/sprites/pharmacy_book0.txt', 'SPR_PHARMACY_BOOK0');
+compileSprite('asciiart/sprites/pharmacy_book1.txt', 'SPR_PHARMACY_BOOK1');
+compileSprite('asciiart/sprites/pharmacy_book2.txt', 'SPR_PHARMACY_BOOK2');
+compileSprite('asciiart/sprites/pharmacy_book3.txt', 'SPR_PHARMACY_BOOK3');
+compileSprite('asciiart/sprites/pharmacy_book4.txt', 'SPR_PHARMACY_BOOK4');
+compileSprite('asciiart/sprites/pharmacy_book5.txt', 'SPR_PHARMACY_BOOK5');
+compileSprite('asciiart/sprites/pharmacy_pot0.txt', 'SPR_PHARMACY_POT0');
+compileSprite('asciiart/sprites/pharmacy_pot1.txt', 'SPR_PHARMACY_POT1');
+compileSprite('asciiart/sprites/pharmacy_pot2.txt', 'SPR_PHARMACY_POT2');
+compileSprite('asciiart/sprites/pharmacy_pot3.txt', 'SPR_PHARMACY_POT3');
+compileSprite('asciiart/sprites/pharmacy_pot4.txt', 'SPR_PHARMACY_POT4');
+compileSprite('asciiart/sprites/pharmacy_pot5.txt', 'SPR_PHARMACY_POT5');
+compileSprite('asciiart/sprites/pharmacy_pot6.txt', 'SPR_PHARMACY_POT6');
+compileSprite('asciiart/sprites/pharmacy_pot7.txt', 'SPR_PHARMACY_POT7');
+compileSprite('asciiart/sprites/pharmacy_pot8.txt', 'SPR_PHARMACY_POT8');
+compileSprite('asciiart/sprites/pharmacy_pot9.txt', 'SPR_PHARMACY_POT9');
 
 //--------------------------------------------------------------------------
 
