@@ -196,8 +196,8 @@ function getDock(triggers: Triggers): MapLocation {
 function getPharmacy(triggers: Triggers): MapLocation {
     return {
         label: triggers.isSet('PHARMACY_VISITED') ? 'Pharmacy' : '???',
-        centerX: 4,
-        centerY: 2,
+        centerX: 5,
+        centerY: 1,
         sceneId: SceneId.PHARMACY
     };
 }
