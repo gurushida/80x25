@@ -109,7 +109,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.PHARMACY_BOOK_GROUP1,
         description: 'books',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['"The Art of Poisoning"'], ['The most comprehensive', 'textbook with exercices.'], ['A classic.']]
+        lookAt: [['"The Art of Poisoning"'], ['The most comprehensive', 'textbook with exercises.'], ['A classic.']]
     },
     {
         hotspotId: HotspotId.PHARMACY_BOOK4,
