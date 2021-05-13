@@ -12,9 +12,11 @@ import { ActionBarButton } from "@/screenBuffer";
 import { SPR_BELLOWS_2 } from "../generated/images/SPR_BELLOWS_2";
 import { BG_FORGE_WALL } from "../generated/images/BG_FORGE_WALL";
 import { ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 } from "../animations/wall_candles";
+import { SPR_BARREL } from "../generated/images/SPR_BARREL";
 
 const wall: PaintTask = getPaintTask(BG_FORGE_WALL, 0, 0, ZIndex.FAR_BACKGROUND, createFullHotspot(HotspotId.FORGE));
 const background: PaintTask = getPaintTask(BG_FORGE, 0, 0, ZIndex.BACKGROUND, undefined);
+const barrel: PaintTask = getPaintTask(SPR_BARREL, 15, 18, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.BARREL));
 
 const BELLOWS_TICKS = 8;
 const ANIM_BELLOWS = new ImageAnimation(54, 13, ZIndex.BACKGROUND, true, createMaskHotspot(SPR_BELLOWS_0, HotspotId.BELLOWS),
@@ -65,6 +67,12 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['This is an old-fashioned', 'blacksmith workshop.']]
     },
+    {
+        hotspotId: HotspotId.BARREL,
+        description: 'barrel',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['It is a barrel', 'full of water.'], ['The blacksmith uses it', 'to cool down metal.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -82,7 +90,7 @@ export const FORGE_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ wall, background ],
+            images: [ wall, background, barrel ],
             animations: [ ANIM_FIRE, ANIM_BELLOWS, ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 ],
             hotspots,
         };

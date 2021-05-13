@@ -237,6 +237,7 @@ compileSprite('asciiart/sprites/bellows1.txt', 'SPR_BELLOWS_1');
 compileSprite('asciiart/sprites/bellows2.txt', 'SPR_BELLOWS_2');
 compileSprite('asciiart/sprites/wall_candles0.txt', 'SPR_WALL_CANDLES_0');
 compileSprite('asciiart/sprites/wall_candles1.txt', 'SPR_WALL_CANDLES_1');
+compileSprite('asciiart/sprites/barrel.txt', 'SPR_BARREL');
 
 //--------------------------------------------------------------------------
 
