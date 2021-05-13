@@ -12,14 +12,14 @@
 8 <:]    ( ) 8                         /___________________\                    
 8  H      X  8                                                                  
 8  H     | | 8                                                                  
-8        | | 8                      CCC|                  |CCC                  
-8  ()        8                      CCC|                  |CCC                  
-8  db   --== 8                      CCC|                  |CCC                  
-8            8                      CCC|                  |CCC                  
-8  4---  8=C 8                      CCC|                  |CCC                  
-8        __  8                      CCCCCCCCCCCCCCCCCCCCCCCCCC                  
-8  VVVVV|_/  8                      CCCCCCCCCCCCCCCCCCCCCCCCCC                  
-8============8                      CCCC                  CCCC                  
+8        | | 8                      uuu|                  |uuu                  
+8  ()        8                      uuu|                  |uuu                  
+8  db   --== 8                      uuu|                  |uuu                  
+8            8                      uuu|                  |uuu                  
+8  4---  8=C 8                      uuu|                  |uuu                  
+8        __  8                      uuuuuuuuuuuuuuuuuuuuuuuuuu                  
+8  VVVVV|_/  8                      uuuuuuuuuuuuuuuuuuuuuuuuuu                  
+8============8                      uuuu                  uuuu                  
                                             ##########                          
    #########                                ##########                          
    #########                                ##########                          
