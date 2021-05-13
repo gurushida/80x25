@@ -10,6 +10,7 @@ import { RobotAnimation } from "../animations/robot";
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { ZIndex } from "@/zIndex";
 import { BG_FORGE } from "../generated/images/BG_FORGE";
+import { ANIM_FIRE } from "../animations/fire";
 
 
 const background: PaintTask = getPaintTask(BG_FORGE, 0, 0, ZIndex.BACKGROUND, undefined);
@@ -19,7 +20,7 @@ const hotspots: Hotspot[] = [
 
 const initialGuyPosition: GuyPosition = {
     left: 73,
-    top: 13,
+    top: 15,
     lookToTheRight: false
 };
 
@@ -33,7 +34,7 @@ export const FORGE_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [background],
-            animations: [],
+            animations: [ANIM_FIRE],
             hotspots: hotspots
         };
     }

@@ -224,6 +224,14 @@ compileSprite('asciiart/sprites/pharmacy_pot7.txt', 'SPR_PHARMACY_POT7');
 compileSprite('asciiart/sprites/pharmacy_pot8.txt', 'SPR_PHARMACY_POT8');
 compileSprite('asciiart/sprites/pharmacy_pot9.txt', 'SPR_PHARMACY_POT9');
 
+compileSprite('asciiart/sprites/fire0.txt', 'SPR_FIRE_0');
+compileSprite('asciiart/sprites/fire1.txt', 'SPR_FIRE_1');
+compileSprite('asciiart/sprites/fire2.txt', 'SPR_FIRE_2');
+compileSprite('asciiart/sprites/fire3.txt', 'SPR_FIRE_3');
+compileSprite('asciiart/sprites/fire4.txt', 'SPR_FIRE_4');
+compileSprite('asciiart/sprites/fire5.txt', 'SPR_FIRE_5');
+compileSprite('asciiart/sprites/fire6.txt', 'SPR_FIRE_6');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
