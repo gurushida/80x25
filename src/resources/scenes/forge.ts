@@ -1,4 +1,4 @@
-import { HotspotId, GuyPosition, Hotspot, createMaskHotspot } from "@/hotspots";
+import { HotspotId, GuyPosition, Hotspot, createMaskHotspot, createFullHotspot } from "@/hotspots";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { PaintTask, getPaintTask } from "@/paintTask";
@@ -13,7 +13,7 @@ import { SPR_BELLOWS_2 } from "../generated/images/SPR_BELLOWS_2";
 import { BG_FORGE_WALL } from "../generated/images/BG_FORGE_WALL";
 import { ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 } from "../animations/wall_candles";
 
-const wall: PaintTask = getPaintTask(BG_FORGE_WALL, 0, 0, ZIndex.FAR_BACKGROUND, undefined);
+const wall: PaintTask = getPaintTask(BG_FORGE_WALL, 0, 0, ZIndex.FAR_BACKGROUND, createFullHotspot(HotspotId.FORGE));
 const background: PaintTask = getPaintTask(BG_FORGE, 0, 0, ZIndex.BACKGROUND, undefined);
 
 const BELLOWS_TICKS = 8;
@@ -58,6 +58,12 @@ const hotspots: Hotspot[] = [
         description: 'bellows',
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['Bellows.']]
+    },
+    {
+        hotspotId: HotspotId.FORGE,
+        description: 'forge',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['This is an old-fashioned', 'blacksmith workshop.']]
     },
 ];
 
