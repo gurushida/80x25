@@ -1,4 +1,7 @@
 export enum ZIndex {
+    // Second level background
+    FAR_BACKGROUND = -20,
+
     // Background images
     BACKGROUND = -10,
 

@@ -10,8 +10,10 @@ import { SPR_BELLOWS_0 } from "../generated/images/SPR_BELLOWS_0";
 import { SPR_BELLOWS_1 } from "../generated/images/SPR_BELLOWS_1";
 import { ActionBarButton } from "@/screenBuffer";
 import { SPR_BELLOWS_2 } from "../generated/images/SPR_BELLOWS_2";
+import { BG_FORGE_WALL } from "../generated/images/BG_FORGE_WALL";
+import { ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 } from "../animations/wall_candles";
 
-
+const wall: PaintTask = getPaintTask(BG_FORGE_WALL, 0, 0, ZIndex.FAR_BACKGROUND, undefined);
 const background: PaintTask = getPaintTask(BG_FORGE, 0, 0, ZIndex.BACKGROUND, undefined);
 
 const BELLOWS_TICKS = 8;
@@ -74,8 +76,8 @@ export const FORGE_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ background ],
-            animations: [ ANIM_FIRE, ANIM_BELLOWS ],
+            images: [ wall, background ],
+            animations: [ ANIM_FIRE, ANIM_BELLOWS, ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 ],
             hotspots,
         };
     }

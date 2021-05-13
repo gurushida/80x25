@@ -19,7 +19,8 @@ compileOpaqueImage('asciiart/backgrounds/park.txt', 'BG_PARK');
 compileOpaqueImage('asciiart/backgrounds/cinema.txt', 'BG_CINEMA');
 compileOpaqueImage('asciiart/backgrounds/cinema_inside.txt', 'BG_CINEMA_INSIDE');
 compileOpaqueImage('asciiart/backgrounds/pharmacy_background.txt', 'BG_PHARMACY');
-compileOpaqueImage('asciiart/backgrounds/forge.txt', 'BG_FORGE');
+compileSprite('asciiart/backgrounds/forge.txt', 'BG_FORGE');
+compileOpaqueImage('asciiart/backgrounds/forge_wall.txt', 'BG_FORGE_WALL');
 
 
 //--------------------------------------------------------------------------
@@ -234,6 +235,8 @@ compileSprite('asciiart/sprites/fire6.txt', 'SPR_FIRE_6');
 compileSprite('asciiart/sprites/bellows0.txt', 'SPR_BELLOWS_0');
 compileSprite('asciiart/sprites/bellows1.txt', 'SPR_BELLOWS_1');
 compileSprite('asciiart/sprites/bellows2.txt', 'SPR_BELLOWS_2');
+compileSprite('asciiart/sprites/wall_candles0.txt', 'SPR_WALL_CANDLES_0');
+compileSprite('asciiart/sprites/wall_candles1.txt', 'SPR_WALL_CANDLES_1');
 
 //--------------------------------------------------------------------------
 
