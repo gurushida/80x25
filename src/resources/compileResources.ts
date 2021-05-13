@@ -19,6 +19,7 @@ compileOpaqueImage('asciiart/backgrounds/park.txt', 'BG_PARK');
 compileOpaqueImage('asciiart/backgrounds/cinema.txt', 'BG_CINEMA');
 compileOpaqueImage('asciiart/backgrounds/cinema_inside.txt', 'BG_CINEMA_INSIDE');
 compileOpaqueImage('asciiart/backgrounds/pharmacy_background.txt', 'BG_PHARMACY');
+compileOpaqueImage('asciiart/backgrounds/forge.txt', 'BG_FORGE');
 
 
 //--------------------------------------------------------------------------

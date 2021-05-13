@@ -1,0 +1,24 @@
+                                            | .    . |                          
+                                            |        |                          
+          +--+--+                           |        |              +--+--+     
+          |  |  |                           |        |              |  |  |     
+          +--+--+                           | .    . |              +--+--+     
+          |  |  |                           |        |              |  |  |     
+          +--+--+                           |        |              +--+--+     
+                                            |        |                          
+                                           /  .    .  \                         
+                                          /            \                        
+                                         /              \                       
+8            8                          /  .     .     . \                      
+8============8                         /                  \                     
+8 <:]    ( ) 8                        /____________________\                    
+8  H      X  8                                                                  
+8  H     | | 8                            (    )                                
+8        | | 8                     CCCC|      )   )       |CCCC                 
+8  ()        8                     CCCC|        )(        |CCCC                 
+8  db   --== 8                     CCCC|       () )       |CCCC                 
+8            8                     CCCC|     #_*##,*#_    |CCCC                 
+8  #---  >C  8                     CCCC|  [============]  |CCCC                 
+8============8                     CCCCCCCCCCCCCCCCCCCCCCCCCCCC                 
+8            8                     CCCCCCCCCCCCCCCCCCCCCCCCCCCC                 
+8            8                     CCCCC                  CCCCC                 

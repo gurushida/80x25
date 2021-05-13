@@ -88,14 +88,23 @@ export class GameMap {
             if (hovered === loc.sceneId) {
                 line += '{bold}';
             }
+            if (loc.sceneId === MapCommand.EXIT) {
+                line += '{underline}';
+            }
             line += loc.label;
+            if (loc.sceneId === MapCommand.EXIT) {
+                line += '{/underline}';
+            }
             if (hovered === loc.sceneId) {
                 line += '{/bold}';
             }
-            x += start + loc.label.length;
+            x = start + loc.label.length;
         }
-        let paddingAfter = ' '.repeat(WIDTH - 1 - x);
-        line += paddingAfter;
+        const n = WIDTH - 1 - x;
+        if (n > 0) {
+            const paddingAfter = ' '.repeat(n);
+            line += paddingAfter;
+        }
         return line;
     }
 
@@ -159,7 +168,7 @@ export class GameMap {
 
 function getExit(): MapLocation {
     return {
-        label: '{underline}Back{/underline}',
+        label: 'Back',
         centerX: 0,
         centerY: HEIGHT - 1,
         sceneId: MapCommand.EXIT
@@ -238,6 +247,15 @@ function getCinema(triggers: Triggers): MapLocation {
     };
 }
 
+function getForge(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('FORGE_VISITED') ? 'Forge' : '???',
+        centerX: 63,
+        centerY: 21,
+        sceneId: SceneId.FORGE
+    };
+}
+
 function getLocationsToShow(triggers: Triggers): MapLocation[] {
     const locations: MapLocation[] = [];
     locations.push(getExit());
@@ -249,6 +267,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getPark(triggers));
     locations.push(getCinema(triggers));
     locations.push(getPharmacy(triggers));
+    locations.push(getForge(triggers));
     return locations.filter(l => l.label);
 }
 
