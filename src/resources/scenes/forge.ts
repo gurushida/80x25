@@ -1,21 +1,48 @@
 import { HotspotId, GuyPosition, Hotspot, createMaskHotspot } from "@/hotspots";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
-import { ActionBarButton } from "@/screenBuffer";
-import { ANIM_FOUNTAIN } from "../animations/fountain";
-import { LittleGirlAnimation } from "../animations/little_girl";
-import { DIALOG_LITTLE_GIRL } from "../generated/dialogs/DIALOG_LITTLE_GIRL";
-import { DIALOG_ROBOT } from "../generated/dialogs/DIALOG_ROBOT";
-import { RobotAnimation } from "../animations/robot";
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { ZIndex } from "@/zIndex";
 import { BG_FORGE } from "../generated/images/BG_FORGE";
 import { ANIM_FIRE } from "../animations/fire";
+import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
+import { SPR_BELLOWS_0 } from "../generated/images/SPR_BELLOWS_0";
+import { SPR_BELLOWS_1 } from "../generated/images/SPR_BELLOWS_1";
+import { ActionBarButton } from "@/screenBuffer";
 
 
 const background: PaintTask = getPaintTask(BG_FORGE, 0, 0, ZIndex.BACKGROUND, undefined);
 
+const ANIM_BELLOWS = new ImageAnimation(54, 13, ZIndex.BACKGROUND, true, createMaskHotspot(SPR_BELLOWS_0, HotspotId.BELLOWS),
+    NO_LEFT_MOVEMENT,
+    [
+        {
+            image: SPR_BELLOWS_0,
+            durationInTicks: 30,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_BELLOWS_1,
+            durationInTicks: 30,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
 const hotspots: Hotspot[] = [
+    {
+        hotspotId: HotspotId.FIRE,
+        description: 'fire',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['Fire.']]
+    },
+    {
+        hotspotId: HotspotId.BELLOWS,
+        description: 'bellows',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['Bellows.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -33,9 +60,9 @@ export const FORGE_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [background],
-            animations: [ANIM_FIRE],
-            hotspots: hotspots
+            images: [ background ],
+            animations: [ ANIM_FIRE, ANIM_BELLOWS ],
+            hotspots,
         };
     }
 }

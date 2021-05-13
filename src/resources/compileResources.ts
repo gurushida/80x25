@@ -231,6 +231,8 @@ compileSprite('asciiart/sprites/fire3.txt', 'SPR_FIRE_3');
 compileSprite('asciiart/sprites/fire4.txt', 'SPR_FIRE_4');
 compileSprite('asciiart/sprites/fire5.txt', 'SPR_FIRE_5');
 compileSprite('asciiart/sprites/fire6.txt', 'SPR_FIRE_6');
+compileSprite('asciiart/sprites/bellows0.txt', 'SPR_BELLOWS_0');
+compileSprite('asciiart/sprites/bellows1.txt', 'SPR_BELLOWS_1');
 
 //--------------------------------------------------------------------------
 

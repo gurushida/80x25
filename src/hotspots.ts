@@ -89,6 +89,7 @@ export enum HotspotId {
     PHARMACY_POT8 = 'PHARMACY_POT8',
     PHARMACY_POT9 = 'PHARMACY_POT9',
     FIRE = 'FIRE',
+    BELLOWS = 'BELLOWS',
 }
 
 /**
