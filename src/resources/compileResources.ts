@@ -238,6 +238,12 @@ compileSprite('asciiart/sprites/bellows2.txt', 'SPR_BELLOWS_2');
 compileSprite('asciiart/sprites/wall_candles0.txt', 'SPR_WALL_CANDLES_0');
 compileSprite('asciiart/sprites/wall_candles1.txt', 'SPR_WALL_CANDLES_1');
 compileSprite('asciiart/sprites/barrel.txt', 'SPR_BARREL');
+compileSprite('asciiart/sprites/blacksmith_left0.txt', 'SPR_BLACKSMITH_LEFT0');
+compileSprite('asciiart/sprites/blacksmith_left1.txt', 'SPR_BLACKSMITH_LEFT1');
+compileSprite('asciiart/sprites/blacksmith_right0.txt', 'SPR_BLACKSMITH_RIGHT0');
+compileSprite('asciiart/sprites/blacksmith_talking0.txt', 'SPR_BLACKSMITH_TALKING0');
+compileSprite('asciiart/sprites/blacksmith_talking1.txt', 'SPR_BLACKSMITH_TALKING1');
+compileSprite('asciiart/sprites/blacksmith_talking2.txt', 'SPR_BLACKSMITH_TALKING2');
 
 //--------------------------------------------------------------------------
 
@@ -254,6 +260,7 @@ compileDialog('dialogs/brian.grf', 'DIALOG_BRIAN');
 compileDialog('dialogs/evil_queen.grf', 'DIALOG_EVIL_QUEEN');
 compileDialog('dialogs/alfredo.grf', 'DIALOG_ALFREDO');
 compileDialog('dialogs/pharmacist.grf', 'DIALOG_PHARMACIST');
+compileDialog('dialogs/blacksmith.grf', 'DIALOG_BLACKSMITH');
 
 
 //--------------------------------------------------------------------------

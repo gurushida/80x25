@@ -13,6 +13,8 @@ import { SPR_BELLOWS_2 } from "../generated/images/SPR_BELLOWS_2";
 import { BG_FORGE_WALL } from "../generated/images/BG_FORGE_WALL";
 import { ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 } from "../animations/wall_candles";
 import { SPR_BARREL } from "../generated/images/SPR_BARREL";
+import { BlacksmithAnimation } from "../animations/blacksmith";
+import { DIALOG_BLACKSMITH } from "../generated/dialogs/DIALOG_BLACKSMITH";
 
 const wall: PaintTask = getPaintTask(BG_FORGE_WALL, 0, 0, ZIndex.FAR_BACKGROUND, createFullHotspot(HotspotId.FORGE));
 const background: PaintTask = getPaintTask(BG_FORGE, 0, 0, ZIndex.BACKGROUND, undefined);
@@ -73,6 +75,18 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['It is a barrel', 'full of water.'], ['The blacksmith uses it', 'to cool down metal.']]
     },
+    {
+        hotspotId: HotspotId.BLACKSMITH,
+        description: 'blacksmith',
+        rightClickAction: ActionBarButton.TALK,
+        guyPositionForAction: {
+            left: 42,
+            top: 15,
+            lookToTheRight: false
+        },
+        lookAt: [['The blacksmith.']],
+        dialog: DIALOG_BLACKSMITH,
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -91,7 +105,7 @@ export const FORGE_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ wall, background, barrel ],
-            animations: [ ANIM_FIRE, ANIM_BELLOWS, ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 ],
+            animations: [ ANIM_FIRE, ANIM_BELLOWS, ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2, new BlacksmithAnimation() ],
             hotspots,
         };
     }

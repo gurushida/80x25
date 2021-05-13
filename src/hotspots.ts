@@ -92,6 +92,7 @@ export enum HotspotId {
     FIRE = 'FIRE',
     BELLOWS = 'BELLOWS',
     BARREL = 'BARREL',
+    BLACKSMITH = 'BLACKSMITH',
 }
 
 /**
