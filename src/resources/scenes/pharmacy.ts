@@ -175,7 +175,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.PHARMACY_POT9,
         description: 'jar',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['Ginger-wasabi condoms.'], ['For the braves.']]
+        lookAt: [['Ginger-wasabi condoms.'], ['For the brave.']]
     },
 ];
 
