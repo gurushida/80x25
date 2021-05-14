@@ -256,6 +256,15 @@ function getForge(triggers: Triggers): MapLocation {
     };
 }
 
+function getFarm(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('FARM_VISITED') ? 'Farm' : '???',
+        centerX: 3,
+        centerY: 10,
+        sceneId: SceneId.FARM
+    };
+}
+
 function getLocationsToShow(triggers: Triggers): MapLocation[] {
     const locations: MapLocation[] = [];
     locations.push(getExit());
@@ -268,6 +277,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getCinema(triggers));
     locations.push(getPharmacy(triggers));
     locations.push(getForge(triggers));
+    locations.push(getFarm(triggers));
     return locations.filter(l => l.label);
 }
 

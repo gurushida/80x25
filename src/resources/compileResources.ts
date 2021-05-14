@@ -245,6 +245,14 @@ compileSprite('asciiart/sprites/blacksmith_talking0.txt', 'SPR_BLACKSMITH_TALKIN
 compileSprite('asciiart/sprites/blacksmith_talking1.txt', 'SPR_BLACKSMITH_TALKING1');
 compileSprite('asciiart/sprites/blacksmith_talking2.txt', 'SPR_BLACKSMITH_TALKING2');
 
+compileSprite('asciiart/sprites/well.txt', 'SPR_WELL');
+compileSprite('asciiart/sprites/farm_barrier.txt', 'SPR_FARM_BARRIER');
+compileSprite('asciiart/sprites/vegetable_garden.txt', 'SPR_VEGETABLE_GARDEN');
+compileSprite('asciiart/sprites/goat.txt', 'SPR_GOAT');
+compileSprite('asciiart/sprites/pig.txt', 'SPR_PIG');
+compileSprite('asciiart/sprites/worm0.txt', 'SPR_WORM0');
+compileSprite('asciiart/sprites/worm1.txt', 'SPR_WORM1');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');

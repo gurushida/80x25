@@ -27,6 +27,7 @@ import { INSIDE_CINEMA_LOADER } from "./resources/scenes/cinema_inside";
 import { ICE_CREAM_SHOP_LOADER } from "./resources/scenes/ice_cream_shop";
 import { PHARMACY_LOADER } from "./resources/scenes/pharmacy";
 import { FORGE_LOADER } from "./resources/scenes/forge";
+import { FARM_LOADER } from "./resources/scenes/farm";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -466,6 +467,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
         case SceneId.INSIDE_CINEMA: return INSIDE_CINEMA_LOADER;
         case SceneId.PHARMACY: return PHARMACY_LOADER;
         case SceneId.FORGE: return FORGE_LOADER;
+        case SceneId.FARM: return FARM_LOADER;
         default: return undefined;
     }
 }
