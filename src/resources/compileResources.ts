@@ -248,7 +248,8 @@ compileSprite('asciiart/sprites/blacksmith_talking2.txt', 'SPR_BLACKSMITH_TALKIN
 compileSprite('asciiart/sprites/well.txt', 'SPR_WELL');
 compileSprite('asciiart/sprites/farm_barrier.txt', 'SPR_FARM_BARRIER');
 compileSprite('asciiart/sprites/vegetable_garden.txt', 'SPR_VEGETABLE_GARDEN');
-compileSprite('asciiart/sprites/goat.txt', 'SPR_GOAT');
+compileSprite('asciiart/sprites/goat0.txt', 'SPR_GOAT0');
+compileSprite('asciiart/sprites/goat1.txt', 'SPR_GOAT1');
 compileSprite('asciiart/sprites/pig0.txt', 'SPR_PIG0');
 compileSprite('asciiart/sprites/pig1.txt', 'SPR_PIG1');
 compileSprite('asciiart/sprites/worm0.txt', 'SPR_WORM0');

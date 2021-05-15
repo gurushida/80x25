@@ -10,14 +10,14 @@ import { SPR_VEGETABLE_GARDEN } from "../generated/images/SPR_VEGETABLE_GARDEN";
 import { SPR_WORM0 } from "../generated/images/SPR_WORM0";
 import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
 import { SPR_WORM1 } from "../generated/images/SPR_WORM1";
-import { SPR_GOAT } from "../generated/images/SPR_GOAT";
 import { SPR_PIG1 } from "../generated/images/SPR_PIG1";
 import { SPR_PIG0 } from "../generated/images/SPR_PIG0";
+import { SPR_GOAT0 } from "../generated/images/SPR_GOAT0";
+import { SPR_GOAT1 } from "../generated/images/SPR_GOAT1";
 
 const barrier: PaintTask = getPaintTask(SPR_FARM_BARRIER, 0, 21, ZIndex.FRONT, undefined);
 const well: PaintTask = getPaintTask(SPR_WELL, 0, 12, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_WELL, HotspotId.WELL));
 const garden: PaintTask = getPaintTask(SPR_VEGETABLE_GARDEN, 16, 14, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_VEGETABLE_GARDEN, HotspotId.VEGETABLE_GARDEN));
-const goat: PaintTask = getPaintTask(SPR_GOAT, 60, 9, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_GOAT, HotspotId.GOAT));
 
 const ANIM_PIG = new ImageAnimation(42, 11, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIG0, HotspotId.PIG),
     NO_LEFT_MOVEMENT, [
@@ -30,6 +30,22 @@ const ANIM_PIG = new ImageAnimation(42, 11, ZIndex.BEHIND_GUY, true, createMaskH
         {
             image: SPR_PIG1,
             durationInTicks: 6,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
+const ANIM_GOAT = new ImageAnimation(60, 9, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_GOAT0, HotspotId.GOAT),
+    NO_LEFT_MOVEMENT, [
+        {
+            image: SPR_GOAT0,
+            durationInTicks: 120,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_GOAT1,
+            durationInTicks: 120,
             offsetX: 0,
             offsetY: 0,
         },
@@ -98,8 +114,8 @@ export const FARM_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ barrier, well, garden, /*pig,*/ goat ],
-            animations: [ ANIM_WORM, ANIM_PIG ],
+            images: [ barrier, well, garden ],
+            animations: [ ANIM_WORM, ANIM_PIG, ANIM_GOAT ],
             hotspots,
         };
     }
