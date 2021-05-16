@@ -45,7 +45,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.OVEN,
         description: 'oven',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['A traditional oven,', 'for cooking pizzas'], ['and old ladies owning', 'gingerbread real estate.']]
+        lookAt: [['A traditional oven,', 'for baking pizzas'], ['and old ladies owning', 'gingerbread real estate.']]
     },
     {
         hotspotId: HotspotId.GONDOLA,
