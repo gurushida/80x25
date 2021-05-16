@@ -1,5 +1,5 @@
 import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
-import { createMaskHotspot, GuyPosition, Hotspot, HotspotId } from "@/hotspots";
+import { createFullHotspot, createMaskHotspot, GuyPosition, Hotspot, HotspotId } from "@/hotspots";
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { ActionBarButton } from "@/screenBuffer";
@@ -7,6 +7,7 @@ import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
 import { ANIM_PIZZAIOLO } from "../animations/pizzaiolo";
 import { BG_PIZZERIA } from "../generated/images/BG_PIZZERIA";
+import { SPR_GONDOLA } from "../generated/images/SPR_GONDOLA";
 import { SPR_OVEN_PEEL } from "../generated/images/SPR_OVEN_PEEL";
 import { SPR_PIZZA_OVEN_0 } from "../generated/images/SPR_PIZZA_OVEN_0";
 import { SPR_PIZZA_OVEN_1 } from "../generated/images/SPR_PIZZA_OVEN_1";
@@ -14,6 +15,7 @@ import { SPR_PIZZA_OVEN_1 } from "../generated/images/SPR_PIZZA_OVEN_1";
 const background: PaintTask = getPaintTask(BG_PIZZERIA, 0, 0, ZIndex.BACKGROUND, undefined);
 
 const ovel_peel: PaintTask = getPaintTask(SPR_OVEN_PEEL, 17, 2, ZIndex.BACKGROUND, undefined);
+const gondola: PaintTask = getPaintTask(SPR_GONDOLA, 48, 0, ZIndex.BACKGROUND, createFullHotspot(HotspotId.GONDOLA));
 
 const ANIM_OVEN = new ImageAnimation(25, 3, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIZZA_OVEN_0, HotspotId.OVEN),
     NO_LEFT_MOVEMENT, [
@@ -45,6 +47,12 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['A traditional oven,', 'for cooking pizzas'], ['and old ladies owning', 'gingerbread real estate.']]
     },
+    {
+        hotspotId: HotspotId.GONDOLA,
+        description: 'gondola painting',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['Ah, Venice.'], ['What\'s more romantic', 'than a boat tour'], ['on a tide-driven', 'sewer system ?']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -62,7 +70,7 @@ export const PIZZERIA_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ background, ovel_peel ],
+            images: [ background, ovel_peel, gondola ],
             animations: [ ANIM_PIZZAIOLO, ANIM_OVEN ],
             hotspots: hotspots
         };
