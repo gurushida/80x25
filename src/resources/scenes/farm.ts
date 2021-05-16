@@ -86,7 +86,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.VEGETABLE_GARDEN,
         description: 'vegetable garden',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['Growing vegetables is', 'like growing kids:'], ['love,'], ['patience,'], ['fighting off predators.']]
+        lookAt: [['Growing vegetables is', 'like raising kids:'], ['love,'], ['patience,'], ['fighting off predators.']]
     },
     {
         hotspotId: HotspotId.WORM,

@@ -278,6 +278,10 @@ compileSprite('asciiart/sprites/pizzaiolo10.txt', 'SPR_PIZZAIOLO_10');
 compileSprite('asciiart/sprites/pizzaiolo11.txt', 'SPR_PIZZAIOLO_11');
 compileSprite('asciiart/sprites/pizzaiolo12.txt', 'SPR_PIZZAIOLO_12');
 compileSprite('asciiart/sprites/pizzaiolo13.txt', 'SPR_PIZZAIOLO_13');
+compileSprite('asciiart/sprites/pizzaiolo14.txt', 'SPR_PIZZAIOLO_14');
+compileSprite('asciiart/sprites/pizzaiolo15.txt', 'SPR_PIZZAIOLO_15');
+compileSprite('asciiart/sprites/pizzaiolo16.txt', 'SPR_PIZZAIOLO_16');
+compileSprite('asciiart/sprites/pizzaiolo17.txt', 'SPR_PIZZAIOLO_17');
 
 //--------------------------------------------------------------------------
 

@@ -7,6 +7,10 @@ import { SPR_PIZZAIOLO_10 } from "../generated/images/SPR_PIZZAIOLO_10";
 import { SPR_PIZZAIOLO_11 } from "../generated/images/SPR_PIZZAIOLO_11";
 import { SPR_PIZZAIOLO_12 } from "../generated/images/SPR_PIZZAIOLO_12";
 import { SPR_PIZZAIOLO_13 } from "../generated/images/SPR_PIZZAIOLO_13";
+import { SPR_PIZZAIOLO_14 } from "../generated/images/SPR_PIZZAIOLO_14";
+import { SPR_PIZZAIOLO_15 } from "../generated/images/SPR_PIZZAIOLO_15";
+import { SPR_PIZZAIOLO_16 } from "../generated/images/SPR_PIZZAIOLO_16";
+import { SPR_PIZZAIOLO_17 } from "../generated/images/SPR_PIZZAIOLO_17";
 import { SPR_PIZZAIOLO_2 } from "../generated/images/SPR_PIZZAIOLO_2";
 import { SPR_PIZZAIOLO_3 } from "../generated/images/SPR_PIZZAIOLO_3";
 import { SPR_PIZZAIOLO_4 } from "../generated/images/SPR_PIZZAIOLO_4";
@@ -19,7 +23,7 @@ import { SPR_PIZZAIOLO_9 } from "../generated/images/SPR_PIZZAIOLO_9";
 const PIZZAIOLO_HOTSPOT = createMaskHotspot(SPR_PIZZAIOLO_0, HotspotId.PIZZAIOLO);
 
 const rolling_ticks = 7;
-const throwing_ticks = 4;
+const throwing_ticks = 3;
 
 export const ANIM_PIZZAIOLO = new ImageAnimation(0, 2, ZIndex.BACKGROUND, true, PIZZAIOLO_HOTSPOT, NO_LEFT_MOVEMENT,
     [
@@ -213,25 +217,13 @@ export const ANIM_PIZZAIOLO = new ImageAnimation(0, 2, ZIndex.BACKGROUND, true, 
             offsetY: 0,
         },
         {
-            image: SPR_PIZZAIOLO_9,
+            image: SPR_PIZZAIOLO_11,
             durationInTicks: throwing_ticks,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_PIZZAIOLO_10,
-            durationInTicks: throwing_ticks,
-            offsetX: 0,
-            offsetY: 0,
-        },
-        {
-            image: SPR_PIZZAIOLO_9,
-            durationInTicks: throwing_ticks,
-            offsetX: 0,
-            offsetY: 0,
-        },
-        {
-            image: SPR_PIZZAIOLO_10,
+            image: SPR_PIZZAIOLO_12,
             durationInTicks: throwing_ticks,
             offsetX: 0,
             offsetY: 0,
@@ -244,12 +236,60 @@ export const ANIM_PIZZAIOLO = new ImageAnimation(0, 2, ZIndex.BACKGROUND, true, 
         },
         {
             image: SPR_PIZZAIOLO_12,
-            durationInTicks: 2,
+            durationInTicks: throwing_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_11,
+            durationInTicks: throwing_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_12,
+            durationInTicks: throwing_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_11,
+            durationInTicks: throwing_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_12,
+            durationInTicks: throwing_ticks,
             offsetX: 0,
             offsetY: 0,
         },
         {
             image: SPR_PIZZAIOLO_13,
+            durationInTicks: throwing_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_14,
+            durationInTicks: throwing_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_15,
+            durationInTicks: throwing_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_16,
+            durationInTicks: 2,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PIZZAIOLO_17,
             durationInTicks: 2,
             offsetX: 0,
             offsetY: 0,
