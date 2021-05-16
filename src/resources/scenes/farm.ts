@@ -14,12 +14,17 @@ import { SPR_PIG1 } from "../generated/images/SPR_PIG1";
 import { SPR_PIG0 } from "../generated/images/SPR_PIG0";
 import { SPR_GOAT0 } from "../generated/images/SPR_GOAT0";
 import { SPR_GOAT1 } from "../generated/images/SPR_GOAT1";
+import { BG_FARM } from "../generated/images/BG_FARM";
+import { SPR_TRACTOR } from "../generated/images/SPR_TRACTOR";
+
+const background: PaintTask = getPaintTask(BG_FARM, 0, 0, ZIndex.BACKGROUND, undefined);
+const tractor: PaintTask = getPaintTask(SPR_TRACTOR, 50, 2, ZIndex.BACKGROUND, createMaskHotspot(SPR_TRACTOR, HotspotId.TRACTOR));
 
 const barrier: PaintTask = getPaintTask(SPR_FARM_BARRIER, 0, 21, ZIndex.FRONT, undefined);
 const well: PaintTask = getPaintTask(SPR_WELL, 0, 12, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_WELL, HotspotId.WELL));
 const garden: PaintTask = getPaintTask(SPR_VEGETABLE_GARDEN, 16, 14, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_VEGETABLE_GARDEN, HotspotId.VEGETABLE_GARDEN));
 
-const ANIM_PIG = new ImageAnimation(42, 11, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIG0, HotspotId.PIG),
+const ANIM_PIG = new ImageAnimation(43, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIG0, HotspotId.PIG),
     NO_LEFT_MOVEMENT, [
         {
             image: SPR_PIG0,
@@ -35,7 +40,7 @@ const ANIM_PIG = new ImageAnimation(42, 11, ZIndex.BEHIND_GUY, true, createMaskH
         },
     ]);
 
-const ANIM_GOAT = new ImageAnimation(60, 9, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_GOAT0, HotspotId.GOAT),
+const ANIM_GOAT = new ImageAnimation(61, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_GOAT0, HotspotId.GOAT),
     NO_LEFT_MOVEMENT, [
         {
             image: SPR_GOAT0,
@@ -114,7 +119,7 @@ export const FARM_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ barrier, well, garden ],
+            images: [ background, barrier, well, garden, tractor ],
             animations: [ ANIM_WORM, ANIM_PIG, ANIM_GOAT ],
             hotspots,
         };

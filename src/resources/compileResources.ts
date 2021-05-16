@@ -21,6 +21,7 @@ compileOpaqueImage('asciiart/backgrounds/cinema_inside.txt', 'BG_CINEMA_INSIDE')
 compileOpaqueImage('asciiart/backgrounds/pharmacy_background.txt', 'BG_PHARMACY');
 compileSprite('asciiart/backgrounds/forge.txt', 'BG_FORGE');
 compileOpaqueImage('asciiart/backgrounds/forge_wall.txt', 'BG_FORGE_WALL');
+compileOpaqueImage('asciiart/backgrounds/farm_barn.txt', 'BG_FARM');
 
 
 //--------------------------------------------------------------------------
@@ -254,6 +255,7 @@ compileSprite('asciiart/sprites/pig0.txt', 'SPR_PIG0');
 compileSprite('asciiart/sprites/pig1.txt', 'SPR_PIG1');
 compileSprite('asciiart/sprites/worm0.txt', 'SPR_WORM0');
 compileSprite('asciiart/sprites/worm1.txt', 'SPR_WORM1');
+compileSprite('asciiart/sprites/tractor.txt', 'SPR_TRACTOR');
 
 //--------------------------------------------------------------------------
 

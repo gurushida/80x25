@@ -98,6 +98,7 @@ export enum HotspotId {
     GOAT = 'GOAT',
     VEGETABLE_GARDEN = 'VEGETABLE_GARDEN',
     WORM = 'WORM',
+    TRACTOR = 'TRACTOR',
 }
 
 /**
