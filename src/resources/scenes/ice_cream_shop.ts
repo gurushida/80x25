@@ -43,69 +43,69 @@ const hotspots: Hotspot[] = [
     },
     {
         hotspotId: HotspotId.ICE_CREAM0,
-        description: 'ice cream 0',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 0' ]]
+        lookAt: [['"Mussels sorbet with its', 'Peruvian strawberries coulis"']]
     },
     {
         hotspotId: HotspotId.ICE_CREAM1,
-        description: 'ice cream 1',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 1' ]]
+        lookAt: [['"Watermelon with gorgonzola cripy chunks']]
     },
     {
         hotspotId: HotspotId.ICE_CREAM2,
-        description: 'ice cream 2',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 2' ]]
+        lookAt: [[ '"Smoked chocolate with leather merinque"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM3,
-        description: 'ice cream 3',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 3' ]]
+        lookAt: [[ '"Emulsified coconut-clay delice"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM4,
-        description: 'ice cream 4',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 4' ]]
+        lookAt: [[ '"Lemon tart flambée with crab-liquor"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM5,
-        description: 'ice cream 5',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 5' ]]
+        lookAt: [[ '"Marshmallow gravlax"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM6,
-        description: 'ice cream 6',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 6' ]]
+        lookAt: [[ '"Crunchy kidney with licorice syrup"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM7,
-        description: 'ice cream 7',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 7' ]]
+        lookAt: [[ '"Pineapple-mackerel Chantilly"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM8,
-        description: 'ice cream 8',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 8' ]]
+        lookAt: [[ '"Brussels sprouts caramel sorbet"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM9,
-        description: 'ice cream 9',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 9' ]]
+        lookAt: [[ '"Mayonnaise glacée with snail confit"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM10,
-        description: 'ice cream 10',
+        description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ 'ice cream 10' ]]
+        lookAt: [[ '"Mango-apple-kiwi-pear-cherry-lime','& spider silk cotton candy"' ]]
     },
     {
         hotspotId: HotspotId.ALFREDO,
