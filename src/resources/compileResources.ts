@@ -282,6 +282,9 @@ compileSprite('asciiart/sprites/pizzaiolo14.txt', 'SPR_PIZZAIOLO_14');
 compileSprite('asciiart/sprites/pizzaiolo15.txt', 'SPR_PIZZAIOLO_15');
 compileSprite('asciiart/sprites/pizzaiolo16.txt', 'SPR_PIZZAIOLO_16');
 compileSprite('asciiart/sprites/pizzaiolo17.txt', 'SPR_PIZZAIOLO_17');
+compileSprite('asciiart/sprites/pizza_oven0.txt', 'SPR_PIZZA_OVEN_0');
+compileSprite('asciiart/sprites/pizza_oven1.txt', 'SPR_PIZZA_OVEN_1');
+compileSprite('asciiart/sprites/oven_peel.txt', 'SPR_OVEN_PEEL');
 
 //--------------------------------------------------------------------------
 
