@@ -263,6 +263,21 @@ compileSprite('asciiart/sprites/farmer_talking0.txt', 'SPR_FARMER_TALKING0');
 compileSprite('asciiart/sprites/farmer_talking1.txt', 'SPR_FARMER_TALKING1');
 compileSprite('asciiart/sprites/farmer_talking2.txt', 'SPR_FARMER_TALKING2');
 
+compileSprite('asciiart/sprites/pizzaiolo0.txt', 'SPR_PIZZAIOLO_0');
+compileSprite('asciiart/sprites/pizzaiolo1.txt', 'SPR_PIZZAIOLO_1');
+compileSprite('asciiart/sprites/pizzaiolo2.txt', 'SPR_PIZZAIOLO_2');
+compileSprite('asciiart/sprites/pizzaiolo3.txt', 'SPR_PIZZAIOLO_3');
+compileSprite('asciiart/sprites/pizzaiolo4.txt', 'SPR_PIZZAIOLO_4');
+compileSprite('asciiart/sprites/pizzaiolo5.txt', 'SPR_PIZZAIOLO_5');
+compileSprite('asciiart/sprites/pizzaiolo6.txt', 'SPR_PIZZAIOLO_6');
+compileSprite('asciiart/sprites/pizzaiolo7.txt', 'SPR_PIZZAIOLO_7');
+compileSprite('asciiart/sprites/pizzaiolo8.txt', 'SPR_PIZZAIOLO_8');
+compileSprite('asciiart/sprites/pizzaiolo9.txt', 'SPR_PIZZAIOLO_9');
+compileSprite('asciiart/sprites/pizzaiolo10.txt', 'SPR_PIZZAIOLO_10');
+compileSprite('asciiart/sprites/pizzaiolo11.txt', 'SPR_PIZZAIOLO_11');
+compileSprite('asciiart/sprites/pizzaiolo12.txt', 'SPR_PIZZAIOLO_12');
+compileSprite('asciiart/sprites/pizzaiolo13.txt', 'SPR_PIZZAIOLO_13');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');

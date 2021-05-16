@@ -101,6 +101,7 @@ export enum HotspotId {
     WORM = 'WORM',
     TRACTOR = 'TRACTOR',
     FARMER = 'FARMER',
+    PIZZAIOLO = 'PIZZAIOLO',
 }
 
 /**
