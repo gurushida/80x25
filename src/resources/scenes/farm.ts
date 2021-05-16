@@ -24,7 +24,7 @@ const barrier: PaintTask = getPaintTask(SPR_FARM_BARRIER, 0, 21, ZIndex.FRONT, u
 const well: PaintTask = getPaintTask(SPR_WELL, 0, 12, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_WELL, HotspotId.WELL));
 const garden: PaintTask = getPaintTask(SPR_VEGETABLE_GARDEN, 16, 14, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_VEGETABLE_GARDEN, HotspotId.VEGETABLE_GARDEN));
 
-const ANIM_PIG = new ImageAnimation(43, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIG0, HotspotId.PIG),
+const ANIM_PIG = new ImageAnimation(45, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIG0, HotspotId.PIG),
     NO_LEFT_MOVEMENT, [
         {
             image: SPR_PIG0,
@@ -40,7 +40,7 @@ const ANIM_PIG = new ImageAnimation(43, 13, ZIndex.BEHIND_GUY, true, createMaskH
         },
     ]);
 
-const ANIM_GOAT = new ImageAnimation(61, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_GOAT0, HotspotId.GOAT),
+const ANIM_GOAT = new ImageAnimation(64, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_GOAT0, HotspotId.GOAT),
     NO_LEFT_MOVEMENT, [
         {
             image: SPR_GOAT0,
@@ -103,6 +103,12 @@ const hotspots: Hotspot[] = [
         description: 'goat',
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['A goat.']]
+    },
+    {
+        hotspotId: HotspotId.TRACTOR,
+        description: 'tractor',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['This is a beautiful', 'piece of engineering'], ['with a very powerful engine.'], ['Perfect for field work'], ['and intimidating', 'highway protests.']]
     },
 ];
 
