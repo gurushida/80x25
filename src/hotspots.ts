@@ -2,6 +2,7 @@ import { AsciiImage, OPAQUE } from "./images";
 import { SceneId } from "./scene";
 import { Dialog, Cue } from "./dialog";
 import { ActionBarButton } from "./screenBuffer";
+import { invariant } from "./utils";
 
 
 /**
@@ -99,6 +100,7 @@ export enum HotspotId {
     VEGETABLE_GARDEN = 'VEGETABLE_GARDEN',
     WORM = 'WORM',
     TRACTOR = 'TRACTOR',
+    FARMER = 'FARMER',
 }
 
 /**
@@ -151,6 +153,7 @@ export function combine(...filters: HotspotFilter[]): HotspotFilter {
  */
 export function createMaskHotspot(image: AsciiImage, hotspot: HotspotId): HotspotFilter {
   return (x: number, y: number) => {
+    invariant(image.mask[y], `y pos ${y} out of image bounds: ${image.width}x${image.height}`);
     return (image.mask[y][x] === OPAQUE) ? hotspot : undefined;
   };
 }

@@ -256,6 +256,12 @@ compileSprite('asciiart/sprites/pig1.txt', 'SPR_PIG1');
 compileSprite('asciiart/sprites/worm0.txt', 'SPR_WORM0');
 compileSprite('asciiart/sprites/worm1.txt', 'SPR_WORM1');
 compileSprite('asciiart/sprites/tractor.txt', 'SPR_TRACTOR');
+compileSprite('asciiart/sprites/farmer0.txt', 'SPR_FARMER0');
+compileSprite('asciiart/sprites/farmer1.txt', 'SPR_FARMER1');
+compileSprite('asciiart/sprites/farmer2.txt', 'SPR_FARMER2');
+compileSprite('asciiart/sprites/farmer_talking0.txt', 'SPR_FARMER_TALKING0');
+compileSprite('asciiart/sprites/farmer_talking1.txt', 'SPR_FARMER_TALKING1');
+compileSprite('asciiart/sprites/farmer_talking2.txt', 'SPR_FARMER_TALKING2');
 
 //--------------------------------------------------------------------------
 
@@ -273,6 +279,7 @@ compileDialog('dialogs/evil_queen.grf', 'DIALOG_EVIL_QUEEN');
 compileDialog('dialogs/alfredo.grf', 'DIALOG_ALFREDO');
 compileDialog('dialogs/pharmacist.grf', 'DIALOG_PHARMACIST');
 compileDialog('dialogs/blacksmith.grf', 'DIALOG_BLACKSMITH');
+compileDialog('dialogs/farmer.grf', 'DIALOG_FARMER');
 
 
 //--------------------------------------------------------------------------
