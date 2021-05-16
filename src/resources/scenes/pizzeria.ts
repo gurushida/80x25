@@ -1,10 +1,13 @@
 import { GuyPosition, Hotspot, HotspotId } from "@/hotspots";
+import { PaintTask, getPaintTask } from "@/paintTask";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { ActionBarButton } from "@/screenBuffer";
 import { Triggers } from "@/triggers";
+import { ZIndex } from "@/zIndex";
 import { ANIM_PIZZAIOLO } from "../animations/pizzaiolo";
+import { BG_PIZZERIA } from "../generated/images/BG_PIZZERIA";
 
-
+const background: PaintTask = getPaintTask(BG_PIZZERIA, 0, 0, ZIndex.BACKGROUND, undefined);
 
 const hotspots: Hotspot[] = [
     {
@@ -30,7 +33,7 @@ export const PIZZERIA_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [],
+            images: [ background ],
             animations: [ ANIM_PIZZAIOLO ],
             hotspots: hotspots
         };

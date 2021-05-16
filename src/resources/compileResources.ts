@@ -22,6 +22,7 @@ compileOpaqueImage('asciiart/backgrounds/pharmacy_background.txt', 'BG_PHARMACY'
 compileSprite('asciiart/backgrounds/forge.txt', 'BG_FORGE');
 compileOpaqueImage('asciiart/backgrounds/forge_wall.txt', 'BG_FORGE_WALL');
 compileOpaqueImage('asciiart/backgrounds/farm_barn.txt', 'BG_FARM');
+compileOpaqueImage('asciiart/backgrounds/pizzeria.txt', 'BG_PIZZERIA');
 
 
 //--------------------------------------------------------------------------

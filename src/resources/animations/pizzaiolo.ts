@@ -21,7 +21,7 @@ const PIZZAIOLO_HOTSPOT = createMaskHotspot(SPR_PIZZAIOLO_0, HotspotId.PIZZAIOLO
 const rolling_ticks = 7;
 const throwing_ticks = 4;
 
-export const ANIM_PIZZAIOLO = new ImageAnimation(0, 7, ZIndex.BACKGROUND, true, PIZZAIOLO_HOTSPOT, NO_LEFT_MOVEMENT,
+export const ANIM_PIZZAIOLO = new ImageAnimation(0, 2, ZIndex.BACKGROUND, true, PIZZAIOLO_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_PIZZAIOLO_0,
