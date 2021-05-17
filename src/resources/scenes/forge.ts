@@ -11,14 +11,16 @@ import { SPR_BELLOWS_1 } from "../generated/images/SPR_BELLOWS_1";
 import { ActionBarButton } from "@/screenBuffer";
 import { SPR_BELLOWS_2 } from "../generated/images/SPR_BELLOWS_2";
 import { BG_FORGE_WALL } from "../generated/images/BG_FORGE_WALL";
-import { ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2 } from "../animations/wall_candles";
 import { SPR_BARREL } from "../generated/images/SPR_BARREL";
 import { BlacksmithAnimation } from "../animations/blacksmith";
 import { DIALOG_BLACKSMITH } from "../generated/dialogs/DIALOG_BLACKSMITH";
+import { SPR_FORGE_WINDOW } from "../generated/images/SPR_FORGE_WINDOW";
 
 const wall: PaintTask = getPaintTask(BG_FORGE_WALL, 0, 0, ZIndex.FAR_BACKGROUND, createFullHotspot(HotspotId.FORGE));
 const background: PaintTask = getPaintTask(BG_FORGE, 0, 0, ZIndex.BACKGROUND, undefined);
 const barrel: PaintTask = getPaintTask(SPR_BARREL, 15, 18, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.BARREL));
+
+const window1: PaintTask = getPaintTask(SPR_FORGE_WINDOW, 18, 2, ZIndex.BACKGROUND, undefined);
 
 const BELLOWS_TICKS = 8;
 const ANIM_BELLOWS = new ImageAnimation(54, 13, ZIndex.BACKGROUND, true, createMaskHotspot(SPR_BELLOWS_0, HotspotId.BELLOWS),
@@ -67,7 +69,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.FORGE,
         description: 'forge',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['This is an old-fashioned', 'blacksmith workshop.']]
+        lookAt: [['This is an old-fashioned', 'blacksmith workshop'], ['built in a re-designed', 'old prison cell.'], ['They managed to preserve the', 'authenticity of the place'], ['by re-purposing the torture', 'fire pit into a forge furnace.']]
     },
     {
         hotspotId: HotspotId.BARREL,
@@ -104,8 +106,8 @@ export const FORGE_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ wall, background, barrel ],
-            animations: [ ANIM_FIRE, ANIM_BELLOWS, ANIM_WALL_CANDLES_1, ANIM_WALL_CANDLES_2, new BlacksmithAnimation() ],
+            images: [ wall, background, barrel, window1 ],
+            animations: [ ANIM_FIRE, ANIM_BELLOWS, new BlacksmithAnimation() ],
             hotspots,
         };
     }

@@ -246,6 +246,7 @@ compileSprite('asciiart/sprites/blacksmith_right0.txt', 'SPR_BLACKSMITH_RIGHT0')
 compileSprite('asciiart/sprites/blacksmith_talking0.txt', 'SPR_BLACKSMITH_TALKING0');
 compileSprite('asciiart/sprites/blacksmith_talking1.txt', 'SPR_BLACKSMITH_TALKING1');
 compileSprite('asciiart/sprites/blacksmith_talking2.txt', 'SPR_BLACKSMITH_TALKING2');
+compileOpaqueImage('asciiart/sprites/forge_window.txt', 'SPR_FORGE_WINDOW');
 
 compileSprite('asciiart/sprites/well.txt', 'SPR_WELL');
 compileSprite('asciiart/sprites/farm_barrier.txt', 'SPR_FARM_BARRIER');
