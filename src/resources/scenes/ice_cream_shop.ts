@@ -51,7 +51,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.ICE_CREAM1,
         description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['"Watermelon with gorgonzola cripy chunks']]
+        lookAt: [['"Matured watermelon with gorgonzola crispy chunks']]
     },
     {
         hotspotId: HotspotId.ICE_CREAM2,
@@ -75,7 +75,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.ICE_CREAM5,
         description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ '"Marshmallow gravlax"' ]]
+        lookAt: [[ '"Marshmallow gravlax in garlic wine"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM6,
