@@ -6,6 +6,7 @@ import { ActionBarButton } from "@/screenBuffer";
 import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
 import { ANIM_PIZZAIOLO } from "../animations/pizzaiolo";
+import { createPizzeriaTable } from "../animations/pizzeria_table";
 import { BG_PIZZERIA } from "../generated/images/BG_PIZZERIA";
 import { SPR_GONDOLA } from "../generated/images/SPR_GONDOLA";
 import { SPR_OVEN_PEEL } from "../generated/images/SPR_OVEN_PEEL";
@@ -16,6 +17,11 @@ const background: PaintTask = getPaintTask(BG_PIZZERIA, 0, 0, ZIndex.BACKGROUND,
 
 const ovel_peel: PaintTask = getPaintTask(SPR_OVEN_PEEL, 17, 2, ZIndex.BACKGROUND, undefined);
 const gondola: PaintTask = getPaintTask(SPR_GONDOLA, 48, 0, ZIndex.BACKGROUND, createFullHotspot(HotspotId.GONDOLA));
+
+const ANIM_TABLE1 = createPizzeriaTable(5, 17, ZIndex.FRONT);
+const ANIM_TABLE2 = createPizzeriaTable(24, 11, ZIndex.BEHIND_GUY);
+const ANIM_TABLE3 = createPizzeriaTable(51, 17, ZIndex.FRONT);
+const ANIM_TABLE4 = createPizzeriaTable(55, 8, ZIndex.BEHIND_GUY);
 
 const ANIM_OVEN = new ImageAnimation(25, 3, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIZZA_OVEN_0, HotspotId.OVEN),
     NO_LEFT_MOVEMENT, [
@@ -53,12 +59,18 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['Ah, Venice.'], ['What\'s more romantic', 'than a boat tour'], ['on a tide-driven', 'sewer system ?']]
     },
+    {
+        hotspotId: HotspotId.PIZZERIA_TABLE,
+        description: 'table',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['A table for two,'], ['with the mandatory candle', 'in a Chianti bottle.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
-    left: 73,
-    top: 13,
-    lookToTheRight: false
+    left: 4,
+    top: 12,
+    lookToTheRight: true
 };
 
 
@@ -71,7 +83,7 @@ export const PIZZERIA_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ background, ovel_peel, gondola ],
-            animations: [ ANIM_PIZZAIOLO, ANIM_OVEN ],
+            animations: [ ANIM_PIZZAIOLO, ANIM_OVEN, ANIM_TABLE1, ANIM_TABLE2, ANIM_TABLE3, ANIM_TABLE4 ],
             hotspots: hotspots
         };
     }

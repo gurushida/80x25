@@ -286,6 +286,8 @@ compileSprite('asciiart/sprites/pizza_oven0.txt', 'SPR_PIZZA_OVEN_0');
 compileSprite('asciiart/sprites/pizza_oven1.txt', 'SPR_PIZZA_OVEN_1');
 compileSprite('asciiart/sprites/oven_peel.txt', 'SPR_OVEN_PEEL');
 compileSprite('asciiart/sprites/gondola.txt', 'SPR_GONDOLA');
+compileSprite('asciiart/sprites/pizzeria_table0.txt', 'SPR_PIZZERIA_TABLE_0');
+compileSprite('asciiart/sprites/pizzeria_table1.txt', 'SPR_PIZZERIA_TABLE_1');
 
 //--------------------------------------------------------------------------
 
