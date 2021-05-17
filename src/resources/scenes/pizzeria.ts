@@ -5,8 +5,10 @@ import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { ActionBarButton } from "@/screenBuffer";
 import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
+import { DonAldoAnimation } from "../animations/don_aldo";
 import { ANIM_PIZZAIOLO } from "../animations/pizzaiolo";
 import { createPizzeriaTable } from "../animations/pizzeria_table";
+import { DIALOG_DON_ALDO } from "../generated/dialogs/DIALOG_DON_ALDO";
 import { BG_PIZZERIA } from "../generated/images/BG_PIZZERIA";
 import { SPR_GONDOLA } from "../generated/images/SPR_GONDOLA";
 import { SPR_OVEN_PEEL } from "../generated/images/SPR_OVEN_PEEL";
@@ -20,7 +22,7 @@ const gondola: PaintTask = getPaintTask(SPR_GONDOLA, 48, 0, ZIndex.BACKGROUND, c
 
 const ANIM_TABLE1 = createPizzeriaTable(5, 17, ZIndex.FRONT);
 const ANIM_TABLE2 = createPizzeriaTable(26, 11, ZIndex.BEHIND_GUY);
-const ANIM_TABLE3 = createPizzeriaTable(51, 17, ZIndex.FRONT);
+const ANIM_TABLE3 = createPizzeriaTable(47, 18, ZIndex.FRONT);
 const ANIM_TABLE4 = createPizzeriaTable(55, 8, ZIndex.BEHIND_GUY);
 
 const ANIM_OVEN = new ImageAnimation(25, 3, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIZZA_OVEN_0, HotspotId.OVEN),
@@ -65,6 +67,18 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['A table for two,'], ['with the mandatory candle', 'in a Chianti bottle.']]
     },
+    {
+        hotspotId: HotspotId.DON_ALDO,
+        description: 'Don Aldo',
+        rightClickAction: ActionBarButton.TALK,
+        dialog: DIALOG_DON_ALDO,
+        guyPositionForAction: {
+            left: 58,
+            top: 12,
+            lookToTheRight: true
+        },
+        lookAt: [['This is Don Aldo,'], ['the patriach of', 'this family business.']],
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -83,7 +97,7 @@ export const PIZZERIA_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ background, ovel_peel, gondola ],
-            animations: [ ANIM_PIZZAIOLO, ANIM_OVEN, ANIM_TABLE1, ANIM_TABLE2, ANIM_TABLE3, ANIM_TABLE4 ],
+            animations: [ ANIM_PIZZAIOLO, ANIM_OVEN, ANIM_TABLE1, ANIM_TABLE2, ANIM_TABLE3, ANIM_TABLE4, new DonAldoAnimation() ],
             hotspots: hotspots
         };
     }

@@ -289,6 +289,12 @@ compileSprite('asciiart/sprites/oven_peel.txt', 'SPR_OVEN_PEEL');
 compileSprite('asciiart/sprites/gondola.txt', 'SPR_GONDOLA');
 compileSprite('asciiart/sprites/pizzeria_table0.txt', 'SPR_PIZZERIA_TABLE_0');
 compileSprite('asciiart/sprites/pizzeria_table1.txt', 'SPR_PIZZERIA_TABLE_1');
+compileSprite('asciiart/sprites/don_aldo0.txt', 'SPR_DON_ALDO_0');
+compileSprite('asciiart/sprites/don_aldo1.txt', 'SPR_DON_ALDO_1');
+compileSprite('asciiart/sprites/don_aldo2.txt', 'SPR_DON_ALDO_2');
+compileSprite('asciiart/sprites/don_aldo_talking0.txt', 'SPR_DON_ALDO_TALKING_0');
+compileSprite('asciiart/sprites/don_aldo_talking1.txt', 'SPR_DON_ALDO_TALKING_1');
+compileSprite('asciiart/sprites/don_aldo_talking2.txt', 'SPR_DON_ALDO_TALKING_2');
 
 //--------------------------------------------------------------------------
 
@@ -307,6 +313,7 @@ compileDialog('dialogs/alfredo.grf', 'DIALOG_ALFREDO');
 compileDialog('dialogs/pharmacist.grf', 'DIALOG_PHARMACIST');
 compileDialog('dialogs/blacksmith.grf', 'DIALOG_BLACKSMITH');
 compileDialog('dialogs/farmer.grf', 'DIALOG_FARMER');
+compileDialog('dialogs/don_aldo.grf', 'DIALOG_DON_ALDO');
 
 
 //--------------------------------------------------------------------------
