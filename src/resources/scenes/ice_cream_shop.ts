@@ -93,7 +93,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.ICE_CREAM8,
         description: 'ice cream',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [[ '"Brussels sprouts caramel sorbet"' ]]
+        lookAt: [[ '"Brussels sprouts oil sorbet"' ]]
     },
     {
         hotspotId: HotspotId.ICE_CREAM9,

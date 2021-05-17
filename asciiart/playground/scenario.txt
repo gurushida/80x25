@@ -10,6 +10,9 @@ but she has blocker the number. Guy needs a miracle.
 
 Part 1: the miracle
 
+We have one item in the inventory: a dumb phone that can only do
+one thing, calling Amy, which is not possible as she has blocked us.
+
 1.a) Get net from Scottish fisherman at the docks.
 Suggest that a fishing net is the easy way, not something
 real fishermen do. Make him pretend that the only reason he
@@ -27,44 +30,143 @@ Exchange the worm against the net.
 The worm is very interested in salads. Whenever we try to take
 it, it hides itself in the ground too quickly. Remark that we will
 not be able to pick it until it is still.
-Give it the whisky soaked lettuce cracker to get it tipsy and pick it.
+If we try to give it a lettuce cracker not soaked in beer,
+he eats it but it does not help. Says that we should try to season
+it with something else to make it sleepy.
+If we try to pour beer from the kitchen towel directly onto
+the salad, refuse and argue that the farmer will not let us pour
+some random liquid on his vegetables.
+Give it the beer soaked lettuce cracker to get it tipsy and pick it.
 
-1.c) 
+1.c) At the pub, ask the bartender why she keeps wiping the counter.
+She answers that she takes correspondance karate clases from a
+Mr Myagi, and that wiping the counter is the next best thing to
+polish a car. Ask her what's on tap. While she looks away, steal
+the kitchen towel, which is a bit soaked in beer.
 
+1.d) Talk the evil queen. Compliment her on how fit she looks.
+Say that you would not expect beautiful women like her to be
+a place like a pub with alcohol and unhealthy snacks. She answers
+that she has in fact made a deal (because women must help each
+other) with the bartender to have her
+private reserve of lettuce crackers handmade by a French chef,
+harder to find than Cuban cigars. She offers to let us try since
+we are so nice. Go ask the bartender and get a pack of lettuce
+crackers.
 
-In the arcade shop, learn about drones and that the pharmacy uses one.
-Talk to the pharmacist and learn that he uses one to deliver prescriptions.
-Talk to the biker bouncer at the pub that has a cold. Offer to take
-his prescription paper to the pharmacy for him. Give it to the pharmacist so
-he uses his drone to deliver the drug.
-Capture the drone that delivers drugs from the pharmacy with net.
-Talk to the arcade guy to convince him that the drone is yours and that
-you lost the remote controller to get a new one.
+1.e) Getting the rope
+Ask the girl what she would exchange her rope for. She wants
+a vanilla ice cream. Give her the ice cream to get the rope.
 
-Go inside the cinema. Jam the popcorn machine. Go outside.
-Talk to the cashier about the popcorn machine to have him
-leave. Take the movie review. Go to the ice cream shop.
-Give the review to the cashier to get a free ice cream.
-Go give the ice cream to the little girl in exchange for
-her jumping rope.
+1.f) Getting the vanilla ice cream
+Ask Alfredo if he has any vanilla ice cream. He answers
+that he is working on a revolutionary recipe that will amaze
+the world by the audacious simplicity of its aromatic range:
+Bourbon vanilla infused in fresh farm milk from local producers
+casted in a subtle chocolate crust pinned on a piece of wood
+from sustainable forest management. He says that its avant-premiere
+batch is reserved for influencers in exchange for reviews. "So,
+if we give a good review, then we can taste the product ? Sure, that
+sounds totally fine."
+Give the review to get an ice cream
 
-Go the pub. The bouncer asks for ID. Make a joke rant about about
-how we are always supposed to get some ID in adventure games.
-In the pub, talk to cosplayers and learn about the forge (evil queen,
-chinese master, monk, Brian April).
+1.g) Get the review
+Use the six pence coin to jam the popcorn machine. Tell
+the cashier so he closes the cinema to go repair it.
+Take the review. If we try to take the review when the cashier
+is there, the cashier complains.
 
-Go to the arcade. Take the hard drive out of the broken machine.
-Give the drive to the blacksmith so he can crush it. Take the magnet.
+1.h) Getting the six pence coin
+Talk to the Brian guy. He says that he really
+wants to become more like his idol both in science and
+music but that he struggles with the science and that
+he would need help learning about these zodiacal stuffs.
+He is willing to trade help for a 3D printed replica of
+the guitar pick used by his idol. "So just a six pence ?"
+He says that the replicas look so real that he accidentally
+used one in a vending machine and jammed it.
+Give him the book about astronomy and gardening to get the coin.
 
-Combine the rope, the drone and the magnet. Go to the park
-and fish coins from the fountain.
+1.i) Getting the astronomy book
+Ask the farmer what he is waiting for. He wants to try some
+new approach to farming. So he waits for rain and he also
+needs to pick up the astronomy gardening book he has ordered
+at the pharmacy. When we ask him why not using the well, he says
+that there was a regrettable pollution incident that made the
+well water improper for farming. An inspector from the department
+of fraudaulent subvention claims accidentally fell with his electric
+scooter in the well and the lithium battery polluted the water
+which is an ecological catastrophe. This stuff is dangerous, after
+all it's used in fireworks. "And the guy ?" "It was a true miracle
+that he managed to escape before more harm would come to him."
 
-Go to the arcade. Use coins to play evil spell. Beat the highscore
-to win the prize of the day: the djinn lamp.
+Offer to pick the book for him and he gives
+us a receipt for it. Give the receipt to the pharmacist to
+get the book.
 
-Use the lamp to get the djinn out. When he asks for your wish,
-have multiple joke wishes, including one about character death with
-a joke about the Holy Book of Ron that says characters should never die.
+1.j) Get the magnet
+At the arcade, ask the manager about the broken machine.
+He says he's waiting for the repair guy. Pretend to be the repair guy
+by giving the name we have learnt from the little girl. Use the
+screwdriver to open the machine and take the hard drive. Ask the
+blacksmith if he can hammer it to crack it open. Take the magnet.
+
+1.k) Get the screwdriver
+When discussing with the farmer, learn about the pollution in the well.
+Offer to help and get the crank. Use the crank on the well. The mechanism
+is rusty and needs some grease. Use some free sample of the oil
+sorbet from the ice to grease it. Use the crank to get the electric
+scooter. Take the lithium battery out of it. Put it in the fire at the forge.
+The blacksmith goes to search for a foam extinguisher. Steal the screwdriver.
+The blacksmith then comes back.
+
+1.l) Learn the name of the repair guy
+When talking to the little girl, we learn that she is gifted child
+preparing a Master degree in electronics and that she has a summer internship
+in a hardware support company, to repair stuffs. When asking about the jumping
+rope, we learn that she is not a child playing but that she is in fact training
+to improve her footwork for an upcoming chessboxing competition.
+
+1.m) Catch the drone
+Discuss with the biker about his cold. He says that the pharmacist has
+some medicine for him but that he cannot go to get it as he is on duty.
+Offer to pick it for him, but he refuses, saying that this is some
+very special herbs and that he prefers to take care of it himself.
+After we have learnt from the arcade guy that the pharmacist won a drone
+and uses it for delivering prescriptions, mention it to the biker.
+He agrees to let us talk to the pharmacist to deliver the package with
+his drone. The drone arrives at the pub but stays in the air.
+Use the net to catch it.
+
+1.n) Get coins
+Learn from the robot cop that no human is allowed to take coins from the fountain
+as all coins are considered by law to be donations to Cybernetics Orphan Charity. 
+Combine the drone, the rope and the magnet. The drone needs to be reprogrammed
+to abey us. It asks for a password. Let's brag
+about the weakness of the security question to recover the password. "Let's
+social engineer it, baby !". The question is "What was the north longitude of the
+spot where your tenth wife fell tragically overboard, like
+the previous nine ones, equally unprepared for nightly nautical
+activities ?" Say that there is no way we can get an answer to that question
+without raising suspicion from who is clearly a serial killer. Click on "Cancel".
+It works. "Someone cut corners on testing...". Use the drone to fish coins.
+The robot says hi to the drone.
+
+1.o) Get the lamp
+To get the lamp, we need to win the tournament by getting the highscore
+on Evil Spell.
+
+1.p) Make the djinn appear
+Talk to Alfredo and learn that he has not always been a chef. He has had
+many jobs, including a brief period as transmission officer in the army
+where he failed miserably to translate Morse code without speaking with
+his hands. Repeat Morse message to Alfredo to get the translation of
+the message and learn the magic formula. "If it's anything like in the movies,
+there is gonna be smoke. I better get to a place where there will be space."
+We arrive automatically at the dock and say the formula. The djinn comes
+out and we can talk to it to get a wish. Have multiple joke wishes, including
+one about character death with a joke about the Holy Book of Ron that says
+characters should never die.
 
 
 

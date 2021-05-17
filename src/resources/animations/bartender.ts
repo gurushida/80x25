@@ -8,11 +8,6 @@ import { SPR_BARTENDER_TALKING0 } from "../generated/images/SPR_BARTENDER_TALKIN
 import { SPR_BARTENDER_TALKING1 } from "../generated/images/SPR_BARTENDER_TALKING1";
 import { SPR_BARTENDER_TALKING2 } from "../generated/images/SPR_BARTENDER_TALKING2";
 import { SPR_BARTENDER1 } from "../generated/images/SPR_BARTENDER1";
-import { SPR_BARTENDER2 } from "../generated/images/SPR_BARTENDER2";
-import { SPR_BARTENDER3 } from "../generated/images/SPR_BARTENDER3";
-import { SPR_BARTENDER4 } from "../generated/images/SPR_BARTENDER4";
-import { SPR_BARTENDER5 } from "../generated/images/SPR_BARTENDER5";
-import { SPR_BARTENDER6 } from "../generated/images/SPR_BARTENDER6";
 import { SPR_BARTENDER_WIPING_0 } from "../generated/images/SPR_BARTENDER_WIPING_0";
 import { SPR_BARTENDER_WIPING_2 } from "../generated/images/SPR_BARTENDER_WIPING_2";
 import { SPR_BARTENDER_WIPING_1 } from "../generated/images/SPR_BARTENDER_WIPING_1";
