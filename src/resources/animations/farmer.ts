@@ -15,7 +15,7 @@ const FARMER_HOTSPOT = createMaskHotspot(SPR_FARMER0, HotspotId.FARMER);
 const farmerX = 38;
 const farmerY = 9;
 
-const scratch_ticks = 12;
+const scratch_ticks = 10;
 
 const ANIM_FARMER = new ImageAnimation(farmerX, farmerY, ZIndex.BEHIND_GUY, true, FARMER_HOTSPOT,
     NO_LEFT_MOVEMENT,
@@ -47,6 +47,18 @@ const ANIM_FARMER = new ImageAnimation(farmerX, farmerY, ZIndex.BEHIND_GUY, true
         {
             image: SPR_FARMER2,
             durationInTicks: scratch_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_FARMER1,
+            durationInTicks: scratch_ticks,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_FARMER2,
+            durationInTicks: 20,
             offsetX: 0,
             offsetY: 0,
         },
