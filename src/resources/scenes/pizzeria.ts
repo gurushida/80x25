@@ -19,7 +19,7 @@ const ovel_peel: PaintTask = getPaintTask(SPR_OVEN_PEEL, 17, 2, ZIndex.BACKGROUN
 const gondola: PaintTask = getPaintTask(SPR_GONDOLA, 48, 0, ZIndex.BACKGROUND, createFullHotspot(HotspotId.GONDOLA));
 
 const ANIM_TABLE1 = createPizzeriaTable(5, 17, ZIndex.FRONT);
-const ANIM_TABLE2 = createPizzeriaTable(24, 11, ZIndex.BEHIND_GUY);
+const ANIM_TABLE2 = createPizzeriaTable(26, 11, ZIndex.BEHIND_GUY);
 const ANIM_TABLE3 = createPizzeriaTable(51, 17, ZIndex.FRONT);
 const ANIM_TABLE4 = createPizzeriaTable(55, 8, ZIndex.BEHIND_GUY);
 
