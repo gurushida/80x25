@@ -276,10 +276,10 @@ function getPizzeria(triggers: Triggers): MapLocation {
 
 function getCascade(triggers: Triggers): MapLocation {
     return {
-        label: triggers.isSet('CASCADE_VISITED') ? 'Cascade' : '???',
+        label: triggers.isSet('WATERFALL_VISITED') ? 'Waterfall' : '???',
         centerX: 30,
         centerY: 0,
-        sceneId: SceneId.CASCADE
+        sceneId: SceneId.WATERFALL
     };
 }
 

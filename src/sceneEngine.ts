@@ -29,7 +29,7 @@ import { PHARMACY_LOADER } from "./resources/scenes/pharmacy";
 import { FORGE_LOADER } from "./resources/scenes/forge";
 import { FARM_LOADER } from "./resources/scenes/farm";
 import { PIZZERIA_LOADER } from "./resources/scenes/pizzeria";
-import { CASCADE_LOADER } from "./resources/scenes/cascade";
+import { WATERFALL_LOADER } from "./resources/scenes/waterfall";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -471,7 +471,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
         case SceneId.FORGE: return FORGE_LOADER;
         case SceneId.FARM: return FARM_LOADER;
         case SceneId.PIZZERIA: return PIZZERIA_LOADER;
-        case SceneId.CASCADE: return CASCADE_LOADER;
+        case SceneId.WATERFALL: return WATERFALL_LOADER;
         default: return undefined;
     }
 }

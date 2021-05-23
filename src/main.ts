@@ -23,7 +23,7 @@ const triggerList: Trigger[] = [
   'FORGE_VISITED',
   'FARM_VISITED',
   'PIZZERIA_VISITED',
-  'CASCADE_VISITED',
+  'WATERFALL_VISITED',
 ];
 const triggers = new Triggers(triggerList);
 

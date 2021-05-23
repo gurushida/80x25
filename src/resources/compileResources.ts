@@ -23,7 +23,7 @@ compileSprite('asciiart/backgrounds/forge.txt', 'BG_FORGE');
 compileOpaqueImage('asciiart/backgrounds/forge_wall.txt', 'BG_FORGE_WALL');
 compileOpaqueImage('asciiart/backgrounds/farm_barn.txt', 'BG_FARM');
 compileOpaqueImage('asciiart/backgrounds/pizzeria.txt', 'BG_PIZZERIA');
-compileOpaqueImage('asciiart/backgrounds/cascade.txt', 'BG_CASCADE');
+compileOpaqueImage('asciiart/backgrounds/waterfall.txt', 'BG_WATERFALL');
 
 
 //--------------------------------------------------------------------------
@@ -306,9 +306,9 @@ compileSprite('asciiart/sprites/don_aldo_talking0.txt', 'SPR_DON_ALDO_TALKING_0'
 compileSprite('asciiart/sprites/don_aldo_talking1.txt', 'SPR_DON_ALDO_TALKING_1');
 compileSprite('asciiart/sprites/don_aldo_talking2.txt', 'SPR_DON_ALDO_TALKING_2');
 
-compileOpaqueImage('asciiart/sprites/cascade0.txt', 'SPR_CASCADE_0');
-compileOpaqueImage('asciiart/sprites/cascade1.txt', 'SPR_CASCADE_1');
-compileOpaqueImage('asciiart/sprites/cascade2.txt', 'SPR_CASCADE_2');
+compileOpaqueImage('asciiart/sprites/waterfall0.txt', 'SPR_WATERFALL_0');
+compileOpaqueImage('asciiart/sprites/waterfall1.txt', 'SPR_WATERFALL_1');
+compileOpaqueImage('asciiart/sprites/waterfall2.txt', 'SPR_WATERFALL_2');
 
 //--------------------------------------------------------------------------
 
