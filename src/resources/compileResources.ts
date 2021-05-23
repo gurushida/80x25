@@ -324,6 +324,12 @@ compileSprite('asciiart/sprites/fly0.txt', 'SPR_FLY_0');
 compileSprite('asciiart/sprites/fly1.txt', 'SPR_FLY_1');
 compileSprite('asciiart/sprites/fly2.txt', 'SPR_FLY_2');
 compileSprite('asciiart/sprites/fly3.txt', 'SPR_FLY_3');
+compileSprite('asciiart/sprites/chinese_master0.txt', 'SPR_CHINESE_MASTER_0');
+compileSprite('asciiart/sprites/chinese_master1.txt', 'SPR_CHINESE_MASTER_1');
+compileSprite('asciiart/sprites/chinese_master_talking0.txt', 'SPR_CHINESE_MASTER_TALKING_0');
+compileSprite('asciiart/sprites/chinese_master_talking1.txt', 'SPR_CHINESE_MASTER_TALKING_1');
+compileSprite('asciiart/sprites/chinese_master_talking2.txt', 'SPR_CHINESE_MASTER_TALKING_2');
+compileSprite('asciiart/sprites/chinese_master_not_talking.txt', 'SPR_CHINESE_MASTER_NOT_TALKING');
 
 //--------------------------------------------------------------------------
 
@@ -343,6 +349,7 @@ compileDialog('dialogs/pharmacist.grf', 'DIALOG_PHARMACIST');
 compileDialog('dialogs/blacksmith.grf', 'DIALOG_BLACKSMITH');
 compileDialog('dialogs/farmer.grf', 'DIALOG_FARMER');
 compileDialog('dialogs/don_aldo.grf', 'DIALOG_DON_ALDO');
+compileDialog('dialogs/chinese_master.grf', 'DIALOG_CHINESE_MASTER');
 
 
 //--------------------------------------------------------------------------

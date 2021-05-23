@@ -24,6 +24,8 @@ import { SPR_FLY_0 } from "../generated/images/SPR_FLY_0";
 import { SPR_FLY_1 } from "../generated/images/SPR_FLY_1";
 import { SPR_FLY_2 } from "../generated/images/SPR_FLY_2";
 import { SPR_FLY_3 } from "../generated/images/SPR_FLY_3";
+import { ChineseMasterAnimation } from "../animations/chinese_master";
+import { DIALOG_CHINESE_MASTER } from "../generated/dialogs/DIALOG_CHINESE_MASTER";
 
 const background: PaintTask = getPaintTask(BG_WATERFALL, 0, 0, ZIndex.BACKGROUND, undefined);
 
@@ -128,7 +130,7 @@ const ANIM_LAKE = new ImageAnimation(0, 17, ZIndex.BEHIND_GUY, true, createMaskH
     ]);
 
 
-const ANIM_FLY = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, createFullHotspot(HotspotId.FLY),
+const ANIM_FLY = new ImageAnimation(30, 17, ZIndex.BEHIND_GUY, true, createFullHotspot(HotspotId.FLY),
     NO_LEFT_MOVEMENT,
     [
         {
@@ -158,14 +160,6 @@ const ANIM_FLY = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, createFullH
     ]);
 
 
-
-const initialGuyPosition: GuyPosition = {
-    left: 6,
-    top: 13,
-    lookToTheRight: true,
-};
-
-
 const hotspots: Hotspot[] = [
     {
         hotspotId: HotspotId.WATERFALL,
@@ -188,7 +182,25 @@ const hotspots: Hotspot[] = [
         },
         lookAt: [['A common specimen of diptera.'], ['Its annoyance power is only', 'surpassed in the insect kingdom'], ['by barbecue wasps'], ['and silent nightly mosquitoes.']]
     },
+    {
+        hotspotId: HotspotId.CHINESE_MASTER,
+        description: 'old master',
+        rightClickAction: ActionBarButton.TALK,
+        dialog: DIALOG_CHINESE_MASTER,
+        guyPositionForAction: {
+            left: 42,
+            top: 13,
+            lookToTheRight: true
+        },
+        lookAt: [['He sure looks like an', 'old kung fu master.']],
+    },
 ];
+
+const initialGuyPosition: GuyPosition = {
+    left: 6,
+    top: 13,
+    lookToTheRight: true,
+};
 
 export const WATERFALL_LOADER: SceneLoader = {
     sceneId: SceneId.WATERFALL,
@@ -198,7 +210,7 @@ export const WATERFALL_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ background ],
-            animations: [ ANIM_WATERFALL, ANIM_LAKE, ANIM_FLY ],
+            animations: [ ANIM_WATERFALL, ANIM_LAKE, ANIM_FLY, new ChineseMasterAnimation() ],
             hotspots,
         };
     }

@@ -109,6 +109,7 @@ export enum HotspotId {
     WATERFALL = 'WATERFALL',
     LAKE = 'LAKE',
     FLY = 'FLY',
+    CHINESE_MASTER = 'CHINESE_MASTER',
 }
 
 /**
