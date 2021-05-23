@@ -107,6 +107,7 @@ export enum HotspotId {
     PIZZERIA_TABLE = 'PIZZERIA_TABLE',
     DON_ALDO = 'DON_ALDO',
     WATERFALL = 'WATERFALL',
+    LAKE = 'LAKE',
 }
 
 /**

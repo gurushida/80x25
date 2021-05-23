@@ -9,6 +9,17 @@ import { SPR_WATERFALL_0 } from "../generated/images/SPR_WATERFALL_0";
 import { BG_WATERFALL } from "../generated/images/BG_WATERFALL";
 import { SPR_WATERFALL_1 } from "../generated/images/SPR_WATERFALL_1";
 import { SPR_WATERFALL_2 } from "../generated/images/SPR_WATERFALL_2";
+import { SPR_LAKE_0 } from "../generated/images/SPR_LAKE_0";
+import { SPR_LAKE_1 } from "../generated/images/SPR_LAKE_1";
+import { SPR_LAKE_2 } from "../generated/images/SPR_LAKE_2";
+import { SPR_LAKE_3 } from "../generated/images/SPR_LAKE_3";
+import { SPR_LAKE_4 } from "../generated/images/SPR_LAKE_4";
+import { SPR_LAKE_5 } from "../generated/images/SPR_LAKE_5";
+import { SPR_LAKE_10 } from "../generated/images/SPR_LAKE_10";
+import { SPR_LAKE_6 } from "../generated/images/SPR_LAKE_6";
+import { SPR_LAKE_7 } from "../generated/images/SPR_LAKE_7";
+import { SPR_LAKE_8 } from "../generated/images/SPR_LAKE_8";
+import { SPR_LAKE_9 } from "../generated/images/SPR_LAKE_9";
 
 const background: PaintTask = getPaintTask(BG_WATERFALL, 0, 0, ZIndex.BACKGROUND, undefined);
 
@@ -35,6 +46,83 @@ const ANIM_WATERFALL = new ImageAnimation(37, 9, ZIndex.BEHIND_GUY, true, create
         },
     ]);
 
+const ANIM_LAKE = new ImageAnimation(0, 17, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_LAKE_0, HotspotId.LAKE),
+    NO_LEFT_MOVEMENT,
+    [
+        {
+            image: SPR_LAKE_0,
+            durationInTicks: 200,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_1,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_2,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_3,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_4,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_5,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_0,
+            durationInTicks: 200,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_6,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_7,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_8,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_9,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_LAKE_10,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
 const initialGuyPosition: GuyPosition = {
     left: 6,
     top: 13,
@@ -49,6 +137,12 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['I love waterfalls.'], ['They are exciting promises', 'of secret passages behind them,'], ['and tragic fate for','IQ-challenged people'], ['that neglect to read maps', 'before canoeing on rivers.']]
     },
+    {
+        hotspotId: HotspotId.LAKE,
+        description: 'lake',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['This is a beautiful lake,'], ['a peaceful place for fishes to wait'], ['for the discovery of mouth piercing.']]
+    },
 ];
 
 export const WATERFALL_LOADER: SceneLoader = {
@@ -59,7 +153,7 @@ export const WATERFALL_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ background ],
-            animations: [ ANIM_WATERFALL ],
+            animations: [ ANIM_WATERFALL, ANIM_LAKE ],
             hotspots,
         };
     }

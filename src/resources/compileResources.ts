@@ -309,6 +309,17 @@ compileSprite('asciiart/sprites/don_aldo_talking2.txt', 'SPR_DON_ALDO_TALKING_2'
 compileOpaqueImage('asciiart/sprites/waterfall0.txt', 'SPR_WATERFALL_0');
 compileOpaqueImage('asciiart/sprites/waterfall1.txt', 'SPR_WATERFALL_1');
 compileOpaqueImage('asciiart/sprites/waterfall2.txt', 'SPR_WATERFALL_2');
+compileSprite('asciiart/sprites/lake0.txt', 'SPR_LAKE_0');
+compileSprite('asciiart/sprites/lake1.txt', 'SPR_LAKE_1');
+compileSprite('asciiart/sprites/lake2.txt', 'SPR_LAKE_2');
+compileSprite('asciiart/sprites/lake3.txt', 'SPR_LAKE_3');
+compileSprite('asciiart/sprites/lake4.txt', 'SPR_LAKE_4');
+compileSprite('asciiart/sprites/lake5.txt', 'SPR_LAKE_5');
+compileSprite('asciiart/sprites/lake6.txt', 'SPR_LAKE_6');
+compileSprite('asciiart/sprites/lake7.txt', 'SPR_LAKE_7');
+compileSprite('asciiart/sprites/lake8.txt', 'SPR_LAKE_8');
+compileSprite('asciiart/sprites/lake9.txt', 'SPR_LAKE_9');
+compileSprite('asciiart/sprites/lake10.txt', 'SPR_LAKE_10');
 
 //--------------------------------------------------------------------------
 
