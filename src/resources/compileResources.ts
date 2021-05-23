@@ -320,6 +320,10 @@ compileSprite('asciiart/sprites/lake7.txt', 'SPR_LAKE_7');
 compileSprite('asciiart/sprites/lake8.txt', 'SPR_LAKE_8');
 compileSprite('asciiart/sprites/lake9.txt', 'SPR_LAKE_9');
 compileSprite('asciiart/sprites/lake10.txt', 'SPR_LAKE_10');
+compileSprite('asciiart/sprites/fly0.txt', 'SPR_FLY_0');
+compileSprite('asciiart/sprites/fly1.txt', 'SPR_FLY_1');
+compileSprite('asciiart/sprites/fly2.txt', 'SPR_FLY_2');
+compileSprite('asciiart/sprites/fly3.txt', 'SPR_FLY_3');
 
 //--------------------------------------------------------------------------
 

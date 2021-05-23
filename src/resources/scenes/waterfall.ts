@@ -1,6 +1,6 @@
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { ZIndex } from "@/zIndex";
-import { createMaskHotspot, GuyPosition, Hotspot, HotspotId } from "@/hotspots";
+import { createFullHotspot, createMaskHotspot, GuyPosition, Hotspot, HotspotId } from "@/hotspots";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
@@ -20,6 +20,10 @@ import { SPR_LAKE_6 } from "../generated/images/SPR_LAKE_6";
 import { SPR_LAKE_7 } from "../generated/images/SPR_LAKE_7";
 import { SPR_LAKE_8 } from "../generated/images/SPR_LAKE_8";
 import { SPR_LAKE_9 } from "../generated/images/SPR_LAKE_9";
+import { SPR_FLY_0 } from "../generated/images/SPR_FLY_0";
+import { SPR_FLY_1 } from "../generated/images/SPR_FLY_1";
+import { SPR_FLY_2 } from "../generated/images/SPR_FLY_2";
+import { SPR_FLY_3 } from "../generated/images/SPR_FLY_3";
 
 const background: PaintTask = getPaintTask(BG_WATERFALL, 0, 0, ZIndex.BACKGROUND, undefined);
 
@@ -123,6 +127,38 @@ const ANIM_LAKE = new ImageAnimation(0, 17, ZIndex.BEHIND_GUY, true, createMaskH
         },
     ]);
 
+
+const ANIM_FLY = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, createFullHotspot(HotspotId.FLY),
+    NO_LEFT_MOVEMENT,
+    [
+        {
+            image: SPR_FLY_0,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_FLY_1,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_FLY_2,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_FLY_3,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
+
+
 const initialGuyPosition: GuyPosition = {
     left: 6,
     top: 13,
@@ -143,6 +179,15 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['This is a beautiful lake,'], ['a peaceful place for fishes to wait'], ['for the discovery of mouth piercing.']]
     },
+    {
+        hotspotId: HotspotId.FLY,
+        description: 'fly',
+        rightClickAction: ActionBarButton.LOOK,
+        take: {
+            comment: [['It is too fast.']],
+        },
+        lookAt: [['A common specimen of diptera.'], ['Its annoyance power is only', 'surpassed in the insect kingdom'], ['by barbecue wasps'], ['and silent nightly mosquitoes.']]
+    },
 ];
 
 export const WATERFALL_LOADER: SceneLoader = {
@@ -153,7 +198,7 @@ export const WATERFALL_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ background ],
-            animations: [ ANIM_WATERFALL, ANIM_LAKE ],
+            animations: [ ANIM_WATERFALL, ANIM_LAKE, ANIM_FLY ],
             hotspots,
         };
     }
