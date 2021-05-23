@@ -11,7 +11,20 @@ export function debug(str: string) {
   ui.debug(str);
 }
 
-const triggerList: Trigger[] = [];
+const triggerList: Trigger[] = [
+  'BANK_VISITED',
+  'DOCK_VISITED',
+  'HEARD_ABOUT_PUB',
+  'ARCADE_VISITED',
+  'PUB_VISITED',
+  'PARK_VISITED',
+  'CINEMA_VISITED',
+  'PHARMACY_VISITED',
+  'FORGE_VISITED',
+  'FARM_VISITED',
+  'PIZZERIA_VISITED',
+  'CASCADE_VISITED',
+];
 const triggers = new Triggers(triggerList);
 
 const itemList: InventoryId[] = [ InventoryId.COIN, InventoryId.JUMPING_ROPE, InventoryId.MOVIE_REVIEW, ];

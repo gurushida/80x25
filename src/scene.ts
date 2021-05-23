@@ -38,5 +38,6 @@ export enum SceneId {
     FORGE,
     FARM,
     PIZZERIA,
+    CASCADE,
 }
 

@@ -267,10 +267,19 @@ function getFarm(triggers: Triggers): MapLocation {
 
 function getPizzeria(triggers: Triggers): MapLocation {
     return {
-        label: triggers.isSet('PIZZERIA_VISITED') ? 'Pizzeria' : 'Pizzeria',
+        label: triggers.isSet('PIZZERIA_VISITED') ? 'Pizzeria' : '???',
         centerX: 25,
         centerY: 11,
         sceneId: SceneId.PIZZERIA
+    };
+}
+
+function getCascade(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('CASCADE_VISITED') ? 'Cascade' : '???',
+        centerX: 30,
+        centerY: 0,
+        sceneId: SceneId.CASCADE
     };
 }
 
@@ -288,6 +297,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getForge(triggers));
     locations.push(getFarm(triggers));
     locations.push(getPizzeria(triggers));
+    locations.push(getCascade(triggers));
     return locations.filter(l => l.label);
 }
 

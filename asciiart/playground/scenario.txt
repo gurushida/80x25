@@ -13,6 +13,26 @@ Part 1: the miracle
 We have one item in the inventory: a dumb phone that can only do
 one thing, calling Amy, which is not possible as she has blocked us.
 
+- dumb phone
+- fishing net
+- worm
+- lettuce crackers
+- bar towel
+- jumping rope
+- vanilla ice cream
+- review
+- 3D printed sixpence
+- astronomy and gardening book
+- well crank
+- magnet
+- screwdriver
+- oil sorbet
+- lithium battery
+- drone
+- coins
+- lamp
+
+
 1.a) Get net from Scottish fisherman at the docks.
 Suggest that a fishing net is the easy way, not something
 real fishermen do. Make him pretend that the only reason he
@@ -33,16 +53,16 @@ not be able to pick it until it is still.
 If we try to give it a lettuce cracker not soaked in beer,
 he eats it but it does not help. Says that we should try to season
 it with something else to make it sleepy.
-If we try to pour beer from the kitchen towel directly onto
+If we try to pour beer from the bar towel directly onto
 the salad, refuse and argue that the farmer will not let us pour
 some random liquid on his vegetables.
 Give it the beer soaked lettuce cracker to get it tipsy and pick it.
 
 1.c) At the pub, ask the bartender why she keeps wiping the counter.
-She answers that she takes correspondance karate clases from a
+She answers that she takes correspondance karate classes from a
 Mr Myagi, and that wiping the counter is the next best thing to
 polish a car. Ask her what's on tap. While she looks away, steal
-the kitchen towel, which is a bit soaked in beer.
+the bar towel, which is a bit soaked in beer.
 
 1.d) Talk the evil queen. Compliment her on how fit she looks.
 Say that you would not expect beautiful women like her to be
@@ -115,7 +135,7 @@ blacksmith if he can hammer it to crack it open. Take the magnet.
 When discussing with the farmer, learn about the pollution in the well.
 Offer to help and get the crank. Use the crank on the well. The mechanism
 is rusty and needs some grease. Use some free sample of the oil
-sorbet from the ice to grease it. Use the crank to get the electric
+sorbet from the ice cream to grease it. Use the crank to get the electric
 scooter. Take the lithium battery out of it. Put it in the fire at the forge.
 The blacksmith goes to search for a foam extinguisher. Steal the screwdriver.
 The blacksmith then comes back.
@@ -166,7 +186,8 @@ there is gonna be smoke. I better get to a place where there will be space."
 We arrive automatically at the dock and say the formula. The djinn comes
 out and we can talk to it to get a wish. Have multiple joke wishes, including
 one about character death with a joke about the Holy Book of Ron that says
-characters should never die.
+characters should never die (voice of god from the clouds). Th djinn uses
+"sudo" in his spell.
 
 
 
@@ -223,4 +244,40 @@ ideas:
 - birthday cake
 - ballerina (movie poster ?)
 - crane
+
+
+
+
+
+
+================================================
+RAW IDEAS
+
+kung fu master next to a cascade.
+background with bonsai-style trees with an owl
+knows one inch punch (is it a drink ?)
+teaches it in exchange for a pizza, after we have shown our
+worth by catching a fly (with a chameleon)
+
+there is a blind man practicing skateboard (in front of the bank ?)
+his dog is waiting
+
+juggler + monkey
+
+need to steal some grog sausages from the grill
+do something related to the radio the guy is listening to to make go away
+
+
+grill hut on the beach. the guy needs us to get rid of a big guy (sumo ?),
+because he made the mistake of offering an all-you-can-eat option without
+time limit. 
+he cannot take it anymore which is why he has asked Don Aldo to send someone
+help him. we can help him by posing as the manager, so he gives us his badge
+that says "Manager". We pretend that we are taking her side against
+the poor employee so that she gets away froml him. But we still need
+to get rid of her.
+To do that, we need to make the beach flag pole fall on her / poison her food
+with the shop emergency pills ?
+
+To make the pole fall, we need the one inch punch + fragilize the pole with the dog pee.
 
