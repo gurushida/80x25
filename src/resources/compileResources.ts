@@ -330,6 +330,7 @@ compileSprite('asciiart/sprites/chinese_master_talking0.txt', 'SPR_CHINESE_MASTE
 compileSprite('asciiart/sprites/chinese_master_talking1.txt', 'SPR_CHINESE_MASTER_TALKING_1');
 compileSprite('asciiart/sprites/chinese_master_talking2.txt', 'SPR_CHINESE_MASTER_TALKING_2');
 compileSprite('asciiart/sprites/chinese_master_not_talking.txt', 'SPR_CHINESE_MASTER_NOT_TALKING');
+compileSprite('asciiart/sprites/bonsai.txt', 'SPR_BONSAI');
 
 //--------------------------------------------------------------------------
 

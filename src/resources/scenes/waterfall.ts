@@ -26,8 +26,11 @@ import { SPR_FLY_2 } from "../generated/images/SPR_FLY_2";
 import { SPR_FLY_3 } from "../generated/images/SPR_FLY_3";
 import { ChineseMasterAnimation } from "../animations/chinese_master";
 import { DIALOG_CHINESE_MASTER } from "../generated/dialogs/DIALOG_CHINESE_MASTER";
+import { SPR_BONSAI } from "../generated/images/SPR_BONSAI";
 
 const background: PaintTask = getPaintTask(BG_WATERFALL, 0, 0, ZIndex.BACKGROUND, undefined);
+
+const bonsai: PaintTask = getPaintTask(SPR_BONSAI, 60, 19, ZIndex.FRONT, createMaskHotspot(SPR_BONSAI, HotspotId.BONSAI));
 
 const ANIM_WATERFALL = new ImageAnimation(37, 9, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_WATERFALL_0, HotspotId.WATERFALL),
     NO_LEFT_MOVEMENT,
@@ -194,6 +197,15 @@ const hotspots: Hotspot[] = [
         },
         lookAt: [['He sure looks like an', 'old kung fu master.']],
     },
+    {
+        hotspotId: HotspotId.BONSAI,
+        description: 'bonsai',
+        rightClickAction: ActionBarButton.LOOK,
+        take: {
+            comment: [['Stealing from a guy that', 'could kill me with his pinky ?'], ['I don\'t think so.']],
+        },
+        lookAt: [['This nice little fellow has', 'been grown in the moyogi style.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -209,7 +221,7 @@ export const WATERFALL_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ background ],
+            images: [ background, bonsai ],
             animations: [ ANIM_WATERFALL, ANIM_LAKE, ANIM_FLY, new ChineseMasterAnimation() ],
             hotspots,
         };

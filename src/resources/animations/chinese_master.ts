@@ -20,13 +20,31 @@ const ANIM_CHINESE_MASTER = new ImageAnimation(chinese_master_X, chinese_master_
     [
         {
             image: SPR_CHINESE_MASTER_0,
-            durationInTicks: 180,
+            durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
         {
             image: SPR_CHINESE_MASTER_1,
             durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_CHINESE_MASTER_0,
+            durationInTicks: 10,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_CHINESE_MASTER_1,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_CHINESE_MASTER_0,
+            durationInTicks: 60,
             offsetX: 0,
             offsetY: 0,
         },
