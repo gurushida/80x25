@@ -338,6 +338,10 @@ compileSprite('asciiart/sprites/jewellery_sign.txt', 'SPR_JEWELLERY_SIGN');
 compileSprite('asciiart/sprites/suv0.txt', 'SPR_SUV_0');
 compileSprite('asciiart/sprites/fire_hydrant0.txt', 'SPR_FIRE_HYDRANT_0');
 compileOpaqueImage('asciiart/sprites/sewer_hole.txt', 'SPR_SEWER_HOLE');
+compileOpaqueImage('asciiart/sprites/street_water0.txt', 'SPR_STREET_WATER_0');
+compileOpaqueImage('asciiart/sprites/street_water1.txt', 'SPR_STREET_WATER_1');
+compileOpaqueImage('asciiart/sprites/street_water2.txt', 'SPR_STREET_WATER_2');
+compileOpaqueImage('asciiart/sprites/boat0.txt', 'SPR_BOAT_0');
 
 //--------------------------------------------------------------------------
 

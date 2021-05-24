@@ -116,6 +116,7 @@ export enum HotspotId {
     SUV = 'SUV',
     FIRE_HYDRANT = 'FIRE_HYDRANT',
     SEWER_HOLE = 'SEWER_HOLE',
+    STREET_WATER = 'STREET_WATER',
 }
 
 /**
@@ -218,6 +219,10 @@ export interface Hotspot {
 
     // Defined if we can talk to this hotspot, with the dialog to use
     dialog?: Dialog;
+
+    // Defined when we want to make some comments on something we cannot
+    // actually talk to
+    talkComment?: Cue[];
 
     lookAt: Cue[];
     take?: TakeAction;

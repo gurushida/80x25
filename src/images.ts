@@ -13,3 +13,10 @@ export interface AsciiImage {
   rows: string[];
   mask: string[]
 };
+
+export const EMPTY_IMAGE: AsciiImage = {
+  width: 0,
+  height: 0,
+  rows: [],
+  mask: [],
+}

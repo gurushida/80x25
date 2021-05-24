@@ -10,14 +10,42 @@ import { ActionBarButton } from "@/screenBuffer";
 import { SPR_SUV_0 } from "../generated/images/SPR_SUV_0";
 import { SPR_FIRE_HYDRANT_0 } from "../generated/images/SPR_FIRE_HYDRANT_0";
 import { SPR_SEWER_HOLE } from "../generated/images/SPR_SEWER_HOLE";
+import { SPR_STREET_WATER_0 } from "../generated/images/SPR_STREET_WATER_0";
+import { SPR_STREET_WATER_2 } from "../generated/images/SPR_STREET_WATER_2";
+import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
+import { SPR_STREET_WATER_1 } from "../generated/images/SPR_STREET_WATER_1";
+import { ANIM_BOAT } from "../animations/boat";
 
 const background: PaintTask = getPaintTask(BG_JEWELLERY_STORE_OUTSIDE, 0, 0, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.JEWELLERY_STORE));
 
-const ring_sign = getPaintTask(SPR_JEWELLERY_RING_SIGN, 26, 4, ZIndex.BEHIND_GUY, undefined);
+const ring_sign = getPaintTask(SPR_JEWELLERY_RING_SIGN, 24, 4, ZIndex.BEHIND_GUY, undefined);
 const sign = getPaintTask(SPR_JEWELLERY_SIGN, 56, 5, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_JEWELLERY_SIGN, HotspotId.JEWELLERY_SIGN));
 const suv = getPaintTask(SPR_SUV_0, 20, 12, ZIndex.FRONT, createMaskHotspot(SPR_SUV_0, HotspotId.SUV));
 const fire_hydrant = getPaintTask(SPR_FIRE_HYDRANT_0, 15, 15, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_FIRE_HYDRANT_0, HotspotId.FIRE_HYDRANT));
 const sewer_hole = getPaintTask(SPR_SEWER_HOLE, 71, 22, ZIndex.FRONT, createMaskHotspot(SPR_SEWER_HOLE, HotspotId.SEWER_HOLE));
+
+const ANIM_WATER = new ImageAnimation(0, 23, ZIndex.FRONT, true, createFullHotspot(HotspotId.STREET_WATER),
+    NO_LEFT_MOVEMENT, [
+        {
+            image: SPR_STREET_WATER_0,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_STREET_WATER_1,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_STREET_WATER_2,
+            durationInTicks: 5,
+            offsetX: 0,
+            offsetY: 0,
+        },
+    ]);
+
 
 const hotspots: Hotspot[] = [
     {
@@ -51,7 +79,14 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.SEWER_HOLE,
         description: 'sewer hole',
         rightClickAction: ActionBarButton.LOOK,
-        lookAt: [['Drainage infrastructure'], ['or fuel for nightmares.'], ['Depends on which books', 'you have read.']]
+        lookAt: [['Drainage infrastructure'], ['or fuel for nightmares.'], ['Depends on which books', 'you have read.']],
+        talkComment: [['No way.'], ['What if it anwsers ?']],
+    },
+    {
+        hotspotId: HotspotId.STREET_WATER,
+        description: 'water',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['Some water that ends its course', 'in the sewer hole over there.']]
     },
 ];
 
@@ -69,7 +104,7 @@ export const JEWELLERY_STORE_OUTSIDE_LOADER: SceneLoader = {
             showActionBar: true,
             guyPosition: initialGuyPosition,
             images: [ background, ring_sign, sign, suv, fire_hydrant, sewer_hole ],
-            animations: [],
+            animations: [ ANIM_WATER, ANIM_BOAT ],
             hotspots,
         };
     }

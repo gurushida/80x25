@@ -387,13 +387,15 @@ export class SceneEngine implements SceneActionListener {
     }
 
     talk(who: InventoryObject | Hotspot) {
-        if (!isHotspot(who) || !who.dialog) {
+        if (!isHotspot(who) || (!who.dialog && !who.talkComment )) {
             this.say([[ 'I cannot talk to that.' ]]);
-        } else {
+        } else if (who.dialog) {
             const dialog = who.dialog;
             this.walkTo(who.guyPositionForAction, () => {
                 this.runDialog(dialog, this.triggers);
             });
+        } else if (who.talkComment) {
+            this.say(who.talkComment);
         }
     }
 
