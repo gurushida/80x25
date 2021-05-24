@@ -283,6 +283,15 @@ function getCascade(triggers: Triggers): MapLocation {
     };
 }
 
+function getJewelleryStore(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('JEWELLERY_STORE_OUTSIDE_VISITED') ? 'Jewellery store' : '???',
+        centerX: 43,
+        centerY: 15,
+        sceneId: SceneId.JEWELLERY_STORE_OUTSIDE
+    };
+}
+
 function getLocationsToShow(triggers: Triggers): MapLocation[] {
     const locations: MapLocation[] = [];
     locations.push(getExit());
@@ -298,6 +307,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getFarm(triggers));
     locations.push(getPizzeria(triggers));
     locations.push(getCascade(triggers));
+    locations.push(getJewelleryStore(triggers));
     return locations.filter(l => l.label);
 }
 

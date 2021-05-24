@@ -24,6 +24,7 @@ const triggerList: Trigger[] = [
   'FARM_VISITED',
   'PIZZERIA_VISITED',
   'WATERFALL_VISITED',
+  'JEWELLERY_STORE_OUTSIDE_VISITED',
 ];
 const triggers = new Triggers(triggerList);
 

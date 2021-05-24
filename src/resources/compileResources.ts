@@ -24,6 +24,7 @@ compileOpaqueImage('asciiart/backgrounds/forge_wall.txt', 'BG_FORGE_WALL');
 compileOpaqueImage('asciiart/backgrounds/farm_barn.txt', 'BG_FARM');
 compileOpaqueImage('asciiart/backgrounds/pizzeria.txt', 'BG_PIZZERIA');
 compileOpaqueImage('asciiart/backgrounds/waterfall.txt', 'BG_WATERFALL');
+compileOpaqueImage('asciiart/backgrounds/jewellery_store_outside.txt', 'BG_JEWELLERY_STORE_OUTSIDE');
 
 
 //--------------------------------------------------------------------------
@@ -331,6 +332,11 @@ compileSprite('asciiart/sprites/chinese_master_talking1.txt', 'SPR_CHINESE_MASTE
 compileSprite('asciiart/sprites/chinese_master_talking2.txt', 'SPR_CHINESE_MASTER_TALKING_2');
 compileSprite('asciiart/sprites/chinese_master_not_talking.txt', 'SPR_CHINESE_MASTER_NOT_TALKING');
 compileSprite('asciiart/sprites/bonsai.txt', 'SPR_BONSAI');
+
+compileOpaqueImage('asciiart/sprites/jewellery_ring_sign.txt', 'SPR_JEWELLERY_RING_SIGN');
+compileSprite('asciiart/sprites/jewellery_sign.txt', 'SPR_JEWELLERY_SIGN');
+compileSprite('asciiart/sprites/suv0.txt', 'SPR_SUV_0');
+compileSprite('asciiart/sprites/fire_hydrant0.txt', 'SPR_FIRE_HYDRANT_0');
 
 //--------------------------------------------------------------------------
 
