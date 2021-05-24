@@ -115,6 +115,7 @@ export enum HotspotId {
     JEWELLERY_SIGN = 'JEWELLERY_SIGN',
     SUV = 'SUV',
     FIRE_HYDRANT = 'FIRE_HYDRANT',
+    SEWER_HOLE = 'SEWER_HOLE',
 }
 
 /**

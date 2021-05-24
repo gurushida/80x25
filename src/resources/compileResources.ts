@@ -337,6 +337,7 @@ compileOpaqueImage('asciiart/sprites/jewellery_ring_sign.txt', 'SPR_JEWELLERY_RI
 compileSprite('asciiart/sprites/jewellery_sign.txt', 'SPR_JEWELLERY_SIGN');
 compileSprite('asciiart/sprites/suv0.txt', 'SPR_SUV_0');
 compileSprite('asciiart/sprites/fire_hydrant0.txt', 'SPR_FIRE_HYDRANT_0');
+compileOpaqueImage('asciiart/sprites/sewer_hole.txt', 'SPR_SEWER_HOLE');
 
 //--------------------------------------------------------------------------
 

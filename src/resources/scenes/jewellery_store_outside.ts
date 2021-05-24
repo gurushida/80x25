@@ -9,6 +9,7 @@ import { SPR_JEWELLERY_SIGN } from "../generated/images/SPR_JEWELLERY_SIGN";
 import { ActionBarButton } from "@/screenBuffer";
 import { SPR_SUV_0 } from "../generated/images/SPR_SUV_0";
 import { SPR_FIRE_HYDRANT_0 } from "../generated/images/SPR_FIRE_HYDRANT_0";
+import { SPR_SEWER_HOLE } from "../generated/images/SPR_SEWER_HOLE";
 
 const background: PaintTask = getPaintTask(BG_JEWELLERY_STORE_OUTSIDE, 0, 0, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.JEWELLERY_STORE));
 
@@ -16,6 +17,7 @@ const ring_sign = getPaintTask(SPR_JEWELLERY_RING_SIGN, 26, 4, ZIndex.BEHIND_GUY
 const sign = getPaintTask(SPR_JEWELLERY_SIGN, 56, 5, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_JEWELLERY_SIGN, HotspotId.JEWELLERY_SIGN));
 const suv = getPaintTask(SPR_SUV_0, 20, 12, ZIndex.FRONT, createMaskHotspot(SPR_SUV_0, HotspotId.SUV));
 const fire_hydrant = getPaintTask(SPR_FIRE_HYDRANT_0, 15, 15, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_FIRE_HYDRANT_0, HotspotId.FIRE_HYDRANT));
+const sewer_hole = getPaintTask(SPR_SEWER_HOLE, 71, 22, ZIndex.FRONT, createMaskHotspot(SPR_SEWER_HOLE, HotspotId.SEWER_HOLE));
 
 const hotspots: Hotspot[] = [
     {
@@ -45,6 +47,12 @@ const hotspots: Hotspot[] = [
             comment: [['I\'m not saying I would be totally against', 'messing up with some public property,'], ['but without proper tooling'], ['it would take a considerable amount', 'of force to blow this thing open.']],
         }
     },
+    {
+        hotspotId: HotspotId.SEWER_HOLE,
+        description: 'sewer hole',
+        rightClickAction: ActionBarButton.LOOK,
+        lookAt: [['Drainage infrastructure'], ['or fuel for nightmares.'], ['Depends on which books', 'you have read.']]
+    },
 ];
 
 const initialGuyPosition: GuyPosition = {
@@ -60,7 +68,7 @@ export const JEWELLERY_STORE_OUTSIDE_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [ background, ring_sign, sign, suv, fire_hydrant ],
+            images: [ background, ring_sign, sign, suv, fire_hydrant, sewer_hole ],
             animations: [],
             hotspots,
         };
