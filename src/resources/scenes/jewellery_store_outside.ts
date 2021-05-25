@@ -1,6 +1,6 @@
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { ZIndex } from "@/zIndex";
-import { createFullHotspot, createMaskHotspot, GuyPosition, Hotspot, HotspotId } from "@/hotspots";
+import { combine, createFullHotspot, createMaskHotspot, createRectangleHotspot, GuyPosition, Hotspot, HotspotId } from "@/hotspots";
 import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { BG_JEWELLERY_STORE_OUTSIDE } from "../generated/images/BG_JEWELLERY_STORE_OUTSIDE";
@@ -16,7 +16,11 @@ import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
 import { SPR_STREET_WATER_1 } from "../generated/images/SPR_STREET_WATER_1";
 import { ANIM_BOAT } from "../animations/boat";
 
-const background: PaintTask = getPaintTask(BG_JEWELLERY_STORE_OUTSIDE, 0, 0, ZIndex.BEHIND_GUY, createFullHotspot(HotspotId.JEWELLERY_STORE));
+const fullFilter = createFullHotspot(HotspotId.JEWELLERY_STORE);
+const doorFilter = createRectangleHotspot(HotspotId.JEWELLERY_DOOR, 53, 10, 17, 10);
+
+const background: PaintTask = getPaintTask(BG_JEWELLERY_STORE_OUTSIDE, 0, 0, ZIndex.BEHIND_GUY, combine(doorFilter, fullFilter));
+
 
 const ring_sign = getPaintTask(SPR_JEWELLERY_RING_SIGN, 24, 4, ZIndex.BEHIND_GUY, undefined);
 const sign = getPaintTask(SPR_JEWELLERY_SIGN, 56, 5, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_JEWELLERY_SIGN, HotspotId.JEWELLERY_SIGN));
@@ -87,6 +91,17 @@ const hotspots: Hotspot[] = [
         description: 'water',
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['Some water that ends its course', 'in the sewer hole over there.']]
+    },
+    {
+        hotspotId: HotspotId.JEWELLERY_DOOR,
+        description: 'Enter jewellery store',
+        movementHotspot: SceneId.JEWELLERY_STORE_INSIDE,
+        guyPositionForAction: {
+            left: 55,
+            top: 12,
+            lookToTheRight: true
+        },
+        lookAt: [[]]
     },
 ];
 

@@ -31,6 +31,7 @@ import { FARM_LOADER } from "./resources/scenes/farm";
 import { PIZZERIA_LOADER } from "./resources/scenes/pizzeria";
 import { WATERFALL_LOADER } from "./resources/scenes/waterfall";
 import { JEWELLERY_STORE_OUTSIDE_LOADER } from "./resources/scenes/jewellery_store_outside";
+import { JEWELLERY_STORE_INSIDE_LOADER } from "./resources/scenes/jewellery_store_inside";
 
 export class SceneEngine implements SceneActionListener {
 
@@ -476,6 +477,7 @@ function getSceneLoader(sceneId: SceneId): SceneLoader | undefined {
         case SceneId.PIZZERIA: return PIZZERIA_LOADER;
         case SceneId.WATERFALL: return WATERFALL_LOADER;
         case SceneId.JEWELLERY_STORE_OUTSIDE: return JEWELLERY_STORE_OUTSIDE_LOADER;
+        case SceneId.JEWELLERY_STORE_INSIDE: return JEWELLERY_STORE_INSIDE_LOADER;
         default: return undefined;
     }
 }

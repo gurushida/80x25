@@ -47,7 +47,7 @@ const hotspots: Hotspot[] = [
         hotspotId: HotspotId.BRIAN,
         description: 'guy in PhD costume',
         rightClickAction: ActionBarButton.TALK,
-        lookAt: [['This guy is cosplaying a', 'famous astrophysicist,'], ['author of', '"A survey of radial velocities', 'in the zodiacal dust cloud"'], ['who also happens to be', 'a decent musician.']],
+        lookAt: [['This guy is cosplaying the', 'famous astrophysicist author of'], ['"A survey of radial velocities', 'in the zodiacal dust cloud"'], ['who also happens to be', 'a decent musician.']],
         dialog: DIALOG_BRIAN,
         guyPositionForAction: {
             left: 56,

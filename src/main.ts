@@ -3,6 +3,7 @@ import { SceneEngine } from './sceneEngine';
 import { Clock } from './clock';
 import { Trigger, Triggers } from './triggers';
 import { InventoryId, Inventory } from './inventory';
+import { SceneId } from './scene';
 
 
 const ui = new UI();
@@ -39,4 +40,5 @@ Clock.clock.repeat(0, () => {
 });
 
 Clock.clock.play();
-ui.showMap(triggers);
+//ui.showMap(triggers);
+sceneEngine.loadScene(SceneId.JEWELLERY_STORE_INSIDE);

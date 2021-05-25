@@ -117,6 +117,7 @@ export enum HotspotId {
     FIRE_HYDRANT = 'FIRE_HYDRANT',
     SEWER_HOLE = 'SEWER_HOLE',
     STREET_WATER = 'STREET_WATER',
+    JEWELLERY_DOOR = 'JEWELLERY_DOOR',
 }
 
 /**
