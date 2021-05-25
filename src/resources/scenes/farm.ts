@@ -129,7 +129,7 @@ const hotspots: Hotspot[] = [
 const initialGuyPosition: GuyPosition = {
     left: 70,
     top: 11,
-    lookToTheRight: true,
+    lookToTheRight: false,
 };
 
 export const FARM_LOADER: SceneLoader = {
