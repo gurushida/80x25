@@ -343,6 +343,18 @@ compileOpaqueImage('asciiart/sprites/street_water1.txt', 'SPR_STREET_WATER_1');
 compileOpaqueImage('asciiart/sprites/street_water2.txt', 'SPR_STREET_WATER_2');
 compileOpaqueImage('asciiart/sprites/boat0.txt', 'SPR_BOAT_0');
 
+compileSprite('asciiart/sprites/jeweller0.txt', 'SPR_JEWELLER_0');
+compileSprite('asciiart/sprites/jeweller1.txt', 'SPR_JEWELLER_1');
+compileSprite('asciiart/sprites/jeweller2.txt', 'SPR_JEWELLER_2');
+compileSprite('asciiart/sprites/jeweller3.txt', 'SPR_JEWELLER_3');
+compileSprite('asciiart/sprites/jeweller4.txt', 'SPR_JEWELLER_4');
+compileSprite('asciiart/sprites/jeweller5.txt', 'SPR_JEWELLER_5');
+compileSprite('asciiart/sprites/jeweller6.txt', 'SPR_JEWELLER_6');
+compileSprite('asciiart/sprites/jeweller7.txt', 'SPR_JEWELLER_7');
+compileSprite('asciiart/sprites/jeweller_talking0.txt', 'SPR_JEWELLER_TALKING_0');
+compileSprite('asciiart/sprites/jeweller_talking1.txt', 'SPR_JEWELLER_TALKING_1');
+compileSprite('asciiart/sprites/jeweller_talking2.txt', 'SPR_JEWELLER_TALKING_2');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
@@ -362,6 +374,7 @@ compileDialog('dialogs/blacksmith.grf', 'DIALOG_BLACKSMITH');
 compileDialog('dialogs/farmer.grf', 'DIALOG_FARMER');
 compileDialog('dialogs/don_aldo.grf', 'DIALOG_DON_ALDO');
 compileDialog('dialogs/chinese_master.grf', 'DIALOG_CHINESE_MASTER');
+compileDialog('dialogs/jeweller.grf', 'DIALOG_JEWELLER');
 
 
 //--------------------------------------------------------------------------
