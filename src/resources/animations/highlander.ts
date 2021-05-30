@@ -15,7 +15,11 @@ import { SPR_HIGHLANDER_TALKING_2 } from "../generated/images/SPR_HIGHLANDER_TAL
 
 const HIGHLANDER_HOTSPOT = createMaskHotspot(SPR_HIGHLANDER_RIGHT_0, HotspotId.HIGHLANDER);
 
-const ANIM_HIGHLANDER_RIGHT = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
+const highlander_X = 48;
+const highlander_Y = 12;
+
+
+const ANIM_HIGHLANDER_RIGHT = new ImageAnimation(highlander_X, highlander_Y, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -87,7 +91,7 @@ const ANIM_HIGHLANDER_RIGHT = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true
     ]);
 
 
-const ANIM_HIGHLANDER_LEFT = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
+const ANIM_HIGHLANDER_LEFT = new ImageAnimation(highlander_X, highlander_Y, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -158,7 +162,7 @@ const ANIM_HIGHLANDER_LEFT = new ImageAnimation(48, 12, ZIndex.BEHIND_GUY, true,
         },
     ]);
 
-const ANIM_HIGHLANDER_TALKING = new ImageAnimation(47, 12, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
+const ANIM_HIGHLANDER_TALKING = new ImageAnimation(highlander_X - 1, highlander_Y, ZIndex.BEHIND_GUY, true, HIGHLANDER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -188,7 +192,7 @@ export class HighlanderAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 52, talkAnchorBottom: 11 };
+        return { talkAnchorLeft: highlander_X + 4, talkAnchorBottom: highlander_Y - 1 };
     }
 
     startTalkingAnimation(): Animation {

@@ -9,7 +9,12 @@ import { SPR_BRIAN_TALKING_0 } from "../generated/images/SPR_BRIAN_TALKING_0";
 import { SPR_BRIAN_TALKING_1 } from "../generated/images/SPR_BRIAN_TALKING_1";
 import { SPR_BRIAN_TALKING_2 } from "../generated/images/SPR_BRIAN_TALKING_2";
 
-const ANIM_BRIAN = new ImageAnimation(66, 12, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_BRIAN_0, HotspotId.BRIAN),
+const BRIAN_HOTSPOT = createMaskHotspot(SPR_BRIAN_0, HotspotId.BRIAN);
+
+const brian_X = 66;
+const brian_Y = 12;
+
+const ANIM_BRIAN = new ImageAnimation(brian_X, brian_Y, ZIndex.BEHIND_GUY, true, BRIAN_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -26,7 +31,7 @@ const ANIM_BRIAN = new ImageAnimation(66, 12, ZIndex.BEHIND_GUY, true, createMas
         },
     ]);
 
-const ANIM_BRIAN_TALKING = new ImageAnimation(69, 12, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_BRIAN_TALKING_0, HotspotId.BRIAN),
+const ANIM_BRIAN_TALKING = new ImageAnimation(brian_X + 3, brian_Y, ZIndex.BEHIND_GUY, true, BRIAN_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -56,7 +61,7 @@ export class BrianAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 73, talkAnchorBottom: 10 };
+        return { talkAnchorLeft: brian_X + 7, talkAnchorBottom: brian_Y };
     }
 
     startTalkingAnimation(): Animation {

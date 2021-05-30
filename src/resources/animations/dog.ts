@@ -8,7 +8,11 @@ import { SPR_DOG_1 } from "../generated/images/SPR_DOG_1";
 
 const DOG_HOTSPOT = createMaskHotspot(SPR_DOG_0, HotspotId.DOG);
 
-const ANIM_DOG = new ImageAnimation(50, 17, ZIndex.BEHIND_GUY, true, DOG_HOTSPOT, NO_LEFT_MOVEMENT,
+const dog_X = 50;
+const dog_Y = 17;
+
+
+const ANIM_DOG = new ImageAnimation(dog_X, dog_Y, ZIndex.BEHIND_GUY, true, DOG_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_DOG_0,
@@ -31,7 +35,7 @@ export class DogAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 60, talkAnchorBottom: 16 };
+        return { talkAnchorLeft: dog_X + 10, talkAnchorBottom: dog_Y - 1 };
     }
 
     startTalkingAnimation(): Animation {

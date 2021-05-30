@@ -13,7 +13,11 @@ import { SPR_ALFREDO_TALKING_2 } from "../generated/images/SPR_ALFREDO_TALKING_2
 
 const ALFREDO_HOTSPOT = createMaskHotspot(SPR_ALFREDO_0, HotspotId.ALFREDO);
 
-const ANIM_ALFREDO = new ImageAnimation(35, 12, ZIndex.BEHIND_GUY, true, ALFREDO_HOTSPOT,
+const alfredo_X = 35;
+const alfredo_Y = 12;
+
+
+const ANIM_ALFREDO = new ImageAnimation(alfredo_X, alfredo_Y, ZIndex.BEHIND_GUY, true, ALFREDO_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -42,7 +46,7 @@ const ANIM_ALFREDO = new ImageAnimation(35, 12, ZIndex.BEHIND_GUY, true, ALFREDO
         },
     ]);
 
-const ANIM_ALFREDO_TALKING = new ImageAnimation(35, 12, ZIndex.BEHIND_GUY, true, ALFREDO_HOTSPOT,
+const ANIM_ALFREDO_TALKING = new ImageAnimation(alfredo_X, alfredo_Y, ZIndex.BEHIND_GUY, true, ALFREDO_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -72,7 +76,7 @@ export class AlfredoAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 40, talkAnchorBottom: 15 };
+        return { talkAnchorLeft: alfredo_X + 5, talkAnchorBottom: alfredo_Y + 1 };
     }
 
     startTalkingAnimation(): Animation {

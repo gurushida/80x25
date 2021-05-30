@@ -17,7 +17,10 @@ import { SPR_BIKER_TALKING_2 } from "../generated/images/SPR_BIKER_TALKING_2";
 
 const BIKER_HOTSPOT = createMaskHotspot(SPR_BIKER_0, HotspotId.BIKER);
 
-const ANIM_BIKER = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
+const biker_X = 36;
+const biker_Y = 10;
+
+const ANIM_BIKER = new ImageAnimation(biker_X, biker_Y, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -107,7 +110,7 @@ const ANIM_BIKER = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOT
     ]);
 
 
-const ANIM_BIKER_TALKING = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
+const ANIM_BIKER_TALKING = new ImageAnimation(biker_X, biker_Y, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -130,7 +133,7 @@ const ANIM_BIKER_TALKING = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, B
         },
     ]);
 
-const ANIM_BIKER_NOT_TALKING = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
+const ANIM_BIKER_NOT_TALKING = new ImageAnimation(biker_X, biker_Y, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
         NO_LEFT_MOVEMENT,
     [
         {
@@ -148,7 +151,7 @@ export class BikerAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 47, talkAnchorBottom: 9 };
+        return { talkAnchorLeft: biker_X + 10, talkAnchorBottom: biker_Y };
     }
 
     startTalkingAnimation(): Animation {

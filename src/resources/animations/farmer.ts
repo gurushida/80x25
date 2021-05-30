@@ -12,12 +12,12 @@ import { SPR_FARMER_TALKING_2 } from "../generated/images/SPR_FARMER_TALKING_2";
 
 const FARMER_HOTSPOT = createMaskHotspot(SPR_FARMER_0, HotspotId.FARMER);
 
-const farmerX = 38;
-const farmerY = 9;
+const farmer_X = 38;
+const farmer_Y = 9;
 
 const scratch_ticks = 10;
 
-const ANIM_FARMER = new ImageAnimation(farmerX, farmerY, ZIndex.BEHIND_GUY, true, FARMER_HOTSPOT,
+const ANIM_FARMER = new ImageAnimation(farmer_X, farmer_Y, ZIndex.BEHIND_GUY, true, FARMER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -64,7 +64,7 @@ const ANIM_FARMER = new ImageAnimation(farmerX, farmerY, ZIndex.BEHIND_GUY, true
         },
     ]);
 
-const ANIM_FARMER_TALKING = new ImageAnimation(farmerX, farmerY, ZIndex.BEHIND_GUY, true, FARMER_HOTSPOT,
+const ANIM_FARMER_TALKING = new ImageAnimation(farmer_X, farmer_Y, ZIndex.BEHIND_GUY, true, FARMER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -94,7 +94,7 @@ export class FarmerAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 44, talkAnchorBottom: 10 };
+        return { talkAnchorLeft: farmer_X + 6, talkAnchorBottom: farmer_Y + 1 };
     }
 
     startTalkingAnimation(): Animation {

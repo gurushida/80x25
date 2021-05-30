@@ -11,7 +11,10 @@ import { SPR_PHARMACIST_TALKING_2 } from "../generated/images/SPR_PHARMACIST_TAL
 
 const PHARMACIST_HOTSPOT = createMaskHotspot(SPR_PHARMACIST_0, HotspotId.PHARMACIST);
 
-const ANIM_PHARMACIST = new ImageAnimation(50, 9, ZIndex.BEHIND_GUY, true, PHARMACIST_HOTSPOT,
+const pharmacist_X = 50;
+const pharmacist_Y = 9;
+
+const ANIM_PHARMACIST = new ImageAnimation(pharmacist_X, pharmacist_Y, ZIndex.BEHIND_GUY, true, PHARMACIST_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -28,7 +31,7 @@ const ANIM_PHARMACIST = new ImageAnimation(50, 9, ZIndex.BEHIND_GUY, true, PHARM
         },
     ]);
 
-const ANIM_PHARMACIST_TALKING = new ImageAnimation(50, 9, ZIndex.BEHIND_GUY, true, PHARMACIST_HOTSPOT,
+const ANIM_PHARMACIST_TALKING = new ImageAnimation(pharmacist_X, pharmacist_Y, ZIndex.BEHIND_GUY, true, PHARMACIST_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -59,7 +62,7 @@ export class PharmacistAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 55, talkAnchorBottom: 9 };
+        return { talkAnchorLeft: pharmacist_X + 5, talkAnchorBottom: pharmacist_Y };
     }
 
     startTalkingAnimation(): Animation {

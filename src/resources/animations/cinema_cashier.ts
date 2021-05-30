@@ -12,7 +12,11 @@ import { SPR_CINEMA_CASHIER_TALKING_2 } from "../generated/images/SPR_CINEMA_CAS
 
 const CASHIER_HOTSPOT = createMaskHotspot(SPR_CINEMA_CASHIER_0, HotspotId.CINEMA_CASHIER);
 
-const ANIM_CASHIER = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, CASHIER_HOTSPOT,
+const cashier_X = 10;
+const cashier_Y = 12;
+
+
+const ANIM_CASHIER = new ImageAnimation(cashier_X, cashier_Y, ZIndex.BEHIND_GUY, true, CASHIER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -41,7 +45,7 @@ const ANIM_CASHIER = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, CASHIER
         },
     ]);
 
-const ANIM_CASHIER_TALKING = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, CASHIER_HOTSPOT,
+const ANIM_CASHIER_TALKING = new ImageAnimation(cashier_X, cashier_Y, ZIndex.BEHIND_GUY, true, CASHIER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -71,7 +75,7 @@ export class CinemaCashierAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 13, talkAnchorBottom: 10 };
+        return { talkAnchorLeft: cashier_X + 2, talkAnchorBottom: cashier_Y - 2 };
     }
 
     startTalkingAnimation(): Animation {

@@ -13,7 +13,11 @@ import { SPR_GIRL_TALKING_1 } from "../generated/images/SPR_GIRL_TALKING_1";
 
 const GIRL_JUMPING_ROPE_HOTSPOT = createMaskHotspot(SPR_GIRL_JUMPING_ROPE_2, HotspotId.LITTLE_GIRL);
 
-const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(48, 14, ZIndex.FRONT, true, GIRL_JUMPING_ROPE_HOTSPOT,
+const little_girl_X = 48;
+const little_girl_Y = 14;
+
+
+const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(little_girl_X, little_girl_Y, ZIndex.FRONT, true, GIRL_JUMPING_ROPE_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -44,7 +48,7 @@ const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(48, 14, ZIndex.FRONT, true, GI
 
 const GIRL_STILL_HOTSPOT = createMaskHotspot(SPR_GIRL_STILL_0, HotspotId.LITTLE_GIRL);
 
-const ANIM_GIRL_TALKING = new ImageAnimation(48, 16, ZIndex.FRONT, true, GIRL_STILL_HOTSPOT,
+const ANIM_GIRL_TALKING = new ImageAnimation(little_girl_X, little_girl_Y + 2, ZIndex.FRONT, true, GIRL_STILL_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -85,7 +89,7 @@ export class LittleGirlAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 55, talkAnchorBottom: 15 };
+        return { talkAnchorLeft: little_girl_X + 7, talkAnchorBottom: little_girl_Y + 1 };
     }
 
     startTalkingAnimation(): Animation {

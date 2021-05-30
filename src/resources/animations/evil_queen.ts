@@ -10,7 +10,11 @@ import { SPR_EVIL_QUEEN_3 } from "../generated/images/SPR_EVIL_QUEEN_3";
 
 const EVIL_QUEEN_HOTSPOT = createMaskHotspot(SPR_EVIL_QUEEN_0, HotspotId.EVIL_QUEEN);
 
-const ANIM_EVIL_QUEEN = new ImageAnimation(56, 13, ZIndex.BEHIND_GUY, true, EVIL_QUEEN_HOTSPOT,
+const evil_queen_X = 56;
+const evil_queen_Y = 13;
+
+
+const ANIM_EVIL_QUEEN = new ImageAnimation(evil_queen_X, evil_queen_Y, ZIndex.BEHIND_GUY, true, EVIL_QUEEN_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -27,7 +31,7 @@ const ANIM_EVIL_QUEEN = new ImageAnimation(56, 13, ZIndex.BEHIND_GUY, true, EVIL
         },
     ]);
 
-const ANIM_EVIL_QUEEN_TALKING = new ImageAnimation(56, 13, ZIndex.BEHIND_GUY, true, EVIL_QUEEN_HOTSPOT,
+const ANIM_EVIL_QUEEN_TALKING = new ImageAnimation(evil_queen_X, evil_queen_Y, ZIndex.BEHIND_GUY, true, EVIL_QUEEN_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -75,7 +79,7 @@ export class EvilQueenAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 62, talkAnchorBottom: 11 };
+        return { talkAnchorLeft: evil_queen_X + 6, talkAnchorBottom: evil_queen_Y - 1 };
     }
 
     startTalkingAnimation(): Animation {

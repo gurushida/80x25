@@ -13,9 +13,10 @@ import { SPR_ARCADE_GUY_TALKING } from "../generated/images/SPR_ARCADE_GUY_TALKI
 const ARCADE_GUY_HOTSPOT = createMaskHotspot(SPR_ARCADE_GUY_0, HotspotId.ARCADE_GUY);
 
 const CHEWING = 16;
+const arcade_guy_X = 35;
+const arcade_guy_Y = 10;
 
-
-const ANIM_ARCADE_GUY = new ImageAnimation(35, 10, ZIndex.BEHIND_GUY, true, ARCADE_GUY_HOTSPOT, NO_LEFT_MOVEMENT,
+const ANIM_ARCADE_GUY = new ImageAnimation(arcade_guy_X, arcade_guy_Y, ZIndex.BEHIND_GUY, true, ARCADE_GUY_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_ARCADE_GUY_0,
@@ -79,7 +80,7 @@ const ANIM_ARCADE_GUY = new ImageAnimation(35, 10, ZIndex.BEHIND_GUY, true, ARCA
         },
     ]);
 
-const ANIM_ARCADE_GUY_TALKING = new ImageAnimation(35, 10, ZIndex.BEHIND_GUY, true, ARCADE_GUY_HOTSPOT, NO_LEFT_MOVEMENT,
+const ANIM_ARCADE_GUY_TALKING = new ImageAnimation(arcade_guy_X, arcade_guy_Y, ZIndex.BEHIND_GUY, true, ARCADE_GUY_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {
             image: SPR_ARCADE_GUY_2,
@@ -108,7 +109,7 @@ export class ArcadeGuyAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 38, talkAnchorBottom: 10 };
+        return { talkAnchorLeft: arcade_guy_X + 5, talkAnchorBottom: arcade_guy_Y };
     }
 
     startTalkingAnimation(): Animation {

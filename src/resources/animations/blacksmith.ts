@@ -12,7 +12,11 @@ import { SPR_BLACKSMITH_TALKING_2 } from "../generated/images/SPR_BLACKSMITH_TAL
 
 const BLACKSMITH_HOTSPOT = createMaskHotspot(SPR_BLACKSMITH_LEFT_0, HotspotId.BLACKSMITH);
 
-const ANIM_BLACKSMITH_LEFT = new ImageAnimation(21, 16, ZIndex.FRONT, true, BLACKSMITH_HOTSPOT,
+const blacksmith_X = 21;
+const blacksmith_Y = 16;
+
+
+const ANIM_BLACKSMITH_LEFT = new ImageAnimation(blacksmith_X, blacksmith_Y, ZIndex.FRONT, true, BLACKSMITH_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -30,7 +34,7 @@ const ANIM_BLACKSMITH_LEFT = new ImageAnimation(21, 16, ZIndex.FRONT, true, BLAC
     ]);
 
 
-const ANIM_BLACKSMITH_RIGHT = new ImageAnimation(21, 16, ZIndex.BEHIND_GUY, true, undefined,
+const ANIM_BLACKSMITH_RIGHT = new ImageAnimation(blacksmith_X, blacksmith_Y, ZIndex.BEHIND_GUY, true, undefined,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -41,7 +45,7 @@ const ANIM_BLACKSMITH_RIGHT = new ImageAnimation(21, 16, ZIndex.BEHIND_GUY, true
         },
     ]);
 
-const ANIM_BLACKSMITH_TALKING = new ImageAnimation(21, 16, ZIndex.BEHIND_GUY, true, undefined,
+const ANIM_BLACKSMITH_TALKING = new ImageAnimation(blacksmith_X, blacksmith_Y, ZIndex.BEHIND_GUY, true, undefined,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -71,7 +75,7 @@ export class BlacksmithAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 33, talkAnchorBottom: 14 };
+        return { talkAnchorLeft: blacksmith_X + 12, talkAnchorBottom: blacksmith_Y - 2 };
     }
 
     startTalkingAnimation(): Animation {

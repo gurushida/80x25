@@ -17,10 +17,10 @@ import { SPR_JEWELLER_7 } from "../generated/images/SPR_JEWELLER_7";
 
 const JEWELLER_HOTSPOT = createMaskHotspot(SPR_JEWELLER_0, HotspotId.JEWELLER);
 
-const jewellerX = 10;
-const jewellerY = 8;
+const jeweller_X = 10;
+const jeweller_Y = 8;
 
-const ANIM_JEWELLER = new ImageAnimation(jewellerX, jewellerY, ZIndex.BEHIND_GUY, true, JEWELLER_HOTSPOT,
+const ANIM_JEWELLER = new ImageAnimation(jeweller_X, jeweller_Y, ZIndex.BEHIND_GUY, true, JEWELLER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -121,7 +121,7 @@ const ANIM_JEWELLER = new ImageAnimation(jewellerX, jewellerY, ZIndex.BEHIND_GUY
         },
     ]);
 
-const ANIM_JEWELLER_TALKING = new ImageAnimation(jewellerX, jewellerY, ZIndex.BEHIND_GUY, true, JEWELLER_HOTSPOT,
+const ANIM_JEWELLER_TALKING = new ImageAnimation(jeweller_X, jeweller_Y, ZIndex.BEHIND_GUY, true, JEWELLER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -151,7 +151,7 @@ export class JewellerAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: jewellerX + 7, talkAnchorBottom: jewellerY - 1 };
+        return { talkAnchorLeft: jeweller_X + 7, talkAnchorBottom: jeweller_Y - 1 };
     }
 
     startTalkingAnimation(): Animation {

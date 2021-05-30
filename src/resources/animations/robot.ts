@@ -10,7 +10,10 @@ import { SPR_ROBOT_TALKING_1 } from "../generated/images/SPR_ROBOT_TALKING_1";
 
 const ROBOT_HOTSPOT = createMaskHotspot(SPR_ROBOT_0, HotspotId.ROBOT);
 
-const ANIM_ROBOT = new ImageAnimation(22, 15, ZIndex.BEHIND_GUY, true, ROBOT_HOTSPOT,
+const robot_X = 22;
+const robot_Y = 15;
+
+const ANIM_ROBOT = new ImageAnimation(robot_X, robot_Y, ZIndex.BEHIND_GUY, true, ROBOT_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -27,7 +30,7 @@ const ANIM_ROBOT = new ImageAnimation(22, 15, ZIndex.BEHIND_GUY, true, ROBOT_HOT
         },
     ]);
 
-const ANIM_ROBOT_TALKING = new ImageAnimation(22, 15, ZIndex.BEHIND_GUY, true, ROBOT_HOTSPOT,
+const ANIM_ROBOT_TALKING = new ImageAnimation(robot_X, robot_Y, ZIndex.BEHIND_GUY, true, ROBOT_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -52,7 +55,7 @@ export class RobotAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 27, talkAnchorBottom: 14 };
+        return { talkAnchorLeft: robot_X + 5, talkAnchorBottom: robot_Y - 1 };
     }
 
     startTalkingAnimation(): Animation {

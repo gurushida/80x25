@@ -19,8 +19,10 @@ import { SPR_BARTENDER_TALKING_2 } from "../generated/images/SPR_BARTENDER_TALKI
 const BARTENDER_HOTSPOT = createMaskHotspot(SPR_BARTENDER_0, HotspotId.BARTENDER);
 
 const wiping_ticks = 4;
+const bartender_X = 10;
+const bartender_Y = 12;
 
-const ANIM_BARTENDER = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, BARTENDER_HOTSPOT,
+const ANIM_BARTENDER = new ImageAnimation(bartender_X, bartender_Y, ZIndex.BEHIND_GUY, true, BARTENDER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -128,7 +130,7 @@ const ANIM_BARTENDER = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, BARTE
         },
     ]);
 
-const ANIM_BARTENDER_TALKING = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, BARTENDER_HOTSPOT,
+const ANIM_BARTENDER_TALKING = new ImageAnimation(bartender_X, bartender_Y, ZIndex.BEHIND_GUY, true, BARTENDER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
@@ -158,7 +160,7 @@ export class BartenderAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 16, talkAnchorBottom: 11 };
+        return { talkAnchorLeft: bartender_X + 6, talkAnchorBottom: bartender_Y - 1 };
     }
 
     startTalkingAnimation(): Animation {

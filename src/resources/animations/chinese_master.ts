@@ -91,7 +91,7 @@ export class ChineseMasterAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 60, talkAnchorBottom: 13 };
+        return { talkAnchorLeft: chinese_master_X + 6, talkAnchorBottom: chinese_master_Y };
     }
 
     startTalkingAnimation(): Animation {

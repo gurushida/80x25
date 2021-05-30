@@ -171,7 +171,7 @@ export class DonAldoAnimation extends CanTalkAnimation {
     }
 
     getTalkAnchor(): { talkAnchorLeft: number; talkAnchorBottom: number; } {
-        return { talkAnchorLeft: 73, talkAnchorBottom: 13 };
+        return { talkAnchorLeft: don_aldo_X + 2, talkAnchorBottom: don_aldo_Y - 1 };
     }
 
     startTalkingAnimation(): Animation {
