@@ -185,6 +185,11 @@ export interface GuyPosition {
     maxLeft?: number;
 }
 
+export interface GuyPositionForAction {
+    left: number;
+    lookToTheRight: boolean
+}
+
 
 // Describes what happens when trying to take a hotspot
 export interface TakeAction {
@@ -192,7 +197,7 @@ export interface TakeAction {
 
     // If defined, takes precedence over the comment property.
     dialog?: Dialog;
-    guyPositionForAction?: GuyPosition;
+    guyPositionForAction?: GuyPositionForAction;
 }
 
 // Describes what happens when trying to use directly a hotspot
@@ -217,7 +222,7 @@ export interface Hotspot {
 
     // When a hotspot is an object or character that the guy needs to come
     // close to to interact with, this represents where the guy should be
-    guyPositionForAction?: GuyPosition;
+    guyPositionForAction?: GuyPositionForAction;
 
     // Defined if we can talk to this hotspot, with the dialog to use
     dialog?: Dialog;

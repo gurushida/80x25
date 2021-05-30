@@ -51,7 +51,6 @@ const cinemaHotspots: Hotspot[] = [
         lookAt: [['This is a self-service', 'popcorn machine.']],
         guyPositionForAction: {
             left: 53,
-            top: 14,
             lookToTheRight: true
         },
         useDirectly: {

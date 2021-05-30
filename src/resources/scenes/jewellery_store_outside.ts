@@ -98,7 +98,6 @@ const hotspots: Hotspot[] = [
         movementHotspot: SceneId.JEWELLERY_STORE_INSIDE,
         guyPositionForAction: {
             left: 55,
-            top: 12,
             lookToTheRight: true
         },
         lookAt: [[]]

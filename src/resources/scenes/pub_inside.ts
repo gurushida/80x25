@@ -39,7 +39,6 @@ const hotspots: Hotspot[] = [
         dialog: DIALOG_BARTENDER,
         guyPositionForAction: {
             left: 26,
-            top: 13,
             lookToTheRight: false
         },
     },
@@ -51,7 +50,6 @@ const hotspots: Hotspot[] = [
         dialog: DIALOG_BRIAN,
         guyPositionForAction: {
             left: 56,
-            top: 13,
             lookToTheRight: true
         },
     },
@@ -63,7 +61,6 @@ const hotspots: Hotspot[] = [
         dialog: DIALOG_EVIL_QUEEN,
         guyPositionForAction: {
             left: 46,
-            top: 13,
             lookToTheRight: true
         },
     },

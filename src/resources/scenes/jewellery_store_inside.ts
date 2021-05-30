@@ -22,7 +22,6 @@ const hotspots: Hotspot[] = [
         dialog: DIALOG_JEWELLER,
         guyPositionForAction: {
             left: 29,
-            top: 12,
             lookToTheRight: false
         },
         lookAt: [['This jeweller looks very aristocratic.']],

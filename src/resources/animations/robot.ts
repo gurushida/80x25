@@ -13,6 +13,11 @@ const ROBOT_HOTSPOT = createMaskHotspot(SPR_ROBOT_0, HotspotId.ROBOT);
 const robot_X = 22;
 const robot_Y = 15;
 
+export const ROBOT_POSITION_FOR_ACTION = {
+    left: robot_X + 13,
+    lookToTheRight: false
+};
+
 const ANIM_ROBOT = new ImageAnimation(robot_X, robot_Y, ZIndex.BEHIND_GUY, true, ROBOT_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [

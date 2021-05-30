@@ -3,10 +3,10 @@ import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { Triggers } from "@/triggers";
 import { ActionBarButton } from "@/screenBuffer";
 import { ANIM_FOUNTAIN } from "../animations/fountain";
-import { LittleGirlAnimation } from "../animations/little_girl";
+import { LittleGirlAnimation, LITTLE_GIRL_POSITION_FOR_ACTION } from "../animations/little_girl";
 import { DIALOG_LITTLE_GIRL } from "../generated/dialogs/DIALOG_LITTLE_GIRL";
 import { DIALOG_ROBOT } from "../generated/dialogs/DIALOG_ROBOT";
-import { RobotAnimation } from "../animations/robot";
+import { RobotAnimation, ROBOT_POSITION_FOR_ACTION } from "../animations/robot";
 import { BG_PARK } from "../generated/images/BG_PARK";
 import { PaintTask, getPaintTask } from "@/paintTask";
 import { ZIndex } from "@/zIndex";
@@ -45,11 +45,7 @@ const hotspots: Hotspot[] = [
         description: 'little girl',
         rightClickAction: ActionBarButton.TALK,
         dialog: DIALOG_LITTLE_GIRL,
-        guyPositionForAction: {
-            left: 70,
-            top: 13,
-            lookToTheRight: false
-        },
+        guyPositionForAction: LITTLE_GIRL_POSITION_FOR_ACTION,
         lookAt: [['A little girl hopelessly', 'battling gravity.']],
         take: {
             comment: [['I do admit having some', 'questionable hobbies'], ['but kidnapping is', 'not one of them.']],
@@ -60,11 +56,7 @@ const hotspots: Hotspot[] = [
         description: 'robot',
         rightClickAction: ActionBarButton.TALK,
         dialog: DIALOG_ROBOT,
-        guyPositionForAction: {
-            left: 35,
-            top: 13,
-            lookToTheRight: false
-        },
+        guyPositionForAction: ROBOT_POSITION_FOR_ACTION,
         lookAt: [['A robot cop.']],
     },
 ];

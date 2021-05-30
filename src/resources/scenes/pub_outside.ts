@@ -33,7 +33,6 @@ const pubHotspots: Hotspot[] = [
         movementHotspot: SceneId.INSIDE_PUB,
         guyPositionForAction: {
             left: 28,
-            top: 14,
             lookToTheRight: true
         },
         lookAt: [[]]
@@ -44,7 +43,6 @@ const pubHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 20,
-            top: 14,
             lookToTheRight: false
         },
         lookAt: [[ 'This represents the', 'dedicated demon'], ['that waits for Australian', 'heavy smoker schoolboys.']]
@@ -55,7 +53,6 @@ const pubHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 70,
-            top: 14,
             lookToTheRight: false
         },
         lookAt: [[ 'The bell of doom,'], ['feared since ancient times'], ['for its terrible omen:'], ['the pub is going to close.']]
@@ -67,7 +64,6 @@ const pubHotspots: Hotspot[] = [
         dialog: DIALOG_BIKER,
         guyPositionForAction: {
             left: 60,
-            top: 14,
             lookToTheRight: false
         },
         lookAt: [[ 'A muscular road knight', 'without his mount,'], ['guardian of this', 'temple of liquid sin.']]

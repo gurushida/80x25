@@ -57,7 +57,6 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.TALK,
         guyPositionForAction: {
             left: 39,
-            top: 12,
             lookToTheRight: true
         },
         lookAt: [['A pharmacist in his traditional', 'lab coat costume.']],

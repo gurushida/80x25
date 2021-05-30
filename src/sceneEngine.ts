@@ -1,6 +1,6 @@
 import { Animation, ICanTalkAnimation, isCanTalkAnimation } from "./animations";
 import { ScreenBuffer, HEIGHT, ActionBarButton, WIDTH } from "./screenBuffer";
-import { Hotspot, GuyPosition, isHotspot, HotspotId } from "./hotspots";
+import { Hotspot, GuyPosition, isHotspot, HotspotId, GuyPositionForAction } from "./hotspots";
 import { Inventory, InventoryObject, isInventoryObject } from "./inventory";
 import { PaintTask } from "./paintTask";
 import { DialogEngine } from "./dialogEngine";
@@ -316,10 +316,15 @@ export class SceneEngine implements SceneActionListener {
         debug('scene loaded');
     }
 
-    private walkTo(pos: GuyPosition | undefined, then?: Runnable) {
+    private walkTo(pos: GuyPositionForAction | undefined, then?: Runnable) {
         if (this.guyAnimation) {
             if (pos) {
-                this.guyAnimation.walkTo({ pos, then });
+                const dstPos: GuyPosition = {
+                    left: pos.left,
+                    top: this.guyPosition?.top!,
+                    lookToTheRight: pos.lookToTheRight,
+                };
+                this.guyAnimation.walkTo({ pos: dstPos, then });
             } else {
                 if (then) {
                     then();
@@ -392,6 +397,7 @@ export class SceneEngine implements SceneActionListener {
             this.say([[ 'I cannot talk to that.' ]]);
         } else if (who.dialog) {
             const dialog = who.dialog;
+            invariant(who.guyPositionForAction, 'dialog should have a position for action');
             this.walkTo(who.guyPositionForAction, () => {
                 this.runDialog(dialog, this.triggers);
             });
@@ -419,7 +425,7 @@ export class SceneEngine implements SceneActionListener {
         if (isInventoryObject(what)) {
             this.say(what.lookAt);
         } else {
-            let positionForAction: GuyPosition | undefined;
+            let positionForAction: GuyPositionForAction | undefined;
             if (what.guyPositionForAction) {
                 // If the object has a particular position to be at,
                 // let's go there
@@ -438,7 +444,7 @@ export class SceneEngine implements SceneActionListener {
         }
     }
 
-    changeScene(sceneId: SceneId, pos: GuyPosition | undefined) {
+    changeScene(sceneId: SceneId, pos: GuyPositionForAction | undefined) {
         this.walkTo(pos, () => this.loadScene(sceneId));
     }
 

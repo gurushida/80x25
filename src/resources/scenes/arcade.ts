@@ -4,7 +4,7 @@ import { SceneLoader, SceneId, SceneData } from "@/scene";
 import { ActionBarButton } from "@/screenBuffer";
 import { Triggers } from "@/triggers";
 import { ZIndex } from "@/zIndex";
-import { ArcadeGuyAnimation } from "../animations/arcade_guy";
+import { ArcadeGuyAnimation, ARCADE_GUY_POSITION_FOR_ACTION } from "../animations/arcade_guy";
 import { ANIM_ARCADE_SIGN } from "../animations/arcade_sign";
 import { ANIM_LAMP } from "../animations/lamp";
 import { DIALOG_ARCADE_GUY } from "../generated/dialogs/DIALOG_ARCADE_GUY";
@@ -60,7 +60,6 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 5,
-            top: 12,
             lookToTheRight: false,
         },
         lookAt: [['Tetris.'], ['The art of filling holes.']]
@@ -71,7 +70,6 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 6,
-            top: 12,
             lookToTheRight: true,
         },
         lookAt: [['Space invaders.'], ['Promoting warfare instead', 'of galactic diplomacy.']]
@@ -82,7 +80,6 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 16,
-            top: 12,
             lookToTheRight: true,
         },
         lookAt: [['Nibbles.'], ['Growing super snakes,'], ['what could go wrong ?']]
@@ -93,7 +90,6 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 46,
-            top: 12,
             lookToTheRight: true,
         },
         lookAt: [['An arcade version of minesweeper.'], ['Why ?']]
@@ -104,7 +100,6 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 56,
-            top: 12,
             lookToTheRight: true,
         },
         lookAt: [['This machine is broken.']]
@@ -115,7 +110,6 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 66,
-            top: 12,
             lookToTheRight: true,
         },
         lookAt: [['Evil Spell.'], ['I don\'t know this game.']]
@@ -126,7 +120,6 @@ const arcadeHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 56,
-            top: 12,
             lookToTheRight: true,
         },
         lookAt: [['Weird.'], ['This lamp is not plugged'], ['and blinks by itself.'], ['Looks like some', 'kind of code.']]
@@ -177,11 +170,7 @@ const arcadeHotspots: Hotspot[] = [
         hotspotId: HotspotId.ARCADE_GUY,
         description: 'owner',
         rightClickAction: ActionBarButton.TALK,
-        guyPositionForAction: {
-            left: 28,
-            top: 12,
-            lookToTheRight: true,
-        },
+        guyPositionForAction: ARCADE_GUY_POSITION_FOR_ACTION,
         lookAt: [['This is the place owner.'], ['Looks more like a cowboy'], ['than the gaming type.']],
         dialog: DIALOG_ARCADE_GUY,
     },

@@ -16,6 +16,10 @@ const GIRL_JUMPING_ROPE_HOTSPOT = createMaskHotspot(SPR_GIRL_JUMPING_ROPE_2, Hot
 const little_girl_X = 48;
 const little_girl_Y = 14;
 
+export const LITTLE_GIRL_POSITION_FOR_ACTION = {
+    left: little_girl_X + 22,
+    lookToTheRight: false
+};
 
 const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(little_girl_X, little_girl_Y, ZIndex.FRONT, true, GIRL_JUMPING_ROPE_HOTSPOT,
     NO_LEFT_MOVEMENT,

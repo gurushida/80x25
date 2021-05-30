@@ -192,7 +192,6 @@ const hotspots: Hotspot[] = [
         dialog: DIALOG_CHINESE_MASTER,
         guyPositionForAction: {
             left: 42,
-            top: 13,
             lookToTheRight: true
         },
         lookAt: [['He sure looks like an', 'old kung fu master.']],

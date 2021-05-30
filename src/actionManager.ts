@@ -1,5 +1,5 @@
 import { ActionBarButton, isActionBarButton } from "./screenBuffer";
-import { Hotspot, GuyPosition, isHotspot } from "./hotspots";
+import { Hotspot, isHotspot, GuyPositionForAction } from "./hotspots";
 import { InventoryObject, isInventoryObject } from "./inventory";
 import { SceneId } from "./scene";
 
@@ -21,7 +21,7 @@ export interface SceneActionListener {
     take(what: InventoryObject | Hotspot): void;
     look(what: InventoryObject | Hotspot, xClick: number | undefined): void;
 
-    changeScene(sceneId: SceneId, pos: GuyPosition | undefined): void;
+    changeScene(sceneId: SceneId, pos: GuyPositionForAction | undefined): void;
     quit(): void;
     skip(): void;
 }
@@ -233,7 +233,7 @@ export class ActionManager {
         }
     }
 
-    private fireChangeSceneAction(sceneId: SceneId, position: GuyPosition | undefined) {
+    private fireChangeSceneAction(sceneId: SceneId, position: GuyPositionForAction | undefined) {
         this.setSelectedAction(undefined);
         for (const listener of this.sceneActionListeners) {
             listener.changeScene(sceneId, position);

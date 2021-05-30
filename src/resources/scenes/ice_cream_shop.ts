@@ -113,7 +113,6 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.TALK,
         guyPositionForAction: {
             left: 26,
-            top: 14,
             lookToTheRight: true,
         },
         lookAt: [['This Italian chef turned', 'ice cream into an art.'], ['Too bad it\'s crazy modern art.']],

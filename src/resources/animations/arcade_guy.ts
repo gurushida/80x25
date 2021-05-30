@@ -16,6 +16,12 @@ const CHEWING = 16;
 const arcade_guy_X = 35;
 const arcade_guy_Y = 10;
 
+export const ARCADE_GUY_POSITION_FOR_ACTION = {
+    left: arcade_guy_X - 7,
+    lookToTheRight: true,
+};
+
+
 const ANIM_ARCADE_GUY = new ImageAnimation(arcade_guy_X, arcade_guy_Y, ZIndex.BEHIND_GUY, true, ARCADE_GUY_HOTSPOT, NO_LEFT_MOVEMENT,
     [
         {

@@ -54,7 +54,6 @@ const cinemaHotspots: Hotspot[] = [
         movementHotspot: SceneId.INSIDE_CINEMA,
         guyPositionForAction: {
             left: 33,
-            top: 14,
             lookToTheRight: true
         },
         lookAt: [[]]
@@ -65,7 +64,6 @@ const cinemaHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
             left: 53,
-            top: 14,
             lookToTheRight: true
         },
         lookAt: [['This is the cinema program', 'for this week.']]
@@ -78,7 +76,6 @@ const cinemaHotspots: Hotspot[] = [
         dialog: DIALOG_CINEMA_CASHIER,
         guyPositionForAction: {
             left: 23,
-            top: 14,
             lookToTheRight: false
         },
     },

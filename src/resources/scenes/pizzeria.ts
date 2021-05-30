@@ -74,7 +74,6 @@ const hotspots: Hotspot[] = [
         dialog: DIALOG_DON_ALDO,
         guyPositionForAction: {
             left: 58,
-            top: 12,
             lookToTheRight: true
         },
         lookAt: [['This is Don Aldo,'], ['the patriach of', 'this family business.']],

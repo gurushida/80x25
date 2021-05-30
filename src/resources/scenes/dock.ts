@@ -50,7 +50,6 @@ const dockHotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.TALK,
         guyPositionForAction: {
             left: 35,
-            top: 12,
             lookToTheRight: true
         },
         lookAt: [['A fisherman,'], ['straight from A\’ Ghàidhealtachd', 'if I\'m not mistaken.']],
@@ -69,7 +68,6 @@ const dockHotspots: Hotspot[] = [
             dialog: DIALOG_TRYING_TO_TAKE_NET,
             guyPositionForAction: {
                 left: 35,
-                top: 12,
                 lookToTheRight: true
             },
         },

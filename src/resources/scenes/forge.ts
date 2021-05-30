@@ -83,7 +83,6 @@ const hotspots: Hotspot[] = [
         rightClickAction: ActionBarButton.TALK,
         guyPositionForAction: {
             left: 42,
-            top: 15,
             lookToTheRight: false
         },
         lookAt: [['The blacksmith.']],

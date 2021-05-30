@@ -119,7 +119,6 @@ const hotspots: Hotspot[] = [
         dialog: DIALOG_FARMER,
         guyPositionForAction: {
             left: 29,
-            top: 11,
             lookToTheRight: true
         },
         lookAt: [['A farmer.']],
