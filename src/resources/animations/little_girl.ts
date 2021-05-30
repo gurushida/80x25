@@ -3,64 +3,64 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_GIRL_JUMPING_ROPE2 } from "../generated/images/SPR_GIRL_JUMPING_ROPE2";
-import { SPR_GIRL_JUMPING_ROPE0 } from "../generated/images/SPR_GIRL_JUMPING_ROPE0";
-import { SPR_GIRL_JUMPING_ROPE1 } from "../generated/images/SPR_GIRL_JUMPING_ROPE1";
-import { SPR_GIRL_JUMPING_ROPE3 } from "../generated/images/SPR_GIRL_JUMPING_ROPE3";
-import { SPR_GIRL_STILL0 } from "../generated/images/SPR_GIRL_STILL0";
-import { SPR_GIRL_TALKING0 } from "../generated/images/SPR_GIRL_TALKING0";
-import { SPR_GIRL_TALKING1 } from "../generated/images/SPR_GIRL_TALKING1";
+import { SPR_GIRL_JUMPING_ROPE_0 } from "../generated/images/SPR_GIRL_JUMPING_ROPE_0";
+import { SPR_GIRL_JUMPING_ROPE_1 } from "../generated/images/SPR_GIRL_JUMPING_ROPE_1";
+import { SPR_GIRL_JUMPING_ROPE_2 } from "../generated/images/SPR_GIRL_JUMPING_ROPE_2";
+import { SPR_GIRL_JUMPING_ROPE_3 } from "../generated/images/SPR_GIRL_JUMPING_ROPE_3";
+import { SPR_GIRL_STILL_0 } from "../generated/images/SPR_GIRL_STILL_0";
+import { SPR_GIRL_TALKING_0 } from "../generated/images/SPR_GIRL_TALKING_0";
+import { SPR_GIRL_TALKING_1 } from "../generated/images/SPR_GIRL_TALKING_1";
 
-const GIRL_JUMPING_ROPE_HOTSPOT = createMaskHotspot(SPR_GIRL_JUMPING_ROPE2, HotspotId.LITTLE_GIRL);
+const GIRL_JUMPING_ROPE_HOTSPOT = createMaskHotspot(SPR_GIRL_JUMPING_ROPE_2, HotspotId.LITTLE_GIRL);
 
 const ANIM_GIRL_JUMPING_ROPE = new ImageAnimation(48, 14, ZIndex.FRONT, true, GIRL_JUMPING_ROPE_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_GIRL_JUMPING_ROPE0,
+            image: SPR_GIRL_JUMPING_ROPE_0,
             durationInTicks: 6,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_GIRL_JUMPING_ROPE1,
+            image: SPR_GIRL_JUMPING_ROPE_1,
             durationInTicks: 6,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_GIRL_JUMPING_ROPE2,
+            image: SPR_GIRL_JUMPING_ROPE_2,
             durationInTicks: 6,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_GIRL_JUMPING_ROPE3,
+            image: SPR_GIRL_JUMPING_ROPE_3,
             durationInTicks: 6,
             offsetX: 0,
             offsetY: 0,
         },
     ]);
 
-const GIRL_STILL_HOTSPOT = createMaskHotspot(SPR_GIRL_STILL0, HotspotId.LITTLE_GIRL);
+const GIRL_STILL_HOTSPOT = createMaskHotspot(SPR_GIRL_STILL_0, HotspotId.LITTLE_GIRL);
 
 const ANIM_GIRL_TALKING = new ImageAnimation(48, 16, ZIndex.FRONT, true, GIRL_STILL_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_GIRL_STILL0,
+            image: SPR_GIRL_STILL_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_GIRL_TALKING0,
+            image: SPR_GIRL_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_GIRL_TALKING1,
+            image: SPR_GIRL_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
@@ -71,7 +71,7 @@ const ANIM_GIRL_NOT_TALKING = new ImageAnimation(48, 16, ZIndex.FRONT, true, GIR
         NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_GIRL_STILL0,
+            image: SPR_GIRL_STILL_0,
             durationInTicks: 50,
             offsetX: 0,
             offsetY: 0,

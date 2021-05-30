@@ -6,9 +6,9 @@ import { Triggers } from "@/triggers";
 import { ActionBarButton } from "@/screenBuffer";
 import { BG_CINEMA } from "../generated/images/BG_CINEMA";
 import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
-import { SPR_CINEMA_SIGN0 } from "../generated/images/SPR_CINEMA_SIGN0";
-import { SPR_CINEMA_SIGN1 } from "../generated/images/SPR_CINEMA_SIGN1";
-import { SPR_CINEMA_SIGN2 } from "../generated/images/SPR_CINEMA_SIGN2";
+import { SPR_CINEMA_SIGN_0 } from "../generated/images/SPR_CINEMA_SIGN_0";
+import { SPR_CINEMA_SIGN_1 } from "../generated/images/SPR_CINEMA_SIGN_1";
+import { SPR_CINEMA_SIGN_2 } from "../generated/images/SPR_CINEMA_SIGN_2";
 import { CinemaCashierAnimation } from "../animations/cinema_cashier";
 import { DIALOG_CINEMA_CASHIER } from "../generated/dialogs/DIALOG_CINEMA_CASHIER";
 
@@ -20,19 +20,19 @@ const programFilter = createRectangleHotspot(HotspotId.CINEMA_PROGRAM, 63, 10, 1
 const ANIM_SIGN = new ImageAnimation (27, 2, ZIndex.BEHIND_GUY, true, undefined, NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_CINEMA_SIGN0,
+            image: SPR_CINEMA_SIGN_0,
             durationInTicks: 15,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_CINEMA_SIGN1,
+            image: SPR_CINEMA_SIGN_1,
             durationInTicks: 15,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_CINEMA_SIGN2,
+            image: SPR_CINEMA_SIGN_2,
             durationInTicks: 15,
             offsetX: 0,
             offsetY: 0,

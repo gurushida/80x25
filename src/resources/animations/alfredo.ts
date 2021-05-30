@@ -3,39 +3,39 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_ALFREDO0 } from "../generated/images/SPR_ALFREDO0";
-import { SPR_ALFREDO_TALKING0 } from "../generated/images/SPR_ALFREDO_TALKING0";
-import { SPR_ALFREDO1 } from "../generated/images/SPR_ALFREDO1";
-import { SPR_ALFREDO2 } from "../generated/images/SPR_ALFREDO2";
-import { SPR_ALFREDO3 } from "../generated/images/SPR_ALFREDO3";
-import { SPR_ALFREDO_TALKING1 } from "../generated/images/SPR_ALFREDO_TALKING1";
-import { SPR_ALFREDO_TALKING2 } from "../generated/images/SPR_ALFREDO_TALKING2";
+import { SPR_ALFREDO_0 } from "../generated/images/SPR_ALFREDO_0";
+import { SPR_ALFREDO_1 } from "../generated/images/SPR_ALFREDO_1";
+import { SPR_ALFREDO_2 } from "../generated/images/SPR_ALFREDO_2";
+import { SPR_ALFREDO_3 } from "../generated/images/SPR_ALFREDO_3";
+import { SPR_ALFREDO_TALKING_0 } from "../generated/images/SPR_ALFREDO_TALKING_0";
+import { SPR_ALFREDO_TALKING_1 } from "../generated/images/SPR_ALFREDO_TALKING_1";
+import { SPR_ALFREDO_TALKING_2 } from "../generated/images/SPR_ALFREDO_TALKING_2";
 
-const ALFREDO_HOTSPOT = createMaskHotspot(SPR_ALFREDO0, HotspotId.ALFREDO);
+const ALFREDO_HOTSPOT = createMaskHotspot(SPR_ALFREDO_0, HotspotId.ALFREDO);
 
 const ANIM_ALFREDO = new ImageAnimation(35, 12, ZIndex.BEHIND_GUY, true, ALFREDO_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_ALFREDO0,
+            image: SPR_ALFREDO_0,
             durationInTicks: 4,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_ALFREDO1,
+            image: SPR_ALFREDO_1,
             durationInTicks: 4,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_ALFREDO2,
+            image: SPR_ALFREDO_2,
             durationInTicks: 4,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_ALFREDO3,
+            image: SPR_ALFREDO_3,
             durationInTicks: 4,
             offsetX: 0,
             offsetY: 0,
@@ -46,19 +46,19 @@ const ANIM_ALFREDO_TALKING = new ImageAnimation(35, 12, ZIndex.BEHIND_GUY, true,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_ALFREDO_TALKING0,
+            image: SPR_ALFREDO_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_ALFREDO_TALKING1,
+            image: SPR_ALFREDO_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_ALFREDO_TALKING2,
+            image: SPR_ALFREDO_TALKING_2,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,

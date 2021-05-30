@@ -19,13 +19,13 @@ import { SPR_TETRIS_RHODE_ISLAND_Z } from "../generated/images/SPR_TETRIS_RHODE_
 import { SPR_TETRIS_SMASHBOY } from "../generated/images/SPR_TETRIS_SMASHBOY";
 import { SPR_TETRIS_TEEWEE } from "../generated/images/SPR_TETRIS_TEEWEE";
 
-const game1: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 0, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME1));
-const game2: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 11, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME2));
-const game3: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 22, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME3));
+const game0: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 0, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME_0));
+const game1: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 11, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME_1));
+const game2: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 22, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME_2));
 
-const game4: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 48, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME4));
-const game5: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 59, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME5));
-const game6: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 70, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME6));
+const game3: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 48, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME_3));
+const game4: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 59, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME_4));
+const game5: PaintTask = getPaintTask(SPR_ARCADE_CABINET, 70, 11, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_ARCADE_CABINET, HotspotId.ARCADE_GAME_5));
 
 const table: PaintTask = getPaintTask(SPR_ARCADE_TABLE, 62, 21, ZIndex.FRONT, undefined);
 
@@ -55,7 +55,7 @@ const arcadeHotspots: Hotspot[] = [
         lookAt: [['Apology of gluttony', 'and supernatural'], ['in an inescapable', 'maze prison,'], ['I\'m not sure this game sends', 'the right moral messages.']]
     },
     {
-        hotspotId: HotspotId.ARCADE_GAME1,
+        hotspotId: HotspotId.ARCADE_GAME_0,
         description: 'game',
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
@@ -66,7 +66,7 @@ const arcadeHotspots: Hotspot[] = [
         lookAt: [['Tetris.'], ['The art of filling holes.']]
     },
     {
-        hotspotId: HotspotId.ARCADE_GAME2,
+        hotspotId: HotspotId.ARCADE_GAME_1,
         description: 'game',
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
@@ -77,7 +77,7 @@ const arcadeHotspots: Hotspot[] = [
         lookAt: [['Space invaders.'], ['Promoting warfare instead', 'of galactic diplomacy.']]
     },
     {
-        hotspotId: HotspotId.ARCADE_GAME3,
+        hotspotId: HotspotId.ARCADE_GAME_2,
         description: 'game',
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
@@ -88,7 +88,7 @@ const arcadeHotspots: Hotspot[] = [
         lookAt: [['Nibbles.'], ['Growing super snakes,'], ['what could go wrong ?']]
     },
     {
-        hotspotId: HotspotId.ARCADE_GAME4,
+        hotspotId: HotspotId.ARCADE_GAME_3,
         description: 'game',
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
@@ -99,7 +99,7 @@ const arcadeHotspots: Hotspot[] = [
         lookAt: [['An arcade version of minesweeper.'], ['Why ?']]
     },
     {
-        hotspotId: HotspotId.ARCADE_GAME5,
+        hotspotId: HotspotId.ARCADE_GAME_4,
         description: 'game',
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
@@ -110,7 +110,7 @@ const arcadeHotspots: Hotspot[] = [
         lookAt: [['This machine is broken.']]
     },
     {
-        hotspotId: HotspotId.ARCADE_GAME6,
+        hotspotId: HotspotId.ARCADE_GAME_5,
         description: 'game',
         rightClickAction: ActionBarButton.LOOK,
         guyPositionForAction: {
@@ -194,7 +194,7 @@ export const ARCADE_LOADER: SceneLoader = {
         return {
             showActionBar: true,
             guyPosition: initialGuyPosition,
-            images: [arcadeBackground, game1, game2, game3, game4, game5, game6, table,
+            images: [arcadeBackground, game0, game1, game2, game3, game4, game5, table,
                      teewee, orange_ricky, rhode_island_z, hero, smashboy, blue_ricky, cleveland_z],
             animations: [ANIM_LAMP, ANIM_ARCADE_SIGN, new ArcadeGuyAnimation()],
             hotspots: arcadeHotspots,

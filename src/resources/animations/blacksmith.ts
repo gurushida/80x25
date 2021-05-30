@@ -3,26 +3,26 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_BLACKSMITH_LEFT0 } from "../generated/images/SPR_BLACKSMITH_LEFT0";
-import { SPR_BLACKSMITH_LEFT1 } from "../generated/images/SPR_BLACKSMITH_LEFT1";
-import { SPR_BLACKSMITH_RIGHT0 } from "../generated/images/SPR_BLACKSMITH_RIGHT0";
-import { SPR_BLACKSMITH_TALKING0 } from "../generated/images/SPR_BLACKSMITH_TALKING0";
-import { SPR_BLACKSMITH_TALKING1 } from "../generated/images/SPR_BLACKSMITH_TALKING1";
-import { SPR_BLACKSMITH_TALKING2 } from "../generated/images/SPR_BLACKSMITH_TALKING2";
+import { SPR_BLACKSMITH_LEFT_0 } from "../generated/images/SPR_BLACKSMITH_LEFT_0";
+import { SPR_BLACKSMITH_LEFT_1 } from "../generated/images/SPR_BLACKSMITH_LEFT_1";
+import { SPR_BLACKSMITH_RIGHT_0 } from "../generated/images/SPR_BLACKSMITH_RIGHT_0";
+import { SPR_BLACKSMITH_TALKING_0 } from "../generated/images/SPR_BLACKSMITH_TALKING_0";
+import { SPR_BLACKSMITH_TALKING_1 } from "../generated/images/SPR_BLACKSMITH_TALKING_1";
+import { SPR_BLACKSMITH_TALKING_2 } from "../generated/images/SPR_BLACKSMITH_TALKING_2";
 
-const BLACKSMITH_HOTSPOT = createMaskHotspot(SPR_BLACKSMITH_LEFT0, HotspotId.BLACKSMITH);
+const BLACKSMITH_HOTSPOT = createMaskHotspot(SPR_BLACKSMITH_LEFT_0, HotspotId.BLACKSMITH);
 
 const ANIM_BLACKSMITH_LEFT = new ImageAnimation(21, 16, ZIndex.FRONT, true, BLACKSMITH_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_BLACKSMITH_LEFT0,
+            image: SPR_BLACKSMITH_LEFT_0,
             durationInTicks: 17,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BLACKSMITH_LEFT1,
+            image: SPR_BLACKSMITH_LEFT_1,
             durationInTicks: 17,
             offsetX: 0,
             offsetY: 0,
@@ -34,7 +34,7 @@ const ANIM_BLACKSMITH_RIGHT = new ImageAnimation(21, 16, ZIndex.BEHIND_GUY, true
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_BLACKSMITH_RIGHT0,
+            image: SPR_BLACKSMITH_RIGHT_0,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
@@ -45,19 +45,19 @@ const ANIM_BLACKSMITH_TALKING = new ImageAnimation(21, 16, ZIndex.BEHIND_GUY, tr
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_BLACKSMITH_TALKING0,
+            image: SPR_BLACKSMITH_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BLACKSMITH_TALKING1,
+            image: SPR_BLACKSMITH_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BLACKSMITH_TALKING2,
+            image: SPR_BLACKSMITH_TALKING_2,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,

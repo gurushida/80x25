@@ -3,14 +3,14 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_FARMER0 } from "../generated/images/SPR_FARMER0";
-import { SPR_FARMER_TALKING0 } from "../generated/images/SPR_FARMER_TALKING0";
-import { SPR_FARMER_TALKING1 } from "../generated/images/SPR_FARMER_TALKING1";
-import { SPR_FARMER_TALKING2 } from "../generated/images/SPR_FARMER_TALKING2";
-import { SPR_FARMER1 } from "../generated/images/SPR_FARMER1";
-import { SPR_FARMER2 } from "../generated/images/SPR_FARMER2";
+import { SPR_FARMER_0 } from "../generated/images/SPR_FARMER_0";
+import { SPR_FARMER_1 } from "../generated/images/SPR_FARMER_1";
+import { SPR_FARMER_2 } from "../generated/images/SPR_FARMER_2";
+import { SPR_FARMER_TALKING_0 } from "../generated/images/SPR_FARMER_TALKING_0";
+import { SPR_FARMER_TALKING_1 } from "../generated/images/SPR_FARMER_TALKING_1";
+import { SPR_FARMER_TALKING_2 } from "../generated/images/SPR_FARMER_TALKING_2";
 
-const FARMER_HOTSPOT = createMaskHotspot(SPR_FARMER0, HotspotId.FARMER);
+const FARMER_HOTSPOT = createMaskHotspot(SPR_FARMER_0, HotspotId.FARMER);
 
 const farmerX = 38;
 const farmerY = 9;
@@ -21,43 +21,43 @@ const ANIM_FARMER = new ImageAnimation(farmerX, farmerY, ZIndex.BEHIND_GUY, true
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_FARMER0,
+            image: SPR_FARMER_0,
             durationInTicks: 200,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER1,
+            image: SPR_FARMER_1,
             durationInTicks: scratch_ticks,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER2,
+            image: SPR_FARMER_2,
             durationInTicks: scratch_ticks,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER1,
+            image: SPR_FARMER_1,
             durationInTicks: scratch_ticks,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER2,
+            image: SPR_FARMER_2,
             durationInTicks: scratch_ticks,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER1,
+            image: SPR_FARMER_1,
             durationInTicks: scratch_ticks,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER2,
+            image: SPR_FARMER_2,
             durationInTicks: 20,
             offsetX: 0,
             offsetY: 0,
@@ -68,19 +68,19 @@ const ANIM_FARMER_TALKING = new ImageAnimation(farmerX, farmerY, ZIndex.BEHIND_G
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_FARMER_TALKING0,
+            image: SPR_FARMER_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER_TALKING1,
+            image: SPR_FARMER_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_FARMER_TALKING2,
+            image: SPR_FARMER_TALKING_2,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,

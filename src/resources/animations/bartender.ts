@@ -3,11 +3,8 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_BARTENDER0 } from "../generated/images/SPR_BARTENDER0";
-import { SPR_BARTENDER_TALKING0 } from "../generated/images/SPR_BARTENDER_TALKING0";
-import { SPR_BARTENDER_TALKING1 } from "../generated/images/SPR_BARTENDER_TALKING1";
-import { SPR_BARTENDER_TALKING2 } from "../generated/images/SPR_BARTENDER_TALKING2";
-import { SPR_BARTENDER1 } from "../generated/images/SPR_BARTENDER1";
+import { SPR_BARTENDER_0 } from "../generated/images/SPR_BARTENDER_0";
+import { SPR_BARTENDER_1 } from "../generated/images/SPR_BARTENDER_1";
 import { SPR_BARTENDER_WIPING_0 } from "../generated/images/SPR_BARTENDER_WIPING_0";
 import { SPR_BARTENDER_WIPING_2 } from "../generated/images/SPR_BARTENDER_WIPING_2";
 import { SPR_BARTENDER_WIPING_1 } from "../generated/images/SPR_BARTENDER_WIPING_1";
@@ -15,8 +12,11 @@ import { SPR_BARTENDER_WIPING_3 } from "../generated/images/SPR_BARTENDER_WIPING
 import { SPR_BARTENDER_WIPING_4 } from "../generated/images/SPR_BARTENDER_WIPING_4";
 import { SPR_BARTENDER_WIPING_5 } from "../generated/images/SPR_BARTENDER_WIPING_5";
 import { SPR_BARTENDER_WIPING_6 } from "../generated/images/SPR_BARTENDER_WIPING_6";
+import { SPR_BARTENDER_TALKING_0 } from "../generated/images/SPR_BARTENDER_TALKING_0";
+import { SPR_BARTENDER_TALKING_1 } from "../generated/images/SPR_BARTENDER_TALKING_1";
+import { SPR_BARTENDER_TALKING_2 } from "../generated/images/SPR_BARTENDER_TALKING_2";
 
-const BARTENDER_HOTSPOT = createMaskHotspot(SPR_BARTENDER0, HotspotId.BARTENDER);
+const BARTENDER_HOTSPOT = createMaskHotspot(SPR_BARTENDER_0, HotspotId.BARTENDER);
 
 const wiping_ticks = 4;
 
@@ -109,19 +109,19 @@ const ANIM_BARTENDER = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, BARTE
         },
 
         {
-            image: SPR_BARTENDER0,
+            image: SPR_BARTENDER_0,
             durationInTicks: 100,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BARTENDER1,
+            image: SPR_BARTENDER_1,
             durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BARTENDER0,
+            image: SPR_BARTENDER_0,
             durationInTicks: 100,
             offsetX: 0,
             offsetY: 0,
@@ -132,19 +132,19 @@ const ANIM_BARTENDER_TALKING = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, tru
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_BARTENDER_TALKING0,
+            image: SPR_BARTENDER_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BARTENDER_TALKING1,
+            image: SPR_BARTENDER_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BARTENDER_TALKING2,
+            image: SPR_BARTENDER_TALKING_2,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,

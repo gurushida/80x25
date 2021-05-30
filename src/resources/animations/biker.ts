@@ -3,103 +3,103 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_BIKER0 } from "../generated/images/SPR_BIKER0";
-import { SPR_BIKER_TALKING0 } from "../generated/images/SPR_BIKER_TALKING0";
-import { SPR_BIKER_TALKING1 } from "../generated/images/SPR_BIKER_TALKING1";
-import { SPR_BIKER_TALKING2 } from "../generated/images/SPR_BIKER_TALKING2";
-import { SPR_BIKER1 } from "../generated/images/SPR_BIKER1";
-import { SPR_BIKER2 } from "../generated/images/SPR_BIKER2";
-import { SPR_BIKER3 } from "../generated/images/SPR_BIKER3";
-import { SPR_BIKER4 } from "../generated/images/SPR_BIKER4";
-import { SPR_BIKER5 } from "../generated/images/SPR_BIKER5";
-import { SPR_BIKER6 } from "../generated/images/SPR_BIKER6";
-import { SPR_BIKER7 } from "../generated/images/SPR_BIKER7";
+import { SPR_BIKER_0 } from "../generated/images/SPR_BIKER_0";
+import { SPR_BIKER_1 } from "../generated/images/SPR_BIKER_1";
+import { SPR_BIKER_2 } from "../generated/images/SPR_BIKER_2";
+import { SPR_BIKER_3 } from "../generated/images/SPR_BIKER_3";
+import { SPR_BIKER_4 } from "../generated/images/SPR_BIKER_4";
+import { SPR_BIKER_5 } from "../generated/images/SPR_BIKER_5";
+import { SPR_BIKER_6 } from "../generated/images/SPR_BIKER_6";
+import { SPR_BIKER_7 } from "../generated/images/SPR_BIKER_7";
+import { SPR_BIKER_TALKING_0 } from "../generated/images/SPR_BIKER_TALKING_0";
+import { SPR_BIKER_TALKING_1 } from "../generated/images/SPR_BIKER_TALKING_1";
+import { SPR_BIKER_TALKING_2 } from "../generated/images/SPR_BIKER_TALKING_2";
 
-const BIKER_HOTSPOT = createMaskHotspot(SPR_BIKER0, HotspotId.BIKER);
+const BIKER_HOTSPOT = createMaskHotspot(SPR_BIKER_0, HotspotId.BIKER);
 
 const ANIM_BIKER = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, BIKER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_BIKER0,
+            image: SPR_BIKER_0,
             durationInTicks: 200,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER1,
+            image: SPR_BIKER_1,
             durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER2,
+            image: SPR_BIKER_2,
             durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER3,
+            image: SPR_BIKER_3,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER4,
+            image: SPR_BIKER_4,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER3,
+            image: SPR_BIKER_3,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER4,
+            image: SPR_BIKER_4,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER3,
+            image: SPR_BIKER_3,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER4,
+            image: SPR_BIKER_4,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER2,
+            image: SPR_BIKER_2,
             durationInTicks: 10,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER1,
+            image: SPR_BIKER_1,
             durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER5,
+            image: SPR_BIKER_5,
             durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER6,
+            image: SPR_BIKER_6,
             durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER7,
+            image: SPR_BIKER_7,
             durationInTicks: 5,
             offsetX: 0,
             offsetY: 0,
@@ -111,19 +111,19 @@ const ANIM_BIKER_TALKING = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, true, B
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_BIKER_TALKING0,
+            image: SPR_BIKER_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER_TALKING1,
+            image: SPR_BIKER_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_BIKER_TALKING2,
+            image: SPR_BIKER_TALKING_2,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
@@ -134,7 +134,7 @@ const ANIM_BIKER_NOT_TALKING = new ImageAnimation(36, 10, ZIndex.BEHIND_GUY, tru
         NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_BIKER0,
+            image: SPR_BIKER_0,
             durationInTicks: 50,
             offsetX: 0,
             offsetY: 0,

@@ -3,38 +3,38 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_CINEMA_CASHIER0 } from "../generated/images/SPR_CINEMA_CASHIER0";
-import { SPR_CINEMA_CASHIER_TALKING0 } from "../generated/images/SPR_CINEMA_CASHIER_TALKING0";
-import { SPR_CINEMA_CASHIER_TALKING1 } from "../generated/images/SPR_CINEMA_CASHIER_TALKING1";
-import { SPR_CINEMA_CASHIER_TALKING2 } from "../generated/images/SPR_CINEMA_CASHIER_TALKING2";
-import { SPR_CINEMA_CASHIER1 } from "../generated/images/SPR_CINEMA_CASHIER1";
-import { SPR_CINEMA_CASHIER2 } from "../generated/images/SPR_CINEMA_CASHIER2";
+import { SPR_CINEMA_CASHIER_0 } from "../generated/images/SPR_CINEMA_CASHIER_0";
+import { SPR_CINEMA_CASHIER_1 } from "../generated/images/SPR_CINEMA_CASHIER_1";
+import { SPR_CINEMA_CASHIER_2 } from "../generated/images/SPR_CINEMA_CASHIER_2";
+import { SPR_CINEMA_CASHIER_TALKING_0 } from "../generated/images/SPR_CINEMA_CASHIER_TALKING_0";
+import { SPR_CINEMA_CASHIER_TALKING_1 } from "../generated/images/SPR_CINEMA_CASHIER_TALKING_1";
+import { SPR_CINEMA_CASHIER_TALKING_2 } from "../generated/images/SPR_CINEMA_CASHIER_TALKING_2";
 
-const CASHIER_HOTSPOT = createMaskHotspot(SPR_CINEMA_CASHIER0, HotspotId.CINEMA_CASHIER);
+const CASHIER_HOTSPOT = createMaskHotspot(SPR_CINEMA_CASHIER_0, HotspotId.CINEMA_CASHIER);
 
 const ANIM_CASHIER = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true, CASHIER_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_CINEMA_CASHIER0,
+            image: SPR_CINEMA_CASHIER_0,
             durationInTicks: 200,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_CINEMA_CASHIER1,
+            image: SPR_CINEMA_CASHIER_1,
             durationInTicks: 4,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_CINEMA_CASHIER2,
+            image: SPR_CINEMA_CASHIER_2,
             durationInTicks: 30,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_CINEMA_CASHIER1,
+            image: SPR_CINEMA_CASHIER_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
@@ -45,19 +45,19 @@ const ANIM_CASHIER_TALKING = new ImageAnimation(10, 12, ZIndex.BEHIND_GUY, true,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_CINEMA_CASHIER_TALKING0,
+            image: SPR_CINEMA_CASHIER_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_CINEMA_CASHIER_TALKING1,
+            image: SPR_CINEMA_CASHIER_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_CINEMA_CASHIER_TALKING2,
+            image: SPR_CINEMA_CASHIER_TALKING_2,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,

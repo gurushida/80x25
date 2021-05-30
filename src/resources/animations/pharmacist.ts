@@ -3,19 +3,26 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_PHARMACIST0 } from "../generated/images/SPR_PHARMACIST0";
-import { SPR_PHARMACIST_TALKING0 } from "../generated/images/SPR_PHARMACIST_TALKING0";
-import { SPR_PHARMACIST_TALKING1 } from "../generated/images/SPR_PHARMACIST_TALKING1";
-import { SPR_PHARMACIST_TALKING2 } from "../generated/images/SPR_PHARMACIST_TALKING2";
+import { SPR_PHARMACIST_0 } from "../generated/images/SPR_PHARMACIST_0";
+import { SPR_PHARMACIST_1 } from "../generated/images/SPR_PHARMACIST_1";
+import { SPR_PHARMACIST_TALKING_0 } from "../generated/images/SPR_PHARMACIST_TALKING_0";
+import { SPR_PHARMACIST_TALKING_1 } from "../generated/images/SPR_PHARMACIST_TALKING_1";
+import { SPR_PHARMACIST_TALKING_2 } from "../generated/images/SPR_PHARMACIST_TALKING_2";
 
-const PHARMACIST_HOTSPOT = createMaskHotspot(SPR_PHARMACIST0, HotspotId.PHARMACIST);
+const PHARMACIST_HOTSPOT = createMaskHotspot(SPR_PHARMACIST_0, HotspotId.PHARMACIST);
 
 const ANIM_PHARMACIST = new ImageAnimation(50, 9, ZIndex.BEHIND_GUY, true, PHARMACIST_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_PHARMACIST0,
-            durationInTicks: 7,
+            image: SPR_PHARMACIST_0,
+            durationInTicks: 200,
+            offsetX: 0,
+            offsetY: 0,
+        },
+        {
+            image: SPR_PHARMACIST_1,
+            durationInTicks: 15,
             offsetX: 0,
             offsetY: 0,
         },
@@ -25,19 +32,19 @@ const ANIM_PHARMACIST_TALKING = new ImageAnimation(50, 9, ZIndex.BEHIND_GUY, tru
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_PHARMACIST_TALKING0,
+            image: SPR_PHARMACIST_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_PHARMACIST_TALKING1,
+            image: SPR_PHARMACIST_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_PHARMACIST_TALKING2,
+            image: SPR_PHARMACIST_TALKING_2,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,

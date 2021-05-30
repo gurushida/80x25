@@ -7,13 +7,13 @@ import { ActionBarButton } from "@/screenBuffer";
 import { SPR_FARM_BARRIER } from "../generated/images/SPR_FARM_BARRIER";
 import { SPR_WELL } from "../generated/images/SPR_WELL";
 import { SPR_VEGETABLE_GARDEN } from "../generated/images/SPR_VEGETABLE_GARDEN";
-import { SPR_WORM0 } from "../generated/images/SPR_WORM0";
 import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
-import { SPR_WORM1 } from "../generated/images/SPR_WORM1";
-import { SPR_PIG1 } from "../generated/images/SPR_PIG1";
-import { SPR_PIG0 } from "../generated/images/SPR_PIG0";
-import { SPR_GOAT0 } from "../generated/images/SPR_GOAT0";
-import { SPR_GOAT1 } from "../generated/images/SPR_GOAT1";
+import { SPR_PIG_0 } from "../generated/images/SPR_PIG_0";
+import { SPR_PIG_1 } from "../generated/images/SPR_PIG_1";
+import { SPR_GOAT_0 } from "../generated/images/SPR_GOAT_0";
+import { SPR_GOAT_1 } from "../generated/images/SPR_GOAT_1";
+import { SPR_WORM_0 } from "../generated/images/SPR_WORM_0";
+import { SPR_WORM_1 } from "../generated/images/SPR_WORM_1";
 import { BG_FARM } from "../generated/images/BG_FARM";
 import { SPR_TRACTOR } from "../generated/images/SPR_TRACTOR";
 import { FarmerAnimation } from "../animations/farmer";
@@ -26,49 +26,49 @@ const barrier: PaintTask = getPaintTask(SPR_FARM_BARRIER, 0, 21, ZIndex.FRONT, u
 const well: PaintTask = getPaintTask(SPR_WELL, 0, 12, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_WELL, HotspotId.WELL));
 const garden: PaintTask = getPaintTask(SPR_VEGETABLE_GARDEN, 15, 14, ZIndex.BEHIND_GUY, createMaskHotspot(SPR_VEGETABLE_GARDEN, HotspotId.VEGETABLE_GARDEN));
 
-const ANIM_PIG = new ImageAnimation(49, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIG0, HotspotId.PIG),
+const ANIM_PIG = new ImageAnimation(49, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_PIG_0, HotspotId.PIG),
     NO_LEFT_MOVEMENT, [
         {
-            image: SPR_PIG0,
+            image: SPR_PIG_0,
             durationInTicks: 70,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_PIG1,
+            image: SPR_PIG_1,
             durationInTicks: 6,
             offsetX: 0,
             offsetY: 0,
         },
     ]);
 
-const ANIM_GOAT = new ImageAnimation(65, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_GOAT0, HotspotId.GOAT),
+const ANIM_GOAT = new ImageAnimation(65, 13, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_GOAT_0, HotspotId.GOAT),
     NO_LEFT_MOVEMENT, [
         {
-            image: SPR_GOAT0,
+            image: SPR_GOAT_0,
             durationInTicks: 120,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_GOAT1,
+            image: SPR_GOAT_1,
             durationInTicks: 120,
             offsetX: 0,
             offsetY: 0,
         },
     ]);
 
-const ANIM_WORM = new ImageAnimation(21, 17, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_WORM0, HotspotId.WORM),
+const ANIM_WORM = new ImageAnimation(21, 17, ZIndex.BEHIND_GUY, true, createMaskHotspot(SPR_WORM_0, HotspotId.WORM),
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_WORM0,
+            image: SPR_WORM_0,
             durationInTicks: 6,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_WORM1,
+            image: SPR_WORM_1,
             durationInTicks: 6,
             offsetX: 0,
             offsetY: 0,

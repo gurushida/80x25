@@ -3,24 +3,24 @@ import { createMaskHotspot, HotspotId } from "@/hotspots";
 import { ZIndex } from "@/zIndex";
 import { CanTalkAnimation } from "./talkingCharacter";
 import { TalkingCharacter } from "@/characters";
-import { SPR_ROBOT0 } from "../generated/images/SPR_ROBOT0";
-import { SPR_ROBOT_TALKING0 } from "../generated/images/SPR_ROBOT_TALKING0";
-import { SPR_ROBOT1 } from "../generated/images/SPR_ROBOT1";
-import { SPR_ROBOT_TALKING1 } from "../generated/images/SPR_ROBOT_TALKING1";
+import { SPR_ROBOT_0 } from "../generated/images/SPR_ROBOT_0";
+import { SPR_ROBOT_1 } from "../generated/images/SPR_ROBOT_1";
+import { SPR_ROBOT_TALKING_0 } from "../generated/images/SPR_ROBOT_TALKING_0";
+import { SPR_ROBOT_TALKING_1 } from "../generated/images/SPR_ROBOT_TALKING_1";
 
-const ROBOT_HOTSPOT = createMaskHotspot(SPR_ROBOT0, HotspotId.ROBOT);
+const ROBOT_HOTSPOT = createMaskHotspot(SPR_ROBOT_0, HotspotId.ROBOT);
 
 const ANIM_ROBOT = new ImageAnimation(22, 15, ZIndex.BEHIND_GUY, true, ROBOT_HOTSPOT,
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_ROBOT0,
+            image: SPR_ROBOT_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_ROBOT1,
+            image: SPR_ROBOT_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
@@ -31,13 +31,13 @@ const ANIM_ROBOT_TALKING = new ImageAnimation(22, 15, ZIndex.BEHIND_GUY, true, R
     NO_LEFT_MOVEMENT,
     [
         {
-            image: SPR_ROBOT_TALKING0,
+            image: SPR_ROBOT_TALKING_0,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
         },
         {
-            image: SPR_ROBOT_TALKING1,
+            image: SPR_ROBOT_TALKING_1,
             durationInTicks: 7,
             offsetX: 0,
             offsetY: 0,
