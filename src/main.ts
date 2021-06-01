@@ -41,4 +41,4 @@ Clock.clock.repeat(0, () => {
 
 Clock.clock.play();
 //ui.showMap(triggers);
-sceneEngine.loadScene(SceneId.ARCADE);
+sceneEngine.loadScene(SceneId.JEWELLERY_STORE_INSIDE);

@@ -25,6 +25,7 @@ compileOpaqueImage('asciiart/backgrounds/farm_barn.txt', 'BG_FARM');
 compileOpaqueImage('asciiart/backgrounds/pizzeria.txt', 'BG_PIZZERIA');
 compileOpaqueImage('asciiart/backgrounds/waterfall.txt', 'BG_WATERFALL');
 compileOpaqueImage('asciiart/backgrounds/jewellery_store_outside.txt', 'BG_JEWELLERY_STORE_OUTSIDE');
+compileOpaqueImage('asciiart/backgrounds/jewellery_store_inside.txt', 'BG_JEWELLERY_STORE_INSIDE');
 
 
 //--------------------------------------------------------------------------
@@ -353,6 +354,14 @@ compileSprite('asciiart/sprites/jeweller7.txt', 'SPR_JEWELLER_7');
 compileSprite('asciiart/sprites/jeweller_talking0.txt', 'SPR_JEWELLER_TALKING_0');
 compileSprite('asciiart/sprites/jeweller_talking1.txt', 'SPR_JEWELLER_TALKING_1');
 compileSprite('asciiart/sprites/jeweller_talking2.txt', 'SPR_JEWELLER_TALKING_2');
+compileSprite('asciiart/sprites/jewellery_pillar.txt', 'SPR_JEWELLERY_PILLAR');
+compileSprite('asciiart/sprites/necklace0.txt', 'SPR_NECKLACE_0');
+compileSprite('asciiart/sprites/necklace1.txt', 'SPR_NECKLACE_1');
+compileSprite('asciiart/sprites/necklace2.txt', 'SPR_NECKLACE_2');
+compileSprite('asciiart/sprites/necklace3.txt', 'SPR_NECKLACE_3');
+compileSprite('asciiart/sprites/necklace4.txt', 'SPR_NECKLACE_4');
+compileSprite('asciiart/sprites/ring_vitrine.txt', 'SPR_RING_VITRINE');
+compileOpaqueImage('asciiart/sprites/ring.txt', 'SPR_RING');
 
 //--------------------------------------------------------------------------
 
