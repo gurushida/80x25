@@ -125,6 +125,10 @@ export enum HotspotId {
     NECKLACE_3 = 'NECKLACE_3',
     NECKLACE_4 = 'NECKLACE_4',
     RING = 'RING',
+    BARBECUE = 'BARBECUE',
+    COOK = 'COOK',
+    SUMO = 'SUMO',
+    WAVES = 'WAVES',
 }
 
 /**

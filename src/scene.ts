@@ -41,5 +41,6 @@ export enum SceneId {
     WATERFALL,
     JEWELLERY_STORE_OUTSIDE,
     JEWELLERY_STORE_INSIDE,
+    GRILL,
 }
 

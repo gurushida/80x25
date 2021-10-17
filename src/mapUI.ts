@@ -292,6 +292,15 @@ function getJewelleryStore(triggers: Triggers): MapLocation {
     };
 }
 
+function getGrill(triggers: Triggers): MapLocation {
+    return {
+        label: triggers.isSet('GRILL_VISITED') ? 'Grill' : '???',
+        centerX: 57,
+        centerY: 7,
+        sceneId: SceneId.GRILL
+    };
+}
+
 function getLocationsToShow(triggers: Triggers): MapLocation[] {
     const locations: MapLocation[] = [];
     locations.push(getExit());
@@ -308,6 +317,7 @@ function getLocationsToShow(triggers: Triggers): MapLocation[] {
     locations.push(getPizzeria(triggers));
     locations.push(getCascade(triggers));
     locations.push(getJewelleryStore(triggers));
+    locations.push(getGrill(triggers));
     return locations.filter(l => l.label);
 }
 

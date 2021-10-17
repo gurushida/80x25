@@ -11,9 +11,9 @@ import { SPR_SUV_0 } from "../generated/images/SPR_SUV_0";
 import { SPR_FIRE_HYDRANT_0 } from "../generated/images/SPR_FIRE_HYDRANT_0";
 import { SPR_SEWER_HOLE } from "../generated/images/SPR_SEWER_HOLE";
 import { SPR_STREET_WATER_0 } from "../generated/images/SPR_STREET_WATER_0";
+import { SPR_STREET_WATER_1 } from "../generated/images/SPR_STREET_WATER_1";
 import { SPR_STREET_WATER_2 } from "../generated/images/SPR_STREET_WATER_2";
 import { ImageAnimation, NO_LEFT_MOVEMENT } from "@/animations";
-import { SPR_STREET_WATER_1 } from "../generated/images/SPR_STREET_WATER_1";
 import { ANIM_BOAT } from "../animations/boat";
 
 const fullFilter = createFullHotspot(HotspotId.JEWELLERY_STORE);
@@ -84,7 +84,7 @@ const hotspots: Hotspot[] = [
         description: 'sewer hole',
         rightClickAction: ActionBarButton.LOOK,
         lookAt: [['Drainage infrastructure'], ['or fuel for nightmares.'], ['Depends on which books', 'you have read.']],
-        talkComment: [['No way.'], ['What if it anwsers ?']],
+        talkComment: [['No way.'], ['What if it answers ?']],
     },
     {
         hotspotId: HotspotId.STREET_WATER,

@@ -21,6 +21,8 @@ const talkingCharacters = [
     'DON_ALDO',
     'CHINESE_MASTER',
     'JEWELLER',
+    'COOK',
+    'SUMO',
 ] as const;
 export type TalkingCharacter = typeof talkingCharacters[number];
 

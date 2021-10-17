@@ -26,6 +26,7 @@ const triggerList: Trigger[] = [
   'PIZZERIA_VISITED',
   'WATERFALL_VISITED',
   'JEWELLERY_STORE_OUTSIDE_VISITED',
+  'GRILL_VISITED',
 ];
 const triggers = new Triggers(triggerList);
 
@@ -41,4 +42,4 @@ Clock.clock.repeat(0, () => {
 
 Clock.clock.play();
 //ui.showMap(triggers);
-sceneEngine.loadScene(SceneId.JEWELLERY_STORE_INSIDE);
+sceneEngine.loadScene(SceneId.GRILL);

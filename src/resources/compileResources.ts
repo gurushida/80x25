@@ -26,6 +26,7 @@ compileOpaqueImage('asciiart/backgrounds/pizzeria.txt', 'BG_PIZZERIA');
 compileOpaqueImage('asciiart/backgrounds/waterfall.txt', 'BG_WATERFALL');
 compileOpaqueImage('asciiart/backgrounds/jewellery_store_outside.txt', 'BG_JEWELLERY_STORE_OUTSIDE');
 compileOpaqueImage('asciiart/backgrounds/jewellery_store_inside.txt', 'BG_JEWELLERY_STORE_INSIDE');
+compileOpaqueImage('asciiart/backgrounds/grill.txt', 'BG_GRILL');
 
 
 //--------------------------------------------------------------------------
@@ -363,6 +364,25 @@ compileSprite('asciiart/sprites/necklace4.txt', 'SPR_NECKLACE_4');
 compileSprite('asciiart/sprites/ring_vitrine.txt', 'SPR_RING_VITRINE');
 compileOpaqueImage('asciiart/sprites/ring.txt', 'SPR_RING');
 
+compileSprite('asciiart/sprites/barbecue0.txt', 'SPR_BARBECUE_0');
+compileSprite('asciiart/sprites/barbecue1.txt', 'SPR_BARBECUE_1');
+compileSprite('asciiart/sprites/cook0.txt', 'SPR_COOK_0');
+compileSprite('asciiart/sprites/cook1.txt', 'SPR_COOK_1');
+compileSprite('asciiart/sprites/cook_not_talking.txt', 'SPR_COOK_NOT_TALKING');
+compileSprite('asciiart/sprites/cook_talking0.txt', 'SPR_COOK_TALKING_0');
+compileSprite('asciiart/sprites/cook_talking1.txt', 'SPR_COOK_TALKING_1');
+compileSprite('asciiart/sprites/cook_talking2.txt', 'SPR_COOK_TALKING_2');
+compileSprite('asciiart/sprites/sumo0.txt', 'SPR_SUMO_0');
+compileSprite('asciiart/sprites/sumo1.txt', 'SPR_SUMO_1');
+compileSprite('asciiart/sprites/sumo_talking0.txt', 'SPR_SUMO_TALKING_0');
+compileSprite('asciiart/sprites/sumo_talking1.txt', 'SPR_SUMO_TALKING_1');
+compileSprite('asciiart/sprites/sumo_talking2.txt', 'SPR_SUMO_TALKING_2');
+compileOpaqueImage('asciiart/sprites/waves0.txt', 'SPR_WAVES_0');
+compileOpaqueImage('asciiart/sprites/waves1.txt', 'SPR_WAVES_1');
+compileOpaqueImage('asciiart/sprites/waves2.txt', 'SPR_WAVES_2');
+compileOpaqueImage('asciiart/sprites/waves3.txt', 'SPR_WAVES_3');
+compileOpaqueImage('asciiart/sprites/waves4.txt', 'SPR_WAVES_4');
+
 //--------------------------------------------------------------------------
 
 compileDialog('dialogs/dog.grf', 'DIALOG_DOG');
@@ -383,6 +403,8 @@ compileDialog('dialogs/farmer.grf', 'DIALOG_FARMER');
 compileDialog('dialogs/don_aldo.grf', 'DIALOG_DON_ALDO');
 compileDialog('dialogs/chinese_master.grf', 'DIALOG_CHINESE_MASTER');
 compileDialog('dialogs/jeweller.grf', 'DIALOG_JEWELLER');
+compileDialog('dialogs/cook.grf', 'DIALOG_COOK');
+compileDialog('dialogs/sumo.grf', 'DIALOG_SUMO');
 
 
 //--------------------------------------------------------------------------

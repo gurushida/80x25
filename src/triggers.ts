@@ -21,6 +21,7 @@ const triggers = [
     'PIZZERIA_VISITED',
     'WATERFALL_VISITED',
     'JEWELLERY_STORE_OUTSIDE_VISITED',
+    'GRILL_VISITED',
 ] as const;
 export type Trigger = typeof triggers[number];
 
